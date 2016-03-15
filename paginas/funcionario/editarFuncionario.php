@@ -1,0 +1,141 @@
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <title>Kairos</title>
+        <?php
+        include "../include/include_css.php";
+        include "../menu_principal/menu_lateral.php";
+        include "../header/header.php";
+        include '../include/include_classes.php';
+        ?>    
+    </head>
+    <body>
+            <?php
+            
+                $id = (int) $_GET['id'];
+                           
+              $funcionario = new funcionario(); 
+            if (isset($_POST['atualizar'])):
+
+                
+                $nome = $_POST['nome'];
+                $cpf = $_POST['cpf'];
+                $email = $_POST['email'];
+                $login = $_POST['login'];
+                $senha = $_POST['senha'];
+                $nivel = $_POST['nivel'];
+
+
+                
+               
+                $funcionario->setNome($nome);
+                $funcionario->setCpf($cpf);
+                $funcionario->setEmail($email);
+                $funcionario->setLogin($login);
+                $funcionario->setSenha($senha);
+                $funcionario->setNivel($nivel);
+
+
+                if ($funcionario->update($id)) {
+                    echo "<script>alert('Usuario Atualizado!')</script>";
+                }
+
+            endif;
+            ?>
+        
+        <div id="page-wrapper" style="overflow-x: hidden; padding-left: 250px; height:100%; padding-top: 30px;">
+            <!-- Primeira linha do wrapper -->
+            <div class="row" >
+                <div class="col-lg-12">
+                    <h1 class="page-header">Editar Funcionario</h1>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-8">
+                    <div class="panel panel-default">
+                        <!-- Conteudo dentro de wrapper -->
+                        <div class="panel-body">
+                            <div id="chart">
+                                <?php $resultado = $funcionario->find($id);  ?>
+                                <form method="post" action="">
+                                    <div class="input-prepend">
+
+                                        <div class="row">
+                                            <div class="form-group col-lg-4">
+                                                <label for="matricula">Matricula</label>
+                                                <input disabled="true"type="text" class="form-control" id="matricula" value="<?php echo $resultado->matricula; ?>" name="matricula" placeholder="Matricula" required>
+                                            </div>
+
+                                            <div class="form-group col-lg-4">
+                                                <label for="nome">Nome</label>
+                                                <input type="text" class="form-control" name="nome" id="nome" value="<?php echo $resultado->nome; ?>" placeholder="Nome" required>
+                                            </div>      
+
+                                            <div class="form-group col-lg-4">
+                                                <label for="cpf">CPF</label>
+                                                <input type="text" class="form-control" name="cpf" id="cpf" value="<?php echo $resultado->cpf; ?>" placeholder="CPF" required>
+                                            </div>                                          
+                                        </div>    
+
+                                        <div class="row">
+                                            <div class="form-group col-lg-4">
+                                                <label for="email">E-mail</label>
+                                                <input type="text" class="form-control" name="email" id="email" value="<?php echo $resultado->email; ?>" placeholder="E-mail">
+                                            </div>    
+
+                                            <div class="form-group col-lg-4">
+                                                <label for="nivel">Nivel</label>
+                                                <select type="nivel" class="form-control" name="nivel" id="nivel">
+                                                    <option value="<?php echo $resultado->nivel; ?>" selected><?php echo $resultado->nivel; ?></option>
+                                                    <option value="Gerente">Gerente</option>
+                                                    <option value="Supervisor">Supervisor</option>
+                                                    <option value="Operador">Operador</option>
+                                                </select>
+                                            </div>                                             
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-lg-4">
+                                                <label for="login">Login</label>
+                                                <input type="text" class="form-control" name="login" id="login" value="<?php echo $resultado->login; ?>" placeholder="Login" required>
+                                            </div>  
+
+                                            <div class="form-group col-lg-4">
+                                                <label for="senha">Senha</label>
+                                                <input type="password" class="form-control" name="senha" id="senha" placeholder="Senha" required>
+                                            </div>      
+
+                                        </div>    
+                                        <div class="row">
+                                            <div class="form-group col-lg-4">
+                                            </div>
+                                            <div class="form-group col-lg-4">
+                                                <input type="submit" name="atualizar" class="btn btn-success" value="atualizar Dados">
+                                            </div>    
+                                        </div>
+
+
+                                    </div>
+
+                                </form>                                
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>        
+
+    </body>
+   
+    <?php include_once '../include/include_js.php'; ?>
+    
+    
+</html>
