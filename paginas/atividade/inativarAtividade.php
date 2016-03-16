@@ -7,7 +7,7 @@
                 
                     if ($atividade->delete($id)) {
                     echo "<script>alert('Deletado com sucesso!')</script>";
-                    header("location:consultaDepartamento.php");
+                    header("location:consultaAtividade.php");
                 }
 
 
