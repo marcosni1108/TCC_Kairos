@@ -14,9 +14,9 @@
     <?php
     if (isset($_POST['cadastrar'])):
 
-        $nome = $_POST['nome'];
+        $nome = $_POST['nome_ativ'];
         $descricao = $_POST['descricao'];
-        $idDepartamentoFK = $_POST['$idDepartamentoFK'];
+        $idDepartamentoFK = $_POST['departamento'];
         $cnpj = $_POST['cnpj'];
         $unid_med = $_POST['unid_med'];
 
@@ -26,8 +26,8 @@
         $atividade->setNome($nome);
         $atividade->setDescricao($descricao);
         $atividade->setCnpj($cnpj);
-        $atividade->setIdAtividade($id);
-        $atividade->setIdAtividade($unid_med);
+        $atividade->setIdDepartamentoFK($idDepartamentoFK);
+        $atividade->setUnid_med($unid_med);
 
 
 
