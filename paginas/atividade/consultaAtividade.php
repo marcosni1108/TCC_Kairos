@@ -11,7 +11,7 @@
         include "../menu_principal/menu_lateral.php";
         include "../header/header.php";
         include '../include/include_classes.php';  
-              $funcionario = new funcionario();
+              $atividade = new atividade();
               ?> 
 
 
@@ -56,18 +56,18 @@
                                             <td>A&ccedil;&otilde;es</td>
                                         </tr>
                                     </thead>
-                                    <?php foreach ($funcionario->findAll() as $key => $value): ?>
+                                    <?php foreach ($atividade->findAll() as $key => $value): ?>
                                     <tbody>
                                        <tr>
-                                            <td><?php echo $value->matricula; ?></td>
                                             <td><?php echo $value->nome; ?></td>
-                                            <td><?php echo $value->cpf; ?></td>
-                                            <td><?php echo $value->email; ?></td>
+                                            <td><?php echo $value->idDepartamentoFK; ?></td>
+                                            <td><?php echo $value->cnpj; ?></td>
+                                            <td><?php echo $value->unid_med; ?></td>
 
 
                                             <td>
-                                                <?php echo "<a href='editarAtividade.php?acao=editar&matricula=" . $value->matricula . "'>Editar</a>"; ?>
-                                                <?php echo "<a href='inativarAtividade.php?acao=deletar&matricula=" . $value->matricula . "' onclick='return confirm(\"Deseja realmente deletar?\")'>Deletar</a>"; ?>
+                                                <?php echo "<a href='editarAtividade.php?acao=editar&id=" . $value->id . "'>Editar</a>"; ?>
+                                                <?php echo "<a href='inativarAtividade.php?acao=deletar&id=" . $value->id . "' onclick='return confirm(\"Deseja realmente deletar?\")'>Deletar</a>"; ?>
                                             </td>
                                         </tr>
                                     </tbody>
