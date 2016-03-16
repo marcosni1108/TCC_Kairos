@@ -10,9 +10,25 @@ class atividade extends Crud {
     private $descricao;
     private $idDepartamentoFK;
     private $cnpj;
-    
+    private $meta;
+    private $unid_med;
+    function getUnid_med() {
+        return $this->unid_med;
+    }
 
-    function getDescricao() {
+    function setUnid_med($unid_med) {
+        $this->unid_med = $unid_med;
+    }
+
+        function getMeta() {
+        return $this->meta;
+    }
+
+    function setMeta($meta) {
+        $this->meta = $meta;
+    }
+
+        function getDescricao() {
         return $this->descricao;
     }
 
@@ -29,7 +45,7 @@ class atividade extends Crud {
     }
 
     function setDescricao($descricao) {
-        $this->descrição = $descricao;
+        $this->descricao = $descricao;
     }
 
     function setIdDepartamentoFK($idDepartamentoFK) {
@@ -67,14 +83,14 @@ class atividade extends Crud {
         public function insert() {
 
 
-        $sql = "INSERT INTO $this->table (nome,descricao,idDepartamentoFK,cnpj)"
-                . " VALUES (:nome,:descricao,:idDepartamentoFK,:cnpj)";
+        $sql = "INSERT INTO $this->table (nome,descricao,idDepartamentoFK,cnpj,unid_med)"
+                . " VALUES (:nome,:descricao,:idDepartamentoFK,:cnpj,:unid_med)";
         $stmt = DB::prepare($sql);
         $stmt->bindParam(':nome', $this->nome);
-        $stmt->bindParam(':descricao', $this->descrição);
+        $stmt->bindParam(':descricao', $this->descricao);
         $stmt->bindParam(':idDepartamentoFK', $this->idDepartamentoFK);
         $stmt->bindParam(':cnpj', $this->cnpj);
-     
+        $stmt->bindParam(':unid_med', $this->unid_med);
 
        
         return $stmt->execute();
@@ -84,12 +100,14 @@ class atividade extends Crud {
 
         $sql = "UPDATE $this->table SET nome= :nome, "
                 . "descricao=:descricao,idDepartamentoFK=:idDepartamentoFK,"
-                . "cnpj=:cnpj where id = :id";
+                . "cnpj=:cnpj, unid_med =:unid_med where id = :id";
         $stmt = DB::prepare($sql);
 
         $stmt->bindParam(':nome', $this->nome);
-        $stmt->bindParam(':descricao', $this->descrição);
+        $stmt->bindParam(':descricao', $this->descricao);
         $stmt->bindParam(':cnpj', $this->cnpj);
+        $stmt->bindParam(':idDepartamentoFK', $this->idDepartamentoFK);
+        $stmt->bindParam(':unid_med', $this->unid_med);
         $stmt->bindParam(':id', $idAtividade);
         
         
