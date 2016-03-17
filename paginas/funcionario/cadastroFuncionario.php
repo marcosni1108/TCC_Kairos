@@ -8,7 +8,7 @@
         include '../include/include_classes.php';
         ?>   
         <link href="../../css/sb-admin.css" rel="stylesheet">
-        
+        <script type="text/javascript" src="../../js/validadores.js"></script>
     </head>
     <body >
         <meta charset="UTF-8">
@@ -51,7 +51,7 @@
                         <div class="row">
                             <div class="form-group col-lg-4">
                                 <label for="matricula">Matricula</label>
-                                <input type="text" class="form-control" id="matricula" name="matricula" placeholder="Matricula" required>
+                                <input type="text" class="form-control" id="matricula" maxlength="11" name="matricula" placeholder="Matricula" required>
                             </div>
                             <div class="form-group col-lg-4">
                                 <label for="nome">Nome</label>
@@ -59,7 +59,7 @@
                             </div>      
                             <div class="form-group col-lg-4">
                                 <label for="cpf">CPF</label>
-                                <input type="text" class="form-control" name="cpf" id="cpf" placeholder="CPF" required>
+                                <input type="text" class="form-control" name="cpf" id="cpf" onblur="javascript: validarCPF(this.value);" onkeypress="javascript: mascara(this, cpf_mask);"  maxlength="14" placeholder="CPF" required>
                             </div>                                          
                         </div>    
                         <div class="row">

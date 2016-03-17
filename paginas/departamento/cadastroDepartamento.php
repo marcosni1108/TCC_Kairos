@@ -9,7 +9,7 @@
         include '../include/include_classes.php';
         ?>   
         <meta charset="UTF-8">
-       
+        <script type="text/javascript" src="../../js/validadores.js"></script>
     </head>
      <?php
         if (isset($_POST['cadastrar'])):
@@ -81,7 +81,7 @@
 
                                                 <div class="form-group col-lg-4">
                                                   <label for="cnpj">CNPJ</label>
-                                                  <input type="text" class="form-control" name="cnpj" id="cnpj" placeholder="CNPJ" required>
+                                                  <input type="text" class="form-control" name="cnpj" id="cnpj" onkeypress="javascript: mascara(this, cnpj_mask);"  maxlength="18" placeholder="CNPJ" required>
                                                 </div>              
                                                 <div class="form-group col-lg-6">
                                                     <a href="../endereco/consultaEndereco.php">Clique aqui caso endereço não esteja cadastrado.</a>
