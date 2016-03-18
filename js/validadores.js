@@ -60,7 +60,7 @@ function validarCPF( cpf ){
  
  
  function validarCNPJ( cnpj ){
-	var filtro = /^\d{3}.\d{3}.\d{3}-\d{2}$/i;
+	var filtro = /\.|\-|\//g;
 	
 	if(!filtro.test(cnpj))
 	{
@@ -71,7 +71,7 @@ function validarCPF( cpf ){
    
 	cnpj = remove(cnpj, ".");
 	cnpj = remove(cnpj, "-");
-	
+	cnpj = remove(cnpj, "/");
 	if(cnpj.length != 14 || 
         cnpj == "00000000000000" || 
         cnpj == "11111111111111" || 
