@@ -9,7 +9,7 @@
         include '../include/include_classes.php';
         ?>   
         <meta charset="UTF-8">
-       
+       <script type="text/javascript" src="../../js/validadores.js"></script>
     </head>
     
     
@@ -77,7 +77,7 @@
                                         <div class="row">
                                                 <div class="form-group col-lg-4">
                                                   <label for="cep">CEP</label>
-                                                  <input type="text" class="form-control" value="<?php echo $resultado->nome; ?>" id="nome_dept" name="cep" placeholder="CEP" required>
+                                                  <input type="text" class="form-control" value="<?php echo $resultado->nome; ?>" onkeypress="javascript: mascara(this, cep_mask);" maxlength="9" id="nome_dept" name="cep" placeholder="CEP" required>
 
                                                 </div>
 
@@ -94,7 +94,7 @@
                                                 </div>              
                                                 <div class="form-group col-lg-4">
                                                   <label for="cnpj">CNPJ</label>
-                                                  <input type="text" class="form-control" value="<?php echo $resultado->nome; ?>" name="cnpj" id="cnpj" placeholder="CNPJ" required>
+                                                  <input type="text" class="form-control" value="<?php echo $resultado->nome; ?>" onblur="javascript: validarCNPJ(this.value);" onkeypress="javascript: mascara(this, cnpj_mask);" maxlength="18" name="cnpj" id="cnpj" placeholder="CNPJ" required>
                                                 </div>  
                                            
                                         </div>

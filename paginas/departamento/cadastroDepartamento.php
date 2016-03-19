@@ -8,6 +8,7 @@
         include "../header/header.php";
         include '../include/include_classes.php';
         ?>   
+        
         <meta charset="UTF-8">
         <script type="text/javascript" src="../../js/validadores.js"></script>
     </head>
@@ -63,7 +64,7 @@
                                         <div class="row">
                                                 <div class="form-group col-lg-4">
                                                   <label for="nome_dept">Nome Departamento</label>
-                                                  <input type="text" class="form-control" id="nome_dept" name="nome_dept" placeholder="Nome Departamento" required>
+                                                  <input type="text" class="form-control" id="nome_dept" name="nome_dept" onkeypress="javascript: mascara(this, soLetras);" placeholder="Nome Departamento" required>
 
                                                 </div>
 

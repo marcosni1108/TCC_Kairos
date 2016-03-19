@@ -51,11 +51,11 @@
                         <div class="row">
                             <div class="form-group col-lg-4">
                                 <label for="matricula">Matricula</label>
-                                <input type="text" class="form-control" id="matricula" maxlength="11" name="matricula" placeholder="Matricula" required>
+                                <input type="text" class="form-control" id="matricula" onkeypress="javascript: mascara(this, soNumeros);" maxlength="11" name="matricula" placeholder="Matricula" required>
                             </div>
                             <div class="form-group col-lg-4">
                                 <label for="nome">Nome</label>
-                                <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" required>
+                                <input type="text" class="form-control" name="nome" id="nome" onkeypress="javascript: mascara(this, soLetras);" placeholder="Nome" required>
                             </div>      
                             <div class="form-group col-lg-4">
                                 <label for="cpf">CPF</label>

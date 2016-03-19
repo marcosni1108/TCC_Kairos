@@ -68,7 +68,7 @@
                         <div class="row">
                             <div class="form-group col-lg-4">
                                 <label for="hora_inicial">Hora Incial</label>
-                                <input type="text" class="form-control" name="hora_inicial" id="hora_inicial" placeholder="Hora Incial" required>
+                                <input type="text" class="form-control" name="hora_inicial"  id="hora_inicial" placeholder="Hora Incial" required>
                             </div> 
                             <div class="form-group col-lg-4">
                                 <label for="hora_final">Hora Final</label>

@@ -10,6 +10,7 @@
         include "../header/header.php";
         include '../include/include_classes.php';
         ?>    
+                <script type="text/javascript" src="../../js/validadores.js"></script>
     </head>
     <body>
             <?php
@@ -67,17 +68,17 @@
                                         <div class="row">
                                             <div class="form-group col-lg-4">
                                                 <label for="matricula">Matricula</label>
-                                                <input disabled="true"type="text" class="form-control" id="matricula" value="<?php echo $resultado->matricula; ?>" name="matricula" placeholder="Matricula" required>
+                                                <input disabled="true"type="text" class="form-control" id="matricula" value="<?php echo $resultado->matricula; ?>" onkeypress="javascript: mascara(this, soNumeros);" name="matricula" placeholder="Matricula" required>
                                             </div>
 
                                             <div class="form-group col-lg-4">
                                                 <label for="nome">Nome</label>
-                                                <input type="text" class="form-control" name="nome" id="nome" value="<?php echo $resultado->nome; ?>" placeholder="Nome" required>
+                                                <input type="text" class="form-control" name="nome" id="nome" value="<?php echo $resultado->nome; ?>" onkeypress="javascript: mascara(this, soLetras);" placeholder="Nome" required>
                                             </div>      
 
                                             <div class="form-group col-lg-4">
                                                 <label for="cpf">CPF</label>
-                                                <input type="text" class="form-control" name="cpf" id="cpf" value="<?php echo $resultado->cpf; ?>" placeholder="CPF" required>
+                                                <input type="text" class="form-control" name="cpf" id="cpf" value="<?php echo $resultado->cpf; ?>" maxlength="14" onblur="javascript: validarCPF(this.value);" onkeypress="javascript: mascara(this, cpf_mask);" placeholder="CPF" required>
                                             </div>                                          
                                         </div>    
 

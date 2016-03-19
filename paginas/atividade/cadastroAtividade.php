@@ -9,7 +9,7 @@
         include '../include/include_classes.php';
         ?>   
         <meta charset="UTF-8">
-
+        <script type="text/javascript" src="../../js/validadores.js"></script>
     </head>
     <?php
     if (isset($_POST['cadastrar'])):
@@ -64,7 +64,7 @@
                                         <div class="row">
                                             <div class="form-group col-lg-4">
                                                 <label for="nome_ativ">Nome da Atividade</label>
-                                                <input type="text" class="form-control" id="nome_ativ" name="nome_ativ" placeholder="Nome Atividade" required>
+                                                <input type="text" class="form-control" onkeypress="javascript: mascara(this, soLetras);" id="nome_ativ" name="nome_ativ" placeholder="Nome Atividade" required>
 
                                             </div>
 

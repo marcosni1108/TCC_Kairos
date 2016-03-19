@@ -59,70 +59,62 @@ function validarCPF( cpf ){
  }
  
  
- function validarCNPJ( cnpj ){
-	var filtro = /\.|\-|\//g;
-	
-	if(!filtro.test(cnpj))
-	{
-		window.alert("CNPJ inválido. Tente novamente.");
-                document.getElementById('cnpj').value=''; // Limpa o campo
-		return false;
-	}
-   
-	cnpj = remove(cnpj, ".");
-	cnpj = remove(cnpj, "-");
-	cnpj = remove(cnpj, "/");
-	if(cnpj.length != 14 || 
-        cnpj == "00000000000000" || 
-        cnpj == "11111111111111" || 
-        cnpj == "22222222222222" || 
-        cnpj == "33333333333333" || 
-        cnpj == "44444444444444" || 
-        cnpj == "55555555555555" || 
-        cnpj == "66666666666666" || 
-        cnpj == "77777777777777" || 
-        cnpj == "88888888888888" || 
-        cnpj == "99999999999999")
-	{
-		window.alert("CNPJ inválido. Tente novamente.");
-                document.getElementById('cnpj').value=''; // Limpa o campo
-		return false;
+   function validarCNPJ(f,campo){
+
+         pri = eval("document."+f+"."+campo+".value.substring(0,2)");
+         seg = eval("document."+f+"."+campo+".value.substring(3,6)");
+         ter = eval("document."+f+"."+campo+".value.substring(7,10)");
+         qua = eval("document."+f+"."+campo+".value.substring(11,15)");
+         qui = eval("document."+f+"."+campo+".value.substring(16,18)");
+
+         var i;
+         var numero;
+         var situacao = '';
+
+         numero = (pri+seg+ter+qua+qui);
+
+         s = numero;
+
+
+         c = s.substr(0,12);
+         var dv = s.substr(12,2);
+         var d1 = 0;
+
+         for (i = 0; i < 12; i++){
+            d1 += c.charAt(11-i)*(2+(i % 8));
+         }
+
+         if (d1 == 0){
+            var result = "falso";
+         }
+            d1 = 11 - (d1 % 11);
+
+         if (d1 > 9) d1 = 0;
+
+            if (dv.charAt(0) != d1){
+               var result = "falso";
+            }
+
+         d1 *= 2;
+         for (i = 0; i < 12; i++){
+            d1 += c.charAt(11-i)*(2+((i+1) % 8));
+         }
+
+         d1 = 11 - (d1 % 11);
+         if (d1 > 9) d1 = 0;
+
+            if (dv.charAt(1) != d1){
+               var result = "falso";
+            }
+
+
+         if (result == "falso") {
+            alert("CNPJ inválido!");
+            aux1 = eval("document."+f+"."+campo+".focus");
+            aux2 = eval("document."+f+"."+campo+".value = ''");
+
+         }
    }
-
-    // Valida DVs
-     tamanho = cnpj.length - 2
-     numeros = cnpj.substring(0,tamanho);
-     digitos = cnpj.substring(tamanho);
-     soma = 0;
-     pos = tamanho - 7;
-     for (i = tamanho; i >= 1; i--) {
-       soma += numeros.charAt(tamanho - i) * pos--;
-       if (pos < 2)
-             pos = 9;
-     }
-     resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-     if (resultado != digitos.charAt(0))
-            window.alert("CNPJ inválido. Tente novamente.");
-            document.getElementById('cnpj').value=''; // Limpa o campo         
-         return false;
-
-     tamanho = tamanho + 1;
-     numeros = cnpj.substring(0,tamanho);
-     soma = 0;
-     pos = tamanho - 7;
-     for (i = tamanho; i >= 1; i--) {
-       soma += numeros.charAt(tamanho - i) * pos--;
-       if (pos < 2)
-             pos = 9;
-     }
-     resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-     if (resultado != digitos.charAt(1))
-		window.alert("CNPJ inválido. Tente novamente.");
-                document.getElementById('cnpj').value=''; // Limpa o campo         
-           return false;
-
-     return true;
-  }
  
  
  
@@ -163,6 +155,12 @@ function cpf_mask(v){
 	return v
 }
 
+function cep_mask(v){
+	v=v.replace(/\D/g,"")                 //Remove tudo o que não é dígito
+	v=v.replace(/(\d{5})(\d)/,"$1-$2")    //Coloca ponto entre o terceiro e o quarto dígitos
+	return v
+}
+
 function cnpj_mask(v){
 	v=v.replace(/\D/g,"")                 //Remove tudo o que não é dígito
 	v=v.replace(/(\d{2})(\d)/,"$1.$2")    //Coloca ponto entre o terceiro e o quarto dígitos
@@ -170,4 +168,19 @@ function cnpj_mask(v){
         v=v.replace(/(\d{3})(\d)/,"$1/$2")    //Coloca ponto entre o setimo e o oitava dígitos
         v=v.replace(/(\d{4})(\d)/,"$1-$2")    //Coloca ponto entre o decimoprimeiro e o decimosegundo dígitos  
 	return v
+}
+
+function soLetras(v){
+        return v.replace(/\d/g,"") //Remove tudo o que não é Letra
+}
+function soLetrasMA(v){
+        v=v.toUpperCase() //Maiúsculas
+        return v.replace(/\d/g,"") //Remove tudo o que não é Letra ->maiusculas
+}
+function soLetrasMI(v){
+        v=v.toLowerCase() //Minusculas
+        return v.replace(/\d/g,"") //Remove tudo o que não é Letra ->minusculas
+}
+function soNumeros(v){
+        return v.replace(/\D/g,"") //Remove tudo o que não é dígito
 }

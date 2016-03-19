@@ -39,9 +39,6 @@
                             <li>
                                 <a href="../atividade/consultaAtividade.php">Alterar Atividades</a>
                             </li>    
-                            <li>
-                                <a href="../meta/cadastroMeta.php">Cadastrar Meta</a>
-                            </li>
 <!--                            <li>
                                 <a href="../meta/consultaMeta.php">Alterar Meta</a>
                             </li> -->
@@ -50,7 +47,10 @@
                             </li>         
                             <li>
                                 <a href="../parada/cadastroParada.php">Registrar Parada</a>
-                            </li>                             
+                            </li>       
+                            <li>
+                                <a href="../meta/cadastroMeta.php">Cadastrar Meta</a>
+                            </li>                            
                         </ul>
                     </li>
                     <li>

@@ -18,7 +18,6 @@ body {
     #header-nav li a:focus{
         background-color:#4682b4;
     }
-#4682b4
 
 
 #wrapper {
@@ -144,7 +143,7 @@ ul.alert-dropdown {
     .side-nav li a:hover,
     .side-nav li a:focus {
         outline: none;
-        background-color: #808080 !important;
+        background-color: #4B53AE !important;
         color:#fff;
     }
 }

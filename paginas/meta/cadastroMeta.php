@@ -88,7 +88,7 @@
                                                 </div>             
                                                 <div class="form-group col-lg-4">
                                                   <label for="meta">Porcentagem de Meta</label>
-                                                  <input type="number" class="form-control" name="meta" id="meta" placeholder="%" required>
+                                                  <input type="number" class="form-control" onkeypress="javascript: mascara(this, soNumeros);" name="meta" id="meta" placeholder="%" required>
                                                 </div>  
                                            
                                         </div>

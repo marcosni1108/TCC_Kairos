@@ -38,13 +38,13 @@
                                 <table id="func"class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>nome</th>
-                                            <th>cpf</th>
-                                            <th>email</th>
-                                            <th>nivel</th>
-                                            <th>login</th>
+                                            <th>Nome</th>
+                                            <th>CPF</th>
+                                            <th>Email</th>
+                                            <th>Nivel</th>
+                                            <th>Login</th>
 
-                                            <th>matricula</th>
+                                            <th>Matricula</th>
                                           
                                             <th>A&ccedil;&otilde;es</th>
                                         </tr>
