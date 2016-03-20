@@ -11,9 +11,10 @@
         include "../menu_principal/menu_lateral.php";
         include "../header/header.php";
         include '../include/include_classes.php';
+        include '../../classes/model/tableEnd.php';
         
-              $endereco = new endereco();
-              ?> 
+//              $endereco = new endereco();
+//              ?> 
 
 
 
@@ -35,49 +36,27 @@
                         <div class="panel-body">
                              
                             <div class="row">
-                                    <div class="form-group col-lg-6">
-
-                                            <input type="pesquisar" class="form-control" id="pesquisar" placeholder="Pesquisar">
-                                    </div>       
+      
                                     <div class="form-group col-lg-4">
+    
                                             <div class="form-group col-lg-4">
-                                                <input type="submit" name="pesquisar" class="btn btn-success" value="Pesquisar">
-                                            </div> 
-
-                                            <div class="form-group col-lg-4">
-                                                <a href="cadastroEndereco.php"><input type="button" name="incluir" class="btn btn-primary" value="Incluir"></a>
+                                                <a href="cadastroEndereco.php"><input type="button" name="incluir" class="btn btn-primary" value="Incluir Novo Endere&ccedil;o"></a>
                                             </div> 
                                     </div>                                  
                             </div>
                             
                             <div class="row">
-                                <table class="table table-bordered">
+                                <table id="tbl_Endereco" class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <td>CEP</td>
-                                            <td>Endere&ccedil;o</td>
-                                            <td>CNPJ</td>
-                                            <td>Numero</td>
-                                            <td>A&ccedil;&otilde;es</td>
+                                            <th>CEP</th>
+                                            <th>Endere&ccedil;o</th>
+                                            <th>CNPJ</th>
+                                            <th>Numero</th>
+                                            <th>A&ccedil;&otilde;es</th>
                                         </tr>
                                     </thead>
-                                    <?php foreach ($endereco->findAll() as $key => $value): ?>
-                                    <tbody>
-                                       <tr>
-                                           
-                                            <td><?php echo $value->cep; ?></td>
-                                            <td><?php echo $value->endereco; ?></td>
-                                            <td><?php echo $value->cnpj; ?></td>
-                                            <td><?php echo $value->numero; ?></td>
-
-
-                                            <td>
-                                                <?php echo "<a href='editarEndereco.php?acao=editar&id=" . $value->id . "'>Editar</a>"; ?>
-                                                <?php echo "<a href='inativarEndereco.php?acao=deletar&id=" . $value->id . "' onclick='return confirm(\"Deseja realmente deletar?\")'>Deletar</a>"; ?>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <?php endforeach; ?>
+                                   
                                 </table>
                                 
                             </div>
