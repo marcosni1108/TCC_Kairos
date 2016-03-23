@@ -96,7 +96,7 @@
                                                     <?php
                                                     $departamento = new departamento();
                                                     foreach ($departamento->findAll() as $key => $value):   ?>
-                                                    <option value="<?php echo $value->id; ?>" selcted><?php echo $value->nome; ?></option> 
+                                                    <option value="<?php echo $value->id; ?>" selected><?php echo $value->nome; ?></option> 
                                                     <?php endforeach; ?>
                                                 </select>
                                             </div>     
