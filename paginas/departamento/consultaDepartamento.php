@@ -11,9 +11,9 @@
         include "../menu_principal/menu_lateral.php";
         include "../header/header.php";
         include '../include/include_classes.php';  
-          
-              $departamento = new departamento();
-              ?> 
+        include '../../classes/model/tableDept.php';
+//              $departamento = new departamento();
+//              ?>
 
 
 
@@ -34,20 +34,10 @@
 
                         <div class="panel-body">
                              
-                            <div class="row">
-                                    <div class="form-group col-lg-6">
-
-                                            <input type="pesquisar" class="form-control" id="pesquisar" placeholder="Pesquisar">
-                                    </div>       
-                                    <div class="form-group col-lg-4">
-                                            <div class="form-group col-lg-4">
-                                                <input type="submit" name="pesquisar" class="btn btn-success" value="Pesquisar">
-                                            </div> 
-                                    </div>                                 
-                            </div>
+                            
                             
                             <div class="row">
-                                <table class="table table-bordered">
+                                <table id="tbl_Dept" class="table table-bordered">
                                     <thead>
                                         <tr>
                                             <td>Nome</td>
@@ -55,26 +45,10 @@
                                             <td>CNPJ</td>
                                             <td>Lider</td>
                                             <td>Gerente</td>
-                                            
+                                            <td>A&ccedil;&otilde;es</td>
                                         </tr>
                                     </thead>
-                                    <?php foreach ($departamento->findAll() as $key => $value): ?>
-                                    <tbody>
-                                       <tr>
-                                            <td><?php echo $value->nome; ?></td>
-                                             <td><?php echo $value->idEnderecoFK; ?></td>
-                                            <td><?php echo $value->cnpj; ?></td>
-                                            <td><?php echo $value->lider; ?></td>
-                                            <td><?php echo $value->gerente; ?></td>
-                                            
-
-                                            <td>
-                                                <?php echo "<a href='editarDepartamento.php?acao=editar&idDept=" . $value->id . "'>Editar</a>"; ?>
-                                                <?php echo "<a href='inativarDepartamento.php?acao=deletar&idDept=" . $value->id . "' onclick='return confirm(\"Deseja realmente deletar?\")'>Deletar</a>"; ?>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <?php endforeach; ?>
+                                   
                                 </table>
                                 
                             </div>

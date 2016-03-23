@@ -12,7 +12,7 @@
         include "../header/header.php";
         include '../include/include_classes.php';
         include '../../classes/model/tableFunc.php';
-//        $funcionario = new funcionario();
+//    teste    $funcionario = new funcionario();
         ?>
 
 
@@ -43,9 +43,7 @@
                                             <th>Email</th>
                                             <th>Nivel</th>
                                             <th>Login</th>
-
-                                            <th>Matricula</th>
-                                          
+                                            <th>Matricula</th>                                          
                                             <th>A&ccedil;&otilde;es</th>
                                         </tr>
                                     </thead>

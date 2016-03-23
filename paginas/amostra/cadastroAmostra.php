@@ -3,8 +3,8 @@
         <title>Kairos</title>
         <?php
         include "../include/include_css.php";
-        include "../menu_principal/menu_lateral.php";
         include "../header/header.php";
+        include "../menu_principal/menu_lateral.php";
         include '../include/include_classes.php';
         ?>   
         <link href="../../css/sb-admin.css" rel="stylesheet">
@@ -34,7 +34,7 @@
             if ($funcionario->insert()) {
                 echo "<script> alert('Usuario Cadastrado com sucesso')</script>";
             }
-            
+
         endif;
         ?>        
         <div id="wrapper" >
@@ -51,16 +51,26 @@
                             </div>
                             <div class="form-group col-lg-4">
                                 <label for="departamento">Departamento</label>
-                                <select type="departamento" class="form-control" name="departamento" id="departamento">
-                                    <option value="Expedicao">Expedição</option>
-                                    <option value="Logistica">Logistica</option>
-                                </select>
+                                <select  class="form-control" name="departamento" id="departamento">
+                                <?php
+                                                    $departamento = new departamento();
+                                                   ?>
+                                                    <?php foreach ($departamento->findAll as $key => $value): ?>
+                                                        <option value="<?php echo $value->id; ?>" selected>
+                                                        <?php echo $value->nome; ?></option> 
+                                                        <?php endforeach; ?>
+                                                         </select>
                             </div>      
                             <div class="form-group col-lg-4">
                                 <label for="atividade">Atividade</label>
                                 <select type="atividade" class="form-control" name="atividade" id="atividade">
-                                    <option value="Expedicao">Expedição</option>
-                                    <option value="Logistica">Logistica</option>
+                                    <?php
+                                                    $atividade = new atividade();
+                                                   ?>
+                                                    <?php foreach ($atividade->findAll as $key => $value): ?>
+                                                        <option value="<?php echo $value->id; ?>" selected>
+                                                        <?php echo $value->nome; ?></option> 
+                                                        <?php endforeach; ?>
                                 </select>
                             </div>                                          
                         </div>    
@@ -78,7 +88,7 @@
                                 <label for="quantidade">Quantidade</label>
                                 <input type="text" class="form-control" name="quantidade" id="quantidade" placeholder="Quantidade" required>
                             </div>                             
-                    </div>
+                        </div>
                         <div class="row">
                             <div class="form-group col-lg-4">
                             </div>

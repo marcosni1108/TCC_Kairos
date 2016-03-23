@@ -1,4 +1,6 @@
 <?php include "../../classes/model/valida_nivel.php";  ?>
+
+
         <nav class="navbar navbar-inverse navbar-fixed-top" id="header-nav" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">

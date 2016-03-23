@@ -10,9 +10,10 @@
         include "../include/include_css.php";
         include "../menu_principal/menu_lateral.php";
         include "../header/header.php";
-        include '../include/include_classes.php';  
-              $atividade = new atividade();
-              ?> 
+        include '../include/include_classes.php'; 
+        include '../../classes/model/tableAtivi.php';
+//              $atividade = new atividade();
+//              ?> 
 
 
 
@@ -33,45 +34,20 @@
 
                         <div class="panel-body">
                              
-                            <div class="row">
-                                    <div class="form-group col-lg-6">
-
-                                            <input type="pesquisar" class="form-control" id="pesquisar" placeholder="Pesquisar">
-                                    </div>       
-                                    <div class="form-group col-lg-4">
-                                            <div class="form-group col-lg-4">
-                                                <input type="submit" name="pesquisar" class="btn btn-success" value="Pesquisar">
-                                            </div> 
-                                    </div>                                 
-                            </div>
+                           
                             
                             <div class="row">
-                                <table class="table table-bordered">
+                                <table id="tbl_Atividade" class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <td>Nome</td>
-                                            <td>Departamento</td>
-                                            <td>CNPJ</td>
-                                            <td>Unidade de Medida</td>
-                                            <td>A&ccedil;&otilde;es</td>
+                                            <th>Nome</th>
+                                            <th>Departamento</th>
+                                            <th>CNPJ</th>
+                                            <th>Unidade de Medida</th>
+                                            <th>A&ccedil;&otilde;es</th>
                                         </tr>
                                     </thead>
-                                    <?php foreach ($atividade->findAll() as $key => $value): ?>
-                                    <tbody>
-                                       <tr>
-                                            <td><?php echo $value->nome; ?></td>
-                                            <td><?php echo $value->idDepartamentoFK; ?></td>
-                                            <td><?php echo $value->cnpj; ?></td>
-                                            <td><?php echo $value->unid_med; ?></td>
-
-
-                                            <td>
-                                                <?php echo "<a href='editarAtividade.php?acao=editar&id=" . $value->id . "'>Editar</a>"; ?>
-                                                <?php echo "<a href='inativarAtividade.php?acao=deletar&id=" . $value->id . "' onclick='return confirm(\"Deseja realmente deletar?\")'>Deletar</a>"; ?>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <?php endforeach; ?>
+                                    
                                 </table>
                                 
                             </div>

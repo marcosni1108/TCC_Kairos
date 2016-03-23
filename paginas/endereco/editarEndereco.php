@@ -9,7 +9,7 @@
         include '../include/include_classes.php';
         ?>   
         <meta charset="UTF-8">
-       <script type="text/javascript" src="../../js/validadores.js"></script>
+       
     </head>
     
     
@@ -18,32 +18,26 @@
             <?php
             
             
-                $id = (int) $_GET['matricula'];
-              $funcionario = new funcionario(); 
+                $id = (int) $_GET['id'];
+              $endereco = new endereco(); 
             
             if (isset($_POST['atualizar'])):
 
                 
-                $matricula = $_POST['matricula'];
-                $nome = $_POST['nome'];
-                $cpf = $_POST['cpf'];
-                $email = $_POST['email'];
-                $login = $_POST['login'];
-                $senha = $_POST['senha'];
-                $nivel = $_POST['nivel'];
+                $cep = $_POST['cep'];
+                $rua = $_POST['endereco'];
+                $cnpj = $_POST['cnpj'];
+                $numero = $_POST['numero'];
+               
 
 
 
-                $funcionario->setMatricula($matricula);
-                $funcionario->setNome($nome);
-                $funcionario->setCpf($cpf);
-                $funcionario->setEmail($email);
-                $funcionario->setLogin($login);
-                $funcionario->setSenha($senha);
-                $funcionario->setNivel($nivel);
+                $endereco->setCep($cep);
+                $endereco->setRua($rua);
+                $endereco->setCnpj($cnpj);
+                $endereco->setNumero($numero);
 
-
-                if ($funcionario->update($matricula)) {
+                if ($endereco->update($id)) {
                     echo "Atualizado com sucesso!";
                 }
 
@@ -70,31 +64,31 @@
                         <!-- Conteudo dentro de wrapper -->
                         <div class="panel-body">
                             <div id="chart">
-                            <?php $resultado = $funcionario->find($id);  ?>           
+                            <?php $resultado = $endereco->find($id);  ?>           
                                 <form method="post" action="">
                                     <div class="input-prepend">
                                         
                                         <div class="row">
                                                 <div class="form-group col-lg-4">
                                                   <label for="cep">CEP</label>
-                                                  <input type="text" class="form-control" value="<?php echo $resultado->nome; ?>" onkeypress="javascript: mascara(this, cep_mask);" maxlength="9" id="nome_dept" name="cep" placeholder="CEP" required>
+                                                  <input type="text" class="form-control" value="<?php echo $resultado->cep; ?>" id="cep" name="cep" placeholder="CEP" required>
 
                                                 </div>
 
                                                 
                                                 <div class="form-group col-lg-8">
                                                   <label for="endereco">Endere&ccedil;o</label>
-                                                  <input type="text" class="form-control" value="<?php echo $resultado->nome; ?>" name="endereco" id="cnpj" placeholder="Endereco" required>
+                                                  <input type="text" class="form-control" value="<?php echo $resultado->endereco; ?>" name="endereco" id="cnpj" placeholder="Endereco" required>
                                                 </div> 
      
 
                                                 <div class="form-group col-lg-4">
                                                   <label for="numero">Numero</label>
-                                                  <input type="text" class="form-control" value="<?php echo $resultado->nome; ?>" name="numero" id="cnpj" placeholder="Numero" required>
+                                                  <input type="text" class="form-control" value="<?php echo $resultado->numero; ?>" name="numero" id="cnpj" placeholder="Numero" required>
                                                 </div>              
                                                 <div class="form-group col-lg-4">
                                                   <label for="cnpj">CNPJ</label>
-                                                  <input type="text" class="form-control" value="<?php echo $resultado->nome; ?>" onblur="javascript: validarCNPJ(this.value);" onkeypress="javascript: mascara(this, cnpj_mask);" maxlength="18" name="cnpj" id="cnpj" placeholder="CNPJ" required>
+                                                  <input type="text" class="form-control" value="<?php echo $resultado->cnpj; ?>" name="cnpj" id="cnpj" placeholder="CNPJ" required>
                                                 </div>  
                                            
                                         </div>
@@ -103,7 +97,7 @@
                                             <div class="form-group col-lg-4">
                                             </div>
                                             <div class="form-group col-lg-4">
-                                                <input type="submit" name="cadastrar" class="btn btn-success" value="Cadastrar dados">
+                                                <input type="submit" name="atualizar" class="btn btn-success" value="Atualizar">
                                             </div>    
                                         </div>
 

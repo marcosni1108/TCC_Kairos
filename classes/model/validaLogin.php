@@ -4,11 +4,11 @@ session_start();
 // as variáveis login e senha recebem os dados digitados na página anterior
 $funcionario = new funcionario();
 $login = $_POST['login'];
-$senha = $_POST['senha'];
+$senha= $_POST['senha'];
 
 // as próximas 3 linhas são responsáveis em se conectar com o bando de dados.
 
-$result = $funcionario->verificaLogin($login,$senha);
+$result = $funcionario->verificaLogin($login,md5($senha));
 
 // A vriavel $result pega as varias $login e $senha, faz uma pesquisa na tabela de usuarios
 $test=count($result);
@@ -16,7 +16,7 @@ $test=count($result);
 if(count($result) == 1 )
 {
 $_SESSION['login'] = $login;
-$_SESSION['senha'] = $senha;
+$_SESSION['senha'] = md5($senha);
 
 $nome = $result[0]->nome;
 $_SESSION['nome'] = $nome;
