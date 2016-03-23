@@ -93,23 +93,25 @@
                                                 <div class="form-group col-lg-4">
                                                   <label for="lider">Lider</label>
                                                     <select  class="form-control" name="lider" id="lider">
-                                                      <option value="--" selcted>--</option>  
-                                                      <option value="Eduardo">Eduardo</option>
-                                                      <option value="Ricardo">Ricardo</option>
-                                                      <option value="Marcos">Marcos</option>
-                                                      <option value="Anderson">Anderson</option>
-                                                    </select>
+                                                    <?php
+                                                    $funcionario = new funcionario();
+                                                   ?>
+                                                    <?php foreach ($funcionario->whereNivel('Lider') as $key => $value): ?>
+                                                        <option value="<?php echo $value->id; ?>" selcted>
+                                                        <?php echo $value->nome; ?></option> 
+                                                        <?php endforeach; ?>
+                                                </select>
                                                 </div>     
                                             
                                                 <div class="form-group col-lg-4">
                                                   <label for="gerente">Gerente</label>
-                                                    <select  class="form-control" name="gerente" id="gerente">
-                                                      <option value="--" selcted>--</option>  
-                                                      <option value="Ricardo">Ricardo</option>
-                                                      <option value="Eduardo">Eduardo</option>
-                                                      <option value="Marcos">Marcos</option>
-                                                      <option value="Anderson">Anderson</option>
-                                                    </select>
+                                                   <select  class="form-control" name="gerente" id="gerente">
+                                                   
+                                                      <?php foreach ($funcionario->whereNivel('Gerente') as $key => $value): ?>
+                                                        <option value="<?php echo $value->id; ?>" selcted>
+                                                        <?php echo $value->nome; ?></option> 
+                                                    <?php endforeach; ?>
+                                                </select>
                                                 </div>                                             
                                         </div>
     
