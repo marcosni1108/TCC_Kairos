@@ -114,7 +114,14 @@ class funcionario extends Crud {
 //        return $rows;
 
         return $stmt->fetchAll();
-        }
-    
+    }
+
+    public function whereNivel($nivel) {
+        $sql = "SELECT * FROM $this->table WHERE nivel = :nivel";
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':nivel', $nivel, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 
 }
