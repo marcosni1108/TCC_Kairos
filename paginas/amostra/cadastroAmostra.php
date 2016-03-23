@@ -14,26 +14,26 @@
         <?php
         if (isset($_POST['cadastrar'])):
 
-            $cnpj = $_POST['cnpj'];
-            $departamento = $_POST['departamento'];
-            $atividade = $_POST['atividade'];
-            $hora_inicial = $_POST['hora_inicial'];
-            $hora_final = $_POST['hora_final'];
-            $quantidade = $_POST['quantidade'];
-
-            $funcionario = new amostra();
-            $funcionario->setMatricula($cnpj);
-            $funcionario->setNome($departamento);
-            $funcionario->setCpf($atividade);
-            $funcionario->setEmail($hora_inicial);
-            $funcionario->setL($hora_final);
-            $funcionario->setSenha($quantidade);
-
-
-            # Insert
-            if ($funcionario->insert()) {
-                echo "<script> alert('Usuario Cadastrado com sucesso')</script>";
-            }
+//            $cnpj = $_POST['cnpj'];
+//            $departamento = $_POST['departamento'];
+//            $atividade = $_POST['atividade'];
+//            $hora_inicial = $_POST['hora_inicial'];
+//            $hora_final = $_POST['hora_final'];
+//            $quantidade = $_POST['quantidade'];
+//
+//            $funcionario = new amostra();
+//            $funcionario->setMatricula($cnpj);
+//            $funcionario->setNome($departamento);
+//            $funcionario->setCpf($atividade);
+//            $funcionario->setEmail($hora_inicial);
+//            $funcionario->setL($hora_final);
+//            $funcionario->setSenha($quantidade);
+//
+//
+//            # Insert
+//            if ($funcionario->insert()) {
+//                echo "<script> alert('Usuario Cadastrado com sucesso')</script>";
+//            }
 
         endif;
         ?>        
@@ -51,26 +51,24 @@
                             </div>
                             <div class="form-group col-lg-4">
                                 <label for="departamento">Departamento</label>
-                                <select  class="form-control" name="departamento" id="departamento">
-                                <?php
-                                                    $departamento = new departamento();
-                                                   ?>
-                                                    <?php foreach ($departamento->findAll as $key => $value): ?>
-                                                        <option value="<?php echo $value->id; ?>" selected>
-                                                        <?php echo $value->nome; ?></option> 
-                                                        <?php endforeach; ?>
-                                                         </select>
+                                <select  class="form-control" name="departamento" id="departamento">                                                  
+                                    <?php
+                                    $departamento = new departamento();
+                                    foreach ($departamento->findAll() as $key => $value):
+                                        ?>
+                                        <option value="<?php echo $value->id; ?>" selected><?php echo $value->nome; ?></option> 
+                                    <?php endforeach; ?>
+                                </select>
                             </div>      
                             <div class="form-group col-lg-4">
                                 <label for="atividade">Atividade</label>
-                                <select type="atividade" class="form-control" name="atividade" id="atividade">
+                                <select  class="form-control" name="departamento" id="departamento">                                                  
                                     <?php
-                                                    $atividade = new atividade();
-                                                   ?>
-                                                    <?php foreach ($atividade->findAll as $key => $value): ?>
-                                                        <option value="<?php echo $value->id; ?>" selected>
-                                                        <?php echo $value->nome; ?></option> 
-                                                        <?php endforeach; ?>
+                                    $atividade = new atividade();
+                                    foreach ($atividade->findAll() as $key => $value):
+                                        ?>
+                                        <option value="<?php echo $value->id; ?>" selected><?php echo $value->nome; ?></option> 
+                                     <?php endforeach; ?>
                                 </select>
                             </div>                                          
                         </div>    
@@ -100,5 +98,5 @@
             </div> 
         </div>
     </body>
-    <?php include_once '../include/include_js.php'; ?>
+<?php include_once '../include/include_js.php'; ?>
 </html>
