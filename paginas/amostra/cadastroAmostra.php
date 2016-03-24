@@ -75,15 +75,7 @@
                         <div class="row"><hr width=95%></div>
                         <div class="row">
                             <div class="form-group col-lg-4">
-                                <label for="hora_inicial">Hora Incial</label>
-                                <input type="text" class="form-control" name="hora_inicial"  id="hora_inicial" placeholder="Hora Incial" required>
-                            </div> 
-                            <div class="form-group col-lg-4">
-                                <label for="hora_final">Hora Final</label>
-                                <input type="text" class="form-control" name="hora_final" id="hora_final" placeholder="Hora Final" required>
-                            </div> 
-                            <div class="form-group col-lg-4">
-                                <label for="quantidade">Quantidade</label>
+                                <label for="quantidade">Quantidade de Amostras</label>
                                 <input type="text" class="form-control" name="quantidade" id="quantidade" placeholder="Quantidade" required>
                             </div>                             
                         </div>
