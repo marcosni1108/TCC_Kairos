@@ -6,7 +6,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="../menu_principal/menu_principal.php"><i class="fa fa-fw fa-bar-chart-o"></i> Dashboard</a>
+                        <a href="../menu_principal/menu_principal.php"><i class="fa fa-fw fa-home"></i> Home</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#funcionario"><i class="glyphicon glyphicon-user"></i> Funcionario <i class="fa fa-fw fa-caret-down"></i></a>
