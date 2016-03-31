@@ -10,6 +10,9 @@ class amostra extends Crud {
     private $tempofinal;
     private $quantidade;
     private $indice;
+    private $departamento;
+    private $atividade;
+    
     function getIdAmostra() {
         return $this->idAmostra;
     }
@@ -49,20 +52,38 @@ class amostra extends Crud {
     function setIndice($indice) {
         $this->indice = $indice;
     }
+    
+    function getDepartamento() {
+        return $this->departamento;
+    }
 
+    function getAtividade() {
+        return $this->atividade;
+    }
+
+    function setDepartamento($departamento) {
+        $this->departamento = $departamento;
+    }
+
+    function setAtividade($atividade) {
+        $this->atividade = $atividade;
+    }
+
+    
         public function insert() {
 
 
-        $sql = "INSERT INTO $this->table (idAmostra, tempoinicial, tempofinal, quantidade, indice)"
-                . " VALUES (:idAmostra, :tempoinicial, :tempofinal, :quantidade, :indice)";
+        $sql = "INSERT INTO $this->table ( horainicial, horafinal, quantidade, indice, IdDeptoFK, IdAtividadeFK)"
+                . " VALUES ( :tempoinicial, :tempofinal, :quantidade, :indice, :departamento, :atividade)";
         $stmt = DB::prepare($sql);
-        $stmt->bindParam(':idAmostra', $this->idAmostra);
+      
         $stmt->bindParam(':tempoinicial', $this->tempoinicial);
         $stmt->bindParam(':tempofinal', $this->tempofinal);
         $stmt->bindParam(':quantidade', $this->quantidade);
         $stmt->bindParam(':indice', $this->indice);
-
-
+        $stmt->bindParam(':departamento', $this->departamento);
+        $stmt->bindParam(':atividade', $this->atividade);
+        
         return $stmt->execute();
     }
 

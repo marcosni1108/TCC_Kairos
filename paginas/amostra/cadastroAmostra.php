@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Kairos</title>
-        <?php
+            <?php
         include "../include/include_css.php";
         include "../header/header.php";
         include "../menu_principal/menu_lateral.php";
@@ -11,35 +11,10 @@
         <meta charset="UTF-8">
     </head>
     <body >
-        <?php
-        if (isset($_POST['cadastrar'])):
-
-//            $cnpj = $_POST['cnpj'];
-//            $departamento = $_POST['departamento'];
-//            $atividade = $_POST['atividade'];
-//            $hora_inicial = $_POST['hora_inicial'];
-//            $hora_final = $_POST['hora_final'];
-//            $quantidade = $_POST['quantidade'];
-//
-//            $funcionario = new amostra();
-//            $funcionario->setMatricula($cnpj);
-//            $funcionario->setNome($departamento);
-//            $funcionario->setCpf($atividade);
-//            $funcionario->setEmail($hora_inicial);
-//            $funcionario->setL($hora_final);
-//            $funcionario->setSenha($quantidade);
-//
-//
-//            # Insert
-//            if ($funcionario->insert()) {
-//                echo "<script> alert('Usuario Cadastrado com sucesso')</script>";
-//            }
-
-        endif;
-        ?>        
+             
         <div id="wrapper" >
             <div class="container-fluid">
-                <form method="post" action="">
+                <form method="post" action="novaAmostra.php">
                     <div class="input-prepend">
                         <h1 class="page-header">
                             Registro de Amostra
@@ -62,7 +37,7 @@
                             </div>      
                             <div class="form-group col-lg-4">
                                 <label for="atividade">Atividade</label>
-                                <select  class="form-control" name="departamento" id="departamento">                                                  
+                                <select  class="form-control" name="atividade" id="atividade">                                                  
                                     <?php
                                     $atividade = new atividade();
                                     foreach ($atividade->findAll() as $key => $value):
@@ -72,18 +47,12 @@
                                 </select>
                             </div>                                          
                         </div>    
-                        <div class="row"><hr width=95%></div>
-                        <div class="row">
-                            <div class="form-group col-lg-4">
-                                <label for="quantidade">Quantidade de Amostras</label>
-                                <input type="text" class="form-control" name="quantidade" id="quantidade" placeholder="Quantidade" required>
-                            </div>                             
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-lg-4">
-                            </div>
+                        <div class="row"><hr width=95%></div>   
+                        <div class="row">    
+                            <div class="form-group col-lg-4"></div>
                             <div class="form-group col-lg-4">
                                 <input type="submit" name="cadastrar" class="btn btn-success" value="Cadastrar dados">
+                                
                             </div>    
                         </div>                        
                 </form>  
