@@ -82,7 +82,7 @@
 
                                                 <div class="form-group col-lg-4">
                                                   <label for="cnpj">CNPJ</label>
-                                                  <input type="text" class="form-control" name="cnpj" id="cnpj" onkeypress="javascript: mascara(this, cnpj_mask);"  maxlength="18" placeholder="CNPJ" required>
+                                                  <input type="text" class="form-control" name="cnpj" id="cnpj" onblur="javascript: validarCNPJ(this.value);" onkeypress="javascript: mascara(this, cnpj_mask);"  maxlength="18" placeholder="CNPJ" required>
                                                 </div>              
                                                 <div class="form-group col-lg-6">
                                                     <a href="../endereco/consultaEndereco.php">Clique aqui caso endereço não esteja cadastrado.</a>

@@ -12,16 +12,19 @@
     </head>
     <body onbeforeunload="return myFunction()">
         <?php
+        session_start();
+        
+        //contador
         
         if (isset($_POST['cadastrar'])){
 
             $cnpj = $_POST['cnpj'];
             $departamento = $_POST['departamento'];
             $atividade = $_POST['atividade'];
-          
+            $_SESSION["i"]=0;
         }     
-        if (isset($_POST['cadastrarAmostra'])):
-
+        if (isset($_POST['cadastrarAmostra'])){
+             
             $cnpj = $_POST['cnpj'];
             $departamento = $_POST['departamento'];
             $atividade = $_POST['atividade'];          
@@ -29,21 +32,49 @@
             $hora_final = $_POST['hora_final'];
             $quantidade = $_POST['quantidade'];
             $indice = intval(10);
+            $_SESSION['vetor']=array();
+            array_push($_SESSION['vetor'],$cnpj, $departamento,$atividade,$hora_inicial,$hora_final,$quantidade);
+            //Novo 
+//            $vetor['cnpj'][$_SESSION["i"]] = $cnpj;
+//            $vetor['departamento'][$_SESSION["i"]] = $departamento;
+//            $vetor['atividade'][$_SESSION["i"]] = $atividade;
+//            $vetor['hora_inicial'][$_SESSION["i"]] = $hora_inicial;
+//            $vetor['hora_final'][$_SESSION["i"]] = $hora_final;
+//            $vetor['quantidade'][$_SESSION["i"]] = $quantidade;
+//            
+           $teste = count($vetor);
+          
+           $_SESSION["i"]++;
+           }
+          if (isset($_POST['finalizar'])){ 
             $amostra = new amostra();
             
-            $amostra->setAtividade($atividade);
-            $amostra->setDepartamento($departamento);
-            $amostra->setIndice($indice);
-            $amostra->setQuantidade($quantidade);
-            $amostra->setTempoinicial($hora_inicial);
-            $amostra->setTempofinal($hora_final);
+            for ($j = 0; $j < $teste; $j++) {
+                
+                        $amostra->setDepartamento($vetor['departamento'][$j]);
+			$amostra->setAtividade($vetor['atividade'][$j]);
+			$amostra->setTempoinicial($vetor['hora_inicial'][$j]);
+			$amostra->setTempofinal($vetor['hora_final'][$j]);
+			$amostra->setQuantidade($vetor['quantidade'][$j]);
+                        $amostra->setIndice(0);
+                        
+    //                $amostra->setAtividade($atividade);
+    //                $amostra->setDepartamento($departamento);
+    //                $amostra->setIndice($indice);
+    //                $amostra->setQuantidade($quantidade);
+    //                $amostra->setTempoinicial($hora_inicial);
+    //                $amostra->setTempofinal($hora_final);
             
-            # Insert
-            if ($amostra->insert()) {
-                echo "<script> alert('Amostra cadastrada com sucesso')</script>";
+                    # Insert
+                    if ($amostra->insert()) {
+                        echo "<script> alert('Amostra cadastrada com sucesso')</script>";
+                    } 
+                    
+                    
             }
-
-        endif;
+            
+          }
+        
         ?>        
         <div id="wrapper" >
             <div class="container-fluid">
@@ -89,7 +120,7 @@
                                 <input type="submit" name="cadastrarAmostra" class="btn btn-success" value="Cadastrar Amostra">
                             </div>
                             <div class="form-group col-lg-3">
-                                <input type="button" name="finalizar" class="btn btn-danger" value="Finalizar">
+                                <input type="submit" name="finalizar" class="btn btn-danger" value="Finalizar">
                             </div>                            
                         </div>                        
                 </form>  
@@ -101,6 +132,7 @@
         function myFunction(){
             return "Deseja sair da pagina, seus dados não serão gravados";
         }
+        
     </script>
 </html>
 

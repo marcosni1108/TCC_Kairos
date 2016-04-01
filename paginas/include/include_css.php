@@ -10,4 +10,6 @@
     <!-- Custom Fonts -->
     <link href="../../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     
+    
+    <link href="../../font-awesome/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>

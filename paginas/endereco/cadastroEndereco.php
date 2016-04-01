@@ -77,17 +77,17 @@
                                                 
                                                 <div class="form-group col-lg-8">
                                                   <label for="endereco">Endere&ccedil;o</label>
-                                                  <input type="text" class="form-control" name="rua" id="cnpj" placeholder="Endereco" required>
+                                                  <input type="text" class="form-control" name="rua" id="endereco" placeholder="Endereco" required>
                                                 </div> 
      
 
                                                 <div class="form-group col-lg-4">
                                                   <label for="numero">Numero</label>
-                                                  <input type="text" class="form-control" name="numero" id="cnpj" placeholder="Numero" required>
+                                                  <input type="text" class="form-control" name="numero" id="numero"onkeypress="javascript: mascara(this, soNumeros);" placeholder="Numero" required>
                                                 </div>              
                                                 <div class="form-group col-lg-4">
                                                   <label for="cnpj">CNPJ</label>
-                                                  <input type="text" class="form-control" onblur="javascript: validarCNPJ(this.value);" onkeypress="javascript: mascara(this, cnpj_mask);" maxlength="18" name="cnpj" id="cnpj" placeholder="CNPJ" required>
+                                                  <input type="text" class="form-control" name="cnpj" id="cnpj" onblur="javascript: validarCNPJ(this.value);" onkeypress="javascript: mascara(this, cnpj_mask);"  maxlength="18" placeholder="CNPJ" required>
                                                 </div>  
                                            
                                         </div>
