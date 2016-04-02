@@ -10,70 +10,79 @@
         <link href="../../css/sb-admin.css" rel="stylesheet">
         <meta charset="UTF-8">
     </head>
-    <body onbeforeunload="return myFunction()">
-        <?php
-        session_start();
-        
-        //contador
-        
+    <!--<body onbeforeunload="return myFunction()">!-->
+    <body>
+ <?php
+
         if (isset($_POST['cadastrar'])){
 
             $cnpj = $_POST['cnpj'];
             $departamento = $_POST['departamento'];
             $atividade = $_POST['atividade'];
-            $_SESSION["i"]=0;
-        }     
+            $_SESSION["i"] = 0;
+            $_SESSION["jcount"] = 0;
+        }
         if (isset($_POST['cadastrarAmostra'])){
-             
+
             $cnpj = $_POST['cnpj'];
             $departamento = $_POST['departamento'];
-            $atividade = $_POST['atividade'];          
+            $atividade = $_POST['atividade'];
             $hora_inicial = $_POST['hora_inicial'];
             $hora_final = $_POST['hora_final'];
             $quantidade = $_POST['quantidade'];
             $indice = intval(10);
-            $_SESSION['vetor']=array();
-            array_push($_SESSION['vetor'],$cnpj, $departamento,$atividade,$hora_inicial,$hora_final,$quantidade);
-            //Novo 
-//            $vetor['cnpj'][$_SESSION["i"]] = $cnpj;
-//            $vetor['departamento'][$_SESSION["i"]] = $departamento;
-//            $vetor['atividade'][$_SESSION["i"]] = $atividade;
-//            $vetor['hora_inicial'][$_SESSION["i"]] = $hora_inicial;
-//            $vetor['hora_final'][$_SESSION["i"]] = $hora_final;
-//            $vetor['quantidade'][$_SESSION["i"]] = $quantidade;
-//            
-           $teste = count($vetor);
-          
-           $_SESSION["i"]++;
-           }
-          if (isset($_POST['finalizar'])){ 
-            $amostra = new amostra();
+            $filds1["departamento"] = $departamento;
+            $filds1["atividade"] = $atividade;
+            $filds1["hora_inicial"] = $hora_inicial;
+            $filds1["hora_final"] = $hora_final;
+            $filds1["quantidade"] = $quantidade;
+            $filds1["indice"] = $indice;
             
-            for ($j = 0; $j < $teste; $j++) {
+         
+            $json_result["amostra"] [] = $filds1;
+            $JSON = json_encode($json_result);
+
+            $fp = fopen("../../js/dataAmostra/dataAmostra".$_SESSION["jcount"]++.".json", "a") or die('Cannot open file:');
+            
+
+        // Escreve "exemplo de escrita" no bloco1.txt
+         
+         $escreve = fwrite($fp, $JSON.PHP_EOL);
+        // Fecha o arquivo
+            fclose($fp);
+        
+        
+        }
+        
+
+       
+        if (isset($_POST['finalizar'])){
+        
+     for ($e=0;$e < $_SESSION["jcount"]; $e++) {
+        $arquivo ="../../js/dataAmostra/dataAmostra".$e.".json";
+        $info = file_get_contents($arquivo);
+        $lendo = json_decode($info);
+        $amostra = new amostra();
+
+                foreach ($lendo->amostra as $campo){
+
+                        $amostra->setDepartamento($campo->departamento);
+                        $amostra->setAtividade($campo->atividade);
+                        $amostra->setTempoinicial($campo->hora_inicial);
+                        $amostra->setTempofinal($campo->hora_final);
+                        $amostra->setQuantidade($campo->quantidade);
+                        $amostra->setIndice($campo->indice);
+
+                        if ($amostra->insert()) {
+                             console.log($arg);
+                        }
+                }
                 
-                        $amostra->setDepartamento($vetor['departamento'][$j]);
-			$amostra->setAtividade($vetor['atividade'][$j]);
-			$amostra->setTempoinicial($vetor['hora_inicial'][$j]);
-			$amostra->setTempofinal($vetor['hora_final'][$j]);
-			$amostra->setQuantidade($vetor['quantidade'][$j]);
-                        $amostra->setIndice(0);
-                        
-    //                $amostra->setAtividade($atividade);
-    //                $amostra->setDepartamento($departamento);
-    //                $amostra->setIndice($indice);
-    //                $amostra->setQuantidade($quantidade);
-    //                $amostra->setTempoinicial($hora_inicial);
-    //                $amostra->setTempofinal($hora_final);
-            
-                    # Insert
-                    if ($amostra->insert()) {
-                        echo "<script> alert('Amostra cadastrada com sucesso')</script>";
-                    } 
-                    
-                    
             }
-            
-          }
+            echo "<script> alert('Amostra cadastrada com sucesso')</script>";
+            $_SESSION["jcount"] = 0;
+            }
+
         
         ?>        
         <div id="wrapper" >
@@ -113,7 +122,7 @@
                                 <input type="text" class="form-control" id="quantidade" name="quantidade" placeholder="Quantidade" >                                
                             </div> 
                         </div>
-                         
+
                         <div class="row">    
                             <div class="form-group col-lg-3"></div>
                             <div class="form-group col-lg-3">
@@ -127,12 +136,13 @@
             </div> 
         </div>
     </body>
-<?php include_once '../include/include_js.php'; ?>
-    <script>
-        function myFunction(){
+    <?php include_once '../include/include_js.php'; ?>
+<!--    <script>
+        function myFunction() {
+            
             return "Deseja sair da pagina, seus dados não serão gravados";
         }
-        
-    </script>
+
+    </script>-->
 </html>
 
