@@ -18,7 +18,8 @@
                     <div class="input-prepend">
                         <h1 class="page-header">
                             Registro de Amostra
-                        </h1>                     
+                        </h1>          
+                        <div class="alert alert-info alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>ERRO!</strong> Usuario ou Senha invalidos! </div>
                         <div class="row">
                             <div class="form-group col-lg-4">
                                 <label for="cnpj">CNPJ</label>

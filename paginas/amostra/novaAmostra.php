@@ -30,7 +30,12 @@
             $hora_inicial = $_POST['hora_inicial'];
             $hora_final = $_POST['hora_final'];
             $quantidade = $_POST['quantidade'];
-            $indice = intval(10);
+            //$indice = intval(10);
+            
+            //calculo de indice
+            $tempoTotal = $hora_final - $hora_inicial;
+            $indice = $quantidade/$tempoTotal;                      
+            
             $filds1["departamento"] = $departamento;
             $filds1["atividade"] = $atividade;
             $filds1["hora_inicial"] = $hora_inicial;
@@ -47,7 +52,7 @@
 
         // Escreve "exemplo de escrita" no bloco1.txt
          
-         $escreve = fwrite($fp, $JSON.PHP_EOL);
+         $escreve = fwrite($fp, $JSON);
         // Fecha o arquivo
             fclose($fp);
         
@@ -91,7 +96,9 @@
                     <div class="input-prepend">
                         <h1 class="page-header">
                             Registro de Amostra
-                        </h1>                     
+                        </h1>
+                        <div class="alert alert-info alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>ERRO!</strong> Usuario ou Senha invalidos! </div>
+                        <font size="4"><b>Quantidade de amostras: <?php echo $_SESSION["jcount"]; ?></b></font>
                         <div class="row">
                             <div class="form-group col-lg-4">
                                 <label for="cnpj">CNPJ</label>
