@@ -7,10 +7,14 @@
         include "../include/include_css.php";
 
         include '../include/include_classes.php';
-        if($_SESSION['erro']==NULL){
+        if (isset($_SESSION['erro'])){
+            if($_SESSION['erro']==NULL){
+                $_SESSION['erro']=false;
+            }
+        }else{
+            
             $_SESSION['erro']=false;
         }
-        
         ?>  
 
     </head>
@@ -19,9 +23,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
-                    <?php if($_SESSION['erro']== true){ 
-                     echo '<div class="alert alert-warning alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>ERRO!</strong> Usuario ou Senha invalidos! </div>';
-                     $_SESSION['erro']= false;
+                    <?php 
+                    if (isset($_SESSION['erro'])){
+                        if($_SESSION['erro']== true){ 
+                         echo '<div class="alert alert-warning alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>ERRO!</strong> Usuario ou Senha invalidos! </div>';
+                         $_SESSION['erro']= false;
+                        }
+                    }else{
+                        $_SESSION['erro']= false;
                     }
                      ?>
                     
