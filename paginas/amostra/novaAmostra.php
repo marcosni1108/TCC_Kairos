@@ -47,7 +47,7 @@
             $json_result["amostra"] [] = $filds1;
             $JSON = json_encode($json_result);
 
-            $fp = fopen("../../js/dataAmostra/dataAmostra".$_SESSION["jcount"]++.".json", "a") or die('Cannot open file:');
+            $fp = fopen("../../js/dataAmostra/dataAmostra".$_SESSION["jcount"]++.".json", "w") or die('Cannot open file:');
             
 
         // Escreve "exemplo de escrita" no bloco1.txt
@@ -62,30 +62,83 @@
 
        
         if (isset($_POST['finalizar'])){
-        
-     for ($e=0;$e < $_SESSION["jcount"]; $e++) {
-        $arquivo ="../../js/dataAmostra/dataAmostra".$e.".json";
-        $info = file_get_contents($arquivo);
-        $lendo = json_decode($info);
-        $amostra = new amostra();
+          if($_SESSION["jcount"]>=2){
+              
+              
+               for ($e=0;$e < $_SESSION["jcount"]; $e++) {
+                    $arquivo ="../../js/dataAmostra/dataAmostra".$e.".json";
+                    $info = file_get_contents($arquivo);
+                    $lendo = json_decode($info);
+                    foreach ($lendo->amostra as $campo){
+                               $indice_autal = $campo->indice;
+                    }
+                             for ($w = $e+1;$w < $_SESSION["jcount"]; $w++) {
+                                 $arquivo ="../../js/dataAmostra/dataAmostra".$w.".json";
+                                 $info = file_get_contents($arquivo);
+                                 $lendo = json_decode($info);
+                                 foreach ($lendo->amostra as $campo){
+                                           $indice_proximo = $campo->indice;
+                                 }
+                                 //compara 
+                                 if($indice_autal==$indice_proximo && $w <> $_SESSION["jcount"]){
+                                     $moda = true;
+                                     $media = false;
+                                     $contModa = $contModa +1;
+                                 }else {
+                                     $media = true;
+                                     $moda = false;
 
-                foreach ($lendo->amostra as $campo){
-
-                        $amostra->setDepartamento($campo->departamento);
-                        $amostra->setAtividade($campo->atividade);
-                        $amostra->setTempoinicial($campo->hora_inicial);
-                        $amostra->setTempofinal($campo->hora_final);
-                        $amostra->setQuantidade($campo->quantidade);
-                        $amostra->setIndice($campo->indice);
-
-                        if ($amostra->insert()) {
-                             console.log($arg);
-                        }
-                }
+                                 }
+                                 
+                             }
+                             if($moda == true){
+                                 
+                                  $indice_final_moda=$indice_autal; 
+                                 
+                                 }else 
+                                 if($media== true){
+                                     $indice_provisorio=$indice_final_media;
+                                     $indice_final_media=$indice_provisorio+$indice_autal;
+                                     
+                                     
+                                 }
+                                 
+                             }
+                $indice_final_media=$indice_final_media/$_SESSION["jcount"];
                 
-            }
-            echo "<script> alert('Amostra cadastrada com sucesso')</script>";
-            $_SESSION["jcount"] = 0;
+                for ($e=0;$e < $_SESSION["jcount"]; $e++) {
+                   $arquivo ="../../js/dataAmostra/dataAmostra".$e.".json";
+                   $info = file_get_contents($arquivo);
+                   $lendo = json_decode($info);
+                   $amostra = new amostra();
+
+                           foreach ($lendo->amostra as $campo){
+
+                                   $amostra->setDepartamento($campo->departamento);
+                                   $amostra->setAtividade($campo->atividade);
+                                   $amostra->setTempoinicial($campo->hora_inicial);
+                                   $amostra->setTempofinal($campo->hora_final);
+                                   $amostra->setQuantidade($campo->quantidade);
+                                   $amostra->setIndice($campo->indice);
+
+                                   if ($amostra->insert()) {
+                                        console.log($arg);
+                                   }
+                           }
+
+                   }
+                   $_SESSION["jcount"] = 0;
+                   echo "<script> 
+                          alert('Amostra cadastrada com sucesso ".$indice_final_media." indice por minuto');
+                         location.href='cadastroAmostra.php';</script>";
+                   
+                   
+          }
+          else{
+              
+             echo "<script> alert('Para finalizar mais de 3 amostras devem ser cadastradas')</script>";
+          }
+           
             }
 
         
@@ -97,7 +150,7 @@
                         <h1 class="page-header">
                             Registro de Amostra
                         </h1>
-                        <div class="alert alert-info alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>ERRO!</strong> Usuario ou Senha invalidos! </div>
+                        <div class="alert alert-info alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>Ajuda:</strong> Para cadastrar a amostra ! </div>
                         <font size="4"><b>Quantidade de amostras: <?php echo $_SESSION["jcount"]; ?></b></font>
                         <div class="row">
                             <div class="form-group col-lg-4">
