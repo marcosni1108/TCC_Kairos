@@ -127,10 +127,20 @@
                            }
 
                    }
-                   $_SESSION["jcount"] = 0;
-                   echo "<script> 
-                          alert('Amostra cadastrada com sucesso ".$indice_final_media." indice por minuto');
-                         location.href='cadastroAmostra.php';</script>";
+                   if($media==true){
+                        $_SESSION["jcount"] = 0;
+                        $format_numberMedia = number_format($indice_final_media, 2, ',', '');
+                         echo "<script> 
+                                alert('Amostra cadastrada com sucesso á media é:  ".$format_numberMedia." indice por minuto');
+                                location.href='cadastroAmostra.php';</script>"; 
+                   }  else {
+                       $_SESSION["jcount"] = 0;
+                       $format_numberModa = number_format($indice_final_moda, 2, ',', '');
+                         echo "<script> 
+                                alert('Amostra cadastrada com sucesso á moda é:  ".$format_numberModa." indice por minuto');
+                                location.href='cadastroAmostra.php';</script>"; 
+                   }
+                  
                    
                    
           }
