@@ -92,25 +92,15 @@
                                         <div class="row">
                                             <div class="form-group col-lg-4">
                                                 <label for="departamento">Departamento</label>
-                                                <select  class="form-control" name="departamento" id="departamento">                                                  
-                                                    <?php
-                                                    $departamento = new departamento();
-                                                    foreach ($departamento->findAll() as $key => $value):   ?>
-                                                    <option value="<?php echo $value->id; ?>" selected><?php echo $value->nome; ?></option> 
-                                                    <?php endforeach; ?>
+                                                <select  class="form-control" name="departamento" id="cmbDepartamento">                                                  
+                                                  
                                                 </select>
                                             </div>     
 
-                                            <div class="form-group col-lg-3">
-                                                <label for="gerente">CNPJ</label>
-                                                <select  class="form-control" name="cnpj" id="cnpj">
-                                                    <option value="--" selcted>--</option>  
-                                                    <option value="0525815">0525815</option>
-                                                    <option value="808080880">808080880</option>
-                                                    <option value="9950959">9950959</option>
-                                                    <option value="70707007">70707007</option>
-                                                </select>
-                                            </div>                                             
+                                           <div class="form-group col-lg-4">
+                                                  <label for="cnpj">CNPJ</label>
+                                                  <input type="text" class="form-control" name="cnpj" id="cnpj" value="" onkeypress="javascript: mascara(this, cnpj_mask);"  maxlength="18" placeholder="CNPJ" readonly>
+                                                </div>                                              
                                         </div>
 
                                         <div class="row">
@@ -160,4 +150,5 @@
 
     </body>
     <?php include_once '../include/include_js.php'; ?>
+      <script src="../../js/populaCombo.js"></script>
 </html>
