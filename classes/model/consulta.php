@@ -1,7 +1,9 @@
 <?php
 require 'endereco.php';
+require 'departamento.php';
 $opcao = isset($_GET['opcao']) ? $_GET['opcao'] : '';
 $valor = isset($_GET['valor']) ? $_GET['valor'] : ''; 
+$tipo = isset($_GET['tipo']) ? $_GET['tipo'] : ''; 
 if (! empty($opcao)){	
 	switch ($opcao)
 	{
@@ -12,7 +14,7 @@ if (! empty($opcao)){
 			}
 		case 'cnpj':
 			{
-				echo getCnpj($valor);
+				echo getCnpj($valor,$tipo);
 				break;
 			}
 		case 'departamento':
@@ -31,17 +33,26 @@ function getAllEnd(){
 	
 }
 
-function getCnpj($id){
-	$endereco = new endereco();
+function getCnpj($id,$tipo){
+    if($tipo=='endereco'){
+        
+        $endereco = new endereco();
         $end = $endereco->find($id);
 	
 	echo json_encode($end);
+    }else{
+        $departamento = new departamento();
+        $dept = $departamento->find($id);
+	echo json_encode($dept);
+        
+    }
+	
 	
 }
 
 function getDepartamento(){
 	$departamento = new departamento();
-        $dept = $endereco->findAll();
+        $dept = $departamento->findAll();
 	echo json_encode($dept);
 		
 }
