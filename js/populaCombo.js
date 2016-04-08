@@ -67,18 +67,36 @@ $(document).ready(function(){
 			
 			if (dados){ 	
 				var value = '';
-				
-			  
-				   value = dados.cnpj;
-			  
-				
+                                value = dados.cnpj;
+                       
 			}else{
 				Reset();
 				
 			}
 			$('#cnpj').val(value)
+                        
+                        $.getJSON('../../classes/model/consulta.php?opcao=atividade&valor='+end, function (dados1){
+			
+                         if (dados1.length > 0){	
+                            var option = '<option>Selecione o Atividade</option>';
+                            $.each(dados1, function(i, obj){
+                                    option += '<option value="'+obj.id+'">'+obj.nome+'</option>';
+                            })
+                        }
+                        else{
+				Reset();
+				
+			}
+			
+                          $('#cmbAtividade').html(option).show(); 
+		})
+                        
 		})
 	})
+        
+
+        
+        
 	function Reset(){
 		$('#endereco').empty().append('<option>Carregar Endereço</option>>');
 		$('#cnpj').val('');

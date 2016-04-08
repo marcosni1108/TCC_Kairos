@@ -105,5 +105,19 @@ class amostra extends Crud {
 
         return $stmt->execute();
     }
+    
+    public function verificarModa($indice_autal,$indice_proximo,$w,$jcount) {
+
+            if($indice_autal==$indice_proximo && $w <> $jcount){
+                    $moda = true;
+                    $contModa = $contModa +1;
+                    return $moda;
+           }else {
+                    $media = true;
+                    return $media;
+            }
+            
+            
+    }
 
 }

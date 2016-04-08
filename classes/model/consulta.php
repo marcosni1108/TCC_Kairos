@@ -1,6 +1,7 @@
 <?php
 require 'endereco.php';
 require 'departamento.php';
+require 'atividade.php';
 $opcao = isset($_GET['opcao']) ? $_GET['opcao'] : '';
 $valor = isset($_GET['valor']) ? $_GET['valor'] : ''; 
 $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : ''; 
@@ -20,6 +21,11 @@ if (! empty($opcao)){
 		case 'departamento':
 			{
 				echo getDepartamento();
+				break;
+			}
+                case 'atividade':
+			{
+				echo getAtividade($valor);
 				break;
 			}
 	}
@@ -54,6 +60,13 @@ function getDepartamento(){
 	$departamento = new departamento();
         $dept = $departamento->findAll();
 	echo json_encode($dept);
+		
+}
+
+function getAtividade($id){
+	$atividade = new atividade();
+        $ativ = $atividade->findDept($id);
+	echo json_encode($ativ);
 		
 }
 ?>

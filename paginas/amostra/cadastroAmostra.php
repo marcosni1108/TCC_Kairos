@@ -23,28 +23,18 @@
                         <div class="row">
                             <div class="form-group col-lg-4">
                                 <label for="cnpj">CNPJ</label>
-                                <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="CNPJ" required>
+                                <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="CNPJ" readonly>
                             </div>
                             <div class="form-group col-lg-4">
                                 <label for="departamento">Departamento</label>
-                                <select  class="form-control" name="departamento" id="departamento">                                                  
-                                    <?php
-                                    $departamento = new departamento();
-                                    foreach ($departamento->findAll() as $key => $value):
-                                        ?>
-                                        <option value="<?php echo $value->id; ?>" selected><?php echo $value->nome; ?></option> 
-                                    <?php endforeach; ?>
+                                <select  class="form-control" name="departamento" id="cmbDepartamento">                                                  
+                                   
                                 </select>
                             </div>      
                             <div class="form-group col-lg-4">
                                 <label for="atividade">Atividade</label>
-                                <select  class="form-control" name="atividade" id="atividade">                                                  
-                                    <?php
-                                    $atividade = new atividade();
-                                    foreach ($atividade->findAll() as $key => $value):
-                                        ?>
-                                        <option value="<?php echo $value->id; ?>" selected><?php echo $value->nome; ?></option> 
-                                     <?php endforeach; ?>
+                                <select  class="form-control" name="atividade" id="cmbAtividade">                                                  
+                                   
                                 </select>
                             </div>                                          
                         </div>    
@@ -61,4 +51,5 @@
         </div>
     </body>
 <?php include_once '../include/include_js.php'; ?>
+    <script src="../../js/populaCombo.js"></script>
 </html>

@@ -113,5 +113,13 @@ class atividade extends Crud {
         
         return $stmt->execute();
     }
+    
+       public function findDept($id) {
+        $sql = "SELECT * FROM $this->table WHERE idDepartamentoFK = :id";
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 
 }
