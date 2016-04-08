@@ -51,5 +51,5 @@
         </div>
     </body>
 <?php include_once '../include/include_js.php'; ?>
-    <script src="../../js/populaCombo.js"></script>
+    <script src="../../js/populaComboAmostra.js"></script>
 </html>

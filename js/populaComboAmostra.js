@@ -75,22 +75,36 @@ $(document).ready(function(){
 			}
 			$('#cnpj').val(value)
                         
-                            
+                        $.getJSON('../../classes/model/consulta.php?opcao=atividade&valor='+end, function (dados1){
+			
+                         if (dados1.length > 0){	
+                            var option = '<option>Selecione o Atividade</option>';
+                            $.each(dados1, function(i, obj){
+                                    option += '<option value="'+obj.id+'">'+obj.nome+'</option>';
+                            })
+                        }
+                        else{
+				Reset("atividade");
+				
+			}
+			
+                          $('#cmbAtividade').html(option).show(); 
 		})
                         
 		})
+	})
+        
 
-	function Reset(){
+        
+        
+	function Reset(tipo){
 		$('#endereco').empty().append('<option>Carregar Endereço</option>>');
 		$('#cnpj').val('');
                 $('#cmbDepartamento').empty().append('<option>Carregar Departamento</option>>');
-//                if(tipo==='atividade'){
-//                    alert("Departamento sem Atividades");
-//                    location.href='cadastroAmostra.php'; 
-//                     $('#cmbAtividade').empty().append('<option>Carregar Endereço</option>>');
-//                    
-//                    
-//                }
+                if(tipo==='atividade'){
+                    alert("Departamento sem Atividades");
+                    location.href='cadastroAmostra.php'; 
+                     $('#cmbAtividade').empty().append('<option>Carregar Endereço</option>>');                                                     }
                
 		
 	}
