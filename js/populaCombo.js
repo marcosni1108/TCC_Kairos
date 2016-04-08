@@ -84,7 +84,7 @@ $(document).ready(function(){
                             })
                         }
                         else{
-				Reset();
+				Reset('atividade');
 				
 			}
 			
@@ -97,9 +97,18 @@ $(document).ready(function(){
 
         
         
-	function Reset(){
+	function Reset(tipo){
 		$('#endereco').empty().append('<option>Carregar Endereço</option>>');
 		$('#cnpj').val('');
+                $('#cmbDepartamento').empty().append('<option>Carregar Departamento</option>>');
+                if(tipo==='atividade'){
+                    alert("Departamento sem Atividades");
+                    location.href='cadastroAmostra.php'; 
+                     $('#cmbAtividade').empty().append('<option>Carregar Endereço</option>>');
+                    
+                    
+                }
+               
 		
 	}
 });
