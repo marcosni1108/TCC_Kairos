@@ -72,9 +72,7 @@
                                                 <div class="form-group col-lg-8">
                                                   <label for="endereco">Endere&ccedil;o</label>
                                                     <select  class="form-control" name="endereco" id="endereco">
-                                                      <option value="--" selcted>--</option>  
-                                                      <option value="1">Rua Barcelona, 631, São Paulo</option>
-                                                      <option value="2">Avenida Otavio Mesquita, 550, Osasco</option>
+                                                   
                                                     </select>
                                                 </div> 
                                             
@@ -82,7 +80,7 @@
 
                                                 <div class="form-group col-lg-4">
                                                   <label for="cnpj">CNPJ</label>
-                                                  <input type="text" class="form-control" name="cnpj" id="cnpj" onblur="javascript: validarCNPJ(this.value);" onkeypress="javascript: mascara(this, cnpj_mask);"  maxlength="18" placeholder="CNPJ" required>
+                                                  <input type="text" class="form-control" name="cnpj" id="cnpj" value="" onkeypress="javascript: mascara(this, cnpj_mask);"  maxlength="18" placeholder="CNPJ" readonly>
                                                 </div>              
                                                 <div class="form-group col-lg-6">
                                                     <a href="../endereco/consultaEndereco.php">Clique aqui caso endereço não esteja cadastrado.</a>
@@ -162,4 +160,5 @@
 
     </body>
         <?php include_once '../include/include_js.php'; ?>
+     <script src="../../js/populaCombo.js"></script>
 </html>
