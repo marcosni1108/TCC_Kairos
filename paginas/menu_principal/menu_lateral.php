@@ -39,9 +39,9 @@
                             <li>
                                 <a href="../atividade/consultaAtividade.php">Alterar Atividades</a>
                             </li>    
-<!--                            <li>
-                                <a href="../meta/consultaMeta.php">Alterar Meta</a>
-                            </li> -->
+                            <li>
+                                <a href="../produtividade/produtividade.php">Cadastrar Produtividade</a>
+                            </li>
                             <li>
                                 <a href="../amostra/cadastroAmostra.php">Registrar Amostra</a>
                             </li>         

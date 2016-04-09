@@ -46,7 +46,7 @@ $(document).ready(function(){
 		$.getJSON('../../classes/model/consulta.php?opcao=departamento', function (dados){ 
 		
 		   if (dados.length > 0){	
-			  var option = '<option>Selecione o Departametno</option>';
+			  var option = '<option>Selecione o Departamento</option>';
 			  $.each(dados, function(i, obj){
 				  option += '<option value="'+obj.id+'">'+obj.nome+'</option>';
 			  })
