@@ -160,7 +160,9 @@
                         <h1 class="page-header">
                             Registro de Amostra
                         </h1>
-                        <div class="alert alert-info alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>Ajuda:</strong> Para cadastrar a amostra ! </div>
+                        <div class="alert alert-info alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>Ajuda:</strong> Para cadastrar a amostra o usuário deverá colocar a hora inicial da atividade, hora final da atividade, quantidade e clicar no botão cadastrar amostra <br>
+                        O minimo de amostras para se cadastrar são duas, para calcular o indice por minuto clique em finalizar.
+                        </div>
                         <font size="4"><b>Quantidade de amostras: <?php echo $_SESSION["jcount"]; ?></b></font>
                         <div class="row">
                             <div class="form-group col-lg-4">

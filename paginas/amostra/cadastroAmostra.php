@@ -44,7 +44,7 @@
                         <div class="row">    
                             <div class="form-group col-lg-4"></div>
                             <div class="form-group col-lg-4">
-                                <input type="submit" name="cadastrar" class="btn btn-success" value="Cadastrar dados">
+                                <input type="submit" name="cadastrar" class="btn btn-success" value="Cadastrar Dados">
                                 
                             </div>    
                         </div>                        
