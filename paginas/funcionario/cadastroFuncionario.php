@@ -15,7 +15,7 @@
         <?php
         if (isset($_POST['cadastrar'])){
             
-              $matricula = $_POST['matricula'];
+            $matricula = $_POST['matricula'];
             $nome = $_POST['nome'];
             $cpf = $_POST['cpf'];
             $email = $_POST['email'];
@@ -28,7 +28,7 @@
             $funcionario->setCpf($cpf);
             $funcionario->setEmail($email);
             $funcionario->setLogin($login);
-            $funcionario->setSenha($senha);
+            $funcionario->setSenha(md5($senha));
             $funcionario->setNivel($nivel);
 
             # Insert
