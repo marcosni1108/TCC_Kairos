@@ -48,11 +48,7 @@
                                     <div class="form-group">
                                         <input class="form-control" placeholder="Senha" name="senha" type="password" value="" required>
                                     </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input name="lembrar" type="checkbox" value="Lembrar">Lembrar
-                                        </label>
-                                    </div>
+                                   
                                     <!-- Change this to a button or input when using this as a form -->
                                     <input type="submit" class="btn btn-lg btn-success btn-block" value="Entrar"></input>
 
