@@ -35,7 +35,7 @@
                 $funcionario->setCpf($cpf);
                 $funcionario->setEmail($email);
                 $funcionario->setLogin($login);
-                $funcionario->setSenha($senha);
+                $funcionario->setSenha(md5($senha));
                 $funcionario->setNivel($nivel);
 
 
