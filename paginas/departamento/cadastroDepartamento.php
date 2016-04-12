@@ -71,16 +71,16 @@
                                                 
                                                 <div class="form-group col-lg-8">
                                                   <label for="endereco">Endere&ccedil;o</label>
-                                                    <select  class="form-control" name="endereco" id="endereco">
+                                                  <select  class="form-control" name="endereco" id="endereco" required="true">
                                                    
-                                                    </select>
+                                                  </select>
                                                 </div> 
                                             
      
 
                                                 <div class="form-group col-lg-4">
                                                   <label for="cnpj">CNPJ</label>
-                                                  <input type="text" class="form-control" name="cnpj" id="cnpj" value="" onkeypress="javascript: mascara(this, cnpj_mask);"  maxlength="18" placeholder="CNPJ" readonly>
+                                                  <input type="text" class="form-control" name="cnpj" id="cnpj" value="" onkeypress="javascript: mascara(this, cnpj_mask);"  maxlength="18" placeholder="CNPJ" readonly="true">
                                                 </div>              
                                                 <div class="form-group col-lg-6">
                                                     <a href="../endereco/consultaEndereco.php">Clique aqui caso endereço não esteja cadastrado.</a>
@@ -91,13 +91,8 @@
                                                 <div class="form-group col-lg-4">
                                                   <label for="lider">Lider</label>
                                                     <select  class="form-control" name="lider" id="lider">
-                                                    <?php
-                                                    $funcionario = new funcionario();
-                                                   ?>
-                                                    <?php foreach ($funcionario->whereNivel('Lider') as $key => $value): ?>
-                                                        <option value="<?php echo $value->id; ?>" selcted>
-                                                        <?php echo $value->nome; ?></option> 
-                                                        <?php endforeach; ?>
+                                                   
+                                                   
                                                 </select>
                                                 </div>     
                                             
@@ -105,10 +100,6 @@
                                                   <label for="gerente">Gerente</label>
                                                    <select  class="form-control" name="gerente" id="gerente">
                                                    
-                                                      <?php foreach ($funcionario->whereNivel('Gerente') as $key => $value): ?>
-                                                        <option value="<?php echo $value->id; ?>" selcted>
-                                                        <?php echo $value->nome; ?></option> 
-                                                    <?php endforeach; ?>
                                                 </select>
                                                 </div>                                             
                                         </div>
@@ -117,7 +108,7 @@
                                             <div class="form-group col-lg-4">
                                             </div>
                                             <div class="form-group col-lg-4">
-                                                <input type="submit" name="cadastrar" class="btn btn-success" value="Cadastrar dados">
+                                                <input id="btnCadastrar" type="submit" name="cadastrar" class="btn btn-success" value="Cadastrar dados">
                                             </div>    
                                         </div>
 
