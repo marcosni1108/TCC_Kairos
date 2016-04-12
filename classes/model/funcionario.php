@@ -123,5 +123,5 @@ class funcionario extends Crud {
         $stmt->execute();
         return $stmt->fetchAll();
     }
-
+    
 }
