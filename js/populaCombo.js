@@ -1,11 +1,11 @@
 $(document).ready(function(){
 	
 	$('#endereco').ready(function(){
-		
+	//pagina de cadastro de departamento	
 		$.getJSON('../../classes/model/consulta.php?opcao=endereco', function (dados){ 
 		
 		   if (dados.length > 0){	
-			  var option = '<option>Selecione o Endereço</option>';
+			 var option = '<option value="">Selecione o Endereço</option>';
 			  $.each(dados, function(i, obj){
 				  option += '<option value="'+obj.id+'">'+obj.endereco+" Nº: "+obj.numero+'</option>';
 			  })
@@ -20,10 +20,10 @@ $(document).ready(function(){
 	})
         
         
-	
+	//pagina de departamento quando o endereço mudar o CNPJ tambem muda
 	$('#endereco').change(function(e){
 		var end = $('#endereco').val();
-		
+		$('#btnCadastrar').prop("disabled",true);
 		
 		$.getJSON('../../classes/model/consulta.php?opcao=cnpj&tipo=endereco&valor='+end, function (dados){
 			
@@ -38,15 +38,18 @@ $(document).ready(function(){
 				Reset();
 				
 			}
-			$('#cnpj').val(value)
+			$('#cnpj').val(value);
+                        $('#btnCadastrar').prop("disabled",false);
 		})
 	})
+             //pagina de cadastro de atividades
+             //Popula combos
 	$('#cmbDepartamento').ready(function(){
 		
 		$.getJSON('../../classes/model/consulta.php?opcao=departamento', function (dados){ 
 		
 		   if (dados.length > 0){	
-			  var option = '<option>Selecione o Departametno</option>';
+			  var option = '<option value="">Selecione o Departamento</option>';
 			  $.each(dados, function(i, obj){
 				  option += '<option value="'+obj.id+'">'+obj.nome+'</option>';
 			  })
@@ -55,14 +58,17 @@ $(document).ready(function(){
 			  Reset();
 			
 		   }
+                   //Popula combo
 		   $('#cmbDepartamento').html(option).show(); 
+                   //zera CNPJ
                   $('#cnpj').val('');
 		})
 	})
+        //pagina de cadastro de atividades
 	$('#cmbDepartamento').change(function(e){
 		var end = $('#cmbDepartamento').val();
 		
-		
+		$('#btnCadastrar').prop("disabled",true);
 		$.getJSON('../../classes/model/consulta.php?opcao=cnpj&tipo=atividade&valor='+end, function (dados){
 			
 			if (dados){ 	
@@ -74,16 +80,115 @@ $(document).ready(function(){
 				
 			}
 			$('#cnpj').val(value)
-                        
+                       $('#btnCadastrar').prop("disabled",false);
                             
 		})
                         
 		})
-
+                //pagina de editar departamento
+//                $('#enderecoEdit').ready(function(){
+//                    
+//                    $('#btnCadastrar').prop("disabled",true);
+//                    $('#enderecoEdit').attr("readonly",true);
+//                    $.getJSON('../../classes/model/consulta.php?opcao=endereco', function (dados){ 
+//		
+//                    if (dados.length > 0){	
+//
+//                           $.each(dados, function(i, obj){
+//                                  // option += '<option value="'+obj.id+'">'+obj.endereco+" Nº: "+obj.numero+'</option>';
+//                                  $('#enderecoEdit').append('<option value="'+obj.id+'">'+obj.endereco+" Nº: "+obj.numero+'</option>');
+//
+//                           })
+//			 
+//                    }else{
+//                           Reset();
+//
+//                    }
+//                        $('#enderecoEdit').attr("readonly",false);
+//                        $('#btnCadastrar').prop("disabled",false);
+//		   //$('#enderecoEdit').append(new Option(option)); 
+//                 
+//		})
+//	})
+//        
+        $('#enderecoEdit').change(function(e){
+		var end = $('#enderecoEdit').val();
+		$('#btnCadastrar').prop("disabled",true);
+		
+		$.getJSON('../../classes/model/consulta.php?opcao=cnpj&tipo=endereco&valor='+end, function (dados){
+			
+			if (dados){ 	
+				var value = '';
+				
+			  
+				   value = dados.cnpj;
+			  
+				
+			}else{
+				Reset();
+				
+			}
+			$('#cnpjEdit').val(value);
+                        $('#btnCadastrar').prop("disabled",false);
+		})
+	})
+        
+        //Popula combo de lider e gerentes pagina de editar departamentos
+        
+//             $('#lider').ready(function(){
+//                    
+//                    $('#btnCadastrar').prop("disabled",true);
+//                    $('#enderecoEdit').attr("readonly",true);
+//                    $.getJSON('../../classes/model/consulta.php?opcao=user&valor=lider', function (dados){ 
+//		
+//                    if (dados.length > 0){	
+//                           
+//                           $.each(dados, function(i, obj){
+//                                  // option += '<option value="'+obj.id+'">'+obj.endereco+" Nº: "+obj.numero+'</option>';
+//                                  $('#lider').append('<option value="'+obj.id+'">'+obj.nome+'</option>');
+//
+//                           })
+//			 
+//                    }else{
+//                           Reset();
+//
+//                    }
+//                   
+//                        $('#enderecoEdit').attr("readonly",false);
+//                        $('#btnCadastrar').prop("disabled",false);
+//		   //$('#enderecoEdit').append(new Option(option)); 
+//                 
+//		})
+//	})
+//         $('#gerente').ready(function(){
+//                    
+//                    $('#btnCadastrar').prop("disabled",true);
+//                    $('#enderecoEdit').attr("readonly",true);
+//                    $.getJSON('../../classes/model/consulta.php?opcao=user&valor=Gerente', function (dados){ 
+//		
+//                    if (dados.length > 0){	
+//
+//                           $.each(dados, function(i, obj){
+//                                  // option += '<option value="'+obj.id+'">'+obj.endereco+" Nº: "+obj.numero+'</option>';
+//                                  $('#gerente').append('<option value="'+obj.id+'">'+obj.nome+'</option>');
+//
+//                           })
+//			 
+//                    }else{
+//                           Reset();
+//
+//                    }
+//                     
+//                        $('#enderecoEdit').attr("readonly",false);
+//                        $('#btnCadastrar').prop("disabled",false);
+//		   //$('#enderecoEdit').append(new Option(option)); 
+//                  
+//                 
+//		});
+//	})
 	function Reset(){
-		$('#endereco').empty().append('<option>Carregar Endereço</option>>');
 		$('#cnpj').val('');
-                $('#cmbDepartamento').empty().append('<option>Carregar Departamento</option>>');
+               // $('#cmbDepartamento').empty().append('<option>Carregar Departamento</option>');
 //                if(tipo==='atividade'){
 //                    alert("Departamento sem Atividades");
 //                    location.href='cadastroAmostra.php'; 
