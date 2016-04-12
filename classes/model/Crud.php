@@ -32,7 +32,21 @@ abstract class Crud extends DB {
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         return $stmt->execute();
     }
-
+    public function whereSelected($nivel,$id) {
+        $sql = "SELECT * FROM $this->table WHERE nivel = :nivel AND id <>:id";
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':nivel', $nivel , PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+    public function whereSelectedEnd($id) {
+        $sql = "SELECT * FROM $this->table WHERE  id <>:id";
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
   
 
 }
