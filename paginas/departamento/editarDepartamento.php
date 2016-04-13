@@ -9,7 +9,7 @@
         include '../include/include_classes.php';
         ?>         
         <meta charset="UTF-8">
-                <script type="text/javascript" src="../../js/validadores.js"></script>
+        <script type="text/javascript" src="../../js/validadores.js"></script>
        
     </head>
     
