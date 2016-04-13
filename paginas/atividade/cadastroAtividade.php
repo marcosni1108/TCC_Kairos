@@ -17,7 +17,7 @@
         $nome = $_POST['nome_ativ'];
         $descricao = $_POST['descricao'];
         $idDepartamentoFK = $_POST['departamento'];
-        $cnpj = $_POST['cnpj'];
+        //$cnpj = $_POST['cnpj'];
         $unid_med = $_POST['unid_med'];
 
 
@@ -25,7 +25,7 @@
         $atividade = new atividade();
         $atividade->setNome($nome);
         $atividade->setDescricao($descricao);
-        $atividade->setCnpj($cnpj);
+      //  $atividade->setCnpj($cnpj);
         $atividade->setIdDepartamentoFK($idDepartamentoFK);
         $atividade->setUnid_med($unid_med);
 
@@ -71,8 +71,8 @@
 
                                             <div class="form-group col-lg-3">
                                                 <label for="unid_med">Tipo da Unidade de Medida</label>
-                                                <select  class="form-control" name="unid_med" id="unid_med">
-                                                    <option value="--" selcted>--</option>  
+                                                <select  class="form-control" name="unid_med" id="unid_med" required>
+                                                    <option value="">Selecione o Unidade de Medida</option>
                                                     <option value="Caixa">Caixa</option>
                                                     <option value="Documento">Documento</option>
                                                     <option value="Regua">Regua</option>                                                      
@@ -92,14 +92,14 @@
                                         <div class="row">
                                             <div class="form-group col-lg-4">
                                                 <label for="departamento">Departamento</label>
-                                                <select  class="form-control" name="departamento" id="cmbDepartamento">                                                  
+                                                <select  class="form-control" name="departamento" id="cmbDepartamento" required>                                                  
                                                   
                                                 </select>
                                             </div>     
 
                                            <div class="form-group col-lg-4">
                                                   <label for="cnpj">CNPJ</label>
-                                                  <input type="text" class="form-control" name="cnpj" id="cnpj" value="" onkeypress="javascript: mascara(this, cnpj_mask);"  maxlength="18" placeholder="CNPJ" readonly>
+                                                  <input type="text" class="form-control" name="cnpj" id="cnpj" value="" onkeypress="javascript: mascara(this, cnpj_mask);"  maxlength="18" placeholder="CNPJ" required="true"readonly>
                                                 </div>                                              
                                         </div>
 
@@ -107,7 +107,7 @@
                                             <div class="form-group col-lg-4">
                                             </div>
                                             <div class="form-group col-lg-4">
-                                                <input type="submit" name="cadastrar" class="btn btn-success" value="Cadastrar dados">
+                                                <input id="btnCadastrar" type="submit" name="cadastrar" class="btn btn-success" value="Cadastrar dados">
                                             </div>    
                                         </div>
 
