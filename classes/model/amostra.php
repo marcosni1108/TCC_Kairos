@@ -83,9 +83,15 @@ class amostra extends Crud {
         $stmt->bindParam(':indice', $this->indice);
         $stmt->bindParam(':departamento', $this->departamento);
         $stmt->bindParam(':atividade', $this->atividade);
+         try {
+            return $stmt->execute();
+        } catch (PDOException $e) {
+        if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1451') {
+            return '1451';
+        }
         
-        return $stmt->execute();
-    }
+             }
+        }
 
     public function update($idAmostra) {
 
@@ -118,6 +124,13 @@ class amostra extends Crud {
             }
             
             
+    }
+    public function findAllAmostras($id) {
+        $sql = "SELECT * FROM $this->table where IdAtividadeFK = :IdAtividadeFK";
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':IdAtividadeFK', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
 
 }
