@@ -4,10 +4,17 @@
                      $atividade = new atividade(); 
 
                 $id = $_GET['id'];
-                
-                    if ($atividade->delete($id)) {
-                    echo "<script>alert('Deletado com sucesso!')</script>";
-                    header("location:consultaAtividade.php");
+                 $deletar = $atividade->delete($id);
+                    if ($deletar === '1451') {
+                   echo "<script>alert('Não foi possivel deletar, verifique se existem associações com essa atividade!');"
+                        . "window.location='./consultaAtividade.php'</script>";
+                     
+                   //header("location:consultaDepartamento.php");
+                }
+                  else if ($deletar === true) {
+                   echo "<script>alert('Deletado Com sucesso!');"
+                        . "window.location='./consultaAtividade.php'</script>";
+                    //header("location:consultaDepartamento.php");
                 }
 
 
