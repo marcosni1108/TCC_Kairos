@@ -30,7 +30,14 @@ abstract class Crud extends DB {
         $sql = "DELETE FROM $this->table WHERE id = :id";
         $stmt = DB::prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        return $stmt->execute();
+        try {
+            return $stmt->execute();
+        } catch (PDOException $e) {
+        if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1451') {
+            return '1451';
+   }
+}
+        
     }
     public function whereSelected($nivel,$id) {
         $sql = "SELECT * FROM $this->table WHERE nivel = :nivel AND id <>:id";
