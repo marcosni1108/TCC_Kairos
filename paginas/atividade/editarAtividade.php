@@ -33,7 +33,7 @@
         $atividade = new atividade();
         $atividade->setNome($nome);
         $atividade->setDescricao($descricao);
-        $atividade->setCnpj($cnpj);
+       // $atividade->setCnpj($cnpj);
         $atividade->setIdDepartamentoFK($idDepartamentoFK);
         $atividade->setUnid_med($unid_med);
 
@@ -79,10 +79,10 @@
                                             </div>
 
 
-                                            <div class="form-group col-lg-3">
+                                            <div class="form-group col-lg-4">
                                                 <label for="unid_med">Tipo da Unidade de Medida</label>
                                                 <select  class="form-control" name="unid_med" id="unid_med">
-                                                    <option value="<?php echo $resultado->nome; ?>" selcted><?php echo $resultado->unid_med; ?></option>  
+                                                    <option value="<?php echo $resultado->unid_med; ?>" selcted><?php echo $resultado->unid_med; ?></option>  
                                                     <option value="Caixa">Caixa</option>
                                                     <option value="Documento">Documento</option>
                                                     <option value="Regua">Regua</option>                                                      
@@ -102,35 +102,31 @@
                                         <div class="row">
                                             <div class="form-group col-lg-4">
                                                 <label for="departamento">Departamento</label>
-                                                <select  class="form-control" name="departamento" id="departamento">
-                                                    
+                                                <select  class="form-control" name="departamento" id="departamentoEditAtividade">
+                                                    <option value="<?php $departamento = new departamento;
+                                                        $dept = $departamento->find($resultado->idDepartamentoFK); echo $dept->id; ?>" selected>
+                                                        <?php echo $dept->nome; ?></option>  
                                                      <?php
-                                                     
-                                                    $departamento = new departamento();
-                                                    foreach ($departamento->findAll() as $key => $value):   ?>
+                                                    foreach ($departamento->whereSelectedEnd($dept->id) as $key => $value):   ?>
                                                     <option value="<?php echo $value->id; ?>" selcted><?php echo $value->nome; ?></option> 
                                                     
                                                     <?php endforeach; ?>
                                                 </select>
                                             </div>     
 
-                                            <div class="form-group col-lg-3">
-                                                <label for="gerente">CNPJ</label>
-                                                <select  class="form-control" name="cnpj" id="cnpj">
-                                                    <option value="<?php echo $resultado->nome; ?>" selcted><?php echo $resultado->cnpj; ?></option>  
-                                                    <option value="0525815">0525815</option>
-                                                    <option value="808080880">808080880</option>
-                                                    <option value="9950959">9950959</option>
-                                                    <option value="70707007">70707007</option>
-                                                </select>
-                                            </div>                                             
+                                            <div class="form-group col-lg-4">
+                                                  <label for="cnpj">CNPJ</label>
+                                                  <input type="text" class="form-control" name="cnpj"  value=" <?php 
+                                                    $endereco = new endereco; $cnpj = $endereco->find($dept->idEnderecoFK); 
+                                                    echo $cnpj->cnpj; ?>" id="cnpjEditAtividade" placeholder="CNPJ" readonly>
+                                                </div>                                              
                                         </div>
 
                                         <div class="row">
                                             <div class="form-group col-lg-4">
                                             </div>
                                             <div class="form-group col-lg-4">
-                                                <input type="submit" name="atualizar" class="btn btn-success" value="Cadastrar dados">
+                                                <input id="btnCadastrar" type="submit" name="atualizar" class="btn btn-success" value="Cadastrar dados">
                                             </div>    
                                         </div>
 
@@ -173,4 +169,5 @@
 
     </body>
     <?php include_once '../include/include_js.php'; ?>
+          <script src="../../js/populaCombo.js"></script>
 </html>
