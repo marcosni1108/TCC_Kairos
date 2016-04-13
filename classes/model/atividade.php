@@ -36,9 +36,9 @@ class atividade extends Crud {
         return $this->idDepartamentoFK;
     }
 
-    function getCnpj() {
-        return $this->cnpj;
-    }
+//    function getCnpj() {
+//        return $this->cnpj;
+//    }
 
     function setTable($table) {
         $this->table = $table;
@@ -52,9 +52,9 @@ class atividade extends Crud {
         $this->idDepartamentoFK = $idDepartamentoFK;
     }
 
-    function setCnpj($cnpj) {
-        $this->cnpj = $cnpj;
-    }
+//    function setCnpj($cnpj) {
+//        $this->cnpj = $cnpj;
+//    }
 
         function getId() {
         return $this->id;
@@ -83,13 +83,13 @@ class atividade extends Crud {
         public function insert() {
 
 
-        $sql = "INSERT INTO $this->table (nome,descricao,idDepartamentoFK,cnpj,unid_med)"
-                . " VALUES (:nome,:descricao,:idDepartamentoFK,:cnpj,:unid_med)";
+        $sql = "INSERT INTO $this->table (nome,descricao,idDepartamentoFK,unid_med)"
+                . " VALUES (:nome,:descricao,:idDepartamentoFK,:unid_med)";
         $stmt = DB::prepare($sql);
         $stmt->bindParam(':nome', $this->nome);
         $stmt->bindParam(':descricao', $this->descricao);
         $stmt->bindParam(':idDepartamentoFK', $this->idDepartamentoFK);
-        $stmt->bindParam(':cnpj', $this->cnpj);
+       // $stmt->bindParam(':cnpj', $this->cnpj);
         $stmt->bindParam(':unid_med', $this->unid_med);
 
        
@@ -100,12 +100,12 @@ class atividade extends Crud {
 
         $sql = "UPDATE $this->table SET nome= :nome, "
                 . "descricao=:descricao,idDepartamentoFK=:idDepartamentoFK,"
-                . "cnpj=:cnpj, unid_med =:unid_med where id = :id";
+                . "unid_med =:unid_med where id = :id";
         $stmt = DB::prepare($sql);
 
         $stmt->bindParam(':nome', $this->nome);
         $stmt->bindParam(':descricao', $this->descricao);
-        $stmt->bindParam(':cnpj', $this->cnpj);
+        //$stmt->bindParam(':cnpj', $this->cnpj);
         $stmt->bindParam(':idDepartamentoFK', $this->idDepartamentoFK);
         $stmt->bindParam(':unid_med', $this->unid_med);
         $stmt->bindParam(':id', $idAtividade);
