@@ -186,6 +186,27 @@ $(document).ready(function(){
                  
 		});
 	})
+        //como para mudar o cpnj quando o depatamento mudar
+        $('#departamentoEditAtividade').change(function(e){
+		var end = $('#departamentoEditAtividade').val();
+		
+		$('#btnCadastrar').prop("disabled",true);
+		$.getJSON('../../classes/model/consulta.php?opcao=cnpj&tipo=atividade&valor='+end, function (dados){
+			
+			if (dados){ 	
+				var value = '';
+                                value = dados.cnpj;
+                       
+			}else{
+				Reset();
+				
+			}
+			$('#cnpjEditAtividade').val(value)
+                       $('#btnCadastrar').prop("disabled",false);
+                            
+		})
+                        
+		})
 	function Reset(){
 		$('#cnpj').val('');
                // $('#cmbDepartamento').empty().append('<option>Carregar Departamento</option>');

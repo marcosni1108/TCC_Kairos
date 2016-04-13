@@ -200,3 +200,8 @@ function soLetrasMI(v){
 function soNumeros(v){
         return v.replace(/\D/g,"") //Remove tudo o que não é dígito
 }
+function hora(v){
+	v=v.replace(/\D/g,"")                 //Remove tudo o que não é dígito
+	return v.replace(/(\d{2})(\d)/,"$1:$2")
+	
+}
