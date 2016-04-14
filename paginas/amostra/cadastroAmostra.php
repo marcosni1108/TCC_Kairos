@@ -29,13 +29,13 @@
                             </div>
                             <div class="form-group col-lg-4">
                                 <label for="departamento">Departamento</label>
-                                <select  class="form-control" name="departamento" id="cmbDepartamento">                                                  
+                                <select  class="form-control" name="departamento" id="cmbDepartamento" required>                                                  
                                    
                                 </select>
                             </div>      
                             <div class="form-group col-lg-4">
                                 <label for="atividade">Atividade</label>
-                                <select  class="form-control" name="atividade" id="cmbAtividade">                                                  
+                                <select  class="form-control" name="atividade" id="cmbAtividade" required>                                                  
                                    
                                 </select>
                             </div>                                          
@@ -44,7 +44,7 @@
                         <div class="row">    
                             <div class="form-group col-lg-4"></div>
                             <div class="form-group col-lg-4">
-                                <input type="submit" name="cadastrar" class="btn btn-success" value="Cadastrar Dados">
+                                <input id="btnCadastrar" type="submit" name="cadastrar" class="btn btn-success" value="Cadastrar Dados">
                                 
                             </div>    
                         </div>                        
