@@ -8,6 +8,7 @@
         include '../include/include_classes.php';
         ?>   
         <link href="../../css/sb-admin.css" rel="stylesheet">
+         <link rel="stylesheet" href="../../css/wickedpicker.css">
         <meta charset="UTF-8">
     </head>
     <!--<body onbeforeunload="return myFunction()">!-->
@@ -21,6 +22,14 @@
             $atividade = $_POST['atividade'];
             $_SESSION["i"] = 0;
             $_SESSION["jcount"] = 0;
+            $amostra = new amostra;
+            $conut = $amostra->findAllAmostras($atividade);
+            if($conut){
+                 echo "<script>alert('Já existe um indece para essa atividade por favor selecione outra atividade');"
+                        . "window.location='./cadastroAmostra.php'</script>";
+                     
+            }
+                    
         }
         if (isset($_POST['cadastrarAmostra'])){
 
@@ -31,10 +40,28 @@
             $hora_final = $_POST['hora_final'];
             $quantidade = $_POST['quantidade'];
             //$indice = intval(10);
+           
+            //retira : do tempo
+            //$hora_final = explode(':',$hora_final);
+            //$hora_inicial = explode(':',$hora_inicial);
+            //converte hora final e hora inicial para segundos
+            //$hora_final = $hora_final * 60;
+            //$hora_inicial = $hora_inicial * 60;
+            //calculo de indice ja em segundos
             
-            //calculo de indice
-            $tempoTotal = $hora_final - $hora_inicial;
-            $indice = $quantidade/$tempoTotal;                      
+            $teste = str_replace(" ","",$hora_inicial);
+            
+            $hora_inicial  = strtotime(str_replace(" ","",$hora_inicial));
+            $hora_final   = strtotime(str_replace(" ","",$hora_final));
+            
+            $tempoTotal = ($hora_final - $hora_inicial);
+            $tempoTotalMinutos = $tempoTotal / 60;
+            
+            
+            
+            
+            //$tempoTotal = $hora_final - $hora_inicial;
+            $indice = $quantidade/$tempoTotalMinutos;                      
             
             $filds1["departamento"] = $departamento;
             $filds1["atividade"] = $atividade;
@@ -84,7 +111,7 @@
                                      $moda = true;
                                      $media = false;
                                      $contModa = $contModa +1;
-                                 }else {
+                                 }elseif($contModa==0){
                                      $media = true;
                                      $moda = false;
 
@@ -146,7 +173,7 @@
           }
           else{
               
-             echo "<script> alert('Para finalizar mais de 3 amostras devem ser cadastradas')</script>";
+             echo "<script> alert('Para finalizar mais de 2 amostras devem ser cadastradas')</script>";
           }
            
             }
@@ -171,34 +198,37 @@
                             </div>
                             <div class="form-group col-lg-4">
                                 <label for="departamento">Departamento</label>                                                                                
-                                <input type="text" class="form-control" id="departamento" name="departamento" value="<?php echo $departamento; ?>" placeholder="Departamento" readonly="readonly">   
-                                </select>
+                                <input type="text" class="form-control" id="departamentoNone" name="departamentoNone" value="<?php $departamentoclass = new departamento(); $nameDept = $departamentoclass->find($departamento);echo $nameDept->nome; ?>" placeholder="Departamento" readonly="readonly">   
+                               <!-- <input style="display: none" type="text" class="form-control" id="departamento" name="departamento" value="<?php //echo $departamento; ?>" placeholder="Departamento" readonly="readonly"> -->  
+                               
                             </div>      
                             <div class="form-group col-lg-4">
                                 <label for="atividade">Atividade</label>                                
-                                <input type="text" class="form-control" id="atividade" name="atividade" value="<?php echo $atividade; ?>" placeholder="Atividade" readonly="readonly">
+                                <input type="text" class="form-control" id="AtividadeNone" name="AtividadeNone" value="<?php $atividadeclass = new atividade(); $name = $atividadeclass->find($atividade); echo $name->nome; ?>" placeholder="Atividade" readonly="readonly">
+                               <!-- <input style="display: none" type="text" class="form-control" id="atividade" name="atividade" value="<?php //echo $atividade; ?>" placeholder="Departamento" readonly="readonly"> -->   
+                                
                             </div>                                          
                         </div>    
                         <div class="row"><hr width=95%></div>
                         <div class="row" id="amostra_lista">
                             <div class="form-group col-lg-4">
                                 <label for="cnpj">Hora Inicial</label>
-                                <input type="text" class="form-control" id="hora_inicial" name="hora_inicial" placeholder="Hora Inicial" >                                
+                                <input type="text" class="form-control" id="hora_inicial" onkeypress="javascript: mascara(this, hora);" maxlength="5" name="hora_inicial" placeholder="Hora Inicial" required>                                
                             </div>
                             <div class="form-group col-lg-4">
                                 <label for="cnpj">Hora Final</label>
-                                <input type="text" class="form-control" id="hora_final" name="hora_final" placeholder="Hora Final" >                                
+                                <input type="text" class="form-control" id="hora_final"  onkeypress="javascript: mascara(this, hora);" maxlength="5" name="hora_final" placeholder="Hora Final" required>                                
                             </div>
                             <div class="form-group col-lg-4">
                                 <label for="cnpj">Quantidade</label>
-                                <input type="text" class="form-control" id="quantidade" name="quantidade" placeholder="Quantidade" >                                
+                                <input type="text" class="form-control" id="quantidade" name="quantidade" placeholder="Quantidade" required>                                
                             </div> 
                         </div>
 
                         <div class="row">    
                             <div class="form-group col-lg-3"></div>
                             <div class="form-group col-lg-3">
-                                <input type="submit" name="cadastrarAmostra" class="btn btn-success" value="Cadastrar Amostra">
+                                <input type="submit" name="cadastrarAmostra" class="btn btn-success" value="Cadastrar Amostra" id="teste">
                             </div>
                             <div class="form-group col-lg-3">
                                 <input type="submit" name="finalizar" class="btn btn-danger" value="Finalizar">
@@ -209,12 +239,16 @@
         </div>
     </body>
     <?php include_once '../include/include_js.php'; ?>
+    <script type="text/javascript" src="../../js/validadores.js"></script>
+    <script type="text/javascript" src="../../js/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="../../js/wickedpicker.js"></script>
+    <script type="text/javascript" src="../../js/validarHora.js"></script>
 <!--    <script>
         function myFunction() {
             
             return "Deseja sair da pagina, seus dados não serão gravados";
         }
-
+teste
     </script>-->
 </html>
 
