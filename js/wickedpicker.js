@@ -332,7 +332,7 @@
          * @return {string|integer}
          */
         parseSecMin: function (value) {
-            return ((value < 10) ? '0' : '') + value;
+            return ((value < 10) ? '0':'') + value;
         },
 
         /*
