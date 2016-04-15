@@ -31,58 +31,55 @@
             }
                     
         }
-        if (isset($_POST['cadastrarAmostra'])){
+        else if (isset($_POST['cadastrarAmostra'])){
+            if( $_POST['hora_inicial']>=$_POST['hora_final']){
+                echo "<script>alert('Hora inicial não pode ser maior que hora final!');"
+                        . "</script>";
+                    $cnpj = $_POST['cnpj'];
+                    $departamento = $_POST['departamento'];
+                    $atividade = $_POST['atividade'];
+                    $hora_inicial = $_POST['hora_inicial'];
+                    $hora_final = $_POST['hora_final'];
+                    $quantidade = $_POST['quantidade'];
+            }
+            else{
+                    $cnpj = $_POST['cnpj'];
+                    $departamento = $_POST['departamento'];
+                    $atividade = $_POST['atividade'];
+                    $hora_inicial = $_POST['hora_inicial'];
+                    $hora_final = $_POST['hora_final'];
+                    $quantidade = $_POST['quantidade'];
+                    //$indice = intval(10);
+                    $teste = str_replace(" ","",$hora_inicial);
 
-            $cnpj = $_POST['cnpj'];
-            $departamento = $_POST['departamento'];
-            $atividade = $_POST['atividade'];
-            $hora_inicial = $_POST['hora_inicial'];
-            $hora_final = $_POST['hora_final'];
-            $quantidade = $_POST['quantidade'];
-            //$indice = intval(10);
-           
-            //retira : do tempo
-            //$hora_final = explode(':',$hora_final);
-            //$hora_inicial = explode(':',$hora_inicial);
-            //converte hora final e hora inicial para segundos
-            //$hora_final = $hora_final * 60;
-            //$hora_inicial = $hora_inicial * 60;
-            //calculo de indice ja em segundos
-            
-            $teste = str_replace(" ","",$hora_inicial);
-            
-            $hora_inicial  = strtotime(str_replace(" ","",$hora_inicial));
-            $hora_final   = strtotime(str_replace(" ","",$hora_final));
-            
-            $tempoTotal = ($hora_final - $hora_inicial);
-            $tempoTotalMinutos = $tempoTotal / 60;
-            
-            
-            
-            
-            //$tempoTotal = $hora_final - $hora_inicial;
-            $indice = $quantidade/$tempoTotalMinutos;                      
-            
-            $filds1["departamento"] = $departamento;
-            $filds1["atividade"] = $atividade;
-            $filds1["hora_inicial"] = $hora_inicial;
-            $filds1["hora_final"] = $hora_final;
-            $filds1["quantidade"] = $quantidade;
-            $filds1["indice"] = $indice;
-            
-         
-            $json_result["amostra"] [] = $filds1;
-            $JSON = json_encode($json_result);
+                    $hora_inicial  = strtotime(str_replace(" ","",$hora_inicial));
+                    $hora_final   = strtotime(str_replace(" ","",$hora_final));
 
-            $fp = fopen("../../js/dataAmostra/dataAmostra".$_SESSION["jcount"]++.".json", "w") or die('Cannot open file:');
-            
+                    $tempoTotal = ($hora_final - $hora_inicial);
+                    $tempoTotalMinutos = $tempoTotal / 60;
 
-        // Escreve "exemplo de escrita" no bloco1.txt
-         
-         $escreve = fwrite($fp, $JSON);
-        // Fecha o arquivo
-            fclose($fp);
-        
+                    $indice = $quantidade/$tempoTotalMinutos;                      
+
+                    $filds1["departamento"] = $departamento;
+                    $filds1["atividade"] = $atividade;
+                    $filds1["hora_inicial"] = $hora_inicial;
+                    $filds1["hora_final"] = $hora_final;
+                    $filds1["quantidade"] = $quantidade;
+                    $filds1["indice"] = $indice;
+
+
+                    $json_result["amostra"] [] = $filds1;
+                    $JSON = json_encode($json_result);
+
+                    $fp = fopen("../../js/dataAmostra/dataAmostra".$_SESSION["jcount"]++.".json", "w") or die('Cannot open file:');
+
+
+                // Escreve "exemplo de escrita" no bloco1.txt
+
+                    $escreve = fwrite($fp, $JSON);
+                // Fecha o arquivo
+                    fclose($fp);
+            }
         
         }
         
@@ -182,7 +179,7 @@
         ?>        
         <div id="wrapper" >
             <div class="container-fluid">
-                <form method="post" action="">
+                <form id="amostra" method="post" action="">
                     <div class="input-prepend">
                         <h1 class="page-header">
                             Registro de Amostra
@@ -199,13 +196,13 @@
                             <div class="form-group col-lg-4">
                                 <label for="departamento">Departamento</label>                                                                                
                                 <input type="text" class="form-control" id="departamentoNone" name="departamentoNone" value="<?php $departamentoclass = new departamento(); $nameDept = $departamentoclass->find($departamento);echo $nameDept->nome; ?>" placeholder="Departamento" readonly="readonly">   
-                               <!-- <input style="display: none" type="text" class="form-control" id="departamento" name="departamento" value="<?php //echo $departamento; ?>" placeholder="Departamento" readonly="readonly"> -->  
+                                <input style="display: none" type="text" class="form-control" id="departamento" name="departamento" value="<?php echo $departamento; ?>" placeholder="Departamento" readonly="readonly">   
                                
                             </div>      
                             <div class="form-group col-lg-4">
                                 <label for="atividade">Atividade</label>                                
                                 <input type="text" class="form-control" id="AtividadeNone" name="AtividadeNone" value="<?php $atividadeclass = new atividade(); $name = $atividadeclass->find($atividade); echo $name->nome; ?>" placeholder="Atividade" readonly="readonly">
-                               <!-- <input style="display: none" type="text" class="form-control" id="atividade" name="atividade" value="<?php //echo $atividade; ?>" placeholder="Departamento" readonly="readonly"> -->   
+                                <input style="display: none" type="text" class="form-control" id="atividade" name="atividade" value="<?php echo $atividade; ?>" placeholder="Departamento" readonly="readonly">    
                                 
                             </div>                                          
                         </div>    
@@ -228,13 +225,18 @@
                         <div class="row">    
                             <div class="form-group col-lg-3"></div>
                             <div class="form-group col-lg-3">
-                                <input type="submit" name="cadastrarAmostra" class="btn btn-success" value="Cadastrar Amostra" id="teste">
+                                <input  type="submit" name="cadastrarAmostra" class="btn btn-success" value="Cadastrar Amostra" id="teste">
                             </div>
-                            <div class="form-group col-lg-3">
-                                <input type="submit" name="finalizar" class="btn btn-danger" value="Finalizar">
-                            </div>                            
+<!--                            <div class="form-group col-lg-3">
+                                <input  type="submit" name="finalizar"  class="btn btn-danger" value="Finalizar">
+                            </div>                            -->
                         </div>                        
-                </form>  
+                </form>
+                <form  id="amostra" method="post" action="">
+                        <div class="form-group col-lg-3" style="position:absolute; left:900px; top:466;">
+                           <input  type="submit" name="finalizar"  class="btn btn-danger" value="Finalizar">
+                       </div>
+               </form>
             </div> 
         </div>
     </body>
@@ -248,7 +250,7 @@
             
             return "Deseja sair da pagina, seus dados não serão gravados";
         }
-teste
+
     </script>-->
 </html>
 
