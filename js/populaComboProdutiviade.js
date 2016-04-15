@@ -1,7 +1,7 @@
 // popula o combo de departamentos quando a pagina é carregada.
 	$('#cmbDepartamento').ready(function(){
             
-            $('#btnIniciar').prop("disabled",true);
+                $('#btnIniciar').prop("disabled",true);
                 $('#btnParar').prop("disabled",true);
                 $('#btnPausar').prop("disabled",true);
 		//chama o serviço que consulta os departamentos.
@@ -59,18 +59,18 @@
 				
 			}
 			//popula o combo de atividades.
-                          $('#cmbAtividade').html(option).show(); 
+                            $('#cmbAtividade').html(option).show(); 
                           
                           //habilita o botões.
-                          $('#btnIniciar').prop("disabled",false);
-                           $('#btnParar').prop("disabled",false);
+                            $('#btnIniciar').prop("disabled",false);
+                            $('#btnParar').prop("disabled",false);
                             $('#btnPausar').prop("disabled",false);
 		})
                         
 		})
 	})
         
-
+     
         
         
 	function Reset(tipo){

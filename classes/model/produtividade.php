@@ -13,7 +13,16 @@ class produtividade extends Crud {
     private $IdFuncionario;
     private $IdDepartamento;
     private $IdAtividade;
-    function getIdAtividade() {
+    private $status;
+    function getStatus() {
+        return $this->status;
+    }
+
+    function setStatus($status) {
+        $this->status = $status;
+    }
+
+                function getIdAtividade() {
         return $this->IdAtividade;
     }
 
@@ -90,8 +99,8 @@ class produtividade extends Crud {
         public function insert() {
 
 
-        $sql = "INSERT INTO $this->table ( tempoInicial, tempoFinal, quantidade, data, IdFuncionario, IdDepartamento, IdAtividade)"
-                . " VALUES ( :tempoinicial, :tempofinal, :quantidade, :data, :IdFuncionario, :IdDepartamento, :IdAtividade)";
+        $sql = "INSERT INTO $this->table ( tempoInicial, tempoFinal, quantidade, data, IdFuncionario, IdDepartamento, IdAtividade,status)"
+                . " VALUES ( :tempoinicial, :tempofinal, :quantidade, :data, :IdFuncionario, :IdDepartamento, :IdAtividade, :status)";
         $stmt = DB::prepare($sql);
       
         $stmt->bindParam(':tempoinicial', $this->tempoinicial);
@@ -101,6 +110,7 @@ class produtividade extends Crud {
         $stmt->bindParam(':IdFuncionario', $this->IdFuncionario,PDO::PARAM_INT);
         $stmt->bindParam(':IdAtividade', $this->IdAtividade,PDO::PARAM_INT);
         $stmt->bindParam(':IdDepartamento', $this->IdDepartamento,PDO::PARAM_INT);
+        $stmt->bindParam(':status', $this->status);
          try {
             return $stmt->execute();
         } catch (PDOException $e) {
@@ -114,40 +124,27 @@ class produtividade extends Crud {
     public function update($IdProdutividade) {
 
         $sql = "UPDATE $this->table SET  "
-                . "tempoInicial=:tempoinicial,"
-                . "tempoFinal=:tempofinal,"
-                . "quantidade=:quantidade,"
-                . "data=:data,"
-                . " where" + $IdProdutividade;
-        $stmt = DB::prepare($sql);
-
-        $stmt->bindParam(':$IdProdutividade', $this->idProdutividade);
-        $stmt->bindParam(':tempoinicial', $this->tempoInicial);
-        $stmt->bindParam(':tempofinal', $this->tempofinal);
-        $stmt->bindParam(':quantidade', $this->quantidade);
-        $stmt->bindParam(':data', $this->data);
-
-
-        return $stmt->execute();
+                . " tempoFinal =:tempofinal,"
+                . " quantidade =:quantidade,"
+                . " status =:status "
+                . " where IdProdutividade =:IdProdutividade" ;
+        
+                $stmt = DB::prepare($sql);
+                $stmt->bindParam(':tempofinal', $this->tempofinal);
+                $stmt->bindParam(':quantidade', $this->quantidade);
+                $stmt->bindParam(':status', $this->status);
+                $stmt->bindParam(':IdProdutividade', $IdProdutividade);
+                return $stmt->execute();
+            
+        
     }
     
-    public function verificarModa($indice_autal,$indice_proximo,$w,$jcount) {
 
-            if($indice_autal==$indice_proximo && $w <> $jcount){
-                    $moda = true;
-                    $contModa = $contModa +1;
-                    return $moda;
-           }else {
-                    $media = true;
-                    return $media;
-            }
-            
-            
-    }
-    public function findAllAmostras($id) {
-        $sql = "SELECT * FROM $this->table where idProdutividade = :idProdutividade";
+    public function findAtividadeIniciadas($idFuncionario) {
+
+        $sql = "SELECT * FROM $this->table where status = 'iniciado' and IdFuncionario = :idFuncionario";
         $stmt = DB::prepare($sql);
-        $stmt->bindParam(':idProdutividade', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':idFuncionario', $idFuncionario, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll();
     }

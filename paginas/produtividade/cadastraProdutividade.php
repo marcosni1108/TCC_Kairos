@@ -15,42 +15,60 @@
     <body > 
         <?php
             $data_produtividade = date('Y-m-d');
-        
-        if (isset($_POST['iniciar'])){
-            date_default_timezone_set('America/Sao_Paulo');
-            $produtividade = new produtividade;
             $funcionario = new funcionario();
-            $func = $funcionario->whereNome($_SESSION['nome']);
-            $hora_inicial = date('H:i');
-            $idDepartamento = $_POST['departamento'];
-            $idAtividade = $_POST['atividade'];
-            $quantidade = 0;
-            $hora_final="00:00";
-            $IdFuncionario = $func[0]->id;
-            $produtividade->setData($data_produtividade);
-            $produtividade->setTempoinicial($hora_inicial);
-            $produtividade->setTempofinal($hora_final);
-            $produtividade->setIdDepartamento($idDepartamento);
-            $produtividade->setIdFuncionario($IdFuncionario);
-            $produtividade->setIdAtividade($idAtividade);
-            $produtividade->setQuantidade($quantidade);
-  
-            if($produtividade->insert())
-            {
-               echo "<script> alert('Atividade Iniciada com sucesso')</script>";
-            }
-            
-            
-            
-           
-        }
-         else if (isset($_POST['Parar'])){
-            date_default_timezone_set('America/Sao_Paulo');
             $produtividade = new produtividade;
-            $hora_final = date('H:i');
-            $idDepartamento = $_POST['departamento'];
-            $idAtividade = $_POST['atividade'];  
-            $quantidade = $_POST['quantidade'];           
+            $func = $funcionario->whereNome($_SESSION['nome']);
+            $IdFuncionario = $func[0]->id;
+            $verificaAtividade = $produtividade->findAtividadeIniciadas($IdFuncionario);
+            $status = $verificaAtividade[0]->status;
+            if($status==null){
+                if (isset($_POST['iniciar'])){
+                    date_default_timezone_set('America/Sao_Paulo');
+                    $hora_inicial = date('H:i');
+                    $idDepartamento = $_POST['departamento'];
+                    $idAtividade = $_POST['atividade'];
+                    $cnpj = $_POST['cnpj'];
+                    $quantidade = 0;
+                    $hora_final="00:00";
+                    $status = 'iniciado';
+                    $produtividade->setData($data_produtividade);
+                    $produtividade->setTempoinicial($hora_inicial);
+                    $produtividade->setTempofinal($hora_final);
+                    $produtividade->setIdDepartamento($idDepartamento);
+                    $produtividade->setIdFuncionario($IdFuncionario);
+                    $produtividade->setIdAtividade($idAtividade);
+                    $produtividade->setQuantidade($quantidade);
+                    $produtividade->setStatus($status);
+
+                        if($produtividade->insert())
+                        {
+                             $verificaAtividade = $produtividade->findAtividadeIniciadas($IdFuncionario);
+                             $id = $verificaAtividade[0]->IdProdutividade;    
+                             $teste = "produtividadeFinalizar.php?".md5(idFunc)."=".
+                                    $IdFuncionario."&".md5(idAtividade)."=".$idAtividade.""
+                                    . "&".md5(idDepartamento)."=".$idDepartamento.""
+                                    . "&".md5(cnpj)."=".$cnpj.""
+                                    . "&".md5(id)."=".$id."";
+                                     echo "<script>alert('Atividade Iniciada Com sucesso!');"
+                                    . "window.location='./".$teste."';</script>";
+                        }
+
+
+          }       
+        }else{
+           $idAtividade = $verificaAtividade[0]->IdAtividade;
+           $idDepartamento = $verificaAtividade[0]->IdDepartamento;
+           $IdFuncionario = $verificaAtividade[0]->IdFuncionario;
+           $id = $verificaAtividade[0]->IdProdutividade;
+           $cnpj = 0;
+                    $teste = "produtividadeFinalizar.php?".md5(idFunc)."=".
+                    $IdFuncionario."&".md5(idAtividade)."=".$idAtividade.""
+                    . "&".md5(idDepartamento)."=".$idDepartamento.""
+                    . "&".md5(cnpj)."=".$cnpj.""
+                    . "&".md5(id)."=".$id."";
+                    echo "<script>alert('Já existe uma atividade iniciada');"
+                    . "window.location='./".$teste."';</script>";
+            
         }
          ?>        
         
@@ -86,12 +104,7 @@
                             <div class="form-group col-lg-4">
                                 <input id="btnIniciar"type="submit" name="iniciar" class="btn btn-success" value="Iniciar">
                             </div>
-                            <div class="form-group col-lg-4">
-                                <input id="btnPausar" type="submit" name="pausar" class="btn btn-warning" value="&nbsp;&nbsp;&nbsp;Pausar&nbsp;&nbsp;&nbsp;">
-                            </div>                               
-                            <div class="form-group col-lg-4">
-                                <input id="btnParar" name="parar" class="btn btn-danger" value="&nbsp;&nbsp;&nbsp;Parar&nbsp;&nbsp;&nbsp;">
-                            </div>
+                         
                             
                         </div>
                 </form>
