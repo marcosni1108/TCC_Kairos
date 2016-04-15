@@ -51,4 +51,7 @@ $('#quantidade').focus(function(e){
 		
 		
 		}
-              
+                function finalizar(){
+                    $("#amostra")[0].submit();
+                
+                }; 
