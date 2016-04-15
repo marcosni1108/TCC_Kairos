@@ -123,5 +123,12 @@ class funcionario extends Crud {
         $stmt->execute();
         return $stmt->fetchAll();
     }
+    public function whereNome($nome) {
+        $sql = "SELECT * FROM $this->table WHERE nome = :nome";
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':nome', $nome);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
     
 }
