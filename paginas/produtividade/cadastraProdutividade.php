@@ -98,9 +98,11 @@
                                    
                                 </select>
                             </div>                                          
-                        </div>    
+                        </div>  
+
                         <div class="row"><hr width=95%></div>
                         <div class="row">
+                            <div class="form-group col-lg-4"></div>
                             <div class="form-group col-lg-4">
                                 <input id="btnIniciar"type="submit" name="iniciar" class="btn btn-success" value="Iniciar">
                             </div>

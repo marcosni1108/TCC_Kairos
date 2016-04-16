@@ -9,7 +9,8 @@
         ?>   
  
         <link href="../../css/sb-admin.css" rel="stylesheet">
-        
+        <link href="cronometro.css" rel="stylesheet">
+        <script language="JavaScript" src="cronometro.js"></script>
         <meta charset="UTF-8">
     </head>
     <body > 
@@ -89,13 +90,21 @@
                         </div>    
                         <div class="row"><hr width=95%></div>
                         
+                        <div class="row">
+                            <div class="form-group col-lg-4"></div>
                             <div class="form-group col-lg-4">
-                                                         
-                            <div class="form-group col-lg-4">
-                                <input type="submit" id="btnParar" name="parar" class="btn btn-danger" value="Parar">
+                                <div class="codigo">
+                                        <span id="hora">00:</span><span id="minuto">00:</span><span id="segundo">00</span><br>
+                                </div>
                             </div>
-                            
                         </div>
+                        
+                    <div class="row"> 
+                            <div class="form-group col-lg-4"></div>                       
+                            <div class="form-group col-lg-4">
+                                <input type="submit" style="margin-left:100px;" id="btnParar" name="parar" class="btn btn-danger" value="Parar">
+                            </div>
+                    </div>    
                 </form>
 <!--                        <div class="row">
                             <div class="form-group col-lg-4"></div>
