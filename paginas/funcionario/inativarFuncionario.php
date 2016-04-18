@@ -1,3 +1,8 @@
+<html>
+    <head>
+     
+        <meta charset="UTF-8">
+     </head> 
 <?php
 
        include '../include/include_classes.php';
@@ -16,5 +21,5 @@
                     //header("location:consultaEndereco.php");
                 }
 
-
-
+?>
+</html>
