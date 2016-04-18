@@ -15,7 +15,7 @@
     <body>
             <?php
             
-                $id = (int) $_GET['id'];
+                $id = (int) $_GET[md5('id')];
                            
               $funcionario = new funcionario(); 
             if (isset($_POST['atualizar'])):
@@ -115,7 +115,7 @@
                                             <div class="form-group col-lg-4">
                                             </div>
                                             <div class="form-group col-lg-4">
-                                                <input type="submit" name="atualizar" class="btn btn-success" value="atualizar Dados">
+                                                <input type="submit" name="atualizar" class="btn btn-success" value="Atualizar Dados">
                                             </div>    
                                         </div>
 

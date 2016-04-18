@@ -18,7 +18,7 @@
             <?php
             
             
-                $id = (int) $_GET['id'];
+              $id = (int) $_GET[md5('id')];
               $endereco = new endereco(); 
             
             if (isset($_POST['atualizar'])):

@@ -74,10 +74,10 @@ class endereco extends Crud {
                 . "numero=:numero where id = :id";
         $stmt = DB::prepare($sql);
 
-        $stmt->bindParam(':cep', $this->nome);
-        $stmt->bindParam(':endereco', $this->descrição);
+        $stmt->bindParam(':cep', $this->cep);
+        $stmt->bindParam(':endereco', $this->rua);
         $stmt->bindParam(':cnpj', $this->cnpj);
-        $stmt->bindParam(':numero', $this->cnpj);
+        $stmt->bindParam(':numero', $this->numero);
         $stmt->bindParam(':id', $id);
         
         

@@ -3,7 +3,7 @@
        include '../include/include_classes.php';
                      $atividade = new atividade(); 
 
-                $id = $_GET['id'];
+                $id = $_GET[md5('id')];
                  $deletar = $atividade->delete($id);
                     if ($deletar === '1451') {
                    echo "<script>alert('Não foi possivel deletar, verifique se existem associações com essa atividade!');"

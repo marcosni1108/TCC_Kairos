@@ -18,9 +18,7 @@
         
             <?php
             
-                $id = (int) $_GET['idDept'];
-                           
-            
+              $id = (int) $_GET[md5('idDept')];
               $departamento = new departamento(); 
             if (isset($_POST['atualizar'])):
 
@@ -89,7 +87,7 @@
 
                                                 <div class="form-group col-lg-4">
                                                   <label for="cnpj">CNPJ</label>
-                                                  <input type="text" class="form-control" name="cnpj"  value=" <?php echo $resultado->cnpj; ?>" id="cnpjEdit" placeholder="CNPJ" readonly>
+                                                  <input type="text" class="form-control" name="cnpj"  value="<?php echo $resultado->cnpj; ?>" id="cnpjEdit" placeholder="CNPJ" readonly>
                                                 </div>     
                                             
                                                 <div class="form-group col-lg-6">

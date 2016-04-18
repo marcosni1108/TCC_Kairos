@@ -71,7 +71,7 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#grafico"><i class="glyphicon glyphicon-align-left"></i> Graficos <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="grafico" class="collapse">
                             <li>
-                                <a href="#">Graficos</a>
+                                <a href="../graficos/dashbord.php">Produtividade</a>
                             </li>
                             <li>
                                 <a href="#">Graficos</a>

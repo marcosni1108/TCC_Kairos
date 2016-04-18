@@ -16,13 +16,13 @@
     <body >
 
         <?php
-        $id = (int) $_GET['id'];
+        $id = (int) $_GET[md5('id')];
         $atividade = new atividade();
 
         if (isset($_POST['atualizar'])):
 
 
-         $nome = $_POST['nome_ativ'];
+        $nome = $_POST['nome_ativ'];
         $descricao = $_POST['descricao'];
         $idDepartamentoFK = $_POST['departamento'];
         $cnpj = $_POST['cnpj'];
@@ -116,7 +116,7 @@
 
                                             <div class="form-group col-lg-4">
                                                   <label for="cnpj">CNPJ</label>
-                                                  <input type="text" class="form-control" name="cnpj"  value=" <?php 
+                                                  <input type="text" class="form-control" name="cnpj"  value="<?php 
                                                     $endereco = new endereco; $cnpj = $endereco->find($dept->idEnderecoFK); 
                                                     echo $cnpj->cnpj; ?>" id="cnpjEditAtividade" placeholder="CNPJ" readonly>
                                                 </div>                                              

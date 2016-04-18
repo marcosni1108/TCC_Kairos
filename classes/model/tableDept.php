@@ -14,9 +14,9 @@ foreach ($departamento->findAll() as $key => $value) {
     $lider = $usuario->find($value->lider);
     $gerente = $usuario->find($value->gerente);
     $fields = array($value->nome, $end->endereco." Nº ".$end->numero, $value->cnpj, $lider->nome,
-        $gerente->nome, "<a href='editarDepartamento.php?acao=editar&idDept=" . $value->id . "'>"
+        $gerente->nome, "<a href='editarDepartamento.php?".md5('idDept')."=" . $value->id . "'>"
         . "<input type='submit' name='editar' class='btn btn-primary' value='Editar' style='margin-right:20px;margin-left:20px;'></a>"
-        . "<a href='inativarDepartamento.php?acao=deletar&idDept=" . $value->id . "' onclick='return confirm(\"Deseja realmente deletar?\")'>"
+        . "<a href='inativarDepartamento.php?".md5('idDept')."=" . $value->id . "' onclick='return confirm(\"Deseja realmente deletar?\")'>"
         . "<input type='submit' name='deletar' class='btn btn-danger' value='Deletar' style='margin-right:-20px;'></a>");
          $json_result["data"] [] = $fields;
 }

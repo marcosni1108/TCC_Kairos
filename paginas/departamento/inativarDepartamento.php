@@ -3,7 +3,7 @@
        include '../include/include_classes.php';
                      $departamento = new departamento(); 
 
-                $idDepartament = $_GET['idDept'];
+                $idDepartament = $_GET[md5('idDept')];
                 $deletar =  $departamento->delete($idDepartament);
                     if ($deletar === '1451') {
                    echo "<script>alert('Não foi possivel deletar, verifique se existem associações com esse departamento!');"

@@ -3,7 +3,7 @@
        include '../include/include_classes.php';
                      $funcionario = new funcionario(); 
 
-                $matricula = $_GET['id'];
+                $matricula = $_GET[md5('id')];
                 $deletar = $funcionario->delete($matricula);
                     if ($deletar===true) {
                     echo "<script type='text/javascript' charset='utf-8'>alert('Deletado com sucesso!');"

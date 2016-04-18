@@ -3,7 +3,7 @@
        include '../include/include_classes.php';
                      $endereco = new endereco(); 
 
-                $id = $_GET['id'];
+                $id = $_GET[md5('id')];
                 $deletar =  $endereco->delete($id);
                     if ($deletar===true) {
                     echo "<script type='text/javascript' charset='utf-8'>alert('Deletado com sucesso!');"
