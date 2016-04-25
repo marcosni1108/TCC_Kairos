@@ -38,7 +38,12 @@ if (! empty($opcao)){
 			{
 				echo whereSelected($valor,$tipo);
 				break;
-			}                        
+			}   
+                 case 'FindFunc':
+			{
+				echo findUser();
+				break;
+			}   
 	}
 }
 
@@ -84,6 +89,12 @@ function getAtividade($id){
 function getUser($nivel){
 	$user = new funcionario();
         $usuario = $user->whereNivel($nivel);
+	echo json_encode($usuario);
+		
+}
+function findUser(){
+	$user = new funcionario();
+        $usuario = $user->findAll();
 	echo json_encode($usuario);
 		
 }

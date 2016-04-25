@@ -74,6 +74,9 @@
                                 <a href="../graficos/dashbord.php">Produtividade</a>
                             </li>
                             <li>
+                                <a href="../graficos/ProdutividadeFunc.php">Produtividade de Funcionários</a>
+                            </li>
+                            <li>
                                 <a href="#">Graficos</a>
                             </li>    
                             <li>

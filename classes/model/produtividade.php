@@ -148,6 +148,16 @@ class produtividade extends Crud {
         $stmt->execute();
         return $stmt->fetchAll();
     }
+    
+     public function findIdFunc($idFuncionario,$data) {
+
+        $sql = "SELECT * FROM $this->table where IdFuncionario = :idFuncionario and data = :data";
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':idFuncionario', $idFuncionario, PDO::PARAM_INT);
+         $stmt->bindParam(':data', $data);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 
 }
 
