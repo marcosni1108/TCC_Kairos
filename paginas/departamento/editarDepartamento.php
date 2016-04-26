@@ -79,7 +79,7 @@
                                                       <option value="<?php $endereco = new endereco; $end = $resultado->idEnderecoFK; $ender = $endereco->find($end); echo $resultado->idEnderecoFK; ?>" selected><?php echo $ender->endereco." Nº: ".$ender->numero; ?></option>  
                                                         <?php foreach ($endereco->whereSelectedEnd($end) as $key => $value): ?>
                                                         <option value="<?php echo $value->id; ?>">
-                                                        <?php echo $value->endereco."Nº: ".$value->numero; ?></option> 
+                                                        <?php echo $value->endereco." Nº: ".$value->numero; ?></option> 
                                                         <?php endforeach; ?>
                                                     </select>
                                                 </div> 
