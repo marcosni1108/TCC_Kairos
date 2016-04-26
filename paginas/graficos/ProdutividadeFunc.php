@@ -16,7 +16,7 @@
             $data = date('Y-m-d', strtotime($dataSFormat));
 
             $GerarGraficos = new GerarGraficos();
-            if ($GerarGraficos->produtividadeFunc($id, $data)) {
+            if ($GerarGraficos->prodFunc($id, $data)) {
                 echo "<script>"
                 . "window.location='./GraficoFunc.php'</script>";
             } else {

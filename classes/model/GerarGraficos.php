@@ -13,7 +13,7 @@
  */
 class GerarGraficos {
     //put your code here
-    public function produtividadeFunc($id,$data){
+    public function prodFunc($id,$data){
         
         $produtividade = new produtividade();
         $fun = new funcionario();
