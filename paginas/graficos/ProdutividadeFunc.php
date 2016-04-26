@@ -43,7 +43,7 @@
     <body >
 
         <div id="wrapper" >
-            <div class="container-fluid">
+            <div class="container-fluid" style="width:100%; top:10%; position:absolute;">
                 <form method="post" >
                     <div class="input-prepend">
                         <h1 class="page-header">
@@ -52,14 +52,14 @@
 
                         <div class="row">
 
-                            <div class="form-group col-lg-4">
+                            <div class="form-group col-lg-3">
                                 <label for="funcionario">Funcionários</label>
                                 <select  class="form-control" name="funcionario" id="cmbfuncionario" required>                                                  
 
                                 </select>
 
                             </div>
-                            <div class="form-group col-lg-3">
+                            <div class="form-group col-lg-2">
                                 <label for="data">Data</label>
                                 <input type="text" class="form-control" id="datepicker" name="data" placeholder="Data" required>                                
                             </div>

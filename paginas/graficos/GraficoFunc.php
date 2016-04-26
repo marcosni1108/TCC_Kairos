@@ -34,7 +34,7 @@
     <script src="../../js/jquery-1.12.0.min.js"></script>
     <script src="../../js/plugins/morris/morris.min.js"></script>
     <script src="../../js/plugins/morris/morris-data.js"></script>
-     <script src="../../js/dataTable/dataFuncGrafico.js"></script>
+    <script src="../../js/dataGrafico/dataFuncGrafico.js"></script>
      
     <?php include_once '../include/include_js.php'; ?>
     <script src="../../js/populaCombo.js"></script>

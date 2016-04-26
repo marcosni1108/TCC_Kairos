@@ -39,7 +39,7 @@ class GerarGraficos {
                     $nomeFun = $fun->find($id);
                     $dataGrafico1 .= "Morris.Area({ element: 'chartFunc',data: ".$dataGrafico.", xkey: 'y', ykeys: ['a'], labels: ['Produtividade de ".$nomeFun->nome." ']});";
 
-                    $fp = fopen("../../js/dataTable/dataFuncGrafico.js", "w");
+                    $fp = fopen("../../js/dataGrafico/dataFuncGrafico.js", "w");
 
                     // Escreve "exemplo de escrita" no bloco1.txt
                     $escreve = fwrite($fp, $dataGrafico1);
@@ -48,7 +48,7 @@ class GerarGraficos {
         }
         else{
             
-                    $fp = fopen("../../js/dataTable/dataFuncGrafico.js", "w");
+                    $fp = fopen("../../js/dataGrafico/dataFuncGrafico.js", "w");
 
                     // Escreve "exemplo de escrita" no bloco1.txt
                     $escreve = fwrite($fp, " ");
