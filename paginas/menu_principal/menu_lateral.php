@@ -77,7 +77,7 @@
                                 <a href="../graficos/ProdutividadeFunc.php">Produtividade de Funcionários</a>
                             </li>
                             <li>
-                                <a href="#">Graficos</a>
+                                <a href="../graficos/GraficoParada.php">Tempo Perdido</a>
                             </li>    
                             <li>
                                 <a href="#">Graficos</a>
