@@ -10,24 +10,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"></a>
+                <a class="navbar-brand" href="menu_principal.php"></a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+<!--                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
                     <ul class="dropdown-menu message-dropdown">
                         <li class="message-preview">
                             <a href="#">
                                 <div class="media">
-                                    <span class="pull-left">
-                                        <h5 class="media-heading"><strong><?php echo $logado ?></strong>
-                                    </span>
+                                    
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>J<?php echo $logado ?></strong>
+                                        <h5 class="media-heading"><strong><?php echo $logado ?></strong>
                                         </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i>  <?php $data = date('d-m-Y'); echo $data ?></p>
+                                        <p>Sem novas Mensagens</p>
                                     </div>
                                 </div>
                             </a>
@@ -41,8 +39,8 @@
                                     <div class="media-body">
                                         <h5 class="media-heading"><strong><?php echo $logado ?></strong>
                                         </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> <?php $data = date('Y-m-d'); echo $data ?></p>
+                                        <p></p>
                                     </div>
                                 </div>
                             </a>
@@ -63,11 +61,11 @@
                             </a>
                         </li>
                         <li class="message-footer">
-                            <a href="#">Read All New Messages</a>
+                            <a href="#">Todas as Mensagens</a>
                         </li>
-                    </ul>
+                    </ul>-->
                 </li>
-                <li class="dropdown">
+<!--                <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
                     <ul class="dropdown-menu alert-dropdown">
                         <li>
@@ -93,20 +91,16 @@
                             <a href="#">View All</a>
                         </li>
                     </ul>
-                </li>
+                </li>-->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $logado ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li>
+<!--                        <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Perfil</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Configurações</a>
-                        </li>
-                        <li class="divider"></li>
+                        </li>-->
+                        
+                       
+                        <li class=""></li>
                         <li>
                             <a href="../../classes/model/logout.php"><i class="fa fa-fw fa-power-off"></i> Sair</a>
                         </li>
