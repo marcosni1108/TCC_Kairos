@@ -10,7 +10,7 @@ class endereco extends Crud {
     private $rua;
     private $cnpj;
     private $numero;
-    
+
     function getId() {
         return $this->id;
     }
@@ -51,7 +51,7 @@ class endereco extends Crud {
         $this->numero = $numero;
     }
 
-                public function insert() {
+    public function insert() {
 
 
         $sql = "INSERT INTO $this->table (cep,endereco,	cnpj,numero)"
@@ -61,10 +61,13 @@ class endereco extends Crud {
         $stmt->bindParam(':endereco', $this->rua);
         $stmt->bindParam(':cnpj', $this->cnpj);
         $stmt->bindParam(':numero', $this->numero);
-     
-
-       
-        return $stmt->execute();
+        try {
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1062') {
+                return false;
+            }
+        }
     }
 
     public function update($id) {
@@ -79,8 +82,8 @@ class endereco extends Crud {
         $stmt->bindParam(':cnpj', $this->cnpj);
         $stmt->bindParam(':numero', $this->numero);
         $stmt->bindParam(':id', $id);
-        
-        
+
+
         return $stmt->execute();
     }
 

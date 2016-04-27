@@ -36,6 +36,8 @@
             # Insert
             if ($endereco->insert()) {
                 echo "<script> alert('Cadastrado com sucesso')</script>";
+            }else{
+                echo "<script> alert('Não foi possivel cadastrar esse endereço, esse CNPJ já esta cadastrado.')</script>";
             }
             
         endif;
