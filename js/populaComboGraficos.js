@@ -19,6 +19,7 @@
          
 
         $('#cmbCNPJ').ready(function(){
+             $('#btnGerar').prop("disabled",true);
 	//pagina de cadastro de departamento	
 		$.getJSON('../../classes/model/consulta.php?opcao=endereco', function (dados){ 
 		
@@ -33,6 +34,7 @@
 			
 		   }
 		   $('#cmbCNPJ').html(option).show(); 
+                     $('#btnGerar').prop("disabled",false);
                   
 		})
 	})

@@ -123,6 +123,15 @@ class funcionario extends Crud {
         $stmt->execute();
         return $stmt->fetchAll();
     }
+  
+    public function acessoNivel($login) {
+        $sql = "SELECT nivel FROM $this->table WHERE login = :login";
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':login', $login);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+    
     public function whereNome($nome) {
         $sql = "SELECT * FROM $this->table WHERE nome = :nome";
         $stmt = DB::prepare($sql);
