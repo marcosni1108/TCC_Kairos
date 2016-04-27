@@ -20,7 +20,7 @@
             $cpf = $_POST['cpf'];
             $email = $_POST['email'];
             $login = $_POST['login'];
-            $senha = $_POST['senha'];
+            $senha = 'kairos';
             $nivel = $_POST['nivel'];
             $funcionario = new funcionario();
             $funcionario->setMatricula($matricula);
@@ -82,10 +82,10 @@
                                 <label for="login">Login</label>
                                 <input type="text" class="form-control" name="login" id="login" placeholder="Login" required>
                             </div>  
-                            <div class="form-group col-lg-4">
+<!--                            <div class="form-group col-lg-4">
                                 <label for="senha">Senha</label>
                                 <input type="password" class="form-control" name="senha" id="senha" placeholder="Senha" required>
-                            </div>      
+                            </div>      -->
                         </div>    
                         <div class="row">
                             <div class="form-group col-lg-4">

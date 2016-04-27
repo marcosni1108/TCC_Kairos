@@ -130,5 +130,14 @@ class funcionario extends Crud {
         $stmt->execute();
         return $stmt->fetchAll();
     }
+    public function updateSenha($login) {
+
+        $sql = "UPDATE $this->table SET senha= :senha "
+                . "WHERE login = :login";
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':senha', $this->senha);
+        $stmt->bindParam(':login', $login);
+        return $stmt->execute();
+    }
     
 }

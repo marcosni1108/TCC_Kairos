@@ -53,17 +53,24 @@
                         <div class="row">
 
                             <div class="form-group col-lg-3">
-                                <label for="funcionario">Funcionário</label>
-                                <select  class="form-control" name="funcionario" id="cmbfuncionario" required>                                                  
+                                <label for="CNPJ">CNPJ</label>
+                                <select  class="form-control" name="funcionario" id="cmbCNPJ" required>                                                  
 
                                 </select>
 
                             </div>
-                            <div class="form-group col-lg-2">
+<!--                            <div class="form-group col-lg-2">
                                 <label for="data">Data</label>
                                 <input type="text" class="form-control" id="datepicker" name="data" placeholder="Data" required>                                
+                            </div>-->
+                             <div class="form-group col-lg-2">
+                                <label for="data">De</label>
+                                <input type="text" class="form-control" id="from" name="data" placeholder="Data" required>                                
                             </div>
-                             
+                             <div class="form-group col-lg-2">
+                                <label for="data">Ate</label>
+                                <input type="text" class="form-control" id="to" name="data" placeholder="Data" required>                                
+                            </div>
                         </div>    
                         <div class="row"><hr width=95%></div>   
                         <div class="row">    
