@@ -20,7 +20,7 @@ $(function() {
  
   $(function() {
     $( "#from" ).datepicker({
-      defaultDate: "+1w",
+      defaultDate: "+0w",
       changeMonth: true,
       numberOfMonths: 1,
       dateFormat: 'dd/mm/yy',
@@ -34,7 +34,7 @@ $(function() {
       }
     });
     $( "#to" ).datepicker({
-      defaultDate: "+1w",
+      defaultDate: "+0w",
       changeMonth: true,
       numberOfMonths: 1,
       dateFormat: 'dd/mm/yy',

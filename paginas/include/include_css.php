@@ -1,6 +1,6 @@
     <!-- Bootstrap Core CSS -->
     <link href="../../css/bootstrap.min.css" rel="stylesheet">
-
+<link rel="shortcut icon" href="../../imagens/icon.png" type="image/x-icon"/>
     <!-- Custom CSS -->
     <link href="../../css/sb-admin.css" rel="stylesheet">
     <link href="../../css/jquery.dataTables.min.css" rel="stylesheet">

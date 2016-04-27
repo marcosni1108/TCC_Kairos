@@ -9,19 +9,19 @@
         ?>   
         <?php
         if (isset($_POST['GerarGrafico'])):
-            $id = $_POST['funcionario'];
-            $dataSFormat = $_POST['data'];
-            $dataSFormat = str_replace('/', '-', $dataSFormat);
-
-            $data = date('Y-m-d', strtotime($dataSFormat));
-
+            $dataDeTemp = $_POST['dataDe'];
+            $dataAteTemp = $_POST['dataAte'];
+            $idCnpj =  $_POST['CNPJ'];
+            //Muda o formato da data
+            $dataDe = date("Y-m-d", strtotime(str_replace("/", "-", $dataDeTemp)));
+            $dataAte = date("Y-m-d", strtotime(str_replace("/", "-", $dataAteTemp)));
             $GerarGraficos = new GerarGraficos();
-            if ($GerarGraficos->prodFunc($id, $data)) {
+            if ($GerarGraficos->prodDept($dataDe,$dataAte,$idCnpj)) {
                 echo "<script>"
-                . "window.location='./GraficoFunc.php'</script>";
+                . "window.location='./GraficoDept.php'</script>";
             } else {
 
-                echo "<script> alert('Usuário sem produtividade');</script>";
+                echo "<script> alert('Departamento sem produtividade no periodo selecionado');</script>";
             }
 
 
@@ -54,7 +54,7 @@
 
                             <div class="form-group col-lg-3">
                                 <label for="CNPJ">CNPJ</label>
-                                <select  class="form-control" name="funcionario" id="cmbCNPJ" required>                                                  
+                                <select  class="form-control" name="CNPJ" id="cmbCNPJ" required>                                                  
 
                                 </select>
 
@@ -65,11 +65,11 @@
                             </div>-->
                              <div class="form-group col-lg-2">
                                 <label for="data">De</label>
-                                <input type="text" class="form-control" id="from" name="data" placeholder="Data" required>                                
+                                <input type="text" class="form-control" id="from" name="dataDe" placeholder="Data" required>                                
                             </div>
                              <div class="form-group col-lg-2">
                                 <label for="data">Ate</label>
-                                <input type="text" class="form-control" id="to" name="data" placeholder="Data" required>                                
+                                <input type="text" class="form-control" id="to" name="dataAte" placeholder="Data" required>                                
                             </div>
                         </div>    
                         <div class="row"><hr width=95%></div>   
@@ -89,8 +89,7 @@
 
     </body>
 
-    <script src="../../js/populaCombo.js"></script>
-
+    <script src="../../js/populaComboGraficos.js"></script>
 
 
 </html>

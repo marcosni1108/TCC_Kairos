@@ -82,7 +82,7 @@
 
     </body>
 
-    <script src="../../js/populaCombo.js"></script>
+    <script src="../../js/populaComboGraficos.js"></script>
 
 
 

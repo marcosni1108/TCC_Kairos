@@ -57,5 +57,50 @@ class GerarGraficos {
         }
         
 }
+
+ public function prodDept($dataDe,$dataAte,$idCnpj){
+        
+        $produtividade = new produtividade();
+        $fun = new funcionario();
+        
+      
+        $dataGrafico .= "[";
+        $arrayFunc = $produtividade->findProdDept($dataDe,$dataAte,$idCnpj);
+        
+        if($arrayFunc){
+            
+                foreach ($arrayFunc as $key => $value){
+
+                
+
+                    $prod = $value->prod;
+                    $nomeDpt = $value->nome;
+
+
+
+                    $dataGrafico.= "{ y: '" .$nomeDpt."', a: " . $prod . " },";
+                }
+                    $dataGrafico.= "]";
+                    
+                    $dataGrafico1 .= "Morris.Bar({ element: 'barDept',data: ".$dataGrafico.", xkey: 'y', ykeys: ['a'], labels: ['Produtividade do Departamento ']});";
+
+                    $fp = fopen("../../js/dataGrafico/dataDeptProd.js", "w");
+
+                    // Escreve "exemplo de escrita" no bloco1.txt
+                    $escreve = fwrite($fp, $dataGrafico1);
+                    fclose($fp);
+                    return true;
+        }
+        else{
+            
+                    $fp = fopen("../../js/dataGrafico/dataDeptProd.js", "w");
+
+                    // Escreve "exemplo de escrita" no bloco1.txt
+                    $escreve = fwrite($fp, " ");
+                    fclose($fp);
+                    return false;
+        }
+        
+}
     }
 
