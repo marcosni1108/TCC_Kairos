@@ -8,7 +8,7 @@
 //        include '../include/include_classes.php';
         include "../../classes/model/validaOperario.php";
         ?>   
-        <link href="../../css/sb-admin.css" rel="stylesheet">
+        
         <meta charset="UTF-8">
     </head>
     <body >

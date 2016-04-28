@@ -5,7 +5,31 @@ $(document).ready(function(){
         $('#hora_final').wickedpicker({now: '8:00', twentyFour: true, title:
                     'Horário', showSeconds: false});
 	})
-        
+ $('#document').ready(function(){
+     var qtdAmostra = document.getElementById("qtdAmostra").innerHTML
+     var jsonAmostra = "";
+   for(var i =0; i <= qtdAmostra-1; i++){  
+        $.ajax({ 
+                   type: "GET",
+                   dataType: "json",
+                   async: false,
+                   url: "http://localhost/Kairos/js/dataAmostra/dataAmostra"+i+".json",
+                   success: function(data){        
+                      
+                      jsonAmostra = data;
+                   }
+               });
+               
+               
+                      var cols = '';
+                      cols += '<td>'+jsonAmostra.amostra[0].hora_inicial+'</td>';
+                      cols += '<td>'+jsonAmostra.amostra[0].hora_final+'</td>';
+                      cols += '<td>'+jsonAmostra.amostra[0].quantidade+'</td>';
+                      document.getElementById('tbl_Amostra').innerHTML += cols;
+                      document.getElementById('tbl_Amostra').innerHTML += '</tr>';
+		
+   }		
+})       
 
 $('#quantidade').focus(function(e){
 //$(teste).click(function(e){
@@ -27,10 +51,7 @@ $('#quantidade').focus(function(e){
 		
 		
 		})
-                
-
-                
-        function validaHora(){
+      function validaHora(){
 //$(teste).click(function(e){
 			var hora_inicial ="";
 			var hora_final ="";

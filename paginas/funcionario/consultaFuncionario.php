@@ -12,7 +12,7 @@
         include "../header/header.php";
         include "../../classes/model/validaOperario.php";
 //        include '../include/include_classes.php';
-        include '../../classes/model/tableFunc.php';
+       include '../../classes/model/tableFunc.php';
 //    teste    $funcionario = new funcionario();
         ?>
 

@@ -1,6 +1,6 @@
 <?php
 
-require 'funcionario.php';
+require_once 'funcionario.php';
 $funcionario = new funcionario();
 $funcionario->findAll();
 $i = 0;
