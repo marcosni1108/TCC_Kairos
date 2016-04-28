@@ -8,10 +8,12 @@
         <title>Kairos</title>
         <?php
         include "../include/include_css.php";
-        include "../menu_principal/menu_lateral.php";
+       // include "../menu_principal/menu_lateral.php";
         include "../header/header.php";
-        include '../include/include_classes.php';  
+        include "../../classes/model/validaOperario.php";
+//        include '../include/include_classes.php';  
         include '../../classes/model/tableDept.php';
+        include "../../classes/model/validaLider.php";
 //              $departamento = new departamento();
 //              ?>
 

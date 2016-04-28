@@ -7,7 +7,7 @@
         <?php
         include "../header/header.php";
         include "../include/include_css.php";
-        include "menu_lateral_administrador.php";
+       // include "menu_lateral_administrador.php";
         
         
         ?>        

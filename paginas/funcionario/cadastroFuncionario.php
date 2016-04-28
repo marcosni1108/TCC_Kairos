@@ -3,9 +3,13 @@
         <title>Kairos</title>
         <?php
         include "../include/include_css.php";
-        include "../menu_principal/menu_lateral.php";
+     //   include "../menu_principal/menu_lateral.php";
         include "../header/header.php";
-        include '../include/include_classes.php';
+        include "../../classes/model/validaOperario.php";
+//        include '../include/include_classes.php';
+        
+   
+        
         ?>   
         <link href="../../css/sb-admin.css" rel="stylesheet">
         <script type="text/javascript" src="../../js/validadores.js"></script>
@@ -72,7 +76,7 @@
                                 <select type="nivel" class="form-control" name="nivel" id="nivel">
                                     <option value="Administrador">Administrador</option>
                                     <option value="Gerente">Gerente</option>
-                                    <option value="Supervisor">Supervisor</option>
+                                    <option value="Lider">Lider</option>
                                     <option value="Operador">Operador</option>
                                 </select>
                             </div>                                             

@@ -5,7 +5,8 @@
         include "../include/include_css.php";
         include "../header/header.php";
         include "../menu_principal/menu_lateral.php";
-        include '../include/include_classes.php';
+//        include '../include/include_classes.php';
+        include "../../classes/model/validaOperario.php";
         ?>   
         <link href="../../css/sb-admin.css" rel="stylesheet">
          <link rel="stylesheet" href="../../css/wickedpicker.css">

@@ -4,9 +4,10 @@
         <title>Kairos</title>
         <?php
         include "../include/include_css.php";
-        include "../menu_principal/menu_lateral.php";
+        //include "../menu_principal/menu_lateral.php";
         include "../header/header.php";
-        include '../include/include_classes.php';
+        //include '../include/include_classes.php';
+        include "../../classes/model/validaOperario.php";
         ?>   
         <meta charset="UTF-8">
         <script type="text/javascript" src="../../js/validadores.js"></script>

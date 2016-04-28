@@ -110,5 +110,16 @@
         </nav>
 
 <?php 
-    //include "include_js.php";
+          include '../include/include_classes.php';
+          $acesso = new funcionario();
+          $login = $_SESSION['login'];
+          $result = $acesso->acessoNivel($login);
+          $nivel = $result[0]->nivel;
+            if($nivel === "Operador"){
+              include "../menu_principal/menu_lateral_operador.php";
+            }elseif ($nivel === "Lider") {   
+                include "../menu_principal/menu_lateral_lider.php";
+            }else{
+                include "../menu_principal/menu_lateral.php";
+            }
 ?>

@@ -7,11 +7,15 @@
         include "../include/include_css.php";
 
         include '../include/include_classes.php';
-        if (isset($_SESSION['erro'])){
+        if (isset($_SESSION['login'])){
+                    header('location:../../paginas/menu_principal/menu_principal.php');  
+        }
+        else if (isset($_SESSION['erro'])){
             if($_SESSION['erro']==NULL){
                 $_SESSION['erro']=false;
             }
-        }else{
+        }
+        else{
             
             $_SESSION['erro']=false;
         }
