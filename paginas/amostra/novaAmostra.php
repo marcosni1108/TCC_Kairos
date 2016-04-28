@@ -24,8 +24,8 @@
             $_SESSION["i"] = 0;
             $_SESSION["jcount"] = 0;
             $amostra = new amostra;
-            $conut = $amostra->findAllAmostras($atividade);
-            if($conut){
+            $count = $amostra->findAllAmostras($atividade);
+            if($count){
                  echo "<script>alert('Já existe um indece para essa atividade por favor selecione outra atividade');"
                         . "window.location='./cadastroAmostra.php'</script>";
                      
