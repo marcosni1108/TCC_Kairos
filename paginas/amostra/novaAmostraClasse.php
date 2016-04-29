@@ -4,11 +4,12 @@
         <?php
         include "../include/include_css.php";
         include "../header/header.php";
-       // include "../menu_principal/menu_lateral.php";
+        // include "../menu_principal/menu_lateral.php";
 //        include '../include/include_classes.php';
         include "../../classes/model/validaOperario.php";
+        require_once '../../classes/controller/ControllerAmostra.php';
         ?>   
-        
+
         <link rel="stylesheet" href="../../css/wickedpicker.css">
 
         <meta charset="UTF-8">
@@ -16,6 +17,7 @@
     <!--<body onbeforeunload="return myFunction()">!-->
     <body>
         <?php
+        $ControllerAmostra = new ControllerAmostra;
         if (isset($_POST['cadastrar'])) {
 
             $cnpj = $_POST['cnpj'];
@@ -38,138 +40,36 @@
                 $atividade = $_POST['atividade'];
                 $hora_inicial = $_POST['hora_inicial'];
                 $hora_final = $_POST['hora_final'];
+
                 $quantidade = $_POST['quantidade'];
             } else {
+
                 $cnpj = $_POST['cnpj'];
                 $departamento = $_POST['departamento'];
                 $atividade = $_POST['atividade'];
                 $hora_inicial = $_POST['hora_inicial'];
                 $hora_final = $_POST['hora_final'];
                 $quantidade = $_POST['quantidade'];
-
-                 
-                //$indice = intval(10);
-                $teste = str_replace(" ", "", $hora_inicial);
-
-                $hora_inicial = strtotime(str_replace(" ", "", $hora_inicial));
-                $hora_final = strtotime(str_replace(" ", "", $hora_final));
-
-                $tempoTotal = ($hora_final - $hora_inicial);
-                $tempoTotalMinutos = $tempoTotal / 60;
-
-                $indice = $quantidade / $tempoTotalMinutos;
-
-                $filds1["departamento"] = $departamento;
-                $filds1["atividade"] = $atividade;
-                $filds1["hora_inicial"] = $hora_inicial;
-                $filds1["hora_final"] = $hora_final;
-                $filds1["hora_inicial_1"] =$_POST['hora_inicial'];
-                $filds1["hora_final_1"] =  $_POST['hora_final'];
-                $filds1["quantidade"] = $quantidade;
-                $filds1["indice"] = $indice;
-
-
-              
-                $json_result["amostra"] [] = $filds1;
-                $JSON = json_encode($json_result);
-
-                $fp = fopen("../../js/dataAmostra/dataAmostra" . $_SESSION["jcount"] ++ . ".json", "w") or die('Cannot open file:');
-
-
-                // Escreve "exemplo de escrita" no bloco1.txt
-
-                $escreve = fwrite($fp, $JSON);
-                // Fecha o arquivo
-                fclose($fp);
                 
-                
-                
+                if ($ControllerAmostra->gravaAmostra($departamento, $atividade, $hora_inicial, $hora_final, $quantidade, $indice)) {
+                    
+                }
             }
         }
-
-
-
         if (isset($_POST['finalizar'])) {
             if ($_SESSION["jcount"] >= 2) {
 
-
-                for ($e = 0; $e < $_SESSION["jcount"]; $e++) {
-                    $arquivo = "../../js/dataAmostra/dataAmostra" . $e . ".json";
-                    $info = file_get_contents($arquivo);
-                    $lendo = json_decode($info);
-                    foreach ($lendo->amostra as $campo) {
-                        $indice_autal = $campo->indice;
-                    }
-                    for ($w = $e + 1; $w < $_SESSION["jcount"]; $w++) {
-                        $arquivo = "../../js/dataAmostra/dataAmostra" . $w . ".json";
-                        $info = file_get_contents($arquivo);
-                        $lendo = json_decode($info);
-                        foreach ($lendo->amostra as $campo) {
-                            $indice_proximo = $campo->indice;
-                        }
-                        //compara 
-                        if ($indice_autal == $indice_proximo && $w <> $_SESSION["jcount"]) {
-                            $moda = true;
-                            $media = false;
-                            $contModa = $contModa + 1;
-                        } elseif ($contModa == 0) {
-                            $media = true;
-                            $moda = false;
-                        }
-                    }
-                    if ($moda == true) {
-
-                        $indice_final_moda = $indice_autal;
-                    } else
-                    if ($media == true) {
-                        $indice_provisorio = $indice_final_media;
-                        $indice_final_media = $indice_provisorio + $indice_autal;
-                    }
-                }
-                $indice_final_media = $indice_final_media / $_SESSION["jcount"];
-
-                for ($e = 0; $e < $_SESSION["jcount"]; $e++) {
-                    $arquivo = "../../js/dataAmostra/dataAmostra" . $e . ".json";
-                    $info = file_get_contents($arquivo);
-                    $lendo = json_decode($info);
-                    $amostra = new amostra();
-
-                    foreach ($lendo->amostra as $campo) {
-
-                        $amostra->setDepartamento($campo->departamento);
-                        $amostra->setAtividade($campo->atividade);
-                        $amostra->setTempoinicial($campo->hora_inicial);
-                        $amostra->setTempofinal($campo->hora_final);
-                        $amostra->setQuantidade($campo->quantidade);
-                        $amostra->setIndice($campo->indice);
-
-                        if ($amostra->insert()) {
-                            console . log($arg);
-                        }
-                    }
-                    
-                }
-                if ($media == true) {
-                    $_SESSION["jcount"] = 0;
-                    $format_numberMedia = number_format($indice_final_media, 2, ',', '');
-                    echo "<script> 
-                                alert('Amostra cadastrada com sucesso á media é:  " . $format_numberMedia . " indice por minuto');
-                                location.href='cadastroAmostra.php';</script>";
-                } else {
-                    $_SESSION["jcount"] = 0;
-                    $format_numberModa = number_format($indice_final_moda, 2, ',', '');
-                    echo "<script> 
-                                alert('Amostra cadastrada com sucesso á moda é:  " . $format_numberModa . " indice por minuto');
-                                location.href='cadastroAmostra.php';</script>";
-                }
+                $result = $ControllerAmostra->verificaMedia();
+                $indice_final_media = $result / $_SESSION["jcount"];
+                $ControllerAmostra->insertAmostraDB();
+                $ControllerAmostra->AlertMedia($indice_final_media);
+                $_SESSION["jcount"] = 0;
             } else {
 
                 echo "<script> alert('Para finalizar mais de 2 amostras devem ser cadastradas')</script>";
             }
         }
-        ?>      <script>
-
-        </script>
+        ?>     
 
         <div id="wrapper" >
             <div class="container-fluid">
@@ -178,7 +78,7 @@
                     <div>
                         <form id="amostra" method="post" action="">
                             <div class="input-prepend">
-                                                                <div class="alert alert-info alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>Ajuda:</strong> Para cadastrar a amostra o usuário deverá colocar a hora inicial da atividade, hora final da atividade, quantidade e clicar no botão cadastrar amostra <br>
+                                <div class="alert alert-info alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>Ajuda:</strong> Para cadastrar a amostra o usuário deverá colocar a hora inicial da atividade, hora final da atividade, quantidade e clicar no botão cadastrar amostra <br>
                                     O minimo de amostras para se cadastrar são duas, para calcular o indice por minuto clique em finalizar.
                                 </div>
                                 <font size="4"><b>Quantidade de amostras:<span id="qtdAmostra"><?php echo $_SESSION["jcount"]; ?></span></b></font>
@@ -189,17 +89,21 @@
                                     </div>
                                     <div class="form-group col-lg-4">
                                         <label for="departamento">Departamento</label>                                                                                
-                                        <input type="text" class="form-control" id="departamentoNone" name="departamentoNone" value="<?php $departamentoclass = new departamento();
-                                            $nameDept = $departamentoclass->find($departamento);
-                                            echo $nameDept->nome; ?>" placeholder="Departamento" readonly="readonly">   
+                                        <input type="text" class="form-control" id="departamentoNone" name="departamentoNone" value="<?php
+                                        $departamentoclass = new departamento();
+                                        $nameDept = $departamentoclass->find($departamento);
+                                        echo $nameDept->nome;
+                                        ?>" placeholder="Departamento" readonly="readonly">   
                                         <input style="display: none" type="text" class="form-control" id="departamento" name="departamento" value="<?php echo $departamento; ?>" placeholder="Departamento" readonly="readonly">   
 
                                     </div>      
                                     <div class="form-group col-lg-4">
                                         <label for="atividade">Atividade</label>                                
-                                        <input type="text" class="form-control" id="AtividadeNone" name="AtividadeNone" value="<?php $atividadeclass = new atividade();
-                                         $name = $atividadeclass->find($atividade);
-                                         echo $name->nome; ?>" placeholder="Atividade" readonly="readonly">
+                                        <input type="text" class="form-control" id="AtividadeNone" name="AtividadeNone" value="<?php
+                                        $atividadeclass = new atividade();
+                                        $name = $atividadeclass->find($atividade);
+                                        echo $name->nome;
+                                        ?>" placeholder="Atividade" readonly="readonly">
                                         <input style="display: none" type="text" class="form-control" id="atividade" name="atividade" value="<?php echo $atividade; ?>" placeholder="Departamento" readonly="readonly">    
 
                                     </div>                                          
@@ -227,11 +131,11 @@
                                         <input  id="cadastrarAmostra" type="submit" name="cadastrarAmostra" class="btn btn-success" value=" Cadastrar Amostra" id="teste">
                                     </div>
                                 </div>
-                         </div>
+                            </div>
                         </form>
                         <form  id="amostra" method="post" action="">
                             <div class="form-group col-lg-1"></div>
-                           <div class="form-group col-lg-3"></div>
+                            <div class="form-group col-lg-3"></div>
                             <div class="form-group col-lg-1" >
                                 <input  type="submit" name="finalizar"  class="btn btn-danger" value="Finalizar&nbsp;Amostra">
                             </div>
@@ -239,30 +143,30 @@
 
                     </div> 
                     <h3>Amostras Cadastradas</h3>
-                <div>
-                   <table id="tbl_Amostra" class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            
-                                            <th>Hora Inicial</th>
-                                            <th>Hora Final</th>
-                                            <th>Quantidade</th>
-                                          
-                                        </tr>
-                                   
-                                    </thead>
-                                    
-                                </table>
-                </div>    
+                    <div>
+                        <table id="tbl_Amostra" class="table table-bordered">
+                            <thead>
+                                <tr>
+
+                                    <th>Hora Inicial</th>
+                                    <th>Hora Final</th>
+                                    <th>Quantidade</th>
+
+                                </tr>
+
+                            </thead>
+
+                        </table>
+                    </div>    
                 </div>
-                
-               
+
+
             </div>
 
 
         </div>
     </body>
-<?php include_once '../include/include_js.php'; ?>
+    <?php include_once '../include/include_js.php'; ?>
     <script type="text/javascript" src="../../js/validadores.js"></script>
     <script type="text/javascript" src="../../js/jquery-1.12.0.min.js"></script>
     <script type="text/javascript" src="../../js/wickedpicker.js"></script>
@@ -270,17 +174,17 @@
     <link href="../../css/jquery-ui.css" rel="stylesheet">
 <!--    <script src="../../js/datapicker/jquery-1.10.2.js"></script>-->
     <script src="../../js/datapicker/jquery-ui.js"></script>
-     <script src="../../js/table.js"></script>
-    
+    <script src="../../js/table.js"></script>
+
     <script>
-        $("#accordion").accordion({
-            collapsible: true
-        });
-        
+                                            $("#accordion").accordion({
+                                                collapsible: true
+                                            });
+
     </script>
-     <script>
-       
-       
+    <script>
+
+
     </script>
 </html>
 
