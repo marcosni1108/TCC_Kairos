@@ -39,6 +39,10 @@
             if ($funcionario->insert()) {
                 echo  "<script> alert('Usuario Cadastrado com sucesso')</script>";
                 
+            }else{
+                
+                echo  "<script> alert('Não foi possivel cadastrar o Usuário')</script>";
+                
             }
             
         }

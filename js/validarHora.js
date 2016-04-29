@@ -20,10 +20,11 @@ $(document).ready(function(){
                    }
                });
                
-               
+                      var hora_inicial = new Date(jsonAmostra.amostra[0].hora_inicial*1000);
+                      var hours = hora_inicial.getHours();
                       var cols = '';
-                      cols += '<td>'+jsonAmostra.amostra[0].hora_inicial+'</td>';
-                      cols += '<td>'+jsonAmostra.amostra[0].hora_final+'</td>';
+                      cols += '<td>'+jsonAmostra.amostra[0].hora_inicial_1+'</td>';
+                      cols += '<td>'+jsonAmostra.amostra[0].hora_final_1+'</td>';
                       cols += '<td>'+jsonAmostra.amostra[0].quantidade+'</td>';
                       document.getElementById('tbl_Amostra').innerHTML += cols;
                       document.getElementById('tbl_Amostra').innerHTML += '</tr>';

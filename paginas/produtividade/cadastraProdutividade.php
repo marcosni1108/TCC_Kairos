@@ -80,7 +80,7 @@
                             Produtividade
                              
                         </h1>   
-                       <?php echo $data_produtividade; ?>
+                       
                        <div class="row">
                             <div class="form-group col-lg-4">
                                 <label for="cnpj">CNPJ</label>

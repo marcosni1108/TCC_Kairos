@@ -15,7 +15,7 @@
              
         <div id="wrapper" >
             <div class="container-fluid">
-                <form method="post" action="novaAmostra.php">
+                <form method="post" action="novaAmostraTeste.php">
                     <div class="input-prepend">
                         <h1 class="page-header">
                             Registro de Amostra

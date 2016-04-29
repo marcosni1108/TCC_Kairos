@@ -47,10 +47,7 @@
                 $hora_final = $_POST['hora_final'];
                 $quantidade = $_POST['quantidade'];
 
-                 $fp1 = fopen("../../js/table.js", "w");
-                    // Escreve "exemplo de escrita" no bloco1.txt
-                 $escreve1 = fwrite($fp1, $jsTeste);
-                 fclose($fp1);
+                 
                 //$indice = intval(10);
                 $teste = str_replace(" ", "", $hora_inicial);
 
@@ -66,10 +63,13 @@
                 $filds1["atividade"] = $atividade;
                 $filds1["hora_inicial"] = $hora_inicial;
                 $filds1["hora_final"] = $hora_final;
+                $filds1["hora_inicial_1"] =$_POST['hora_inicial'];;
+                $filds1["hora_final_1"] =  $_POST['hora_final'];
                 $filds1["quantidade"] = $quantidade;
                 $filds1["indice"] = $indice;
 
 
+              
                 $json_result["amostra"] [] = $filds1;
                 $JSON = json_encode($json_result);
 
@@ -81,6 +81,7 @@
                 $escreve = fwrite($fp, $JSON);
                 // Fecha o arquivo
                 fclose($fp);
+                
                 
                 
             }

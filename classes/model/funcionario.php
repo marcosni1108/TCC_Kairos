@@ -79,7 +79,13 @@ class funcionario extends Crud {
         $stmt->bindParam(':senha', $this->senha);
         $stmt->bindParam(':nivel', $this->nivel);
 
-        return $stmt->execute();
+        try {
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1062') {
+                return false;
+            }
+        }
     }
 
     public function update($id) {

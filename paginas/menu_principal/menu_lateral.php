@@ -40,7 +40,7 @@
                                 <a href="../atividade/consultaAtividade.php">Alterar Atividades</a>
                             </li>    
                             <li>
-                                <a href="../produtividade/cadastraProdutividade.php">Cadastrar Produtividade</a>
+                                <a href="../produtividade/cadastraProdutividade.php">Registrar Produtividade</a>
                             </li>
                             <li>
                                 <a href="../amostra/cadastroAmostra.php">Registrar Amostra</a>
