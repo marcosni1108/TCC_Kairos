@@ -96,7 +96,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $logado ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-lock"></i> Mudar Senha</a>
+                            <a href="../../paginas/login/mudarSenha.php"><i class="fa fa-lock"></i> Mudar Senha</a>
                         </li>
                         
                        

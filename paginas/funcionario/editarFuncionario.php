@@ -26,7 +26,7 @@
                 $cpf = $_POST['cpf'];
                 $email = $_POST['email'];
                 $login = $_POST['login'];
-                $senha = $_POST['senha'];
+                //$senha = $_POST['senha'];
                 $nivel = $_POST['nivel'];
 
 
@@ -36,7 +36,8 @@
                 $funcionario->setCpf($cpf);
                 $funcionario->setEmail($email);
                 $funcionario->setLogin($login);
-                $funcionario->setSenha(md5($senha));
+                $funcionario->setNivel($nivel);
+                //$funcionario->setSenha(md5($senha));
                 
 
 
@@ -62,7 +63,7 @@
                         <!-- Conteudo dentro de wrapper -->
                         <div class="panel-body">
                             <div id="chart">
-                                <?php $resultado = $funcionario->find($id);  ?>
+                                    <?php $resultado = $funcionario->find($id);  ?>
                                 <form method="post" action="">
                                     <div class="input-prepend">
 
