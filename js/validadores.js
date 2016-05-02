@@ -187,7 +187,7 @@ function cnpj_mask(v){
 }
 
 function soLetras(v){
-        return v.replace(/[^a-zA-ZçÇãÃõÕéÉóÓúÚáÁ ]+/g,"") //Remove tudo o que nÃ£o Ã© Letra
+        return v.replace(/^\s*[^+sa-zA-ZçÇãÃõÕéÉóÓúÚáÁ]+/g,"") //Remove tudo o que nÃ£o Ã© Letra
 }
 function soLetrasMA(v){
         v=v.toUpperCase() //Maiúsculas
