@@ -175,6 +175,17 @@ class produtividade extends Crud {
         $stmt->execute();
         return $stmt->fetchAll();
     }
+    
+    public function findProdTotal() {
+
+        $sql = "SELECT SUM(produtividade.quantidade) as prod, "
+                . "departamento.nome FROM produtividade INNER JOIN departamento"
+                . " ON produtividade.`IdDepartamento` = departamento.id "
+                . "GROUP BY produtividade.IdDepartamento";
+        $stmt = DB::prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 
 }
 
