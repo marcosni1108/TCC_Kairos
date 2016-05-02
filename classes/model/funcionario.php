@@ -94,7 +94,6 @@ class funcionario extends Crud {
                 . "cpf=:cpf,"
                 . "email=:email,"
                 . "login=:login,"
-                . "senha= :senha,"
                 . "nivel= :nivel "
                 . "WHERE id = :id";
         $stmt = DB::prepare($sql);
@@ -103,7 +102,6 @@ class funcionario extends Crud {
         $stmt->bindParam(':cpf', $this->cpf);
         $stmt->bindParam(':email', $this->email);
         $stmt->bindParam(':login', $this->login);
-        $stmt->bindParam(':senha', $this->senha);
         $stmt->bindParam(':nivel', $this->nivel);
         $stmt->bindParam(':id', $id);
         return $stmt->execute();

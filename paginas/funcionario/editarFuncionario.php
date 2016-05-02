@@ -37,7 +37,7 @@
                 $funcionario->setEmail($email);
                 $funcionario->setLogin($login);
                 $funcionario->setSenha(md5($senha));
-                $funcionario->setNivel($nivel);
+                
 
 
                 if ($funcionario->update($id)) {
@@ -86,7 +86,7 @@
                                         <div class="row">
                                             <div class="form-group col-lg-4">
                                                 <label for="email">E-mail</label>
-                                                <input type="text" class="form-control" name="email" id="email" value="<?php echo $resultado->email; ?>" placeholder="E-mail">
+                                                <input type="email" class="form-control" name="email" id="email" value="<?php echo $resultado->email; ?>" placeholder="E-mail">
                                             </div>    
 
                                             <div class="form-group col-lg-4">
@@ -94,7 +94,7 @@
                                                 <select type="nivel" class="form-control" name="nivel" id="nivel">
                                                     <option value="<?php echo $resultado->nivel; ?>" selected><?php echo $resultado->nivel; ?></option>
                                                     <option value="Gerente">Gerente</option>
-                                                    <option value="Supervisor">Supervisor</option>
+                                                    <option value="Lider">Lider</option>
                                                     <option value="Operador">Operador</option>
                                                 </select>
                                             </div>                                             
@@ -106,10 +106,7 @@
                                                 <input type="text" class="form-control" name="login" id="login" value="<?php echo $resultado->login; ?>" placeholder="Login" required>
                                             </div>  
 
-                                            <div class="form-group col-lg-4">
-                                                <label for="senha">Senha</label>
-                                                <input type="password" class="form-control" name="senha" id="senha" placeholder="Senha" required>
-                                            </div>      
+                                             
 
                                         </div>    
                                         <div class="row">

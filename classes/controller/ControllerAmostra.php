@@ -29,7 +29,7 @@ class ControllerAmostra {
         $tempoTotal = ($hora_final - $hora_inicial);
         $tempoTotalMinutos = $tempoTotal / 60;
 
-        $indice = $quantidade / $tempoTotalMinutos;
+        $indice =   $tempoTotalMinutos/$quantidade;
         $filds1["departamento"] = $departamento;
         $filds1["atividade"] = $atividade;
         $filds1["hora_inicial"] = $hora_inicial;
@@ -54,7 +54,7 @@ class ControllerAmostra {
     }
 
     public function verificaMedia() {
-        for ($e = 0; $e < $_SESSION["jcount"]; $e++) {
+        for ($e = 0; $e <= $_SESSION["jcount"]-1; $e++) {
 
             $arquivo = "../../js/dataAmostra/dataAmostra" . $e . ".json";
             $info = file_get_contents($arquivo);
@@ -63,18 +63,13 @@ class ControllerAmostra {
             foreach ($lendo->amostra as $campo) {
                 $indice_autal = $campo->indice;
             }
-            for ($w = $e + 1; $w < $sessionCount; $w++) {
-                $arquivo = "../../js/dataAmostra/dataAmostra" . $w . ".json";
-                $info = file_get_contents($arquivo);
-                $lendo = json_decode($info);
-                foreach ($lendo->amostra as $campo) {
-                    $indice_proximo = $campo->indice;
-                }
+           
                 
                 $result = $this->CaluloMedia($indice_autal,$result);
-            }
-            return $result;
+            
+            
         }
+        return $result;
     }
 
     public function gravaMedia() {
@@ -124,7 +119,7 @@ class ControllerAmostra {
         
             $format_numberMedia = number_format($indice_final_media, 2, ',', '');
                  echo "<script> 
-                    alert('Amostra cadastrada com sucesso á media é:  " . $format_numberMedia . " indice por minuto');
+                    alert('Amostra cadastrada com sucesso, o indice é:  " . $format_numberMedia . " segundos por uma unidade');
                     location.href='cadastroAmostra.php';</script>";
         
     }
@@ -140,8 +135,8 @@ class ControllerAmostra {
 
                         $amostra->setDepartamento($campo->departamento);
                         $amostra->setAtividade($campo->atividade);
-                        $amostra->setTempoinicial($campo->hora_inicial);
-                        $amostra->setTempofinal($campo->hora_final);
+                        $amostra->setTempoinicial($campo->hora_inicial_1);
+                        $amostra->setTempofinal($campo->hora_final_1);
                         $amostra->setQuantidade($campo->quantidade);
                         $amostra->setIndice($campo->indice);
 

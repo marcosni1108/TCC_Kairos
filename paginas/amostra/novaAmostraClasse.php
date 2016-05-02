@@ -19,14 +19,19 @@
         <?php
         $ControllerAmostra = new ControllerAmostra;
         if (isset($_POST['cadastrar'])) {
-
+            
             $cnpj = $_POST['cnpj'];
             $departamento = $_POST['departamento'];
             $atividade = $_POST['atividade'];
             $_SESSION["i"] = 0;
             $_SESSION["jcount"] = 0;
             $amostra = new amostra;
+            //guardando dados na sessoion
+            $_SESSION['$cnpj'] = $_POST['cnpj'];
+            $_SESSION['$departamento'] = $_POST['departamento'];
+            $_SESSION['atividade'] = $_POST['atividade'];
             $count = $amostra->findAllAmostras($atividade);
+            
             if ($count) {
                 echo "<script>alert('Já existe um indece para essa atividade por favor selecione outra atividade');"
                 . "window.location='./cadastroAmostra.php'</script>";
@@ -61,11 +66,15 @@
 
                 $result = $ControllerAmostra->verificaMedia();
                 $indice_final_media = $result / $_SESSION["jcount"];
+                $indice_final_media = $indice_final_media*60;
                 $ControllerAmostra->insertAmostraDB();
                 $ControllerAmostra->AlertMedia($indice_final_media);
                 $_SESSION["jcount"] = 0;
             } else {
-
+               
+               $cnpj = $_SESSION['$cnpj'];
+               $departamento = $_SESSION['$departamento'];
+               $atividade = $_SESSION['atividade'];
                 echo "<script> alert('Para finalizar mais de 2 amostras devem ser cadastradas')</script>";
             }
         }
