@@ -1,4 +1,34 @@
-$(function () {
+<html>
+    <head>
+        <title>Kairos</title>
+            <?php
+        include "../include/include_css.php";
+        include "../header/header.php";
+        include "../../classes/model/validaOperario.php";
+        include "../../classes/model/validaLider.php";
+        //include "../menu_principal/menu_lateral.php";
+//        include '../include/include_classes.php';
+        ?>   
+        
+             
+    
+        <link href="../../css/sb-admin.css" rel="stylesheet">
+        <meta charset="UTF-8">
+    </head>
+    <body >
+             
+        <div id="page-wrapper" style="overflow-x: hidden; padding-left: 250px; height:100%; padding-top: 30px;">
+          <div style="top: 100px; left: 100px;width:1000px" id="chart">   
+             </div>
+        </div>
+            
+    </body>
+ <script src="../../js/highcharts.js"></script>
+    <script src="../../js/exporting.js"></script>
+    <script src="../../js/jquery-1.12.0.min.js"></script>
+
+        <script>
+        $(function () {
    var chart;
    var options = {
         chart: {
@@ -55,7 +85,7 @@ $(function () {
 //         chart = new Highcharts.Chart(options);
 //         chart;
 //    });
-                 $.getJSON("../../classes/model/highGraficos.php", function(json) {
+                 $.getJSON("http://localhost/Kairos/js/dataGrafico/dataDeptHigh.json", function(json) {
                     options.xAxis.categories = json[0]['data']; //xAxis: {categories: []}
                     options.series[0] = json[1];
                     chart = new Highcharts.Chart(options);
@@ -63,3 +93,6 @@ $(function () {
     
 //fim script
 });
+    </script>
+    <?php include_once '../include/include_js.php'; ?>
+</html>
