@@ -94,5 +94,11 @@ class departamento extends Crud {
         
         return $stmt->execute();
     }
-
+public function findDeptCnpj($idEnd) {
+        $sql = "SELECT * FROM $this->table WHERE idEnderecoFK = :idEnd";
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':idEnd', $idEnd, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 }

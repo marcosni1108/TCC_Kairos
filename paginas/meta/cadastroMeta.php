@@ -5,10 +5,13 @@
         <?php
         include "../include/include_css.php";
         include "../menu_principal/menu_lateral.php";
-        include "../../classes/model/validaOperario.php";
-       // include "../header/header.php";
+        include "../classes/model/validaOperario.php";
+        include "../header/header.php";
+        
+        
        // include '../include/include_classes.php';
         ?> 
+         <link href="../../css/sb-admin.css" rel="stylesheet">
         <meta charset="UTF-8">
        
     </head>

@@ -43,7 +43,17 @@ if (! empty($opcao)){
 			{
 				echo findUser();
 				break;
-			}   
+			}  
+                 case 'allCNPJ':
+			{
+				echo findAllCnpj();
+				break;
+			} 
+                case 'FindDeptCnpj':
+			{
+				echo findDeptCnpj($valor);
+				break;
+			}
 	}
 }
 
@@ -103,6 +113,23 @@ function getEditFunc($nivel,$id){
 	$user = new funcionario();
         $usuario = $user->whereSelected($nivel,$id);
 	echo json_encode($usuario);
+		
+}
+
+function findAllCnpj(){
+    
+	$endereco = new endereco();
+        $end = $endereco->findAll();
+	echo json_encode($end);
+		
+}
+
+function findDeptCnpj($idEnd){
+    
+	$departamento = new departamento();
+        $dept = $departamento->findDeptCnpj($idEnd);
+	echo json_encode($dept);
+        
 		
 }
 ?>
