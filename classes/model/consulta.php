@@ -3,6 +3,7 @@ require 'endereco.php';
 require 'departamento.php';
 require 'atividade.php';
 require 'funcionario.php';
+require 'amostra.php';
 $opcao = isset($_GET['opcao']) ? $_GET['opcao'] : '';
 $valor = isset($_GET['valor']) ? $_GET['valor'] : ''; 
 $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : ''; 
@@ -54,6 +55,12 @@ if (! empty($opcao)){
 				echo findDeptCnpj($valor);
 				break;
 			}
+                case 'FindAllAmostras':
+			{
+				echo findAmostrasRel($valor,$tipo);
+				break;
+			}
+                        
 	}
 }
 
@@ -132,6 +139,17 @@ function findDeptCnpj($idEnd){
         
 		
 }
+
+function findAmostrasRel($departamento, $atividade){
+    
+	$amostras = new amostra();
+        $amostrasAll = $amostras->findAmostrasRel($departamento, $atividade);
+	echo json_encode($amostrasAll);
+        
+		
+}
+
+
 ?>
 
 

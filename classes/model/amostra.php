@@ -133,4 +133,13 @@ class amostra extends Crud {
         return $stmt->fetchAll();
     }
 
+    public function findAmostrasRel($departamento,$atividade) {
+        $sql = "SELECT * FROM $this->table where IdAtividadeFK = :IdAtividadeFK and IdDeptoFK = :IdDeptoFK";
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':IdAtividadeFK', $atividade, PDO::PARAM_INT);
+        $stmt->bindParam(':IdDeptoFK', $departamento, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }    
+    
 }
