@@ -84,7 +84,7 @@
 
     </body>
 
-    <script src="../../js/populaComboGraficos.js"></script>
+    <script src="../../js/dataFuncGrafico.js"></script>
 
 
 

@@ -57,21 +57,16 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#relatorio"><i class="glyphicon glyphicon-list-alt"></i> Relatorios <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="relatorio" class="collapse">
                             <li>
-                                <a href="#">Relatorios</a>
+                                <a href="../relatorios/relatorioAmostra.php">Relatorio de Amostras</a>
                             </li>
-                            <li>
-                                <a href="#">Relatorios</a>
-                            </li>    
-                            <li>
-                                <a href="#">Relatorios</a>
-                            </li>                            
+                                                       
                         </ul>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#grafico"><i class="fa fa-bar-chart"></i> Graficos <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="grafico" class="collapse">
                             <li>
-                                <a href="../graficos/dashbord.php">Produtividade</a>
+                                <a href="../graficos/HighProd.php">Produtividade</a>
                             </li>
                             <li>
                                 <a href="../graficos/ProdutividadeFunc.php">Produtividade de Funcionários</a>
