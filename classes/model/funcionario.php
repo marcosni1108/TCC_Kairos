@@ -91,7 +91,6 @@ class funcionario extends Crud {
     public function update($id) {
 
         $sql = "UPDATE $this->table SET nome= :nome, "
-                . "cpf=:cpf,"
                 . "email=:email,"
                 . "login=:login,"
                 . "nivel= :nivel "
@@ -99,12 +98,17 @@ class funcionario extends Crud {
         $stmt = DB::prepare($sql);
 
         $stmt->bindParam(':nome', $this->nome);
-        $stmt->bindParam(':cpf', $this->cpf);
         $stmt->bindParam(':email', $this->email);
         $stmt->bindParam(':login', $this->login);
         $stmt->bindParam(':nivel', $this->nivel);
         $stmt->bindParam(':id', $id);
-        return $stmt->execute();
+        try {
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1062') {
+                return false;
+            }
+        }
     }
 
     public function verificaLogin($login, $senha) {

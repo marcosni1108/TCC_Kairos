@@ -23,7 +23,7 @@
 
                 
                 $nome = $_POST['nome'];
-                $cpf = $_POST['cpf'];
+                //$cpf = $_POST['cpf'];
                 $email = $_POST['email'];
                 $login = $_POST['login'];
                 //$senha = $_POST['senha'];
@@ -33,7 +33,7 @@
                 
                
                 $funcionario->setNome($nome);
-                $funcionario->setCpf($cpf);
+                //$funcionario->setCpf($cpf);
                 $funcionario->setEmail($email);
                 $funcionario->setLogin($login);
                 $funcionario->setNivel($nivel);
@@ -43,6 +43,8 @@
 
                 if ($funcionario->update($id)) {
                     echo "<script>alert('Usuario Atualizado!')</script>";
+                }else{
+                     echo "<script>alert('Não foi possivel atualizar o usuario!')</script>";
                 }
 
             endif;
@@ -80,7 +82,7 @@
 
                                             <div class="form-group col-lg-4">
                                                 <label for="cpf">CPF</label>
-                                                <input type="text" class="form-control" name="cpf" id="cpf" value="<?php echo $resultado->cpf; ?>" maxlength="14" onblur="javascript: validarCPF(this.value);" onkeypress="javascript: mascara(this, cpf_mask);" placeholder="CPF" required>
+                                                <input type="text"  disabled="true"class="form-control" name="cpf" id="cpf" value="<?php echo $resultado->cpf; ?>" maxlength="14" onblur="javascript: validarCPF(this.value);" onkeypress="javascript: mascara(this, cpf_mask);" placeholder="CPF" required>
                                             </div>                                          
                                         </div>    
 

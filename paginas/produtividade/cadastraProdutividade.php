@@ -84,7 +84,9 @@
                        <div class="row">
                             <div class="form-group col-lg-4">
                                 <label for="cnpj">CNPJ</label>
-                                <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="CNPJ" readonly>
+                                <select  class="form-control" name="cnpj" id="cnpj" required>                                                  
+                                   
+                                </select>
                             </div>
                             <div class="form-group col-lg-4">
                                 <label for="departamento">Departamento</label>

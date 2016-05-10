@@ -57,7 +57,7 @@
                             <div class="form-group col-lg-3">
                                 <label for="funcionario">Funcionário</label>
                                 <select  class="form-control" name="funcionario" id="cmbfuncionario" required>                                                  
-
+                                    <option value="">Selecione o Funcionário</option>
                                 </select>
 
                             </div>
@@ -84,7 +84,7 @@
 
     </body>
 
-    <script src="../../js/dataFuncGrafico.js"></script>
+    <script src="../../js/populaComboGraficoFunc.js"></script>
 
 
 

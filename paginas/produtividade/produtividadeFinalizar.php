@@ -70,6 +70,7 @@
                                 <label for="cnpj">CNPJ</label>
                                 <input type="text" class="form-control" id="cnpj" name="cnpj" value="<?php echo  $cnpj ?>" placeholder="CNPJ" readonly>
                             </div>
+                          
                             <div class="form-group col-lg-4">
                                 <label for="departamento">Departamento</label>                                                                                
                                 <input type="text" class="form-control" id="departamentoNone" name="departamentoNone" value="<?php  $nameDept = $departamentoclass->find($idDep);echo $nameDept->nome; ?>" placeholder="Departamento" readonly="readonly">   
@@ -82,10 +83,13 @@
                                 <input style="display: none" type="text" class="form-control" id="atividade" name="atividade" value="<?php echo $atividade; ?>" placeholder="Departamento" readonly="readonly">    
                                 
                             </div>        
-                            
+                           <div class="form-group col-lg-4">
+                                <label for="unid_med">Unidade de Medida</label>
+                                <input type="text" class="form-control" id="unid_med" name="unid_med" value="<?php echo  $name->unid_med ?>" placeholder="CNPJ" readonly>
+                            </div>  
                            <div class="form-group col-lg-4">
                                 <label for="cnpj">Quantidade</label>
-                                <input type="text" class="form-control" id="quantidade" name="quantidade" placeholder="Quantidade" requerid>
+                                <input type="text" class="form-control" id="quantidade" name="quantidade" maxlength="5" placeholder="Quantidade" requerid>
                             </div>
                         </div>    
                         <div class="row"><hr width=95%></div>

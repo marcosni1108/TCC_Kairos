@@ -1,11 +1,31 @@
-// popula o combo de departamentos quando a pagina é carregada.
-	$('#cmbDepartamento').ready(function(){
-            
-                $('#btnIniciar').prop("disabled",true);
-                $('#btnParar').prop("disabled",true);
-                $('#btnPausar').prop("disabled",true);
+//carrega todos os cnpj
+        $('#cnpj').ready(function(){
 		//chama o serviço que consulta os departamentos.
-		$.getJSON('../../classes/model/consulta.php?opcao=departamento', function (dados){ 
+                $('#btnIniciar').prop("disabled",true);
+		$.getJSON('../../classes/model/consulta.php?opcao=allCNPJ', function (dados){ 
+		//verifica o json e cria um options.
+		   if (dados.length > 0){	
+			  var option = '<option value="">Selecione o CNPJ</option>';
+			  $.each(dados, function(i, obj){
+				  option += '<option value="'+obj.id+'">'+obj.cnpj+'</option>';
+			  })
+			 
+		   }else{
+			  Reset();
+			
+		   }
+		   $('#cnpj').html(option).show();
+                    $('#btnIniciar').prop("disabled",false);
+                  
+		})
+	})
+        
+// popula o combo de departamentos quando a pagina é carregada.
+	$('#cnpj').change(function(e){
+            $('#btnIniciar').prop("disabled",true);
+            var idCNPJ = $('#cnpj').val();
+		//chama o serviço que consulta os departamentos.
+		$.getJSON('../../classes/model/consulta.php?opcao=FindDeptCnpj&valor='+idCNPJ, function (dados){ 
 		//verifica o json e cria um options.
 		   if (dados.length > 0){	
 			  var option = '<option value="">Selecione o Departamento</option>';
@@ -14,11 +34,11 @@
 			  })
 			 
 		   }else{
-			  Reset();
+			  Reset("Dept");
 			
 		   }
 		   $('#cmbDepartamento').html(option).show(); 
-                  $('#cnpj').val('');
+                  $('#btnIniciar').prop("disabled",false);
 		})
 	})
         
@@ -27,24 +47,9 @@
 		var end = $('#cmbDepartamento').val();
 		
                 //desabilita o botão cadastrar até que o combos serem populados.
-		$('#btnIniciar').prop("disabled",true);
-                $('#btnParar').prop("disabled",true);
-                $('#btnPausar').prop("disabled",true);
+		$('#btnCadastrar').prop("disabled",true);
                 //chama o serviço que traz o cpnj do departamento.
-		$.getJSON('../../classes/model/consulta.php?opcao=cnpj&tipo=atividade&valor='+end, function (dados){
-			
-			if (dados){ 	
-				var value = '';
-                                value = dados.cnpj;
-                       
-			}else{
-				Reset();
-				
-			}
-                        
-                        //insere o cnpj no input txt
-			$('#cnpj').val(value)
-                        
+	
                         //chama o serviço que lista as atividades relacionadas ao departamento.
                         $.getJSON('../../classes/model/consulta.php?opcao=atividade&valor='+end, function (dados1){
 			
@@ -59,18 +64,16 @@
 				
 			}
 			//popula o combo de atividades.
-                            $('#cmbAtividade').html(option).show(); 
+                          $('#cmbAtividade').html(option).show(); 
                           
-                          //habilita o botões.
-                            $('#btnIniciar').prop("disabled",false);
-                            $('#btnParar').prop("disabled",false);
-                            $('#btnPausar').prop("disabled",false);
+                          //habilita o botão cadastrar.
+                          $('#btnIniciar').prop("disabled",false);
 		})
                         
-		})
+		
 	})
         
-     
+
         
         
 	function Reset(tipo){
@@ -81,6 +84,11 @@
                     alert("Departamento sem Atividades");
                     location.href='cadastroAmostra.php'; 
                      $('#cmbAtividade').empty().append('<option>Carregar Atividades</option>>');                                                    
+                 }
+                if(tipo==='Dept'){
+                    alert("Filial sem departamento");
+                    $('#cnpj').val('');
+                    $('#cmbDepartamento').empty().append('<option>Carregar Departamento</option>>');                                               
                  }
                
 		
