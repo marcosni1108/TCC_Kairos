@@ -19,8 +19,9 @@
         <?php
         $ControllerAmostra = new ControllerAmostra;
         if (isset($_POST['cadastrar'])) {
-            
-            $cnpj = $_POST['cnpj'];
+            $endereco = new endereco();
+            $cnpjNome = $endereco->find($_POST['cnpj']);
+            $cnpj = $cnpjNome->cnpj;
             $departamento = $_POST['departamento'];
             $atividade = $_POST['atividade'];
             $_SESSION["i"] = 0;
@@ -69,6 +70,20 @@
                 $indice_final_media = $indice_final_media*60;
                 $ControllerAmostra->insertAmostraDB();
                 $ControllerAmostra->AlertMedia($indice_final_media);
+                $resultado =  $indice_final_media * 0.1;
+                $meta = new meta();
+                $meta->setMediaIndice($indice_final_media);
+                $meta->setQuantidade($_SESSION["jcount"]);
+                $meta->setMeta(10);
+                $meta->setResultado($resultado);
+                $acrescimo_meta = $resultado + $indice_final_media;
+                $meta->setAcrescimoMeta($acrescimo_meta);
+                $departamento = $_POST['departamento'];
+                $meta->setIdDeptoFK($departamento);
+                $atividade = $_POST['atividade'];
+                $meta->setIdAtividadeFK($atividade);
+                $meta->insertMeta();
+                
                 $_SESSION["jcount"] = 0;
             } else {
                

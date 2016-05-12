@@ -27,19 +27,19 @@
                             <div class="form-group col-lg-4">
                                 <label for="cnpj">CNPJ</label>
                                 <select  class="form-control" name="cnpj" id="cnpj" required>                                                  
-                                   
+                                   <option value="">Selecione o CNPJ</option>
                                 </select>
                             </div>
                             <div class="form-group col-lg-4">
                                 <label for="departamento">Departamento</label>
                                 <select  class="form-control" name="departamento" id="cmbDepartamento" required>                                                  
-                                   
+                                   <option value="">Selecione o Departamento</option>
                                 </select>
                             </div>      
                             <div class="form-group col-lg-4">
                                 <label for="atividade">Atividade</label>
                                 <select  class="form-control" name="atividade" id="cmbAtividade" required>                                                  
-                                   
+                                   <option value="">Selecione o Atividade</option>
                                 </select>
                             </div>                                          
                         </div>    

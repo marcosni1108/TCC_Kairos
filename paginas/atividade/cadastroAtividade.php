@@ -94,7 +94,7 @@
                                             <div class="form-group col-lg-4">
                                                 <label for="departamento">Departamento</label>
                                                 <select  class="form-control" name="departamento" id="cmbDepartamento" required>                                                  
-                                                  
+                                                   <option value="">Selecione o Departamento</option>
                                                 </select>
                                             </div>     
 

@@ -4,12 +4,15 @@ require_once 'Crud.php';
 
 class meta{
 	
-	protected $table = 'atividade';
-        private $departamento;
-        private $cnpj;
-	private $atividade;
-        private $meta;
-
+	protected $table = 'meta';
+        private $MediaIndice;
+        private $quantidade;
+        private $Meta;
+	private $resultado;
+        private $AcrescimoMeta;
+        private $IdDeptoFK;
+        private $IdAtividadeFK;
+       
 	public function update(){
 
 		$sql  = "UPDATE $this->table SET meta= :meta "
@@ -21,10 +24,13 @@ class meta{
                 
 		$stmt = DB::prepare($sql);
 		
-		$stmt->bindParam(':meta', $this->meta);
-                $stmt->bindParam(':departamento', $this->departamento);
-                $stmt->bindParam(':cnpj', $this->cnpj);
-                $stmt->bindParam(':nome', $this->atividade);
+		$stmt->bindParam(':MetaIndice', $this->MetaIndice);
+                $stmt->bindParam(':quantidade', $this->quantidade);
+                $stmt->bindParam(':Meta', $this->Meta);
+                $stmt->bindParam(':resultado', $this->resultado);
+                $stmt->bindParam(':AcrescimoMeta', $this->AcrescimoMeta);
+                $stmt->bindParam(':IdDeptoFK', $this->IdDeptoFK);
+                $stmt->bindParam(':IdAtividadeFK', $this->IdAtividadeFK);
 		return $stmt->execute();
                 
                 //Toda vez que criar (alterar) a meta, insere o mesmo registro na History
@@ -34,15 +40,18 @@ class meta{
 
 	}
         
-        public function insertHistory(){
-            $sql = "INSERT INTO $this->table ( meta, departamento, cnpj ,atividade)"
-                        . " VALUES (:meta, :departamento, :cnpj , :atividade)";
+        public function insertMeta(){
+            $sql = "INSERT INTO $this->table ( MediaIndice, quantidade , Meta, resultado, AcrescimoMeta, IdDeptoFK, IdAtividadeFK)"
+                        . " VALUES (:MetaIndice, :quantidade , :Meta, :resultado, :AcrescimoMeta, :IdDeptoFK, :IdAtividadeFK)";
             	$stmt = DB::prepare($sql);
 		
-		$stmt->bindParam(':meta', $this->meta);
-                $stmt->bindParam(':departamento', $this->departamento);
-                $stmt->bindParam(':cnpj', $this->cnpj);
-                $stmt->bindParam(':atividade', $this->atividade);
+		$stmt->bindParam(':MetaIndice', $this->MetaIndice);
+                $stmt->bindParam(':quantidade', $this->quantidade);
+                $stmt->bindParam(':Meta', $this->Meta);
+                $stmt->bindParam(':resultado', $this->resultado);
+                $stmt->bindParam(':AcrescimoMeta', $this->AcrescimoMeta);
+                $stmt->bindParam(':IdDeptoFK', $this->IdDeptoFK);
+                $stmt->bindParam(':IdAtividadeFK', $this->IdAtividadeFK);
 		return $stmt->execute();
         }
         
@@ -50,41 +59,62 @@ class meta{
             return $this->table;
         }
 
-        function getDepartamento() {
-            return $this->departamento;
-        }
-
-        function getCnpj() {
-            return $this->cnpj;
-        }
-
-        function getAtividade() {
-            return $this->atividade;
+        function getQuantidade() {
+            return $this->quantidade;
         }
 
         function getMeta() {
-            return $this->meta;
+            return $this->Meta;
         }
 
-        function setTable($table) {
-            $this->table = $table;
+        function getResultado() {
+            return $this->resultado;
         }
 
-        function setDepartamento($departamento) {
-            $this->departamento = $departamento;
+        function getAcrescimoMeta() {
+            return $this->AcrescimoMeta;
         }
 
-        function setCnpj($cnpj) {
-            $this->cnpj = $cnpj;
+        function getIdDeptoFK() {
+            return $this->IdDeptoFK;
         }
 
-        function setAtividade($atividade) {
-            $this->atividade = $atividade;
+        function getIdAtividadeFK() {
+            return $this->IdAtividadeFK;
         }
 
-        function setMeta($meta) {
-            $this->meta = $meta;
+        function setQuantidade($quantidade) {
+            $this->quantidade = $quantidade;
         }
 
+        function setMeta($Meta) {
+            $this->Meta = $Meta;
+        }
+
+        function setResultado($resultado) {
+            $this->resultado = $resultado;
+        }
+
+        function setAcrescimoMeta($AcrescimoMeta) {
+            $this->AcrescimoMeta = $AcrescimoMeta;
+        }
+
+        function setIdDeptoFK($IdDeptoFK) {
+            $this->IdDeptoFK = $IdDeptoFK;
+        }
+
+        function setIdAtividadeFK($IdAtividadeFK) {
+            $this->IdAtividadeFK = $IdAtividadeFK;
+        }
+
+        
+
+        function getMediaIndice() {
+            return $this->MediaIndice;
+        }
+
+         function setMediaIndice($MediaIndice) {
+            $this->MediaIndice = $MediaIndice;
+        }
 
 }
