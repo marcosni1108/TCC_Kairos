@@ -18,12 +18,16 @@
     <body>
         <?php
         $ControllerAmostra = new ControllerAmostra;
+        
+        
         if (isset($_POST['cadastrar'])) {
             $endereco = new endereco();
             $cnpjNome = $endereco->find($_POST['cnpj']);
             $cnpj = $cnpjNome->cnpj;
             $departamento = $_POST['departamento'];
             $atividade = $_POST['atividade'];
+            $_SESSION['departamento'] = $departamento;
+            $_SESSION['atividade'] = $atividade;
             $_SESSION["i"] = 0;
             $_SESSION["jcount"] = 0;
             $amostra = new amostra;
@@ -78,9 +82,9 @@
                 $meta->setResultado($resultado);
                 $acrescimo_meta = $resultado + $indice_final_media;
                 $meta->setAcrescimoMeta($acrescimo_meta);
-                $departamento = $_POST['departamento'];
-                $meta->setIdDeptoFK($departamento);
-                $atividade = $_POST['atividade'];
+                $departamento = $_SESSION['departamento'];
+                $atividade = $_SESSION['atividade'];
+                $meta->setIdDeptoFK($departamento);              
                 $meta->setIdAtividadeFK($atividade);
                 $meta->insertMeta();
                 
@@ -144,7 +148,7 @@
                                     </div>
                                     <div class="form-group col-lg-4">
                                         <label for="cnpj">Quantidade</label>
-                                        <input type="text" class="form-control" id="quantidade" name="quantidade" placeholder="Quantidade" required>                                
+                                        <input type="text" class="form-control" id="quantidade" maxlength="5" onkeypress="javascript: mascara(this, soNumeros);" name="quantidade" placeholder="Quantidade" required>                                
                                     </div> 
                                 </div>
 
