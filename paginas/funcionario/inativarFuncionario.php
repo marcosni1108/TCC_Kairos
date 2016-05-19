@@ -8,9 +8,9 @@
        include '../include/include_classes.php';
                      $funcionario = new funcionario(); 
 
-                $matricula = $_GET[md5('id')];
-                $deletar = $funcionario->delete($matricula);
-                    if ($deletar===true) {
+                $id = $_GET[md5('id')];
+                $inativar = $funcionario->status($id, 'I');
+                    if ($inativar===true) {
                     echo "<script type='text/javascript' charset='utf-8'>alert('Deletado com sucesso!');"
                          .  "window.location='./consultaFuncionario.php';</script>";
                    // header("location:consultaFuncionario.php");

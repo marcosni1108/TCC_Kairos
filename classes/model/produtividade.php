@@ -3,6 +3,22 @@
 require_once 'Crud.php';
 
 class produtividade extends Crud {
+    
+    function __construct($idProdutividade, $tempoinicial, $tempofinal, $quantidade, $data, $idFuncionario, $idDepartamento, $IdAtividade, $status, $turno, $percentProd, $tempoProdEfetivo, $capacidadeTurno) {
+        $this->idProdutividade = $idProdutividade;
+        $this->tempoinicial = $tempoinicial;
+        $this->tempofinal = $tempofinal;
+        $this->quantidade = $quantidade;
+        $this->data = $data;
+        $this->idFuncionario = $idFuncionario;
+        $this->idDepartamento = $idDepartamento;
+        $this->IdAtividade = $IdAtividade;
+        $this->status = $status;
+        $this->turno = $turno;
+        $this->percentProd = $percentProd;
+        $this->tempoProdEfetivo = $tempoProdEfetivo;
+        $this->capacidadeTurno = $capacidadeTurno;
+    }
 
     protected $table = 'produtividade';
     private $idProdutividade;
@@ -10,11 +26,47 @@ class produtividade extends Crud {
     private $tempofinal;
     private $quantidade;
     private $data;
-    private $IdFuncionario;
-    private $IdDepartamento;
+    private $idFuncionario;
+    private $idDepartamento;
     private $IdAtividade;
     private $status;
-    function getStatus() {
+    private $turno;
+    private $percentProd;
+    private $tempoProdEfetivo;
+    private $capacidadeTurno;
+    function getTurno() {
+        return $this->turno;
+    }
+
+    function getPercentProd() {
+        return $this->percentProd;
+    }
+
+    function getTempoProdEfetivo() {
+        return $this->tempoProdEfetivo;
+    }
+
+    function getCapacidadeTurno() {
+        return $this->capacidadeTurno;
+    }
+
+    function setTurno($turno) {
+        $this->turno = $turno;
+    }
+
+    function setPercentProd($percentProd) {
+        $this->percentProd = $percentProd;
+    }
+
+    function setTempoProdEfetivo($tempoProdEfetivo) {
+        $this->tempoProdEfetivo = $tempoProdEfetivo;
+    }
+
+    function setCapacidadeTurno($capacidadeTurno) {
+        $this->capacidadeTurno = $capacidadeTurno;
+    }
+
+        function getStatus() {
         return $this->status;
     }
 
@@ -55,11 +107,11 @@ class produtividade extends Crud {
     }
 
     function getIdFuncionario() {
-        return $this->IdFuncionario;
+        return $this->idFuncionario;
     }
 
     function getIdDepartamento() {
-        return $this->IdDepartamento;
+        return $this->idDepartamento;
     }
 
     function setTable($table) {
@@ -87,29 +139,35 @@ class produtividade extends Crud {
     }
 
     function setIdFuncionario($IdFuncionario) {
-        $this->IdFuncionario = $IdFuncionario;
+        $this->idFuncionario = $IdFuncionario;
     }
 
     function setIdDepartamento($IdDepartamento) {
-        $this->IdDepartamento = $IdDepartamento;
+        $this->idDepartamento = $IdDepartamento;
     }
 
         
     
         public function insert() {
-
-
-        $sql = "INSERT INTO $this->table ( tempoInicial, tempoFinal, quantidade, data, IdFuncionario, IdDepartamento, IdAtividade,status)"
-                . " VALUES ( :tempoinicial, :tempofinal, :quantidade, :data, :IdFuncionario, :IdDepartamento, :IdAtividade, :status)";
+        $sql = "INSERT INTO $this->table INSERT INTO produtividade"
+                . "(tempoInicial, tempoFinal, turno,"
+                . " quantidade, percentProd, tempoProdEfetivo, capacidade, data,"
+                . " IdFuncionario, IdDepartamento, IdAtividade, status)"
+                . " VALUES ( :tempoinicial, :tempofinal,:turno, "
+                . ":quantidade, :data,:percentProd,:tempoProdEfetivo,"
+                . " :IdFuncionario, :IdDepartamento,:capacidade, :IdAtividade, :status)";
         $stmt = DB::prepare($sql);
-      
         $stmt->bindParam(':tempoinicial', $this->tempoinicial);
         $stmt->bindParam(':tempofinal', $this->tempofinal);
+        $stmt->bindParam(':turno', $this->turno);
         $stmt->bindParam(':quantidade', $this->quantidade);
         $stmt->bindParam(':data', $this->data);
-        $stmt->bindParam(':IdFuncionario', $this->IdFuncionario,PDO::PARAM_INT);
+        $stmt->bindParam(':percentProd', $this->percentProd);
+        $stmt->bindParam(':tempoProdEfetivo', $this->tempoProdEfetivo);
+        $stmt->bindParam(':capacidade', $this->capacidadeTurno);
+        $stmt->bindParam(':IdFuncionario', $this->idFuncionario,PDO::PARAM_INT);
         $stmt->bindParam(':IdAtividade', $this->IdAtividade,PDO::PARAM_INT);
-        $stmt->bindParam(':IdDepartamento', $this->IdDepartamento,PDO::PARAM_INT);
+        $stmt->bindParam(':IdDepartamento', $this->idDepartamento,PDO::PARAM_INT);
         $stmt->bindParam(':status', $this->status);
          try {
             return $stmt->execute();
@@ -117,7 +175,6 @@ class produtividade extends Crud {
         if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1451') {
             return '1451';
         }
-        
              }
         }
 

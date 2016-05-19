@@ -4,7 +4,7 @@ require_once 'funcionario.php';
 $funcionario = new funcionario();
 $funcionario->findAll();
 $i = 0;
-foreach ($funcionario->findAll() as $key => $value){
+foreach ($funcionario->findAllAtivos() as $key => $value){
 
          $fields = array($value->nome,$value->cpf,$value->email,$value->nivel,  
              $value->login,$value->matricula, "<a href='editarFuncionario.php?".md5('id')."=" . $value->id . "'><input type='submit' name='editar' class='btn btn-primary' value='Editar' style='margin-right:8px;margin-left:10px;'></a><a href='inativarFuncionario.php?".md5('id')."=" . $value->id . "' onclick='return confirm(\"Deseja realmente deletar?\")'><input type='submit' name='deletar' class='btn btn-danger' value='Deletar'></a>");

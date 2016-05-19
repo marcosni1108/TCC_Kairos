@@ -13,25 +13,34 @@ class meta {
     private $IdDeptoFK;
     private $IdAtividadeFK;
 
+    public function findMeta($idDept,$idAtiv) {
+        $sql = "SELECT * FROM $this->table WHERE IdDeptoFK = :IdDeptoFK and"
+                . " IdAtividadeFK =:IdAtividadeFK";
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':IdDeptoFK', $idDept);
+        $stmt->bindParam(':IdAtividadeFK', $idAtiv);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
     public function update() {
 
-        $sql = "UPDATE $this->table SET meta= :meta "
-                . "WHERE idDepartamentoFK =:departamento"
-                . " AND "
-                . "cnpj =:cnpj"
-                . " AND "
-                . "nome =:nome";
+            $sql = "UPDATE $this->table SET Meta =:meta, resultado =:resultado,"
+                . " AcrescimoMeta =:AcrescimoMeta"
+                . " WHERE idDeptoFK =:IdDeptoFK AND IdAtividadeFK =:IdAtividadeFK";
 
         $stmt = DB::prepare($sql);
-
-        $stmt->bindParam(':MetaIndice', $this->MetaIndice);
-        $stmt->bindParam(':quantidade', $this->quantidade);
-        $stmt->bindParam(':Meta', $this->Meta);
+        $stmt->bindParam(':meta', $this->Meta);
         $stmt->bindParam(':resultado', $this->resultado);
         $stmt->bindParam(':AcrescimoMeta', $this->AcrescimoMeta);
         $stmt->bindParam(':IdDeptoFK', $this->IdDeptoFK);
         $stmt->bindParam(':IdAtividadeFK', $this->IdAtividadeFK);
-        return $stmt->execute();
+        try {
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1062') {
+                return false;
+            }
+        }
 
         //Toda vez que criar (alterar) a meta, insere o mesmo registro na History
         //TODO - Descomentar quando criar a table de History

@@ -4,6 +4,7 @@ require 'departamento.php';
 require 'atividade.php';
 require 'funcionario.php';
 require 'amostra.php';
+require 'meta.php';
 $opcao = isset($_GET['opcao']) ? $_GET['opcao'] : '';
 $valor = isset($_GET['valor']) ? $_GET['valor'] : ''; 
 $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : ''; 
@@ -58,6 +59,11 @@ if (! empty($opcao)){
                 case 'FindAllAmostras':
 			{
 				echo findAmostrasRel($valor,$tipo);
+				break;
+			}
+                case 'findMeta':
+			{
+				echo findMeta($valor,$tipo);
 				break;
 			}
                         
@@ -145,6 +151,15 @@ function findAmostrasRel($departamento, $atividade){
 	$amostras = new amostra();
         $amostrasAll = $amostras->findAmostrasRel($departamento, $atividade);
 	echo json_encode($amostrasAll);
+        
+		
+}
+
+function findMeta($departamento, $atividade){
+    
+	$meta = new meta();
+        $metaResult = $meta->findMeta($departamento, $atividade);
+	echo json_encode($metaResult);
         
 		
 }

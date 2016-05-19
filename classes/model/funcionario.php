@@ -113,7 +113,7 @@ class funcionario extends Crud {
 
     public function verificaLogin($login, $senha) {
 
-        $sql = "SELECT * FROM $this->table WHERE login = :login AND senha= :senha";
+        $sql = "SELECT * FROM $this->table WHERE login = :login AND senha= :senha and status = 'A'";
         $stmt = DB::prepare($sql);
         $stmt->bindParam(':login', $login);
         $stmt->bindParam(':senha', $senha);
@@ -125,7 +125,7 @@ class funcionario extends Crud {
     }
 
     public function whereNivel($nivel) {
-        $sql = "SELECT * FROM $this->table WHERE nivel = :nivel";
+        $sql = "SELECT * FROM $this->table WHERE nivel = :nivel and status = 'A'";
         $stmt = DB::prepare($sql);
         $stmt->bindParam(':nivel', $nivel, PDO::PARAM_INT);
         $stmt->execute();
@@ -155,6 +155,22 @@ class funcionario extends Crud {
         $stmt->bindParam(':senha', $this->senha);
         $stmt->bindParam(':login', $login);
         return $stmt->execute();
+    }
+    
+    public function status($id,$status) {
+
+        $sql = "UPDATE $this->table SET status= :status "
+                . "WHERE id = :id";
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':status', $status);
+        $stmt->bindParam(':id', $id);
+        return $stmt->execute();
+    }
+     public function findAllAtivos() {
+        $sql = "SELECT * FROM $this->table where status = 'A'";
+        $stmt = DB::prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
     
 }

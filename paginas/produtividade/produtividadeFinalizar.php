@@ -25,17 +25,37 @@
          if (isset($_POST['parar'])){
              
             date_default_timezone_set('America/Sao_Paulo');
-            
-            $funcionario = new funcionario();
-            $func = $funcionario->whereNome($_SESSION['nome']);
             $idDepartamento = $_POST['departamento'];
             $idAtividade = $_POST['atividade'];
             $quantidade = $_POST['quantidade'];
+            
+            $funcionario = new funcionario();           
+            $func = $funcionario->whereNome($_SESSION['nome']);
+            
+            $meta = new meta();
+           
+            $result_meta =  $meta->findMeta($idDept, $idAtiv);
+            $acrescimo_meta = $result_meta[0]->AcrescimoMeta;        
+            
+            
+            
+            $capacidade_turno = 3600/$acrescimo_meta;
+            
+            $percent_prod = $quantidade/$capacidade_turno;
+            
+            $tempo_prod_efetivo = ($percent_prod*3600)/100;
+                        
             $hora_final=date('H:i');
             $status = 'finalizado';
+            
             $IdFuncionario = $func[0]->id;
+            
+            $produtividade->setTurno(1);
+            $produtividade->setQuantidade($quantidade);            
+            $produtividade->setPercentProd($percent_prod);
+            $produtividade->setTempoProdEfetivo($tempo_prod_efetivo);
+            $produtividade->setCapacidadeTurno($capacidade_turno);
             $produtividade->setTempofinal($hora_final);
-            $produtividade->setQuantidade($quantidade);
             $produtividade->setStatus($status);
   
             if($produtividade->update($id))
@@ -130,5 +150,5 @@
     
 <?php include_once '../include/include_js.php'; ?>
     <script src="cronometro.js"></script>
-    
+    <script src="../../js/validadores.js"></script>
 </html>

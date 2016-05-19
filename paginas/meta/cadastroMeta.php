@@ -3,11 +3,11 @@
     <head>
         <title>Kairos</title>
         <?php
-        include "../include/include_css.php";
-        include "../menu_principal/menu_lateral.php";
-        include "../classes/model/validaOperario.php";
+       include "../include/include_css.php";
         include "../header/header.php";
-
+//        include "../menu_principal/menu_lateral.php";
+//        include '../include/include_classes.php';
+        include "../../classes/model/validaOperario.php";
 
         // include '../include/include_classes.php';
         ?> 
@@ -20,20 +20,34 @@
         $cMeta = new meta();
         if (isset($_POST['cadastrar'])):
 
-            $cnpj = $_POST['cnpj'];
             $departamento = $_POST['departamento']; 
             $cnpj = $_POST['cnpj'];
             $atividade = $_POST['atividade'];
-            $meta = $_POST['meta'];
-
-            $cMeta->setDepartamento($departamento);
-            $cMeta->setCnpj($cnpj);
-            $cMeta->setAtividade($atividade);
-            $cMeta->setMeta($meta);
-            if ($cMeta->update()) {
-                echo "<script> alert('Meta Cadastrada com sucesso')</script>";
+            $meta_porcent = $_POST['meta'];
+            
+                      
+            $resultado = $cMeta->findMeta($departamento, $atividade);
+            $meta_antiga = $resultado[0]->Meta;
+            
+            if($meta_porcent>$meta_antiga){
+            
+            $MediaIndice = $resultado[0]->MediaIndice;
+            $meta = $meta_porcent/100;
+            $resultado_indice = $MediaIndice * $meta;
+            $AcrescimoMeta = $MediaIndice + $resultado_indice;                    
+                        
+            $cMeta->setMeta($meta_porcent);
+            $cMeta->setResultado($resultado_indice);
+            $cMeta->setAcrescimoMeta($AcrescimoMeta);
+            $cMeta->setIdDeptoFK($departamento);
+            $cMeta->setIdAtividadeFK($atividade);
+            
+                if ($cMeta->update()) {
+                    echo "<script> alert('Meta Cadastrada com sucesso')</script>";
+                }
+            }else{
+                    echo "<script> alert('A nova meta deve ser maior que a atual')</script>";
             }
-
         endif;
         ?>
 
@@ -77,6 +91,7 @@
                                         </div>             
                                         <div class="form-group col-lg-4">
                                             <label for="meta">Porcentagem de Meta</label>
+                                            
                                             <input type="number" class="form-control" onkeypress="javascript: mascara(this, soNumeros);" name="meta" id="meta" placeholder="%" required>
                                         </div>  
 
