@@ -5,6 +5,7 @@ require 'atividade.php';
 require 'funcionario.php';
 require 'amostra.php';
 require 'meta.php';
+require 'produtividade.php';
 $opcao = isset($_GET['opcao']) ? $_GET['opcao'] : '';
 $valor = isset($_GET['valor']) ? $_GET['valor'] : ''; 
 $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : ''; 
@@ -66,10 +67,22 @@ if (! empty($opcao)){
 				echo findMeta($valor,$tipo);
 				break;
 			}
+                case 'AtividadeMeta':
+			{
+				echo buscaAtividadeMeta($valor);
+				break;
+			}
                         
 	}
 }
 
+function buscaAtividadeMeta($idDepartamento){
+   
+        $produtividade = new produtividade();
+        $result = $produtividade->buscaAtividadeMeta($idDepartamento);
+	echo json_encode($result);
+	
+}
 function getAllEnd(){
         $endereco = new endereco();
         $end = $endereco->findAll();

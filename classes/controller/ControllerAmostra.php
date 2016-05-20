@@ -55,17 +55,18 @@ class ControllerAmostra {
 
     public function verificaMedia() {
         for ($e = 0; $e <= $_SESSION["jcount"]-1; $e++) {
-
+            //ler todoas as amostras que estão armazenadas em json no diretorio
             $arquivo = "../../js/dataAmostra/dataAmostra" . $e . ".json";
             $info = file_get_contents($arquivo);
             $lendo = json_decode($info);
             $sessionCount = $_SESSION["jcount"];
+            //verifica o indice da amostra atual
             foreach ($lendo->amostra as $campo) {
                 $indice_autal = $campo->indice;
             }
            
-                
-                $result = $this->CaluloMedia($indice_autal,$result);
+                //chama o metodo calculaMedia
+                $result = $this->CalculoMedia($indice_autal,$result);
             
             
         }
@@ -107,9 +108,10 @@ class ControllerAmostra {
         }
     }
 
-    public function CaluloMedia($indice_autal,$indice_final_media) {
-        
+    public function CalculoMedia($indice_autal,$indice_final_media) {
+            //joga o indice atual em na varial indice provisorio
             $indice_provisorio = $indice_final_media;
+            //soma o indice provisorio + o atual
             $indice_final_media = $indice_provisorio + $indice_autal;
             return $indice_final_media;
         
@@ -126,11 +128,12 @@ class ControllerAmostra {
     
     public function insertAmostraDB() {
         for ($e = 0; $e < $_SESSION["jcount"]; $e++) {
+            //insere todos os json no banco de dados
                     $arquivo = "../../js/dataAmostra/dataAmostra" . $e . ".json";
                     $info = file_get_contents($arquivo);
                     $lendo = json_decode($info);
                     $amostra = new amostra();
-
+                    // le o json e popula a os campos
                     foreach ($lendo->amostra as $campo) {
 
                         $amostra->setDepartamento($campo->departamento);

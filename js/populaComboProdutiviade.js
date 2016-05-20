@@ -51,7 +51,7 @@
                 //chama o serviço que traz o cpnj do departamento.
 	
                         //chama o serviço que lista as atividades relacionadas ao departamento.
-                        $.getJSON('../../classes/model/consulta.php?opcao=atividade&valor='+end, function (dados1){
+                        $.getJSON('../../classes/model/consulta.php?opcao=AtividadeMeta&valor='+end, function (dados1){
 			
                          if (dados1.length > 0){	
                             var option = '<option value="">Selecione o Atividade</option>';
@@ -82,7 +82,7 @@
                 $('#cmbDepartamento').empty().append('<option>Carregar Departamento</option>>');
                 if(tipo==='atividade'){
                     alert("Departamento sem Atividades");
-                    location.href='cadastroAmostra.php'; 
+                    location.href='cadastraProdutividade.php'; 
                      $('#cmbAtividade').empty().append('<option>Carregar Atividades</option>>');                                                    
                  }
                 if(tipo==='Dept'){

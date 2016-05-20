@@ -28,7 +28,7 @@
                 $idDepartamento = $_POST['departamento'];
                 $idAtividade = $_POST['atividade'];
                 $cnpj = $_POST['cnpj'];
-                $quantidade = 0;
+                $quantidade = 1;
                 $hora_final = "00:00";
                 $status = 'iniciado';
                 $produtividade->setData($data_produtividade);
@@ -39,7 +39,7 @@
                 $produtividade->setIdAtividade($idAtividade);
                 $produtividade->setQuantidade($quantidade);
                 $produtividade->setStatus($status);
-                $produtividade->setTurno(1);
+                $produtividade->setTurno(0);
                 $produtividade->setPercentProd(0);
                 $produtividade->setTempoProdEfetivo(0);
                 $produtividade->setCapacidadeTurno(0);

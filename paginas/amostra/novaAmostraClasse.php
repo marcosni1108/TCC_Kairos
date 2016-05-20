@@ -75,6 +75,8 @@
                 $ControllerAmostra->insertAmostraDB();
                 $ControllerAmostra->AlertMedia($indice_final_media);
                 $resultado =  $indice_final_media * 0.1;
+                //fim amostra
+                //cadastra uma meta inicial com o valor de 10%
                 $meta = new meta();
                 $meta->setMediaIndice($indice_final_media);
                 $meta->setQuantidade($_SESSION["jcount"]);

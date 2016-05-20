@@ -25,8 +25,6 @@
          if (isset($_POST['parar'])){
              
             date_default_timezone_set('America/Sao_Paulo');
-            $idDepartamento = $_POST['departamento'];
-            $idAtividade = $_POST['atividade'];
             $quantidade = $_POST['quantidade'];
             
             $funcionario = new funcionario();           
@@ -34,7 +32,7 @@
             
             $meta = new meta();
            
-            $result_meta =  $meta->findMeta($idDept, $idAtiv);
+            $result_meta =  $meta->findMeta($idDep, $idAtividade);
             $acrescimo_meta = $result_meta[0]->AcrescimoMeta;        
             
             
@@ -44,7 +42,10 @@
             $percent_prod = $quantidade/$capacidade_turno;
             
             $tempo_prod_efetivo = ($percent_prod*3600)/100;
-                        
+            $tempo_prod_efetivo = $tempo_prod_efetivo*100;  
+            $capacidade_turno = number_format($capacidade_turno,2,".","");
+            $percent_prod = $percent_prod*100;
+            $percent_prod = number_format($percent_prod,2,".","");
             $hora_final=date('H:i');
             $status = 'finalizado';
             
@@ -109,7 +110,7 @@
                             </div>  
                            <div class="form-group col-lg-4">
                                 <label for="cnpj">Quantidade</label>
-                                <input type="text" class="form-control" id="quantidade" name="quantidade" maxlength="5" onkeypress="javascript: mascara(this, soNumeros);" placeholder="Quantidade" requerid>
+                                <input type="text" class="form-control" id="quantidade" name="quantidade" maxlength="5" onkeypress="javascript: mascara(this, soNumeros);" placeholder="Quantidade" required>
                             </div>
                         </div>    
                         <div class="row"><hr width=95%></div>
