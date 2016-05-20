@@ -17,7 +17,7 @@
                    //header("location:consultaDepartamento.php");
                 }
                   else if ($deletar === true) {
-                   echo "<script>alert('Deletado Com sucesso!');"
+                   echo "<script>alert('Deletado com sucesso!');"
                         . "window.location='./consultaDepartamento.php'</script>";
                     //header("location:consultaDepartamento.php");
                 }
