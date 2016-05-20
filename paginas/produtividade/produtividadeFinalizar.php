@@ -48,10 +48,11 @@
             $percent_prod = number_format($percent_prod,2,".","");
             $hora_final=date('H:i');
             $status = 'finalizado';
-            
+            //verifica turno
+            $turnoObj  = new turno();
+            $turno = $turnoObj->verificaTurno($hora_final);
             $IdFuncionario = $func[0]->id;
-            
-            $produtividade->setTurno(1);
+            $produtividade->setTurno($turno);
             $produtividade->setQuantidade($quantidade);            
             $produtividade->setPercentProd($percent_prod);
             $produtividade->setTempoProdEfetivo($tempo_prod_efetivo);
@@ -61,7 +62,7 @@
   
             if($produtividade->update($id))
             {
-              echo "<script>alert('Atividade Finalizada');"
+              echo "<script>alert('Atividade Finalizada!');"
                     . "window.location='./cadastraProdutividade.php';</script>";
             }     
         }
@@ -115,19 +116,12 @@
                         </div>    
                         <div class="row"><hr width=95%></div>
                         
-                        <div class="row">
-                            <div class="form-group col-lg-4"></div>
-                            <div class="form-group col-lg-4">
-                                <div class="codigo">
-                                        <span id="hora">00:</span><span id="minuto">00:</span><span id="segundo">00</span><br>
-                                </div>
-                            </div>
-                        </div>
+                      
                         
                     <div class="row"> 
                             <div class="form-group col-lg-4"></div>                       
                             <div class="form-group col-lg-4">
-                                <input type="submit" style="margin-left:100px;" id="btnParar" name="parar" class="btn btn-danger" value="Parar">
+                                <input type="submit" style="margin-left:100px;" id="btnParar" name="parar" class="btn btn-danger" value="Registrar">
                             </div>
                     </div>    
                 </form>
@@ -150,6 +144,5 @@
     </body>
     
 <?php include_once '../include/include_js.php'; ?>
-    <script src="cronometro.js"></script>
     <script src="../../js/validadores.js"></script>
 </html>

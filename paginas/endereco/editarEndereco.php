@@ -28,7 +28,7 @@
                 
                 $cep = $_POST['cep'];
                 $rua = $_POST['endereco'];
-                $cnpj = $_POST['cnpj'];
+                //$cnpj = $_POST['cnpj'];
                 $numero = $_POST['numero'];
                
 
@@ -36,7 +36,7 @@
 
                 $endereco->setCep($cep);
                 $endereco->setRua($rua);
-                $endereco->setCnpj($cnpj);
+               // $endereco->setCnpj($cnpj);
                 $endereco->setNumero($numero);
 
                 if ($endereco->update($id)) {
@@ -90,7 +90,7 @@
                                                 </div>              
                                                 <div class="form-group col-lg-4">
                                                   <label for="cnpj">CNPJ</label>
-                                                  <input type="text" class="form-control" value="<?php echo $resultado->cnpj; ?>" name="cnpj" id="cnpj" onblur="javascript: validarCNPJ(this.value);" onkeypress="javascript: mascara(this, cnpj_mask);" maxlength="18"placeholder="CNPJ" required>
+                                                  <input type="text" class="form-control" value="<?php echo $resultado->cnpj; ?>" name="cnpj" id="cnpj" onblur="javascript: validarCNPJ(this.value);" onkeypress="javascript: mascara(this, cnpj_mask);" maxlength="18"placeholder="CNPJ" readonly="true">
                                                 </div>  
                                            
                                         </div>

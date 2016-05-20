@@ -39,7 +39,7 @@
                 $produtividade->setIdAtividade($idAtividade);
                 $produtividade->setQuantidade($quantidade);
                 $produtividade->setStatus($status);
-                $produtividade->setTurno(0);
+                $produtividade->setTurno(1);
                 $produtividade->setPercentProd(0);
                 $produtividade->setTempoProdEfetivo(0);
                 $produtividade->setCapacidadeTurno(0);
@@ -52,7 +52,7 @@
                             . "&" . md5(idDepartamento) . "=" . $idDepartamento . ""
                             . "&" . md5(cnpj) . "=" . $cnpj . ""
                             . "&" . md5(id) . "=" . $id . "";
-                    echo "<script>alert('Atividade Iniciada Com sucesso!');"
+                    echo "<script>alert('Atividade Iniciada ccm sucesso!');"
                     . "window.location='./" . $teste . "';</script>";
                 }
             }

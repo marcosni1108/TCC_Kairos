@@ -73,13 +73,13 @@ class endereco extends Crud {
     public function update($id) {
 
         $sql = "UPDATE $this->table SET cep= :cep, "
-                . "endereco=:endereco,cnpj=:cnpj,"
+                . "endereco=:endereco,"
                 . "numero=:numero where id = :id";
         $stmt = DB::prepare($sql);
 
         $stmt->bindParam(':cep', $this->cep);
         $stmt->bindParam(':endereco', $this->rua);
-        $stmt->bindParam(':cnpj', $this->cnpj);
+        //$stmt->bindParam(':cnpj', $this->cnpj);
         $stmt->bindParam(':numero', $this->numero);
         $stmt->bindParam(':id', $id);
 
