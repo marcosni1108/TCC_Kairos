@@ -11,7 +11,7 @@
         //include "../menu_principal/menu_lateral.php";
         include "../header/header.php";
 //        include '../include/include_classes.php'; 
-        include '../../classes/model/tableAtivi.php';
+        include '../../classes/table/tableAtivi.php';
         include "../../classes/model/validaOperario.php";
 //              $atividade = new atividade();
 //              ?> 

@@ -12,7 +12,7 @@
         include "../header/header.php";
         include "../../classes/model/validaOperario.php";
 //        include '../include/include_classes.php';  
-        include '../../classes/model/tableDept.php';
+        include '../../classes/table/tableDept.php';
         include "../../classes/model/validaLider.php";
 //              $departamento = new departamento();
 //              ?>

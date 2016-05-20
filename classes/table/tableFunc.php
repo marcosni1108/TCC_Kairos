@@ -1,5 +1,5 @@
 <?php
-
+set_include_path(dirname(__FILE__)."/../model");
 require_once 'funcionario.php';
 $funcionario = new funcionario();
 $funcionario->findAll();

@@ -11,6 +11,7 @@
         ?>   
         <?php
         if (isset($_POST['GerarGrafico'])):
+            require '../../classes/graficos/GerarGraficos.php';
             $dataDeTemp = $_POST['dataDe'];
             $dataAteTemp = $_POST['dataAte'];
             $idCnpj =  $_POST['CNPJ'];

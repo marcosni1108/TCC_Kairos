@@ -11,6 +11,7 @@
         ?>   
         <?php
         if (isset($_POST['GerarGrafico'])):
+            require '../../classes/graficos/GerarGraficos.php';
             $id = $_POST['funcionario'];
             $dataSFormat = $_POST['data'];
             $dataSFormat = str_replace('/', '-', $dataSFormat);

@@ -13,7 +13,7 @@
         include "../../classes/model/validaOperario.php";
         include "../../classes/model/validaLider.php";
 //        include '../include/include_classes.php';
-        include '../../classes/model/tableEnd.php';
+        include '../../classes/table/tableEnd.php';
         
 //              $endereco = new endereco();
 //              ?> 

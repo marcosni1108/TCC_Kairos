@@ -1,8 +1,8 @@
 <?php
-
-require 'atividade.php';
-require 'departamento.php';
-require 'endereco.php';
+set_include_path(dirname(__FILE__)."/../model");
+require_once 'atividade.php';
+require_once 'departamento.php';
+require_once 'endereco.php';
 
 $atividade = new atividade();
 $departamento = new departamento();
