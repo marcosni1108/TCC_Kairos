@@ -46,13 +46,13 @@
                  
                 if ($produtividade->insert()) {
                     $verificaAtividade = $produtividade->findAtividadeIniciadas($IdFuncionario);
-                    $id = $verificaAtividade[0]->IdProdutividade;
+                    $id = $verificaAtividade[0]->id;
                     $teste = "produtividadeFinalizar.php?" . md5(idFunc) . "=" .
                             $IdFuncionario . "&" . md5(idAtividade) . "=" . $idAtividade . ""
                             . "&" . md5(idDepartamento) . "=" . $idDepartamento . ""
                             . "&" . md5(cnpj) . "=" . $cnpj . ""
                             . "&" . md5(id) . "=" . $id . "";
-                    echo "<script>alert('Atividade Iniciada ccm sucesso!');"
+                    echo "<script>alert('Atividade iniciada com sucesso!');"
                     . "window.location='./" . $teste . "';</script>";
                 }
             }

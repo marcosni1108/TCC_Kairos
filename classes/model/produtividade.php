@@ -167,7 +167,7 @@ class produtividade extends Crud {
                 . " capacidade =:capacidade,"
                 . " turno =:turno,"
                 . " status =:status "
-                . " where IdProdutividade =:IdProdutividade";
+                . " where id =:IdProdutividade";
 
         $stmt = DB::prepare($sql);
         $stmt->bindParam(':tempofinal', $this->tempofinal);
