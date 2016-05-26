@@ -9,8 +9,6 @@
         ?>   
 
         <link href="../../css/sb-admin.css" rel="stylesheet">
-        <link href="cronometro.css" rel="stylesheet">
-        <script language="JavaScript" src="cronometro.js"></script>
         <meta charset="UTF-8">
     </head>
     <body > 

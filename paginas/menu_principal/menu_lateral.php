@@ -40,19 +40,30 @@
                                 <a href="../atividade/consultaAtividade.php">Alterar Atividades</a>
                             </li>    
                             <li>
-                                <a href="../produtividade/cadastraProdutividade.php">Registrar Produtividade</a>
-                            </li>
-                            <li>
                                 <a href="../amostra/cadastroAmostra.php">Registrar Amostra</a>
-                            </li>         
-                            <li>
-                                <a href="../parada/cadastroParada.php">Registrar Parada</a>
-                            </li>       
+                            </li>                
                             <li>
                                 <a href="../meta/cadastroMeta.php">Cadastrar Meta</a>
                             </li>                            
+                            <li>
+                                <a href="../parada/cadastrarParada.php">Cadastrar Parada</a>
+                            </li> 
+                            <li>
+                                <a href="../meta/cadastroMeta.php">Alterar Parada</a>
+                            </li>                             
                         </ul>
                     </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#operação"><i class="glyphicon glyphicon-check"></i> Operação <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="operação" class="collapse">
+                            <li>
+                                <a href="../produtividade/cadastraProdutividade.php">Registrar Produtividade</a>
+                            </li>
+                            <li>
+                                <a href="../parada/resgistrarParada.php">Registrar Parada</a>
+                            </li>                            
+                        </ul>                    
+                    </li>                    
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#relatorio"><i class="glyphicon glyphicon-list-alt"></i> Relatorios <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="relatorio" class="collapse">
@@ -70,6 +81,9 @@
                             </li>
                             <li>
                                 <a href="../graficos/ProdutividadeFunc.php">Produtividade de Funcionários</a>
+                            </li>
+                             <li>
+                                 <a href="../graficosAtividade/ProdutividadeAtiv.php">Produtividade por Atividade</a>
                             </li>
                             <li>
                                 <a href="../graficos/ProdutividadeDept.php">Produtividade de Departamento</a>

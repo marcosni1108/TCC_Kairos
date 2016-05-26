@@ -200,6 +200,21 @@ class produtividade extends Crud {
         return $stmt->fetchAll();
     }
 
+    public function findAtivProd($dataDe, $dataAte, $id) {
+
+        $sql = "select func.nome as nomFunc, AT.nome,prod.capacidade,prod.percentProd"
+                . " from produtividade as prod inner join funcionario func"
+                . " ON prod.IdFuncionario = func.id "
+                . "INNER JOIN ATIVIDADE AT ON AT.ID = prod.IDAtividade"
+                . " where AT.ID=:id and prod.data BETWEEN :dataDe"
+                . " and :dataAte group by func.nome";
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':dataDe', $dataDe);
+        $stmt->bindParam(':dataAte', $dataAte);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
     public function findProdDept($dataDe, $dataAte, $idCnpj) {
 
         $sql = "SELECT SUM(produtividade.quantidade) as prod,"
@@ -216,7 +231,6 @@ class produtividade extends Crud {
         $stmt->execute();
         return $stmt->fetchAll();
     }
-
     public function findProdTotal() {
 
         $sql = "SELECT SUM(produtividade.quantidade) as prod, "

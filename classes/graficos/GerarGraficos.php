@@ -130,5 +130,36 @@ class GerarGraficos {
             return true;
         
     }
+    
+    public function ativiGrafico($dataDe, $dataAte, $id) {
+
+        $produtividade = new produtividade();
+        $bln = array();
+        $bln['name'] = 'Funcionario';
+        $rows['name'] = 'Produção';
+        $arrayFunc = $produtividade->findAtivProd($dataDe, $dataAte, $id);
+        if ($arrayFunc) {
+
+            foreach ($arrayFunc as $key => $value) {
+
+
+                $bln['data'][] = $value->nomFunc;
+                $rows['data'][] = $value->percentProd;
+            }
+
+            $rslt = array();
+            array_push($rslt, $bln);
+            array_push($rslt, $rows);
+            $dataGrafico1 = json_encode($rslt, JSON_NUMERIC_CHECK);
+        }
+
+            $fp = fopen("../../js/dataGrafico/dataAtivProd.json", "w");
+
+            // Escreve "exemplo de escrita" no bloco1.txt
+            $escreve = fwrite($fp, $dataGrafico1);
+            fclose($fp);
+            return true;
+        
+    }
 
 }

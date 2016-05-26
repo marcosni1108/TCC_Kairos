@@ -54,6 +54,10 @@
                         </ul>
                     </li>
                     <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#atividades"><i class="glyphicon glyphicon-check"></i> Operação <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="atividades" class="collapse"></ul>                    
+                    </li>    
+                    <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#relatorio"><i class="glyphicon glyphicon-list-alt"></i> Relatorios <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="relatorio" class="collapse">
                            <li>

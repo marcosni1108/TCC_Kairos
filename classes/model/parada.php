@@ -6,10 +6,25 @@ class parada extends Crud {
 
     protected $table = 'parada';
     private $idParada;
+    private $tipoParada;
+    private $descricao;
     private $nome;
     private $tempoParada;
+    
     function getIdParada() {
         return $this->idParada;
+    }
+
+    function getTable() {
+        return $this->table;
+    }
+
+    function getTipoParada() {
+        return $this->tipoParada;
+    }
+
+    function getDescricao() {
+        return $this->descricao;
     }
 
     function getNome() {
@@ -20,8 +35,16 @@ class parada extends Crud {
         return $this->tempoParada;
     }
 
-    function setIdParada($idParada) {
-        $this->idParada = $idParada;
+    function setTable($table) {
+        $this->table = $table;
+    }
+
+    function setTipoParada($tipoParada) {
+        $this->tipoParada = $tipoParada;
+    }
+
+    function setDescricao($descricao) {
+        $this->descricao = $descricao;
     }
 
     function setNome($nome) {
@@ -32,6 +55,7 @@ class parada extends Crud {
         $this->tempoParada = $tempoParada;
     }
 
+    
         public function insert() {
 
 

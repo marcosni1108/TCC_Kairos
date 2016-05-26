@@ -60,7 +60,7 @@
             $idAtividade = $verificaAtividade[0]->IdAtividade;
             $idDepartamento = $verificaAtividade[0]->IdDepartamento;
             $IdFuncionario = $verificaAtividade[0]->IdFuncionario;
-            $id = $verificaAtividade[0]->IdProdutividade;
+            $id = $verificaAtividade[0]->id;
             $cnpj = 0;
             $teste = "produtividadeFinalizar.php?" . md5(idFunc) . "=" .
                     $IdFuncionario . "&" . md5(idAtividade) . "=" . $idAtividade . ""
