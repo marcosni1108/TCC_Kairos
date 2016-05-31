@@ -47,33 +47,26 @@
                         </h1>                     
                         <div class="row">
                             <div class="form-group col-lg-4">
-                                <label for="nome_parada">Nome da Parada</label>
+                                <label for="nome_parada">Parada</label>
                                 <input type="text" class="form-control" id="nome_parada" name="nome_parada" placeholder="Nome da Parada" required>
                             </div>
-                            <div class="form-group col-lg-4">
-                                <label for="tipo_parada">Tipo da Parada</label>
-                                <select class="form-control" name="tipo_parada" id="tipo_parada">
-                                    <option value="Expedicao">Expedição</option>
-                                    <option value="Logistica">Logistica</option>
-                                </select>
-                            </div>      
-                            <div class="form-group col-lg-4">
-                                <label for="departamento">Departamento</label>
-                                <select class="form-control" name="departamento" id="departamento">
-                                    <option value="Expedicao">Expedição</option>
-                                    <option value="Logistica">Logistica</option>
-                                </select>
-                            </div>  
+
                             <div class="form-group col-lg-4">
                                 <label for="cnpj">CNPJ</label>
-                                <select class="form-control" name="cnpj" id="cnpj">
-                                    <option value="Expedicao">Expedição</option>
-                                    <option value="Logistica">Logistica</option>
+                                <select  class="form-control" name="cnpj" id="cnpj" required>                                                  
+                                   <option value="">Selecione o CNPJ</option>
                                 </select>
-                            </div> 
+                            </div>
                             <div class="form-group col-lg-4">
+                                <label for="departamento">Departamento</label>
+                                <select  class="form-control" name="departamento" id="cmbDepartamento" required>                                                  
+                                   <option value="">Selecione o Departamento</option>
+                                </select>
+                            </div>  
+                            
+                            <div class="form-group col-lg-8">
                                 <label for="descricao">Descrição</label>
-                                <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Descrição" required>
+                                <textarea type="text" class="form-control" id="descricao" name="descricao" placeholder="Descrição" required></textarea>
                             </div>                            
                         </div>    
                         <div class="row"><hr width=95%></div>
@@ -91,5 +84,7 @@
             </div> 
         </div>
     </body>
+    
     <?php include_once '../include/include_js.php'; ?>
+    <script src="../../js/populaComboParada.js"></script>
 </html>

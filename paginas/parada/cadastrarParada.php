@@ -19,16 +19,18 @@
             $nome = $_POST['nome_parada'];
             $tipo_parada = $_POST['tipo_parada'];
             $descricao = $_POST['descricao'];
+            $IdDeptoFK = $_POST['departamento'];
 
-            $parada = new parada();
+            $parada = new tipo_parada();
             $parada->setNome($nome);
             $parada->setTipoParada($tipo_parada);
             $parada->setDescricao($descricao);
+            $parada->setIdDeptoFK($IdDeptoFK);
 
 
             # Insert
-            if ($funcionario->insert()) {
-                echo "<script> alert('Usuario Cadastrado com sucesso')</script>";
+            if ($parada->insert()) {
+                echo "<script> alert('Tipo de Parada cadastrada com sucesso')</script>";
             }
             
         endif;
@@ -55,6 +57,20 @@
                                       
                         </div>
                         <div class="row">
+                            <div class="form-group col-lg-4">
+                                <label for="cnpj">CNPJ</label>
+                                <select  class="form-control" name="cnpj" id="cnpj" required>                                                  
+                                   <option value="">Selecione o CNPJ</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label for="departamento">Departamento</label>
+                                <select  class="form-control" name="departamento" id="cmbDepartamento" required>                                                  
+                                   <option value="">Selecione o Departamento</option>
+                                </select>
+                            </div>                              
+                        </div>
+                        <div class="row">
                             <div class="form-group col-lg-8">
                                     <label for="descricao">Descrição</label>
                                     <textarea type="text" class="form-control" id="descricao" rows="4" cols="550" name="descricao" placeholder="Descrição" required></textarea>
@@ -63,12 +79,15 @@
     
                         <div class="form-group col-lg-3"></div>
                         <div class="form-group col-lg-4">
-                            <input id="btnIniciar"type="submit" name="cadastrar" class="btn btn-success" value="Cadastrar">
+                            <input id="cadastrar"type="submit" name="cadastrar" class="btn btn-success" value="Cadastrar">
                         </div>                        
                     </div>
                 </form>  
             </div> 
         </div>
     </body>
-    <?php include_once '../include/include_js.php'; ?>
+    <?php 
+    
+    include_once '../include/include_js.php'; ?>
+        <script src="../../js/populaComboParada.js"></script>
 </html>
