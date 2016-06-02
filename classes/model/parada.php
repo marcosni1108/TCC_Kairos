@@ -5,82 +5,154 @@ require_once 'Crud.php';
 class parada extends Crud {
 
     protected $table = 'parada';
-    private $idParada;
-    private $tipoParada;
-    private $descricao;
-    private $nome;
-    private $tempoParada;
-    
-    function getIdParada() {
-        return $this->idParada;
+    private $id;
+    private $tempoInicial;
+    private $tempoFinal;
+    private $turno;
+    private $entradaTempo;
+    private $tempConvertSegun;
+    private $percentParada;
+    private $data;
+    private $idFuncionarioFK;
+    private $idDepartamentoFK;
+    private $idParadaFK;
+    private $status;
+    function __construct($tempoInicial, $tempoFinal, $turno, $entradaTempo, $tempConvertSegun, $percentParada, $data, $idFuncionarioFK, $idDepartamentoFK, $idParadaFK, $status) {
+        $this->tempoInicial = $tempoInicial;
+        $this->tempoFinal = $tempoFinal;
+        $this->turno = $turno;
+        $this->entradaTempo = $entradaTempo;
+        $this->tempConvertSegun = $tempConvertSegun;
+        $this->percentParada = $percentParada;
+        $this->data = $data;
+        $this->idFuncionarioFK = $idFuncionarioFK;
+        $this->idDepartamentoFK = $idDepartamentoFK;
+        $this->idParadaFK = $idParadaFK;
+        $this->status = $status;
     }
 
-    function getTable() {
-        return $this->table;
+    function getId() {
+        return $this->id;
     }
 
-    function getTipoParada() {
-        return $this->tipoParada;
+    function getTempoInicial() {
+        return $this->tempoInicial;
     }
 
-    function getDescricao() {
-        return $this->descricao;
+    function getTempoFinal() {
+        return $this->tempoFinal;
     }
 
-    function getNome() {
-        return $this->nome;
+    function getTurno() {
+        return $this->turno;
     }
 
-    function getTempoParada() {
-        return $this->tempoParada;
+    function getEntradaTempo() {
+        return $this->entradaTempo;
     }
 
-    function setTable($table) {
-        $this->table = $table;
+    function getTempConvertSegun() {
+        return $this->tempConvertSegun;
     }
 
-    function setTipoParada($tipoParada) {
-        $this->tipoParada = $tipoParada;
+    function getPercentParada() {
+        return $this->percentParada;
     }
 
-    function setDescricao($descricao) {
-        $this->descricao = $descricao;
+    function getData() {
+        return $this->data;
     }
 
-    function setNome($nome) {
-        $this->nome = $nome;
+    function getIdFuncionarioFK() {
+        return $this->idFuncionarioFK;
     }
 
-    function setTempoParada($tempoParada) {
-        $this->tempoParada = $tempoParada;
+    function getIdDepartamentoFK() {
+        return $this->idDepartamentoFK;
     }
 
-    
+    function getIdParadaFK() {
+        return $this->idParadaFK;
+    }
+
+    function getStatus() {
+        return $this->status;
+    }
+
+    function setId($id) {
+        $this->id = $id;
+    }
+
+    function setTempoInicial($tempoInicial) {
+        $this->tempoInicial = $tempoInicial;
+    }
+
+    function setTempoFinal($tempoFinal) {
+        $this->tempoFinal = $tempoFinal;
+    }
+
+    function setTurno($turno) {
+        $this->turno = $turno;
+    }
+
+    function setEntradaTempo($entradaTempo) {
+        $this->entradaTempo = $entradaTempo;
+    }
+
+    function setTempConvertSegun($tempConvertSegun) {
+        $this->tempConvertSegun = $tempConvertSegun;
+    }
+
+    function setPercentParada($percentParada) {
+        $this->percentParada = $percentParada;
+    }
+
+    function setData($data) {
+        $this->data = $data;
+    }
+
+    function setIdFuncionarioFK($idFuncionarioFK) {
+        $this->idFuncionarioFK = $idFuncionarioFK;
+    }
+
+    function setIdDepartamentoFK($idDepartamentoFK) {
+        $this->idDepartamentoFK = $idDepartamentoFK;
+    }
+
+    function setIdParadaFK($idParadaFK) {
+        $this->idParadaFK = $idParadaFK;
+    }
+
+    function setStatus($status) {
+        $this->status = $status;
+    }
+
+        
         public function insert() {
 
 
-        $sql = "INSERT INTO $this->table (idParada, nome, tempoParada)"
-                . " VALUES (:idParada, :nome, :tempoParada)";
+        $sql = "INSERT INTO $this->table (tempoInicial, tempoFinal, turno,entradaTempo,tempConvertSegun"
+                . "percentParada,data,idFuncionarioFK,idDepartamentoFK,	idParadaFK,status)"
+                . " VALUES (:tempoInicial, :tempoFinal, :turno, :entradaTempo, :tempConvertSegun, :percentParada"
+                . ":data,:idFuncionarioFK,:idDepartamentoFK,:idParadaFK,:status"
+                . ", :turno, :turno)";
         $stmt = DB::prepare($sql);
-        $stmt->bindParam(':idParada', $this->idParada);
-        $stmt->bindParam(':nome', $this->nome);
-        $stmt->bindParam(':tempoParada', $this->tempoParada);
-
-
-
+        $stmt->bindParam(':tempoInicial', $this->tempoInicial);
+        $stmt->bindParam(':tempoFinal', $this->tempoFinal);
+        $stmt->bindParam(':turno', $this->turno);
+        $stmt->bindParam(':entradaTempo', $this->entradaTempo);
+        $stmt->bindParam(':tempConvertSegun', $this->tempConvertSegun);
+        $stmt->bindParam(':percentParada', $this->percentParada);
+        $stmt->bindParam(':data', $this->data);
+        $stmt->bindParam(':idFuncionarioFK', $this->idFuncionarioFK);
+        $stmt->bindParam(':idDepartamentoFK', $this->idDepartamentoFK);
+        $stmt->bindParam(':idParadaFK', $this->idParadaFK);
+        $stmt->bindParam(':status', $this->status);
         return $stmt->execute();
     }
 
     public function update($idParada) {
 
-        $sql = "UPDATE $this->table SET nome= :nome, "
-                . "tempoParada=:tempoParada where" + $idParada;
-        $stmt = DB::prepare($sql);
-
-        $stmt->bindParam(':nome', $this->nome);
-        $stmt->bindParam(':tempoParada', $this->tempoParada);
-
-        return $stmt->execute();
     }
 
 }

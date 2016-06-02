@@ -76,8 +76,36 @@ class tipo_parada extends Crud{
         }
     }
 
-    public function update($id) {
+    
+    public function findDepParada($id){
+        $sql = "SELECT * FROM $this->table WHERE IdDeptoFK=:id";
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetchAll();
         
+    }
+    
+    public function update($id) {
+        $sql = "UPDATE $this->table SET Nome= :nome, "
+                . "TipoParada=:tipoParada,"
+                . "Descricao=:descricao,"
+                . "IdDeptoFK= :IdDeptoFK "
+                . "WHERE Id = :id";
+        $stmt = DB::prepare($sql);
+        
+        $stmt->bindParam(':nome', $this->nome);
+        $stmt->bindParam(':tipoParada', $this->tipoParada);
+        $stmt->bindParam(':descricao', $this->descricao);
+        $stmt->bindParam(':IdDeptoFK', $this->IdDeptoFK);
+        $stmt->bindParam(':id', $id);
+       try {
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1062') {
+                return false;
+            }
+        }        
     }
 
 }

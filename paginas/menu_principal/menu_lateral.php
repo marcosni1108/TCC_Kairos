@@ -49,7 +49,7 @@
                                 <a href="../parada/cadastrarParada.php">Cadastrar Parada</a>
                             </li> 
                             <li>
-                                <a href="../meta/cadastroMeta.php">Alterar Parada</a>
+                                <a href="../parada/consultarParada.php">Alterar Parada</a>
                             </li>                             
                         </ul>
                     </li>

@@ -7,37 +7,46 @@
         include "../header/header.php";
         include "../../classes/model/validaOperario.php";
   //      include '../include/include_classes.php';
+         
         ?>   
         <link href="../../css/sb-admin.css" rel="stylesheet">
         <meta charset="UTF-8">
     </head>
     <body >
         <?php
-        if (isset($_POST['cadastrar'])):
-
-            $matricula = $_POST['matricula'];
-            $nome = $_POST['nome'];
-            $cpf = $_POST['cpf'];
-            $email = $_POST['email'];
-            $login = $_POST['login'];
-            $senha = $_POST['senha'];
-            $nivel = $_POST['nivel'];
+       
+        
+        if (isset($_POST['registrar'])):
+            date_default_timezone_set('America/Sao_Paulo');
+            $tempoInicial= $_SESSION['tempoInicial'];
+            $tempoFinal= date('H:i');
+            $turnoObj = new turno();
+            $turno = $turnoObj->verificaTurno($tempoFinal);
+            $entradaTempo= $_POST['tempo_parada'];
+            //cal
+            $tempConvertSegun= $_POST['tempo_parada'];
+            //cal
+            $percentParada= $_POST['tempo_parada'];
+            
+            $data= date('Y-m-d');
             $funcionario = new funcionario();
-            $funcionario->setMatricula($matricula);
-            $funcionario->setNome($nome);
-            $funcionario->setCpf($cpf);
-            $funcionario->setEmail($email);
-            $funcionario->setLogin($login);
-            $funcionario->setSenha($senha);
-            $funcionario->setNivel($nivel);
-
+            $func = $funcionario->whereNome($_SESSION['nome']);
+            $idFuncionarioFK = $func[0]->id;
+            $idDepartamentoFK= $_POST['departamento'];
+            $idParadaFK= $_POST['parada'];
+            $status= 'finalidado';
+            
+            $parada = new parada($tempoInicial, $tempoFinal, $turno, $entradaTempo, $tempConvertSegun, $percentParada, $data, $idFuncionarioFK, $idDepartamentoFK, $idParadaFK, $status);
             # Insert
-            if ($funcionario->insert()) {
+            if ($parada->insert()) {
                 echo "<script> alert('Usuario Cadastrado com sucesso')</script>";
             }
             
         endif;
-        ?>        
+         date_default_timezone_set('America/Sao_Paulo');
+        $_SESSION['tempoInicial'] = date('H:i');
+        ?> 
+        
         <div id="wrapper" >
             <div class="container-fluid">
                 <form method="post" action="">
@@ -46,45 +55,48 @@
                             Registro de Parada
                         </h1>                     
                         <div class="row">
-                            <div class="form-group col-lg-4">
-                                <label for="nome_parada">Parada</label>
-                                <input type="text" class="form-control" id="nome_parada" name="nome_parada" placeholder="Nome da Parada" required>
-                            </div>
-
-                            <div class="form-group col-lg-4">
+                            <div class="form-group col-lg-3">
                                 <label for="cnpj">CNPJ</label>
                                 <select  class="form-control" name="cnpj" id="cnpj" required>                                                  
-                                   <option value="">Selecione o CNPJ</option>
+
                                 </select>
                             </div>
-                            <div class="form-group col-lg-4">
+                            <div class="form-group col-lg-3">
                                 <label for="departamento">Departamento</label>
                                 <select  class="form-control" name="departamento" id="cmbDepartamento" required>                                                  
-                                   <option value="">Selecione o Departamento</option>
+
                                 </select>
-                            </div>  
-                            
-                            <div class="form-group col-lg-8">
-                                <label for="descricao">Descrição</label>
-                                <textarea type="text" class="form-control" id="descricao" name="descricao" placeholder="Descrição" required></textarea>
+                            </div>      
+                            <div class="form-group col-lg-3">
+                                <label for="atividade">Atividade</label>
+                                <select  class="form-control" name="atividade" id="cmbAtividade" required>                                                  
+                                </select>
+                            </div>   
+                            <div class="form-group col-lg-3">
+                                <label for="parada">Parada</label>
+                                 <select  class="form-control" name="parada" id="cmbParada" required>                                                  
+                                </select>
                             </div>                            
+                       
                         </div>    
                         <div class="row"><hr width=95%></div>
                         <div class="row">
                             <div class="form-group col-lg-4">
-                                <label for="hora_inicial">Hora Incial</label>
-                                <input type="text" class="form-control" name="hora_inicial" id="hora_inicial" placeholder="Hora Incial" required>
-                            </div> 
+                                <label for="tempo_parada">Tempo de Parada</label>
+                                <input type="text" class="form-control" name="tempo_parada" id="tempo_parada" placeholder="Tempo Parada" required>
+                            </div>                           
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-5"></div>
                             <div class="form-group col-lg-4">
-                                <label for="hora_final">Hora Final</label>
-                                <input type="text" class="form-control" name="hora_final" id="hora_final" placeholder="Hora Final" required>
-                            </div>                              
-                    </div>
+                                <input id="cadastrar"type="submit" name="registrar" class="btn btn-success" value="Registrar">
+                            </div>
+                        </div>
                 </form>  
             </div> 
         </div>
     </body>
     
     <?php include_once '../include/include_js.php'; ?>
-    <script src="../../js/populaComboParada.js"></script>
+    <script src="../../js/populaComboTipoParada.js"></script>
 </html>

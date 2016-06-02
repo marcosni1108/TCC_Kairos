@@ -5,6 +5,7 @@ require 'atividade.php';
 require 'funcionario.php';
 require 'amostra.php';
 require 'meta.php';
+require 'tipo_parada.php';
 require 'produtividade.php';
 $opcao = isset($_GET['opcao']) ? $_GET['opcao'] : '';
 $valor = isset($_GET['valor']) ? $_GET['valor'] : ''; 
@@ -72,10 +73,22 @@ if (! empty($opcao)){
 				echo buscaAtividadeMeta($valor);
 				break;
 			}
+                 case 'BuscaTipoParada':
+			{
+				echo buscaTipoPara($valor);
+				break;
+			}
                         
 	}
 }
 
+function buscaTipoPara($id){
+   
+        $parada = new tipo_parada();
+        $result = $parada->findDepParada($id);
+	echo json_encode($result);
+	
+}
 function buscaAtividadeMeta($idDepartamento){
    
         $produtividade = new produtividade();

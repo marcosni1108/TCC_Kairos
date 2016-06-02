@@ -27,7 +27,7 @@
                                 <h1 class="text-center"><?php echo 'Bem vindo(a):'?> <?php echo $logado ?></h1>
                              </div>
                             </h1>
-                            <img src="../../imagens/índice.jpg"  height="200" width="200" style="position: absolute; 
+                            <img src="../../imagens/indice.jpg"  height="200" width="200" style="position: absolute; 
                                 left: 400px; /* posiciona a 90px para a esquerda */ 
                                 top: 300px; /* posiciona a 70px para baixo */"> 
 
