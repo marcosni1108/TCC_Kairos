@@ -39,7 +39,10 @@
             $parada = new parada($tempoInicial, $tempoFinal, $turno, $entradaTempo, $tempConvertSegun, $percentParada, $data, $idFuncionarioFK, $idDepartamentoFK, $idParadaFK, $status);
             # Insert
             if ($parada->insert()) {
-                echo "<script> alert('Usuario Cadastrado com sucesso')</script>";
+                echo "<script> alert('Parada Cadastrado com sucesso')</script>";
+            }else{
+                echo "<script> alert('Não foi possivel cadastrar a parada')</script>";
+                
             }
             
         endif;
@@ -67,11 +70,7 @@
 
                                 </select>
                             </div>      
-                            <div class="form-group col-lg-3">
-                                <label for="atividade">Atividade</label>
-                                <select  class="form-control" name="atividade" id="cmbAtividade" required>                                                  
-                                </select>
-                            </div>   
+                              
                             <div class="form-group col-lg-3">
                                 <label for="parada">Parada</label>
                                  <select  class="form-control" name="parada" id="cmbParada" required>                                                  
@@ -92,6 +91,10 @@
                                 <input id="cadastrar"type="submit" name="registrar" class="btn btn-success" value="Registrar">
                             </div>
                         </div>
+                        <img id="img" src="../../imagens/loading.gif"  height="120" width="120" style="position: absolute; 
+                                left: 703px; /* posiciona a 90px para a esquerda */ 
+                                top: 300px;
+                                display: none;/* posiciona a 70px para baixo */"> 
                 </form>  
             </div> 
         </div>

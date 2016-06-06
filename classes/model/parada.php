@@ -131,11 +131,10 @@ class parada extends Crud {
         public function insert() {
 
 
-        $sql = "INSERT INTO $this->table (tempoInicial, tempoFinal, turno,entradaTempo,tempConvertSegun"
+        $sql = "INSERT INTO $this->table (tempoInicial, tempoFinal, turno,entradaTempo,tempConvertSegun,"
                 . "percentParada,data,idFuncionarioFK,idDepartamentoFK,	idParadaFK,status)"
-                . " VALUES (:tempoInicial, :tempoFinal, :turno, :entradaTempo, :tempConvertSegun, :percentParada"
-                . ":data,:idFuncionarioFK,:idDepartamentoFK,:idParadaFK,:status"
-                . ", :turno, :turno)";
+                . " VALUES (:tempoInicial, :tempoFinal, :turno, :entradaTempo, :tempConvertSegun, :percentParada,"
+                . ":data,:idFuncionarioFK,:idDepartamentoFK,:idParadaFK,:status)";
         $stmt = DB::prepare($sql);
         $stmt->bindParam(':tempoInicial', $this->tempoInicial);
         $stmt->bindParam(':tempoFinal', $this->tempoFinal);
@@ -148,7 +147,13 @@ class parada extends Crud {
         $stmt->bindParam(':idDepartamentoFK', $this->idDepartamentoFK);
         $stmt->bindParam(':idParadaFK', $this->idParadaFK);
         $stmt->bindParam(':status', $this->status);
-        return $stmt->execute();
+        try {
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1062') {
+                return false;
+            }
+        }
     }
 
     public function update($idParada) {

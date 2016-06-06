@@ -7,6 +7,8 @@ require 'amostra.php';
 require 'meta.php';
 require 'tipo_parada.php';
 require 'produtividade.php';
+require 'turno.php';
+
 $opcao = isset($_GET['opcao']) ? $_GET['opcao'] : '';
 $valor = isset($_GET['valor']) ? $_GET['valor'] : ''; 
 $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : ''; 
@@ -78,10 +80,20 @@ if (! empty($opcao)){
 				echo buscaTipoPara($valor);
 				break;
 			}
-                        
+                 case 'turno':
+			{
+				echo turno();
+				break;
+			}       
 	}
 }
-
+function turno(){
+   
+        $turno = new turno();
+        $result = $turno->findAll();
+	echo json_encode($result);
+	
+}
 function buscaTipoPara($id){
    
         $parada = new tipo_parada();

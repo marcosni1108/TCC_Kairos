@@ -9,28 +9,6 @@
       //  include "../menu_principal/menu_lateral.php";
 //        include '../include/include_classes.php';
         ?>
-        <?php
-        if (isset($_POST['GerarGrafico'])):
-            require_once '../../classes/graficos/GerarGraficos.php';
-            $dataDeTemp = $_POST['dataDe'];
-            $dataAteTemp = $_POST['dataAte'];
-            $id =  $_POST['atividade'];
-            //Muda o formato da data
-            $dataDe = date("Y-m-d", strtotime(str_replace("/", "-", $dataDeTemp)));
-            $dataAte = date("Y-m-d", strtotime(str_replace("/", "-", $dataAteTemp)));
-            $GerarGraficos = new GerarGraficos();
-                if ($GerarGraficos->ativiGrafico($dataDe,$dataAte,$id)) {
-                echo "<script>"
-                . "window.location='./HighProd.php'</script>";
-            } else {
-
-                echo "<script> alert('Departamento sem produtividade no periodo selecionado');</script>";
-            }
-
-
-        endif;
-        ?>
-
 
         <link href="../../css/sb-admin.css" rel="stylesheet">
         <link href="../../css/jquery-ui.css" rel="stylesheet">
@@ -40,7 +18,7 @@
     <body >
 <div id="wrapper" >
             <div class="container-fluid" style="width:80%; top:10%; position:absolute;">
-                <form method="post" action="">
+                <form method="post" action="./HighProd.php">
                     <div class="input-prepend">
                         <h1 class="page-header">
                             Produtividade por Atividade
@@ -75,7 +53,13 @@
                              <div class="form-group col-lg-2">
                                 <label for="data">Ate</label>
                                 <input type="text" class="form-control" id="to" name="dataAte" placeholder="Data" required>                                
-                            </div>                        
+                            </div> 
+                            <div class="form-group col-lg-2">
+                                <label for="data">Turno</label>
+                               <select  class="form-control" name="atividade" id="turno" required>                                                  
+
+                                </select>
+                            </div> 
                         </div>
                             
                         <div class="row"><hr width=95%></div>

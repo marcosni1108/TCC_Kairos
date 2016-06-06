@@ -40,7 +40,7 @@
     <body >
 <div id="wrapper" >
             <div class="container-fluid" style="width:80%; top:10%; position:absolute;">
-                <form method="post" action="./HighProd_1.php">
+                <form method="post" action="">
                     <div class="input-prepend">
                         <h1 class="page-header">
                             Produtividade por Atividade

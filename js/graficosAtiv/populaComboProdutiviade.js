@@ -73,7 +73,26 @@
 		
 	})
         
-
+$('#turno').ready(function(){
+		//chama o serviço que consulta os departamentos.
+                
+		$.getJSON('../../classes/model/consulta.php?opcao=turno', function (dados){ 
+		//verifica o json e cria um options.
+		   if (dados.length > 0){	
+			  var option = '<option value="">Selecione o turno</option>';
+			  $.each(dados, function(i, obj){
+				  option += '<option value="'+obj.id+'">'+obj.HoraInicial+'</option>';
+			  })
+			 
+		   }else{
+			  Reset();
+			
+		   }
+		   $('#turno').html(option).show();
+                   
+                  
+		})
+	})
         
         
 	function Reset(tipo){

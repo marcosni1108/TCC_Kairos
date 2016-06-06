@@ -1,6 +1,7 @@
 <?php
 
-class turno {
+class turno extends Crud {
+    protected $table = 'turno';
     public function verificaTurno($horaInicial) {
         $horaFormat = str_replace(":", "", $horaInicial);
         $Hora = substr($horaFormat, 0, 2);
@@ -22,6 +23,14 @@ class turno {
             case 23: return "15";
             case 24: return "16";    
         }
+        
+    }
+
+    public function insert() {
+        
+    }
+
+    public function update($id) {
         
     }
 
