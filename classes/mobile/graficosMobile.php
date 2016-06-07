@@ -11,6 +11,10 @@ if (!empty($opcao)) {
                 echo funcGrafico($valor,$tipo);
                 break;
             }
+            case 'func': {
+                echo func($valor,$tipo);
+                break;
+            }
     }
 }
 
@@ -20,10 +24,9 @@ function funcGrafico($id,$data) {
     $result = $func->prodFunc($id, $data);
     echo $result;
 }
+function func($id,$data) {
 
-function getAllEnd() {
-    $endereco = new endereco();
-    $end = $endereco->findAll();
-
-    echo json_encode($end);
+    $func = new GerarGraficosM();
+    $result = $func->prodFuncJson($id, $data);
+    echo json_encode($result);
 }

@@ -15,6 +15,10 @@ require_once '../model/funcionario.php';
 class GerarGraficosM{
 
     //put your code here
+    public function prodFuncJson($id, $data) {
+        $produtividade = new produtividade();
+        return $produtividade->findIdFunc($id, $data);
+    }
     public function prodFunc($id, $data) {
         $produtividade = new produtividade();
         $fun = new funcionario();
