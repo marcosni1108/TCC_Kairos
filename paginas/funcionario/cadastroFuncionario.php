@@ -34,14 +34,14 @@
             $funcionario->setLogin($login);
             $funcionario->setSenha(md5($senha));
             $funcionario->setNivel($nivel);
-
+            $insert = $funcionario->insert();
             # Insert
-            if ($funcionario->insert()) {
+            if ($insert==="OK") {
                 echo  "<script> alert('Usuario Cadastrado com sucesso')</script>";
                 
             }else{
                 
-                echo  "<script> alert('Não foi possivel cadastrar o Usuário')</script>";
+                echo  "<script> alert('{$insert}')</script>";
                 
             }
             

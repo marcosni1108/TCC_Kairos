@@ -38,13 +38,13 @@
                 $funcionario->setLogin($login);
                 $funcionario->setNivel($nivel);
                 //$funcionario->setSenha(md5($senha));
-                
+                $update = $funcionario->update($id);
 
 
-                if ($funcionario->update($id)) {
+                if($update==="OK"){
                     echo "<script>alert('Usuario Atualizado!')</script>";
                 }else{
-                     echo "<script>alert('Não foi possivel atualizar o usuario!')</script>";
+                     echo  "<script> alert('{$update}')</script>";
                 }
 
             endif;

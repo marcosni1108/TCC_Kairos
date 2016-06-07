@@ -13,6 +13,7 @@
     </head>
     <body > 
         <?php
+        date_default_timezone_set('America/Sao_Paulo');
         $data_produtividade = date('Y-m-d');
         $produtividade = new produtividade;
         $idfunc = (int) $_GET[md5(idFunc)];

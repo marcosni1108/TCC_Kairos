@@ -30,12 +30,14 @@
             $dataDeTemp = $_POST['dataDe'];
             $dataAteTemp = $_POST['dataAte'];
             $id =  $_POST['atividade'];
+             $turno =  $_POST['turno'];
             //Muda o formato da data
             $dataDe = date("Y-m-d", strtotime(str_replace("/", "-", $dataDeTemp)));
             $dataAte = date("Y-m-d", strtotime(str_replace("/", "-", $dataAteTemp)));
             $GerarGraficos = new produtividade();
            
-            $array =  $GerarGraficos->findAtivProd($dataDe,$dataAte,$id);
+            //$array =  $GerarGraficos->findAtivProd($dataDe,$dataAte,$id);
+            $array =  $GerarGraficos->findAtivTurno($dataDe,$dataAte,$id,$turno);
             if($array){
                 foreach ($array as $key => $value) {
 
@@ -105,10 +107,10 @@
                     ?>]
         }, {
             name: 'Parada direta',
-            data: [2, 2, 3, 2]
+            data: [2, 2, 3]
         }, {
             name: 'Parada indereta',
-            data: [3, 4, 4, 2]
+            data: [3, 4, 4]
         }]
     });
 });

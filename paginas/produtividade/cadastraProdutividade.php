@@ -14,6 +14,7 @@
     </head>
     <body > 
         <?php
+        date_default_timezone_set('America/Sao_Paulo');
         $data_produtividade = date('Y-m-d');
         $funcionario = new funcionario();
         $produtividade = new produtividade;

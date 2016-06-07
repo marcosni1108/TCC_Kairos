@@ -82,7 +82,7 @@
                         <div class="row">
                             <div class="form-group col-lg-4">
                                 <label for="tempo_parada">Tempo de Parada</label>
-                                <input type="text" class="form-control" name="tempo_parada" id="tempo_parada" placeholder="Tempo Parada" required>
+                                <input type="text" class="form-control" name="tempo_parada" onkeypress="javascript: mascara(this, soNumeros);" id="tempo_parada" placeholder="Tempo Parada" required>
                             </div>                           
                         </div>
                         <div class="row">
@@ -102,4 +102,5 @@
     
     <?php include_once '../include/include_js.php'; ?>
     <script src="../../js/populaComboTipoParada.js"></script>
+      <script src="../../js/validadores.js"></script>
 </html>

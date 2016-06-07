@@ -11,6 +11,7 @@ class departamento extends Crud {
     private $lider;
     private $gerente;
     private $idEnderecoFK;
+
     function getId() {
         return $this->id;
     }
@@ -59,8 +60,7 @@ class departamento extends Crud {
         $this->idEnderecoFK = $idEnderecoFK;
     }
 
-   
-        public function insert() {
+    public function insert() {
 
 
         $sql = "INSERT INTO $this->table (nome,cnpj,lider,gerente,idEnderecoFK	)"
@@ -71,16 +71,16 @@ class departamento extends Crud {
         $stmt->bindParam(':lider', $this->lider);
         $stmt->bindParam(':gerente', $this->gerente);
         $stmt->bindParam(':idEnderecoFK', $this->idEnderecoFK);
-     
 
-       
+
+
         return $stmt->execute();
     }
 
     public function update($id) {
 
         $sql = "UPDATE $this->table SET nome= :nome, "
-                 . "cnpj=:cnpj,lider=:lider,"
+                . "cnpj=:cnpj,lider=:lider,"
                 . "gerente=:gerente,idEnderecoFK =:idEnderecoFK where id = :id";
         $stmt = DB::prepare($sql);
 
@@ -90,15 +90,36 @@ class departamento extends Crud {
         $stmt->bindParam(':gerente', $this->gerente);
         $stmt->bindParam(':idEnderecoFK', $this->idEnderecoFK);
         $stmt->bindParam(':id', $id);
-        
-        
+
+
         return $stmt->execute();
     }
-public function findDeptCnpj($idEnd) {
+
+    public function findDeptCnpj($idEnd) {
         $sql = "SELECT * FROM $this->table WHERE idEnderecoFK = :idEnd";
         $stmt = DB::prepare($sql);
         $stmt->bindParam(':idEnd', $idEnd, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
+    public function BuscaTable() {
+        $sql = "SELECT dep.id,
+	  dep.cnpj,
+	  dep.nome as Departamento,
+	  funcLider.nome as Lider,
+	  funcGerente.nome as Gerente,
+          concat(ende.endereco, ', ' , ende.numero) as Endereco
+                FROM departamento as dep
+                inner join funcionario funcLider
+                on funcLider.id = dep.lider
+                inner join funcionario funcGerente
+                on funcGerente.id = dep.gerente
+                inner join endereco ende
+                on ende.id = dep.idEnderecoFK";
+        $stmt = DB::prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
 }

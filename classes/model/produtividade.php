@@ -192,14 +192,38 @@ class produtividade extends Crud {
 
     public function findIdFunc($idFuncionario, $data) {
 
-        $sql = "SELECT * FROM $this->table where IdFuncionario = :idFuncionario and data = :data";
+        $sql = "SELECT produtividade.quantidade,turno.HoraFinal"
+        . " FROM $this->table INNER JOIN turno "
+                . "ON turno.ID = turno where IdFuncionario = :idFuncionario and data = :data";
         $stmt = DB::prepare($sql);
         $stmt->bindParam(':idFuncionario', $idFuncionario, PDO::PARAM_INT);
         $stmt->bindParam(':data', $data);
         $stmt->execute();
         return $stmt->fetchAll();
     }
+  public function findAtivTurno($dataDe, $dataAte, $id,$turno) {
 
+        $sql = "select func.nome as nomFunc,AT.nome,prod.turno,prod.capacidade, sum(prod.percentProd) as percentProd
+                    from produtividade prod
+                        left join funcionario func ON prod.IdFuncionario = func.id 
+                        left JOIN atividade AT ON AT.ID = prod.IDAtividade
+                        where AT.ID=:id and prod.turno=:turno
+                        and prod.data BETWEEN :dataDe and :dataAte group by func.nome";
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':dataDe', $dataDe);
+        $stmt->bindParam(':dataAte', $dataAte);
+        $stmt->bindParam(':turno', $turno, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        try {
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+
+        
+        
+    }
     public function findAtivProd($dataDe, $dataAte, $id) {
 
         $sql = "select func.nome as nomFunc, AT.nome,prod.capacidade,prod.percentProd"

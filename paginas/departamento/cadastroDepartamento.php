@@ -33,7 +33,7 @@
           
             # Insert
             if ($departamento->insert()) {
-                echo "<script> alert('Departamento Cadastrado com sucesso')</script>";
+                echo "<script> alert('Departamento cadastrado com sucesso.')</script>";
             }
             
         endif;

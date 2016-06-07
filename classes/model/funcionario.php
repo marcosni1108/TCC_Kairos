@@ -80,10 +80,12 @@ class funcionario extends Crud {
         $stmt->bindParam(':nivel', $this->nivel);
 
         try {
-            return $stmt->execute();
+            $stmt->execute();
+            return "OK" ;
         } catch (PDOException $e) {
             if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1062') {
-                return false;
+                 $erro = $this->trataErro($e->errorInfo[2]);
+                return $erro;
             }
         }
     }
@@ -103,10 +105,12 @@ class funcionario extends Crud {
         $stmt->bindParam(':nivel', $this->nivel);
         $stmt->bindParam(':id', $id);
         try {
-            return $stmt->execute();
+            $stmt->execute();
+            return 'OK';
         } catch (PDOException $e) {
             if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1062') {
-                return false;
+                $erro = $this->trataErro($e->errorInfo[2]);
+                return $erro;
             }
         }
     }
@@ -171,6 +175,21 @@ class funcionario extends Crud {
         $stmt = DB::prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll();
+    }
+    public function trataErro($erro){
+        
+        if(strripos($erro, 'matricula')){
+            return "Essa matricula já está cadastrada.";
+        }
+        else if(strripos($erro, 'login')){
+            return "Esse login já está cadastrado.";
+        }
+        else if(strripos($erro, 'cpf')){
+            return "Esse CPF já está cadastrado.";
+        }else{
+            return "Não foi possivel cadastrar o usuário.";
+        }
+        
     }
     
 }

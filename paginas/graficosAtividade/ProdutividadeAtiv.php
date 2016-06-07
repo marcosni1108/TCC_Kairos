@@ -56,7 +56,7 @@
                             </div> 
                             <div class="form-group col-lg-2">
                                 <label for="data">Turno</label>
-                               <select  class="form-control" name="atividade" id="turno" required>                                                  
+                               <select  class="form-control" name="turno" id="turno" required>                                                  
 
                                 </select>
                             </div> 
