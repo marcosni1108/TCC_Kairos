@@ -22,7 +22,7 @@
         
 // popula o combo de departamentos quando a pagina é carregada.
 	$('#cnpj').change(function(e){
-            $('#img').show();
+            //$('#img').show();
             $('#btnCadastrar').prop("disabled",true);
             var idCNPJ = $('#cnpj').val();
 		//chama o serviço que consulta os departamentos.
@@ -33,7 +33,7 @@
 			  $.each(dados, function(i, obj){
 				  option += '<option value="'+obj.id+'">'+obj.nome+'</option>';
 			  })
-			  $('#img').hide();
+			//  $('#img').hide();
 		   }else{
 			  Reset("Dept");
 			

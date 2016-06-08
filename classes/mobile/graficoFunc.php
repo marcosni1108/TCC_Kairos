@@ -120,7 +120,7 @@ class GerarGraficosM{
 
             $dataGrafico1 .= "Morris.Bar({ element: 'barDept',data: " . $dataGrafico . ", xkey: 'y', ykeys: ['a'], labels: ['Produtividade do Departamento ']});";
 
-            $fp = fopen("../../js/dataGrafico/dataDeptProd.js", "w");
+            $fp = fopen("../../js/mobileCharts/dataDeptProd.js", "w");
 
             // Escreve "exemplo de escrita" no bloco1.txt
             $escreve = fwrite($fp, $dataGrafico1);
@@ -128,7 +128,7 @@ class GerarGraficosM{
             return true;
         } else {
 
-            $fp = fopen("../../js/dataGrafico/dataDeptProd.js", "w");
+            $fp = fopen("../../js/mobileCharts/dataDeptProd.js", "w");
 
             // Escreve "exemplo de escrita" no bloco1.txt
             $escreve = fwrite($fp, " ");
