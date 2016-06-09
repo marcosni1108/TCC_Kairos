@@ -91,14 +91,18 @@ $('#cmbDepartamento').change(function(e){
 	$('#tempo_parada').blur(function(e){
            
             var parada = $('#tempo_parada').val();
-		//chama o serviço que consulta os departamentos.
+            parada = parseInt(parada);
+		
                 if(parada>60){
                     $('#tempo_parada').val("");
                     alert("O tempo da parada não pode passar de 60 minutos.");
+                }else if (parada===0){
+                    alert("Parada não pode ser 0");
+                     $('#tempo_parada').val("");
                 }
 		
 	})
         
+     
+        
        
-
-
