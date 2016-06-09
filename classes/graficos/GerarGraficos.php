@@ -45,7 +45,7 @@ class GerarGraficos{
                                 },
                                 labels: {
                                     formatter: function () {
-                                        return this.value / 1000;
+                                        return this.value;
                                     }
                                 }
                             },

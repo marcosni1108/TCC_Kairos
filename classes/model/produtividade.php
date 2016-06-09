@@ -201,19 +201,15 @@ class produtividade extends Crud {
         $stmt->execute();
         return $stmt->fetchAll();
     }
-  public function findAtivTurno($dataDe, $dataAte, $id,$turno) {
+  public function findAtivTurno($dataDe, $dataAte, $id) {
 
-        $sql = "select func.nome as nomFunc,AT.nome,prod.turno,prod.capacidade, sum(prod.percentProd) as percentProd
+        $sql = "select func.nome as nomFunc,prod.capacidade, sum(prod.percentProd) as percentProd
                     from produtividade prod
                         left join funcionario func ON prod.IdFuncionario = func.id 
-                        left JOIN atividade AT ON AT.ID = prod.IDAtividade
-                        where AT.ID=:id and prod.turno=:turno
                         and prod.data BETWEEN :dataDe and :dataAte group by func.nome";
         $stmt = DB::prepare($sql);
         $stmt->bindParam(':dataDe', $dataDe);
         $stmt->bindParam(':dataAte', $dataAte);
-        $stmt->bindParam(':turno', $turno, PDO::PARAM_INT);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         try {
             $stmt->execute();
             return $stmt->fetchAll();

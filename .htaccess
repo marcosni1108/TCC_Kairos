@@ -4,8 +4,8 @@ deny from all
 satisfy all
 </files>
     ErrorDocument 404 /Kairos/paginas/erros/erro.html
-    ErrorDocument 401 /erros/authreqd.html
+    ErrorDocument 401 /Kairos/paginas/erros/erro.html
     ErrorDocument 403 /Kairos/paginas/erros/erro.html
-    ErrorDocument 500 /erros/serverr.html
+    ErrorDocument 500 /Kairos/paginas/erros/erro.html
 
 Options -Indexes

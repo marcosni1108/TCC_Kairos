@@ -37,7 +37,7 @@
             $GerarGraficos = new produtividade();
            
             //$array =  $GerarGraficos->findAtivProd($dataDe,$dataAte,$id);
-            $array =  $GerarGraficos->findAtivTurno($dataDe,$dataAte,$id,$turno);
+            $array =  $GerarGraficos->findAtivTurno($dataDe,$dataAte,$id);
             if($array){
                 foreach ($array as $key => $value) {
 
@@ -63,7 +63,7 @@
             type: 'column'
         },
         title: {
-            text: 'Grafico de Atidades por func'
+            text: '<?php echo "Dia :".  $dataDeTemp." até dia :". $dataAteTemp?>'
         },
         xAxis: {
             categories: [<?php 
@@ -79,16 +79,24 @@
         yAxis: {
             min: 0,
             title: {
-                text: 'Total por periodo'
+                text: "Percentual"
             }
         },
-        tooltip: {
-            pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
-            shared: true
+                tooltip: {
+            headerFormat: '<b>{point.x}</b><br/>',
+            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
         },
         plotOptions: {
             column: {
-                stacking: 'percent'
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: true,
+                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                    style: {
+                        textShadow: '0 0 3px black'
+                       	
+                    }
+                }
             }
         },
         credits: {
@@ -107,10 +115,10 @@
                     ?>]
         }, {
             name: 'Parada direta',
-            data: [2, 2, 3]
+            data: [1002, 200, 300,1000]
         }, {
             name: 'Parada indereta',
-            data: [3, 4, 4]
+            data: [300, 400, 200,100]
         }]
     });
 });
