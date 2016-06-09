@@ -5,7 +5,7 @@
         include "../include/include_css.php";
    //     Teste Ricardoinclude "../menu_principal/menu_lateral.php";
         include "../header/header.php";
-        include "../../classes/model/validaOperario.php";
+        //include "../../classes/model/validaOperario.php";
   //      include '../include/include_classes.php';
          
         ?>   
@@ -24,9 +24,9 @@
             $turno = $turnoObj->verificaTurno($tempoFinal);
             $entradaTempo= $_POST['tempo_parada'];
             //cal
-            $tempConvertSegun= $_POST['tempo_parada'];
+            $tempConvertSegun= $_POST['tempo_parada']*60;
             //cal
-            $percentParada= $_POST['tempo_parada'];
+            $percentParada= ($tempConvertSegun/3600)*100;
             
             $data= date('Y-m-d');
             $funcionario = new funcionario();
@@ -34,14 +34,13 @@
             $idFuncionarioFK = $func[0]->id;
             $idDepartamentoFK= $_POST['departamento'];
             $idParadaFK= $_POST['parada'];
-            $status= 'finalidado';
-            
+            $status= 'finalizado';            
             $parada = new parada($tempoInicial, $tempoFinal, $turno, $entradaTempo, $tempConvertSegun, $percentParada, $data, $idFuncionarioFK, $idDepartamentoFK, $idParadaFK, $status);
             # Insert
             if ($parada->insert()) {
-                echo "<script> alert('Parada Cadastrado com sucesso')</script>";
+                echo "<script> alert('Parada cadastrada com sucesso.')</script>";
             }else{
-                echo "<script> alert('Não foi possivel cadastrar a parada')</script>";
+                echo "<script> alert('Não foi possivel cadastrar a parada.')</script>";
                 
             }
             
@@ -81,8 +80,8 @@
                         <div class="row"><hr width=95%></div>
                         <div class="row">
                             <div class="form-group col-lg-4">
-                                <label for="tempo_parada">Tempo de Parada</label>
-                                <input type="text" class="form-control" name="tempo_parada" onkeypress="javascript: mascara(this, soNumeros);" id="tempo_parada" placeholder="Tempo Parada" required>
+                                <label for="tempo_parada">Tempo de Parada (Minutos)</label>
+                                <input type="text" class="form-control" maxlength="2" name="tempo_parada" onkeypress="javascript: mascara(this, soNumeros);" id="tempo_parada" placeholder="Tempo Parada" required>
                             </div>                           
                         </div>
                         <div class="row">

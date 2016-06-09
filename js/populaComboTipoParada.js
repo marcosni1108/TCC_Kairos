@@ -86,5 +86,19 @@ $('#cmbDepartamento').change(function(e){
                
 		
 	}
+        
+                
+	$('#tempo_parada').blur(function(e){
+           
+            var parada = $('#tempo_parada').val();
+		//chama o serviço que consulta os departamentos.
+                if(parada>60){
+                    $('#tempo_parada').val("");
+                    alert("O tempo da parada não pode passar de 60 minutos.");
+                }
+		
+	})
+        
+       
 
 

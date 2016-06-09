@@ -77,17 +77,17 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#grafico"><i class="fa fa-bar-chart"></i> Graficos <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="grafico" class="collapse">
                             <li>
-                                <a href="../graficos/HighProd.php">Produtividade</a>
+                                <a href="../graficos/HighProd.php">Produtividade de Departamento</a>
                             </li>
                             <li>
-                                <a href="../graficos/ProdutividadeFunc.php">Produtividade de Funcionários</a>
+                                <a href="../graficos/ProdutividadeFunc.php">Produtividade Funcionário</a>
                             </li>
                              <li>
-                                 <a href="../graficosAtividade/ProdutividadeAtiv.php">Produtividade por Atividade</a>
+                                 <a href="../graficosAtividade/ProdutividadeAtiv.php">Produtividade por Período</a>
                             </li>
-                            <li>
+<!--                            <li>
                                 <a href="../graficos/ProdutividadeDept.php">Produtividade de Departamento</a>
-                            </li>
+                            </li>-->
                             <li>
                                 <a href="../graficos/GraficoParada.php">Tempo Perdido</a>
                             </li>    
