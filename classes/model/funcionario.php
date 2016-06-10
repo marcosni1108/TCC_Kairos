@@ -12,8 +12,17 @@ class funcionario extends Crud {
     private $login;
     private $senha;
     private $nivel;
+    private $status;
+    
+    function getStatus() {
+        return $this->status;
+    }
 
-    function getMatricula() {
+    function setStatus($status) {
+        $this->status = $status;
+    }
+
+        function getMatricula() {
         return $this->matricula;
     }
 
@@ -68,8 +77,8 @@ class funcionario extends Crud {
     public function insert() {
 
 
-        $sql = "INSERT INTO $this->table ( matricula, nome, cpf ,email, login, senha, nivel)"
-                . " VALUES (:matricula, :nome, :cpf , :email, :login, :senha, :nivel)";
+        $sql = "INSERT INTO $this->table ( matricula, nome, cpf ,email, login, senha, nivel,status)"
+                . " VALUES (:matricula, :nome, :cpf , :email, :login, :senha, :nivel,:status)";
         $stmt = DB::prepare($sql);
         $stmt->bindParam(':matricula', $this->matricula);
         $stmt->bindParam(':nome', $this->nome);
@@ -78,6 +87,7 @@ class funcionario extends Crud {
         $stmt->bindParam(':login', $this->login);
         $stmt->bindParam(':senha', $this->senha);
         $stmt->bindParam(':nivel', $this->nivel);
+        $stmt->bindParam(':status',$this->status);
 
         try {
             $stmt->execute();

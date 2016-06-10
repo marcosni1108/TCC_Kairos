@@ -34,6 +34,7 @@
             $funcionario->setLogin($login);
             $funcionario->setSenha(md5($senha));
             $funcionario->setNivel($nivel);
+            $funcionario->setStatus("A");
             $insert = $funcionario->insert();
             # Insert
             if ($insert==="OK") {
