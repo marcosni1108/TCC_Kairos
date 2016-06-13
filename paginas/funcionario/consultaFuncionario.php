@@ -39,12 +39,12 @@
                                 <table id="func"class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th width="15%">Nome</th>
-                                            <th>CPF</th>
-                                            <th width="5%">Email</th>
-                                            <th>Nivel</th>
-                                            <th>Login</th>
-                                            <th>Matricula</th>                                          
+                                            <th width="14%">Nome</th>
+                                            <th width="5%">CPF</th>
+                                            <th width="1%">Email</th>
+                                            <th width="5%">Nivel</th>
+                                            <th  width="5%">Login</th>
+                                            <th width="5%">Matricula</th>                                          
                                             <th>A&ccedil;&otilde;es</th>
                                         </tr>
                                     </thead>
