@@ -38,7 +38,7 @@
             $insert = $funcionario->insert();
             # Insert
             if ($insert==="OK") {
-                echo  "<script> alert('Usuario cadastrado com sucesso.')</script>";
+                echo  "<script> alert('Funcionário cadastrado com sucesso.')</script>";
                 
             }else{
                 
@@ -55,7 +55,7 @@
                 <form method="post" action="">
                     <div class="input-prepend">
                         <h1 class="page-header">
-                            Cadastro de Funcionario
+                            Cadastro de Funcionário
                         </h1>                     
                         <div class="row">
                             <div class="form-group col-lg-4">

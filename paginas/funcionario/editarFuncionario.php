@@ -42,7 +42,7 @@
 
 
                 if($update==="OK"){
-                    echo "<script>alert('Usuario alterado com sucesso.')</script>";
+                    echo "<script>alert('Funcionário alterado com sucesso.')</script>";
                 }else{
                      echo  "<script> alert('{$update}')</script>";
                 }
@@ -54,7 +54,7 @@
             <!-- Primeira linha do wrapper -->
             <div class="row" >
                 <div class="col-lg-12">
-                    <h1 class="page-header">Editar Funcionario</h1>
+                    <h1 class="page-header">Editar Funcionário</h1>
                 </div>
             </div>
 

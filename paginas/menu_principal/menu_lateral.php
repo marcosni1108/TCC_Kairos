@@ -9,13 +9,13 @@
                         <a href="../menu_principal/menu_principal.php"><i class="fa fa-tachometer"></i> Home</a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#funcionario"><i class="glyphicon glyphicon-user"></i> Funcionario <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#funcionario"><i class="glyphicon glyphicon-user"></i> Funcionário <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="funcionario" class="collapse">
                             <li>
-                                <a href="../funcionario/cadastroFuncionario.php">Cadastrar Funcionario</a>
+                                <a href="../funcionario/cadastroFuncionario.php">Cadastrar Funcionário</a>
                             </li>
                             <li>
-                                <a href="../funcionario/consultaFuncionario.php">Alterar Funcionario</a>
+                                <a href="../funcionario/consultaFuncionario.php">Alterar Funcionário</a>
                             </li>                          
                         </ul>
                     </li>
@@ -65,16 +65,16 @@
                         </ul>                    
                     </li>                    
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#relatorio"><i class="glyphicon glyphicon-list-alt"></i> Relatorios <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#relatorio"><i class="glyphicon glyphicon-list-alt"></i> Relatórios <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="relatorio" class="collapse">
                             <li>
-                                <a href="../relatorios/relatorioAmostra.php">Relatorio de Amostras</a>
+                                <a href="../relatorios/relatorioAmostra.php">Relatório de Amostras</a>
                             </li>
                                                        
                         </ul>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#grafico"><i class="fa fa-bar-chart"></i> Graficos <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#grafico"><i class="fa fa-bar-chart"></i> Gráficos <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="grafico" class="collapse">
                             <li>
                                 <a href="../graficos/HighProd.php">Produtividade de Departamento</a>
@@ -92,7 +92,7 @@
                                 <a href="../graficos/GraficoParada.php">Tempo Perdido</a>
                             </li>    
                             <li>
-                                <a href="#">Graficos</a>
+                                <a href="#">Gráficos</a>
                             </li>                            
                         </ul>
                     </li>

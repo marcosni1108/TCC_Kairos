@@ -19,7 +19,7 @@
             <!-- Primeira linha do wrapper -->
             <div class="row" >
                 <div class="col-lg-12">
-                    <h1 class="page-header">Relatorio de Amostra</h1>
+                    <h1 class="page-header">Relatório de Amostra</h1>
                 </div>
             </div>
             <div class="row">

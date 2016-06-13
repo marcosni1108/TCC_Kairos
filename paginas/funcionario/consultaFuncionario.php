@@ -26,7 +26,7 @@
         <div id="page-wrapper" style="overflow-x: hidden; padding-left: 250px; height:100%; padding-top: 30px;">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Alterar Funcionario</h1>
+                    <h1 class="page-header">Alterar Funcionário</h1>
                 </div>
             </div>
             <div class="row">
