@@ -38,7 +38,7 @@
             $insert = $funcionario->insert();
             # Insert
             if ($insert==="OK") {
-                echo  "<script> alert('Usuario Cadastrado com sucesso')</script>";
+                echo  "<script> alert('Usuario cadastrado com sucesso.')</script>";
                 
             }else{
                 

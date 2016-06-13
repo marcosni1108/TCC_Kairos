@@ -34,7 +34,7 @@
 
         # Insert
         if ($atividade->insert()) {
-            echo "<script> alert('Atividade cadastrado com sucesso.')</script>";
+            echo "<script> alert('Atividade cadastrada com sucesso.')</script>";
         }
 
     endif;

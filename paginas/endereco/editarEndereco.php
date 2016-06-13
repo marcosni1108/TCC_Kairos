@@ -40,7 +40,7 @@
                 $endereco->setNumero($numero);
 
                 if ($endereco->update($id)) {
-                    echo "Atualizado com sucesso!";
+                    echo "Endereço alterado com sucesso.!";
                 }
 
             endif;

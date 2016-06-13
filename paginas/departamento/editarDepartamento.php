@@ -41,7 +41,7 @@
             $departamento->setId($id);
 
                 if ($departamento->update($id)) {
-                    echo "<script>alert('Departamento Atualizado!')</script>";
+                    echo "<script>alert('Departamento alterado com sucesso.')</script>";
                 }
 
             endif;

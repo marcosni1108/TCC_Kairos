@@ -42,7 +42,7 @@
 
         # Insert
         if ($atividade->update($id)) {
-            echo "<script> alert('Atividade alterada com sucesso')</script>";
+            echo "<script> alert('Atividade alterada com sucesso.')</script>";
         }
 
     endif;
@@ -127,7 +127,7 @@
                                             <div class="form-group col-lg-4">
                                             </div>
                                             <div class="form-group col-lg-4">
-                                                <input id="btnCadastrar" type="submit" name="atualizar" class="btn btn-success" value="Cadastrar dados">
+                                                <input id="btnCadastrar" type="submit" name="atualizar" class="btn btn-success" value="Atualizar Dados">
                                             </div>    
                                         </div>
 

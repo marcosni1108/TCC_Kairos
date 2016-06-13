@@ -42,7 +42,7 @@
 
 
                 if($update==="OK"){
-                    echo "<script>alert('Usuario Atualizado!')</script>";
+                    echo "<script>alert('Usuario alterado com sucesso.')</script>";
                 }else{
                      echo  "<script> alert('{$update}')</script>";
                 }
