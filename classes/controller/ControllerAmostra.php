@@ -120,8 +120,11 @@ class ControllerAmostra {
     public function AlertMedia($indice_final_media) {
         
             $format_numberMedia = number_format($indice_final_media, 2, ',', '');
+             $format_numberMedia1 = $indice_final_media/60;
+             $format_numberMedia = number_format($format_numberMedia1, 2, ',', '');
+             
                  echo "<script> 
-                    alert('Amostra cadastrada com sucesso, o indice é:  " . $format_numberMedia/60 . " minutos por uma unidade');
+                    alert('Amostra cadastrada com sucesso, o indice é:  " . $format_numberMedia. " minutos por uma unidade');
                     location.href='cadastroAmostra.php';</script>";
         
     }

@@ -192,7 +192,7 @@ class produtividade extends Crud {
 
     public function findIdFunc($idFuncionario, $data) {
 
-        $sql = "SELECT produtividade.quantidade,turno.HoraFinal"
+        $sql = "SELECT produtividade.quantidade,turno.HoraFinal,turno.HoraInicial"
         . " FROM $this->table INNER JOIN turno "
                 . "ON turno.ID = turno where IdFuncionario = :idFuncionario and data = :data";
         $stmt = DB::prepare($sql);

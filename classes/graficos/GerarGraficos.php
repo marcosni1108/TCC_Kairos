@@ -19,6 +19,7 @@ class GerarGraficos{
         $arrayFunc = $produtividade->findIdFunc($id, $data);
         if ($arrayFunc) {
                 $tempoFinal = $this->categorias($arrayFunc, "HoraFinal");
+                 $tempoIncial = $this->categorias($arrayFunc, "HoraInicial");
                 $quantidade = $this->series($arrayFunc, "quantidade");
             $nomeFun = $fun->find($id);
             $dataGrafico1 = "$(function () {
@@ -30,7 +31,7 @@ class GerarGraficos{
                                 text: 'Produtividade Diaria'
                             },
                             xAxis: {
-                                categories: [{$tempoFinal}],
+                                categories: [{$tempoIncial}],
                                 tickmarkPlacement: 'on',
                                 title: {
                                     enabled: false
