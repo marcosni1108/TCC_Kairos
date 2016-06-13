@@ -43,8 +43,9 @@
 
 
                   $categoria[] = $value->NOME;
-                  $produtividade[] = $value->PERCENTPROD;
-                  $parada[] = $value->PERCENTPARADA;
+                  $produtividade[] = $value->PercentProd;
+                  $paradaDireta[] = $value->PercentParadaDireta;
+                  $paradaIndireta[] = $value->PercentParadaIndireta;
 
                }
             } else{
@@ -118,18 +119,33 @@
                     echo $produtividadeV;
                     ?>]
         }, {
-            name: 'Parada Direta/Indireta',
+            name: 'Parada Direta',
             data: [
                <?php 
-             for($i = 0; $i<= count($parada)-1;$i++){
-                if($parada[$i]===null){
-                    $paradaV .= "0,";  
+             for($i = 0; $i<= count($paradaIndireta)-1;$i++){
+                if($paradaIndireta[$i]===null){
+                    $paradaIndiretaV .= "0,";  
                 }else{
-                    $paradaV .= "".$parada[$i].",";     
+                    $paradaIndiretaV .= "".$paradaIndireta[$i].",";     
                 }
              }
             
-                    echo  str_replace(",,"," ",$paradaV);
+                    echo  str_replace(",,"," ",$paradaIndiretaV);
+                    ?>
+            ]
+        }, {
+            name: 'Parada Indireta',
+            data: [
+               <?php 
+             for($i = 0; $i<= count($paradaDireta)-1;$i++){
+                if($paradaDireta[$i]===null){
+                    $paradaDiretaV .= "0,";  
+                }else{
+                    $paradaDiretaV .= "".$paradaDireta[$i].",";     
+                }
+             }
+            
+                    echo  str_replace(",,"," ",$paradaDiretaV);
                     ?>
             ]
         }]

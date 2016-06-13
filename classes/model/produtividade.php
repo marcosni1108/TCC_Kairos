@@ -206,17 +206,28 @@ class produtividade extends Crud {
         $sql = "SELECT P.IDFUNCIONARIO,(SELECT NOME 
 			FROM FUNCIONARIO
 			WHERE ID=P.IDFUNCIONARIO) AS NOME,
-                        (SELECT SUM(PERCENTPARADA)
-			FROM PARADA
-			WHERE IDFUNCIONARIOFK=P.IDFUNCIONARIO
-			and DATA BETWEEN :dataDe 
-			and :dataAte) AS PERCENTPARADA,
-                        SUM(P.PERCENTPROD) as PERCENTPROD		
-                        FROM PRODUTIVIDADE P
-                        WHERE P.IDDEPARTAMENTO = :id
-                        AND DATA BETWEEN :dataDe
-			and :dataAte
-                        GROUP BY IDFUNCIONARIO";
+		(select 
+			sum(parada.percentParada) as parada from parada 
+			left join tipo_parada on 
+			tipo_parada.id = parada.idParadaFk 
+				where IDFUNCIONARIOFK=P.IDFUNCIONARIO 
+				and DATA BETWEEN :dataDe 
+				and :dataAte
+				and tipo_parada.tipoParada='Direta') AS PercentParadaDireta,
+                                    (select 
+                                            sum(parada.percentParada) as parada from parada 
+                                            left join tipo_parada on 
+                                            tipo_parada.id = parada.idParadaFk 
+                                            where IDFUNCIONARIOFK=P.IDFUNCIONARIO 
+                                            and DATA BETWEEN :dataDe 
+                                            and :dataAte
+                                            and tipo_parada.tipoParada='Indireta') AS PercentParadaIndireta,
+			SUM(P.PERCENTPROD) as PercentProd		
+			FROM PRODUTIVIDADE P
+			WHERE P.IDDEPARTAMENTO=:id
+			AND DATA BETWEEN :dataDe 
+						and :dataAte
+			GROUP BY IDFUNCIONARIO";
         $stmt = DB::prepare($sql);
         $stmt->bindParam(':dataDe', $dataDe);
         $stmt->bindParam(':dataAte', $dataAte);
