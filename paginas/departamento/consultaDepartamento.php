@@ -44,9 +44,9 @@
                                         <tr>
                                             <td>Nome</td>
                                             <td>Endere&ccedil;o</td>
-                                            <td>CNPJ</td>
-                                            <td>Lider</td>
-                                            <td>Gerente</td>
+                                            <td >CNPJ</td>
+                                            <td width="15%">Lider</td>
+                                            <td width="15%">Gerente</td>
                                             <td>A&ccedil;&otilde;es</td>
                                         </tr>
                                     </thead>

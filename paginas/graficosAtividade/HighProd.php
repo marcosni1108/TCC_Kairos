@@ -29,7 +29,7 @@
             require_once '../../classes/model/produtividade.php';
             $dataDeTemp = $_POST['dataDe'];
             $dataAteTemp = $_POST['dataAte'];
-            $id =  $_POST['atividade'];
+            $id =  $_POST['departamento'];
              $turno =  $_POST['turno'];
             //Muda o formato da data
             $dataDe = date("Y-m-d", strtotime(str_replace("/", "-", $dataDeTemp)));
@@ -42,8 +42,9 @@
                 foreach ($array as $key => $value) {
 
 
-                  $categoria[] = $value->nomFunc;
-                  $atividade[] = $value->percentProd;
+                  $categoria[] = $value->NOME;
+                  $produtividade[] = $value->PERCENTPROD;
+                  $parada[] = $value->PERCENTPARADA;
 
                }
             } else{
@@ -67,7 +68,7 @@
         },
         xAxis: {
             categories: [<?php 
-             for($i = 0; $i<= count($categoria);$i++){
+             for($i = 0; $i<= count($categoria)-1;$i++){
                 
                     $categoriaV .= "'".$categoria[$i]."',";     
                 
@@ -103,22 +104,34 @@
             enabled: false
         },
         series: [{
-            name: 'Atividades',
+            name: 'Produtividade',
             data: [<?php 
-             for($i = 0; $i<= count($atividade);$i++){
+             for($i = 0; $i< count($produtividade);$i++){
                 
-                    $atividadeV .= "".$atividade[$i].",";     
-                
+                 if($i===count($produtividade)-1){
+                      $produtividadeV .= "".$produtividade[$i]."";  
+                 }else{
+                    $produtividadeV .= "".$produtividade[$i].",";     
+                 }
              }
             
-                    echo  str_replace(",,"," ",$atividadeV);
+                    echo $produtividadeV;
                     ?>]
         }, {
-            name: 'Parada direta',
-            data: [1002, 200, 300,1000]
-        }, {
-            name: 'Parada indereta',
-            data: [300, 400, 200,100]
+            name: 'Parada Direta/Indireta',
+            data: [
+               <?php 
+             for($i = 0; $i<= count($parada)-1;$i++){
+                if($parada[$i]===null){
+                    $paradaV .= "0,";  
+                }else{
+                    $paradaV .= "".$parada[$i].",";     
+                }
+             }
+            
+                    echo  str_replace(",,"," ",$paradaV);
+                    ?>
+            ]
         }]
     });
 });

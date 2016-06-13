@@ -39,9 +39,9 @@
                                 <table id="func"class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Nome</th>
-                                            <th>CPF</th>
-                                            <th>Email</th>
+                                            <th width="15%">Nome</th>
+                                            <th width="5%" >CPF</th>
+                                            <th width="5%">Email</th>
                                             <th>Nivel</th>
                                             <th>Login</th>
                                             <th>Matricula</th>                                          
