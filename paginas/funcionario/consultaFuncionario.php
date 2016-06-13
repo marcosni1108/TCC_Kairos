@@ -40,7 +40,7 @@
                                     <thead>
                                         <tr>
                                             <th width="15%">Nome</th>
-                                            <th width="5%" >CPF</th>
+                                            <th>CPF</th>
                                             <th width="5%">Email</th>
                                             <th>Nivel</th>
                                             <th>Login</th>

@@ -44,7 +44,7 @@
                                             <th>Nome</th>
                                             <th>Departamento</th>
                                             <th>CNPJ</th>
-                                            <th>Unidade de Medida</th>
+                                            <th width="10%">Unidade de Medida</th>
                                             <th>A&ccedil;&otilde;es</th>
                                         </tr>
                                     </thead>

@@ -81,7 +81,7 @@
 		$('#cnpj').val('');
                 $('#cmbDepartamento').empty().append('<option>Carregar Departamento</option>>');
                 if(tipo==='atividade'){
-                    alert("Departamento sem Atividades");
+                    alert("Departamento sem Atividades/ Atividades sem Meta");
                     location.href='cadastraProdutividade.php'; 
                      $('#cmbAtividade').empty().append('<option>Carregar Atividades</option>>');                                                    
                  }
