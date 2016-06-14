@@ -203,7 +203,7 @@ class produtividade extends Crud {
     }
   public function findAtivTurno($dataDe, $dataAte, $id) {
 
-        $sql = "SELECT P.IDFUNCIONARIO,(SELECT NOME 
+        $sql = "SELECT P.IDFUNCIONARIO,count(P.TEMPOINICIAL) as Turnos,(SELECT NOME 
 			FROM FUNCIONARIO
 			WHERE ID=P.IDFUNCIONARIO) AS NOME,
 		(select 

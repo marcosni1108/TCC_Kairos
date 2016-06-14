@@ -70,7 +70,7 @@
                                             </div>
 
 
-                                            <div class="form-group col-lg-3">
+                                            <div class="form-group col-lg-5">
                                                 <label for="unid_med">Tipo da Unidade de Medida</label>
                                                 <select  class="form-control" name="unid_med" id="unid_med" required>
                                                     <option value="">Selecione o Unidade de Medida</option>
@@ -86,7 +86,7 @@
 
                                             <div class="form-group col-lg-8">
                                                 <label for="descricao">Descri&ccedil;&atilde;o</label><br>
-                                                <textarea id="descricao" name="descricao" rows="4" cols="80"></textarea>
+                                                <textarea id="descricao" name="descricao" rows="4" cols="78"></textarea>
                                             </div>                                          
                                         </div>
 

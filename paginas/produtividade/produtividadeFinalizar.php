@@ -76,7 +76,7 @@
                 <form method="post" action="">
                     <div class="input-prepend">
                         <h1 class="page-header">
-                            Finalizar Atividade
+                            Finalizar Produtividade
 
                         </h1>   
                         <?php

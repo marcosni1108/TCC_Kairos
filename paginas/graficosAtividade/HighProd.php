@@ -41,11 +41,11 @@
             if($array){
                 foreach ($array as $key => $value) {
 
-
+                  $turnos = $value->Turnos;
                   $categoria[] = $value->NOME;
-                  $produtividade[] = $value->PercentProd;
-                  $paradaDireta[] = $value->PercentParadaDireta;
-                  $paradaIndireta[] = $value->PercentParadaIndireta;
+                  $produtividade[] = $value->PercentProd/$turnos;
+                  $paradaDireta[] = $value->PercentParadaDireta/$turnos;
+                  $paradaIndireta[] = $value->PercentParadaIndireta/$turnos;
 
                }
             } else{
