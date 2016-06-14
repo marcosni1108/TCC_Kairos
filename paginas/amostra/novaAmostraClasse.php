@@ -73,6 +73,7 @@
                 $indice_final_media = $result / $_SESSION["jcount"];
                 $indice_final_media = $indice_final_media*60;
                 $ControllerAmostra->insertAmostraDB();
+                //alert *****************/
                 $ControllerAmostra->AlertMedia($indice_final_media);
                 $resultado =  $indice_final_media * 0.1;
                 //fim amostra

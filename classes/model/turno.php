@@ -6,7 +6,7 @@ class turno extends Crud {
         $horaFormat = str_replace(":", "", $horaInicial);
         $Hora = substr($horaFormat, 0, 2);
         switch ($Hora) {
-            case 09: return "1";
+            case 9: return "1";
             case 10: return "2";
             case 11: return "3";
             case 12: return "4";

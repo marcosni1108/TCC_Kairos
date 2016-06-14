@@ -109,11 +109,9 @@
             data: [<?php 
              for($i = 0; $i< count($produtividade);$i++){
                 
-                 if($i===count($produtividade)-1){
-                      $produtividadeV .= "".$produtividade[$i]."";  
-                 }else{
+                 
                     $produtividadeV .= "".$produtividade[$i].",";     
-                 }
+                 
              }
             
                     echo $produtividadeV;
