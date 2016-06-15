@@ -117,7 +117,7 @@
                                                 <div class="form-group col-lg-4">
                                                   <label for="gerente">Gerente</label>
                                                     <select  class="form-control" name="gerente" id="gerenteEdit">
-                                                       <option value="<?php $usuario = new funcionario(); $gerente = $usuario->find($resultado->gerente); echo $lider->id; ?>" selected><?php echo $gerente->nome; ?></option>  
+                                                       <option value="<?php $usuario = new funcionario(); $gerente = $usuario->find($resultado->gerente); echo $gerente->id; ?>" selected><?php echo $gerente->nome; ?></option>  
                                                         
                                                         <?php foreach ($usuario->whereSelected('Gerente',$resultado->gerente) as $key => $value): ?>
                                                         <option value="<?php echo $value->id; ?>">

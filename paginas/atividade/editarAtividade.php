@@ -102,25 +102,24 @@
 
                                         <div class="row">
                                             <div class="form-group col-lg-4">
-                                                <label for="departamento">Departamento</label>
-                                                <select  class="form-control" name="departamento" id="departamentoEditAtividade">
-                                                    <option value="<?php $departamento = new departamento;
-                                                        $dept = $departamento->find($resultado->idDepartamentoFK); echo $dept->id; ?>" selected>
-                                                        <?php echo $dept->nome; ?></option>  
-                                                     <?php
-                                                    foreach ($departamento->whereSelectedEnd($dept->id) as $key => $value):   ?>
-                                                    <option value="<?php echo $value->id; ?>" selcted><?php echo $value->nome; ?></option> 
-                                                    
-                                                    <?php endforeach; ?>
+                                                <label for="cnpj">CNPJ</label>
+                                                <select  class="form-control" name="cnpj" id="cnpjEdit" required>  
+                                                    <?php $departamento1 = new departamento(); 
+                                                        $deptCnpj = $departamento1->findEndDept($resultado->idDepartamentoFK); ?>
+                                                    <option value="<?php echo $deptCnpj->id?>">
+                                                        <?php echo $deptCnpj->cnpj?>
+                                                    </option>
                                                 </select>
-                                            </div>     
-
+                                            </div>
+                                            <div class="row">
                                             <div class="form-group col-lg-4">
-                                                  <label for="cnpj">CNPJ</label>
-                                                  <input type="text" class="form-control" name="cnpj"  value="<?php 
-                                                    $endereco = new endereco; $cnpj = $endereco->find($dept->idEnderecoFK); 
-                                                    echo $cnpj->cnpj; ?>" id="cnpjEditAtividade" placeholder="CNPJ" readonly>
-                                                </div>                                              
+                                                <label for="departamento">Departamento</label>
+                                                <select  class="form-control" name="departamento" id="cmbDepartamentoEdit" required>                                                  
+                                                    <option value="<?php echo $resultado->idDepartamentoFK;?>"><?php $departamento = new departamento();
+                                                    $detp = $departamento->find($resultado->idDepartamentoFK);
+                                                    echo $detp->nome?></option>
+                                                </select>
+                                            </div>                                             
                                         </div>
 
                                         <div class="row">
@@ -170,5 +169,5 @@
 
     </body>
     <?php include_once '../include/include_js.php'; ?>
-          <script src="../../js/populaCombo.js"></script>
+    <script src="../../js/populaComboAtividade.js"></script>
 </html>

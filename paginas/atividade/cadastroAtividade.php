@@ -92,15 +92,21 @@
 
                                         <div class="row">
                                             <div class="form-group col-lg-4">
+                                                <label for="cnpj">CNPJ</label>
+                                                <select  class="form-control" name="cnpj" id="cnpj" required>                                                  
+                                                   <option value="">Selecione o CNPJ</option>
+                                                </select>
+                                            </div>
+                                            <div class="row">
+                                            <div class="form-group col-lg-4">
                                                 <label for="departamento">Departamento</label>
                                                 <select  class="form-control" name="departamento" id="cmbDepartamento" required>                                                  
                                                    <option value="">Selecione o Departamento</option>
                                                 </select>
-                                            </div>     
+                                            </div>
 
                                            <div class="form-group col-lg-4">
-                                                  <label for="cnpj">CNPJ</label>
-                                                  <input type="text" class="form-control" name="cnpj" id="cnpj" value="" onkeypress="javascript: mascara(this, cnpj_mask);"  maxlength="18" placeholder="CNPJ" required="true"readonly>
+                                                
                                                 </div>                                              
                                         </div>
 
@@ -151,5 +157,5 @@
 
     </body>
     <?php include_once '../include/include_js.php'; ?>
-      <script src="../../js/populaCombo.js"></script>
+    <script src="../../js/populaComboAtividade.js"></script>
 </html>

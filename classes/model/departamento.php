@@ -103,6 +103,36 @@ class departamento extends Crud {
         return $stmt->fetchAll();
     }
 
+    public function findEndDept($id) {
+        $sql = "SELECT endereco.cnpj,endereco.id FROM `departamento` left join
+        endereco on departamento.idEnderecoFK=endereco.id
+        where departamento.id=:id
+        group by endereco.endereco";
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+      public function buscaDept($idDept,$idEnd) {
+        $sql = "select * from departamento where id <> :id and idEnderecoFK=:idEnd";
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':id', $idDept, PDO::PARAM_INT);
+        $stmt->bindParam(':idEnd', $idEnd, PDO::PARAM_INT);
+        $stmt->execute();
+        try {
+            $stmt->execute();
+           return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1062') {
+                 $erro = $this->trataErro($e->errorInfo[2]);
+                return $erro;
+            }
+        }
+        
+    }
+    
+    
+
     public function BuscaTable() {
         $sql = "SELECT dep.id,
 	  dep.cnpj,
