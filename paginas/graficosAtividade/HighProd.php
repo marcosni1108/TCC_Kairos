@@ -40,12 +40,15 @@
             $array =  $GerarGraficos->findAtivTurno($dataDe,$dataAte,$id);
             if($array){
                 foreach ($array as $key => $value) {
-
+                 
                   $turnos = $value->Turnos;
+                  $produtividadeFinal = $value->PercentProd/$turnos;
+                  $diretaFinal = $value->PercentParadaDireta/$turnos;
+                  $indiretaFinal = $value->PercentParadaIndireta/$turnos;
                   $categoria[] = $value->NOME;
-                  $produtividade[] = $value->PercentProd/$turnos;
-                  $paradaDireta[] = $value->PercentParadaDireta/$turnos;
-                  $paradaIndireta[] = $value->PercentParadaIndireta/$turnos;
+                  $produtividade[] = number_format($produtividadeFinal, 2, '.', '');
+                  $paradaDireta[] = number_format($diretaFinal, 2, '.', '');
+                  $paradaIndireta[] = number_format($indiretaFinal, 2, '.', '');
 
                }
             } else{
