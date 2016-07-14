@@ -12,10 +12,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#funcionario"><i class="glyphicon glyphicon-user"></i> Funcionário <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="funcionario" class="collapse">
                             <li>
-                                <a href="../funcionario/cadastroFuncionario.php">Cadastrar Funcionário</a>
+                                <a href="../funcionario/cadastroFuncionario.php">Cadastrar</a>
                             </li>
                             <li>
-                                <a href="../funcionario/consultaFuncionario.php">Alterar Funcionário</a>
+                                <a href="../funcionario/consultaFuncionario.php">Alterar</a>
                             </li>                          
                         </ul>
                     </li>
@@ -23,10 +23,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#departamento"><i class="glyphicon glyphicon-lock"></i> Departamentos <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="departamento" class="collapse">
                             <li>
-                                <a href="../departamento/cadastroDepartamento.php">Cadastrar Departamento</a>
+                                <a href="../departamento/cadastroDepartamento.php">Cadastrar</a>
                             </li>
                             <li>
-                                <a href="../departamento/consultaDepartamento.php">Alterar Departamento</a>
+                                <a href="../departamento/consultaDepartamento.php">Alterar</a>
                             </li>                          
                         </ul>
                     </li>
@@ -34,10 +34,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#atividades"><i class="glyphicon glyphicon-check"></i> Atividades <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="atividades" class="collapse">
                             <li>
-                                <a href="../atividade/cadastroAtividade.php">Cadastrar Atividades</a>
+                                <a href="../atividade/cadastroAtividade.php">Cadastrar</a>
                             </li>
                             <li>
-                                <a href="../atividade/consultaAtividade.php">Alterar Atividades</a>
+                                <a href="../atividade/consultaAtividade.php">Alterar</a>
                             </li>    
                             <li>
                                 <a href="../amostra/cadastroAmostra.php">Registrar Amostra</a>
