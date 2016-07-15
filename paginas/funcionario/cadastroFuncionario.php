@@ -15,44 +15,10 @@
         <script type="text/javascript" src="../../js/validadores.js"></script>
     </head>
     <body >
-        <meta charset="UTF-8">
-        <?php
-        if (isset($_POST['cadastrar'])){
-            
-            $matricula = $_POST['matricula'];
-            $nome = $_POST['nome'];
-            $cpf = $_POST['cpf'];
-            $email = $_POST['email'];
-            $login = $_POST['login'];
-            $senha = 'kairos';
-            $nivel = $_POST['nivel'];
-            $funcionario = new funcionario();
-            $funcionario->setMatricula($matricula);
-            $funcionario->setNome($nome);
-            $funcionario->setCpf($cpf);
-            $funcionario->setEmail($email);
-            $funcionario->setLogin($login);
-            $funcionario->setSenha(md5($senha));
-            $funcionario->setNivel($nivel);
-            $funcionario->setStatus("A");
-            $insert = $funcionario->insert();
-            # Insert
-            if ($insert==="OK") {
-                echo  "<script> alert('Funcionário cadastrado com sucesso.')</script>";
-                
-            }else{
-                
-                echo  "<script> alert('{$insert}')</script>";
-                
-            }
-            
-        }
-
-        
-        ?>        
+        <meta charset="UTF-8">       
         <div id="page-wrapper" style="overflow-x: hidden; padding-left: 250px; height:100%; padding-top: 30px;">
             <div class="container-fluid">
-                <form method="post" action="">
+                <form method="post" action="../../classes/controller/ControllerFunc.php">
                     <div class="input-prepend">
                         <h1 class="page-header">
                             Cadastro de Funcionário

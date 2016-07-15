@@ -25,6 +25,10 @@ $('#add').click(function (e) {
     var idCNPJ = $('#cnpj').val();
     var CNPJ  = $("#cnpj option:selected").html();
     var acao = "add";
+    if(!idCNPJ){
+        alert("Escolha um CNPJ");
+        return;
+    }
     //chama o serviço que consulta os departamentos.
     $.ajax({
         type: "POST",
