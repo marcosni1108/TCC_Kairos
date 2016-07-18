@@ -3,22 +3,44 @@
         <title>Kairos</title>
         <?php
         include "../include/include_css.php";
-     //   include "../menu_principal/menu_lateral.php";
         include "../header/header.php";
         include "../../classes/model/validaOperario.php";
-//        include '../include/include_classes.php';
-        
-   
-        
         ?>   
         <link href="../../css/sb-admin.css" rel="stylesheet">
         <script type="text/javascript" src="../../js/validadores.js"></script>
     </head>
     <body >
-        <meta charset="UTF-8">       
+        <meta charset="UTF-8">
+        <?php
+            if (isset($_POST['cadastrar'])){
+                $matricula = $_POST['matricula'];
+                $nome = $_POST['nome'];
+                $cpf = $_POST['cpf'];
+                $email = $_POST['email'];
+                $login = $_POST['login'];
+                $senha = 'kairos';
+                $nivel = $_POST['nivel'];
+                $funcionario = new funcionario();
+                $funcionario->setMatricula($matricula);
+                $funcionario->setNome($nome);
+                $funcionario->setCpf($cpf);
+                $funcionario->setEmail($email);
+                $funcionario->setLogin($login);
+                $funcionario->setSenha(md5($senha));
+                $funcionario->setNivel($nivel);
+                $funcionario->setStatus("A");
+                $insert = $funcionario->insert();
+                # Insert
+                if ($insert==="OK") {
+                    echo  "<script> alert('Funcionário cadastrado com sucesso.')</script>";
+                }else{
+                    echo  "<script> alert('{$insert}')</script>";
+                }
+            }
+        ?>        
         <div id="page-wrapper" style="overflow-x: hidden; padding-left: 250px; height:100%; padding-top: 30px;">
             <div class="container-fluid">
-                <form method="post" action="../../classes/controller/ControllerFunc.php">
+                <form method="post" action="">
                     <div class="input-prepend">
                         <h1 class="page-header">
                             Cadastro de Funcionário
@@ -40,7 +62,7 @@
                         <div class="row">
                             <div class="form-group col-lg-4">
                                 <label for="email">E-mail</label>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="E-mail" required="true">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="E-mail">
                             </div>    
                             <div class="form-group col-lg-4">
                                 <label for="nivel">Nivel</label>
