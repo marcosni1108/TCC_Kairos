@@ -6,19 +6,34 @@
         <title>Kairos</title>
         <?php
         include "../include/include_css.php";
-       // include "../menu_principal/menu_lateral.php";
+        // include "../menu_principal/menu_lateral.php";
         include "../header/header.php";
         include "../../classes/model/validaOperario.php";
 //        include '../include/include_classes.php';
         ?>    
-                <script type="text/javascript" src="../../js/validadores.js"></script>
+        <script type="text/javascript" src="../../js/validadores.js"></script>
     </head>
     <body>
-            <?php
-              $id = (int) $_GET[md5('id')];             
-              $funcionario = new funcionario(); 
-            ?>
-        
+        <?php
+        $id = (int) $_GET[md5('id')];
+        $funcionario = new funcionario();
+        if (isset($_POST['atualizar'])):
+            $nome = $_POST['nome'];
+            $email = $_POST['email'];
+            $login = $_POST['login'];
+            $nivel = $_POST['nivel'];
+            $funcionario->setNome($nome);
+            $funcionario->setEmail($email);
+            $funcionario->setLogin($login);
+            $funcionario->setNivel($nivel);
+            $update = $funcionario->update($id);
+            if ($update === "OK") {
+                echo "<script>alert('Funcionário alterado com sucesso.')</script>";
+            } else {
+                echo "<script> alert('{$update}')</script>";
+            }
+        endif;
+        ?>
         <div id="page-wrapper" style="overflow-x: hidden; padding-left: 250px; height:100%; padding-top: 30px;">
             <!-- Primeira linha do wrapper -->
             <div class="row" >
@@ -34,13 +49,12 @@
                         <!-- Conteudo dentro de wrapper -->
                         <div class="panel-body">
                             <div id="chart">
-                                    <?php $resultado = $funcionario->find($id);  ?>
-                                <form method="post" action="../../classes/controller/ControllerFunc.php">
+                                <?php $resultado = $funcionario->find($id); ?>
+                                <form method="post" action="">
                                     <div class="input-prepend">
 
                                         <div class="row">
                                             <div class="form-group col-lg-4">
-                                                <input style="display: none"type="text" class="form-control" id="id" value="<?php echo $id; ?>" name="id">
                                                 <label for="matricula">Matricula</label>
                                                 <input disabled="true"type="text" class="form-control" id="matricula" value="<?php echo $resultado->matricula; ?>" onkeypress="javascript: mascara(this, soNumeros);" name="matricula" placeholder="Matricula" required>
                                             </div>
@@ -77,34 +91,26 @@
                                             <div class="form-group col-lg-4">
                                                 <label for="login">Login</label>
                                                 <input type="text" class="form-control" name="login" id="login" value="<?php echo $resultado->login; ?>" placeholder="Login" required>
-                                            </div> 
-                                        </div>    
-                                        <div class="row">
-                                            <div class="form-group col-lg-4">
-                                            </div>
-                                            <div class="form-group col-lg-4">
-                                                <input type="submit" name="atualizar" class="btn btn-success" value="Atualizar Dados">
                                             </div>    
+                                            <div class="row">
+                                                <div class="form-group col-lg-4">
+                                                </div>
+                                                <div class="form-group col-lg-4">
+                                                    <input type="submit" name="atualizar" class="btn btn-success" value="Atualizar Dados">
+                                                </div>    
+                                            </div>
                                         </div>
-
-
-                                    </div>
-
                                 </form>                                
-
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
+        </div>       
+    </div>       
+</body>
 
-        </div>        
+<?php include_once '../include/include_js.php'; ?>
 
-    </body>
-   
-    <?php include_once '../include/include_js.php'; ?>
-    
-    
+
 </html>
