@@ -1,33 +1,29 @@
 <?php
-require_once '../model/produtividade.php';
-require_once '../model/funcionario.php';
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- * Description of GerarGraficos
- *
- * @author Ricardo
- */
-class GerarGraficosM{
+  require_once '../model/produtividade.php';
+  require_once '../model/funcionario.php';
 
-    //put your code here
-    public function prodFuncJson($id, $data) {
-        $produtividade = new produtividade();
-        return $produtividade->findIdFunc($id, $data);
-    }
-    public function prodFunc($id, $data) {
-        $produtividade = new produtividade();
-        $fun = new funcionario();
-        $arrayFunc = $produtividade->findIdFunc($id, $data);
-        if ($arrayFunc) {
-                $tempoFinal = $this->categorias($arrayFunc, "HoraFinal");
-                $quantidade = $this->series($arrayFunc, "quantidade");
-            $nomeFun = $fun->find($id);
-            $dataGrafico1 = "$(function () {
+  /**
+   * Description of GerarGraficos
+   *
+   * @author Ricardo
+   */
+  class GerarGraficosM {
+
+      public function prodFuncJson($id, $data) {
+          $produtividade = new produtividade();
+          return $produtividade -> findIdFunc($id, $data);
+      }
+
+      public function prodFunc($id, $data) {
+          $produtividade = new produtividade();
+          $fun = new funcionario();
+          $arrayFunc = $produtividade -> findIdFunc($id, $data);
+          if($arrayFunc) {
+              $tempoFinal = $this -> categorias($arrayFunc, "HoraFinal");
+              $quantidade = $this -> series($arrayFunc, "quantidade");
+              $nomeFun = $fun -> find($id);
+              $dataGrafico1 = "$(function () {
                         $('#ChartFunc').highcharts({
                             chart: {
                                 type: 'area'
@@ -71,167 +67,159 @@ class GerarGraficosM{
                                 }
                             },
                             series: [{
-                                name: '{$nomeFun->nome}',
+                                name: '{$nomeFun -> nome}',
                                 data: [{$quantidade}]
                             }]
                         });
                     });";
 
-            $fp = fopen("../../js/mobileCharts/graficoFunc.js", "w");
+              $fp = fopen("../../js/mobileCharts/graficoFunc.js", "w");
 
-            // Escreve "exemplo de escrita" no bloco1.txt
-            $escreve = fwrite($fp, $dataGrafico1);
-            fclose($fp);
-            return true;
-        } else {
+              // Escreve "exemplo de escrita" no bloco1.txt
+              $escreve = fwrite($fp, $dataGrafico1);
+              fclose($fp);
+              return true;
+          } else {
 
-            $fp = fopen("../../js/mobileCharts/graficoFunc.js", "w");
+              $fp = fopen("../../js/mobileCharts/graficoFunc.js", "w");
 
-            // Escreve "exemplo de escrita" no bloco1.txt
-            $escreve = fwrite($fp, " ");
-            fclose($fp);
-            return false;
-        }
-    }
+              // Escreve "exemplo de escrita" no bloco1.txt
+              $escreve = fwrite($fp, " ");
+              fclose($fp);
+              return false;
+          }
+      }
 
-    public function prodDept($dataDe, $dataAte, $idCnpj) {
+      public function prodDept($dataDe, $dataAte, $idCnpj) {
 
-        $produtividade = new produtividade();
-        $fun = new funcionario();
+          $produtividade = new produtividade();
+          $fun = new funcionario();
 
+          $dataGrafico .= "[";
+          $arrayFunc = $produtividade -> findProdDept($dataDe, $dataAte, $idCnpj);
 
-        $dataGrafico .= "[";
-        $arrayFunc = $produtividade->findProdDept($dataDe, $dataAte, $idCnpj);
+          if($arrayFunc) {
 
-        if ($arrayFunc) {
+              foreach($arrayFunc as $key => $value) {
 
-            foreach ($arrayFunc as $key => $value) {
+                  $prod = $value -> prod;
+                  $nomeDpt = $value -> nome;
 
+                  $dataGrafico.= "{ y: '".$nomeDpt."', a: ".$prod." },";
+              }
+              $dataGrafico.= "]";
 
+              $dataGrafico1 .= "Morris.Bar({ element: 'barDept',data: ".$dataGrafico.", xkey: 'y', ykeys: ['a'], labels: ['Produtividade do Departamento ']});";
 
-                $prod = $value->prod;
-                $nomeDpt = $value->nome;
+              $fp = fopen("../../js/mobileCharts/dataDeptProd.js", "w");
 
+              // Escreve "exemplo de escrita" no bloco1.txt
+              $escreve = fwrite($fp, $dataGrafico1);
+              fclose($fp);
+              return true;
+          } else {
 
+              $fp = fopen("../../js/mobileCharts/dataDeptProd.js", "w");
 
-                $dataGrafico.= "{ y: '" . $nomeDpt . "', a: " . $prod . " },";
-            }
-            $dataGrafico.= "]";
+              // Escreve "exemplo de escrita" no bloco1.txt
+              $escreve = fwrite($fp, " ");
+              fclose($fp);
+              return false;
+          }
+      }
 
-            $dataGrafico1 .= "Morris.Bar({ element: 'barDept',data: " . $dataGrafico . ", xkey: 'y', ykeys: ['a'], labels: ['Produtividade do Departamento ']});";
+      public function prodDeptHigh($dataDe, $dataAte, $idCnpj) {
 
-            $fp = fopen("../../js/mobileCharts/dataDeptProd.js", "w");
+          $produtividade = new produtividade();
+          $bln = array();
+          $bln['name'] = 'Departamentos';
+          $rows['name'] = 'Produção';
+          $arrayFunc = $produtividade -> findProdDept($dataDe, $dataAte, $idCnpj);
+          if($arrayFunc) {
 
-            // Escreve "exemplo de escrita" no bloco1.txt
-            $escreve = fwrite($fp, $dataGrafico1);
-            fclose($fp);
-            return true;
-        } else {
+              foreach($arrayFunc as $key => $value) {
 
-            $fp = fopen("../../js/mobileCharts/dataDeptProd.js", "w");
+                  $bln['data'][] = $value -> nome;
+                  $rows['data'][] = $value -> prod;
+              }
 
-            // Escreve "exemplo de escrita" no bloco1.txt
-            $escreve = fwrite($fp, " ");
-            fclose($fp);
-            return false;
-        }
-    }
+              $rslt = array();
+              array_push($rslt, $bln);
+              array_push($rslt, $rows);
+              $dataGrafico1 = json_encode($rslt, JSON_NUMERIC_CHECK);
+          }
 
-    public function prodDeptHigh($dataDe, $dataAte, $idCnpj) {
+          $fp = fopen("../../js/dataGrafico/dataDeptHigh.json", "w");
 
-        $produtividade = new produtividade();
-        $bln = array();
-        $bln['name'] = 'Departamentos';
-        $rows['name'] = 'Produção';
-        $arrayFunc = $produtividade->findProdDept($dataDe, $dataAte, $idCnpj);
-        if ($arrayFunc) {
+          // Escreve "exemplo de escrita" no bloco1.txt
+          $escreve = fwrite($fp, $dataGrafico1);
+          fclose($fp);
+          return true;
+      }
 
-            foreach ($arrayFunc as $key => $value) {
+      public function ativiGrafico($dataDe, $dataAte, $id) {
 
+          $produtividade = new produtividade();
+          $bln = array();
+          $bln['name'] = 'Funcionario';
+          $rows['name'] = 'Produção';
+          $arrayFunc = $produtividade -> findAtivProd($dataDe, $dataAte, $id);
+          if($arrayFunc) {
 
-                $bln['data'][] = $value->nome;
-                $rows['data'][] = $value->prod;
-            }
+              foreach($arrayFunc as $key => $value) {
 
-            $rslt = array();
-            array_push($rslt, $bln);
-            array_push($rslt, $rows);
-            $dataGrafico1 = json_encode($rslt, JSON_NUMERIC_CHECK);
-        }
+                  $bln['data'][] = $value -> nomFunc;
+                  $rows['data'][] = $value -> percentProd;
+              }
 
-        $fp = fopen("../../js/dataGrafico/dataDeptHigh.json", "w");
+              $rslt = array();
+              array_push($rslt, $bln);
+              array_push($rslt, $rows);
+              $dataGrafico1 = json_encode($rslt, JSON_NUMERIC_CHECK);
+          }
 
-        // Escreve "exemplo de escrita" no bloco1.txt
-        $escreve = fwrite($fp, $dataGrafico1);
-        fclose($fp);
-        return true;
-    }
+          $fp = fopen("../../js/dataGrafico/dataAtivProd.json", "w");
 
-    public function ativiGrafico($dataDe, $dataAte, $id) {
+          // Escreve "exemplo de escrita" no bloco1.txt
+          $escreve = fwrite($fp, $dataGrafico1);
+          fclose($fp);
+          return true;
+      }
 
-        $produtividade = new produtividade();
-        $bln = array();
-        $bln['name'] = 'Funcionario';
-        $rows['name'] = 'Produção';
-        $arrayFunc = $produtividade->findAtivProd($dataDe, $dataAte, $id);
-        if ($arrayFunc) {
+      public function categorias($array, $nome) {
+          $categoriaV = "";
+          foreach($array as $key => $value) {
+              $categoria[] = $value -> $nome;
+          }
+          for($i = 0; $i<count($categoria); $i++) {
+              if($i==count($categoria)-1) {
+                  $categoriaV .= "'".$categoria[$i]."'";
+              } else {
 
-            foreach ($arrayFunc as $key => $value) {
+                  $categoriaV .= "'".$categoria[$i]."',";
+              }
+          }
+          $categoriaFinal = str_replace(",'',", " ", $categoriaV);
 
+          return $categoriaFinal;
+      }
 
-                $bln['data'][] = $value->nomFunc;
-                $rows['data'][] = $value->percentProd;
-            }
+      public function series($array, $nome) {
+          $seriesVal = "";
+          foreach($array as $key => $value) {
+              $series[] = $value -> $nome;
+          }
+          for($i = 0; $i<count($series); $i++) {
 
-            $rslt = array();
-            array_push($rslt, $bln);
-            array_push($rslt, $rows);
-            $dataGrafico1 = json_encode($rslt, JSON_NUMERIC_CHECK);
-        }
+              if($i==count($series)-1) {
+                  $seriesVal .= "".$series[$i]."";
+              } else {
 
-        $fp = fopen("../../js/dataGrafico/dataAtivProd.json", "w");
+                  $seriesVal .= "".$series[$i].",";
+              }
+          }
+          $atividadeFinal = str_replace(",,", " ", $seriesVal);
+          return $atividadeFinal;
+      }
 
-        // Escreve "exemplo de escrita" no bloco1.txt
-        $escreve = fwrite($fp, $dataGrafico1);
-        fclose($fp);
-        return true;
-    }
-       public function categorias($array, $nome) {
-        $categoriaV = "";
-        foreach ($array as $key => $value) {
-            $categoria[] = $value->$nome;
-        }
-        for ($i = 0; $i < count($categoria); $i++) {
-            if($i == count($categoria)-1){
-                $categoriaV .= "'" . $categoria[$i] . "'";
-            }else{
-                
-                $categoriaV .= "'" . $categoria[$i] . "',";
-            }
-            
-        }
-        $categoriaFinal = str_replace(",'',", " ", $categoriaV);
-  
-        return $categoriaFinal;
-    }
-
-    public function series($array, $nome) {
-        $seriesVal="";
-        foreach ($array as $key => $value) {
-            $series[] = $value->$nome;
-        }
-        for ($i = 0; $i < count($series); $i++) {
-
-            
-             if($i == count($series)-1){
-                $seriesVal .= "" . $series[$i] . "";
-            }else{
-                
-               $seriesVal .= "" . $series[$i] . ",";
-            }
-        }
-        $atividadeFinal = str_replace(",,", " ", $seriesVal);
-        return $atividadeFinal;
-    }
-
-}
+  }

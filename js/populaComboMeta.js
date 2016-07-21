@@ -8,17 +8,15 @@ $('#cnpj').ready(function () {
             var option = '<option value="">Selecione o CNPJ</option>';
             $.each(dados, function (i, obj) {
                 option += '<option value="' + obj.id + '">' + obj.cnpj + '</option>';
-            })
-
+            });
         } else {
             Reset();
-
         }
         $('#cnpj').html(option).show();
         $('#btnCadastrar').prop("disabled", false);
 
-    })
-})
+    });
+});
 
 // popula o combo de departamentos quando a pagina é carregada.
 $('#cnpj').change(function (e) {
@@ -31,16 +29,14 @@ $('#cnpj').change(function (e) {
             var option = '<option value="">Selecione o Departamento</option>';
             $.each(dados, function (i, obj) {
                 option += '<option value="' + obj.id + '">' + obj.nome + '</option>';
-            })
-
+            });
         } else {
             Reset("Dept");
-
         }
         $('#cmbDepartamento').html(option).show();
         $('#btnCadastrar').prop("disabled", false);
-    })
-})
+    });
+});
 
 //quando é alterado o departamento
 $('#cmbDepartamento').change(function (e) {
@@ -57,20 +53,17 @@ $('#cmbDepartamento').change(function (e) {
             var option = '<option value="">Selecione a Atividade</option>';
             $.each(dados1, function (i, obj) {
                 option += '<option value="' + obj.id + '">' + obj.nome + '</option>';
-            })
+            });
         } else {
             Reset("atividade");
-
         }
         //popula o combo de atividades.
         $('#cmbAtividade').html(option).show();
 
         //habilita o botão cadastrar.
         $('#btnCadastrar').prop("disabled", false);
-    })
-
-
-})
+    });
+});
 
 $('#cmbAtividade').change(function (e) {
     var atividade = $('#cmbAtividade').val();
@@ -82,26 +75,17 @@ $('#cmbAtividade').change(function (e) {
     //chama o serviço que lista as atividades relacionadas ao departamento.
     $.getJSON('../../classes/model/consulta.php?opcao=findMeta&valor=' + departamento + "&tipo=" + atividade, function (dados1) {
 
-        if (dados1.length!==0) {
+        if (dados1.length !== 0) {
             var value = '';
-
-
             value = dados1[0].Meta;
-
-
-        }else {
+        } else {
             Reset('meta');
-
         }
         $('#meta').val(value);
         //habilita o botão cadastrar.
         $('#btnCadastrar').prop("disabled", false);
-    })
-
-
-})
-
-
+    });
+});
 
 function Reset(tipo) {
     $('#endereco').empty().append('<option>Carregar Endereço</option>>');
@@ -119,10 +103,8 @@ function Reset(tipo) {
     }
     if (tipo === 'meta') {
         alert("Atividade sem Meta. Por favor cadastre a mostra primeiro.");
-         window.location='./cadastroMeta.php'
+        window.location = './cadastroMeta.php';
     }
-
-
 }
 
 

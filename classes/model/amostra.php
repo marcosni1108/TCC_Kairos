@@ -1,145 +1,142 @@
 <?php
 
-require_once 'Crud.php';
+  require_once 'Crud.php';
 
-class amostra extends Crud {
+  class amostra extends Crud {
 
-    protected $table = 'amostra';
-    private $idAmostra;
-    private $tempoinicial;
-    private $tempofinal;
-    private $quantidade;
-    private $indice;
-    private $departamento;
-    private $atividade;
-    
-    function getIdAmostra() {
-        return $this->idAmostra;
-    }
+      protected $table = 'amostra';
+      private $idAmostra;
+      private $tempoinicial;
+      private $tempofinal;
+      private $quantidade;
+      private $indice;
+      private $departamento;
+      private $atividade;
 
-    function getTempoinicial() {
-        return $this->tempoinicial;
-    }
+      function getIdAmostra() {
+          return $this -> idAmostra;
+      }
 
-    function getTempofinal() {
-        return $this->tempofinal;
-    }
+      function getTempoinicial() {
+          return $this -> tempoinicial;
+      }
 
-    function getQuantidade() {
-        return $this->quantidade;
-    }
+      function getTempofinal() {
+          return $this -> tempofinal;
+      }
 
-    function getIndice() {
-        return $this->indice;
-    }
+      function getQuantidade() {
+          return $this -> quantidade;
+      }
 
-    function setIdAmostra($idAmostra) {
-        $this->idAmostra = $idAmostra;
-    }
+      function getIndice() {
+          return $this -> indice;
+      }
 
-    function setTempoinicial($tempoinicial) {
-        $this->tempoinicial = $tempoinicial;
-    }
+      function setIdAmostra($idAmostra) {
+          $this -> idAmostra = $idAmostra;
+      }
 
-    function setTempofinal($tempofinal) {
-        $this->tempofinal = $tempofinal;
-    }
+      function setTempoinicial($tempoinicial) {
+          $this -> tempoinicial = $tempoinicial;
+      }
 
-    function setQuantidade($quantidade) {
-        $this->quantidade = $quantidade;
-    }
+      function setTempofinal($tempofinal) {
+          $this -> tempofinal = $tempofinal;
+      }
 
-    function setIndice($indice) {
-        $this->indice = $indice;
-    }
-    
-    function getDepartamento() {
-        return $this->departamento;
-    }
+      function setQuantidade($quantidade) {
+          $this -> quantidade = $quantidade;
+      }
 
-    function getAtividade() {
-        return $this->atividade;
-    }
+      function setIndice($indice) {
+          $this -> indice = $indice;
+      }
 
-    function setDepartamento($departamento) {
-        $this->departamento = $departamento;
-    }
+      function getDepartamento() {
+          return $this -> departamento;
+      }
 
-    function setAtividade($atividade) {
-        $this->atividade = $atividade;
-    }
+      function getAtividade() {
+          return $this -> atividade;
+      }
 
-    
-        public function insert() {
+      function setDepartamento($departamento) {
+          $this -> departamento = $departamento;
+      }
+
+      function setAtividade($atividade) {
+          $this -> atividade = $atividade;
+      }
+
+      public function insert() {
 
 
-        $sql = "INSERT INTO $this->table ( horainicial, horafinal, quantidade, indice, IdDeptoFK, IdAtividadeFK)"
-                . " VALUES ( :tempoinicial, :tempofinal, :quantidade, :indice, :departamento, :atividade)";
-        $stmt = DB::prepare($sql);
-      
-        $stmt->bindParam(':tempoinicial', $this->tempoinicial);
-        $stmt->bindParam(':tempofinal', $this->tempofinal);
-        $stmt->bindParam(':quantidade', $this->quantidade);
-        $stmt->bindParam(':indice', $this->indice);
-        $stmt->bindParam(':departamento', $this->departamento);
-        $stmt->bindParam(':atividade', $this->atividade);
-         try {
-            return $stmt->execute();
-        } catch (PDOException $e) {
-        if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1451') {
-            return '1451';
-        }
-        
-             }
-        }
+          $sql = "INSERT INTO $this -> table ( horainicial, horafinal, quantidade, indice, IdDeptoFK, IdAtividadeFK)"
+                  ." VALUES ( :tempoinicial, :tempofinal, :quantidade, :indice, :departamento, :atividade)";
+          $stmt = DB::prepare($sql);
 
-    public function update($idAmostra) {
+          $stmt -> bindParam(':tempoinicial', $this -> tempoinicial);
+          $stmt -> bindParam(':tempofinal', $this -> tempofinal);
+          $stmt -> bindParam(':quantidade', $this -> quantidade);
+          $stmt -> bindParam(':indice', $this -> indice);
+          $stmt -> bindParam(':departamento', $this -> departamento);
+          $stmt -> bindParam(':atividade', $this -> atividade);
+          try {
+              return $stmt -> execute();
+          } catch(PDOException $e) {
+              if(isset($e -> errorInfo[1])&&$e -> errorInfo[1]=='1451') {
+                  return '1451';
+              }
+          }
+      }
 
-        $sql = "UPDATE $this->table SET  "
-                . "tempoinicial=:tempoinicial,"
-                . "tempofinal=:tempofinal,"
-                . "quantidade=:quantidade,"
-                . "indice=:indice,"
-                . " where" + $idAmostra;
-        $stmt = DB::prepare($sql);
+      public function update($idAmostra) {
 
-        $stmt->bindParam(':$idAmostra', $this->$idAmostra);
-        $stmt->bindParam(':tempoinicial', $this->tempoinicial);
-        $stmt->bindParam(':tempofinal', $this->tempofinal);
-        $stmt->bindParam(':quantidade', $this->quantidade);
-        $stmt->bindParam(':indice', $this->indice);
+          $sql = "UPDATE $this -> table SET  "
+                  ."tempoinicial=:tempoinicial,"
+                  ."tempofinal=:tempofinal,"
+                  ."quantidade=:quantidade,"
+                  ."indice=:indice,"
+                  ." where"+$idAmostra;
+          $stmt = DB::prepare($sql);
 
-        return $stmt->execute();
-    }
-    
-    public function verificarModa($indice_autal,$indice_proximo,$w,$jcount) {
+          $stmt -> bindParam(':$idAmostra', $this -> $idAmostra);
+          $stmt -> bindParam(':tempoinicial', $this -> tempoinicial);
+          $stmt -> bindParam(':tempofinal', $this -> tempofinal);
+          $stmt -> bindParam(':quantidade', $this -> quantidade);
+          $stmt -> bindParam(':indice', $this -> indice);
 
-            if($indice_autal==$indice_proximo && $w <> $jcount){
-                    $moda = true;
-                    $contModa = $contModa +1;
-                    return $moda;
-           }else {
-                    $media = true;
-                    return $media;
-            }
-            
-            
-    }
-    public function findAllAmostras($id) {
-        $sql = "SELECT * FROM $this->table where IdAtividadeFK = :IdAtividadeFK";
-        $stmt = DB::prepare($sql);
-        $stmt->bindParam(':IdAtividadeFK', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetchAll();
-    }
+          return $stmt -> execute();
+      }
 
-    public function findAmostrasRel($departamento,$atividade) {
-        $sql = "SELECT * FROM $this->table where IdAtividadeFK = :IdAtividadeFK and IdDeptoFK = :IdDeptoFK";
-        $stmt = DB::prepare($sql);
-        $stmt->bindParam(':IdAtividadeFK', $atividade, PDO::PARAM_INT);
-        $stmt->bindParam(':IdDeptoFK', $departamento, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetchAll();
-    }    
-    
-}
+      public function verificarModa($indice_autal, $indice_proximo, $w, $jcount) {
+
+          if($indice_autal==$indice_proximo&&$w<>$jcount) {
+              $moda = true;
+              $contModa = $contModa+1;
+              return $moda;
+          } else {
+              $media = true;
+              return $media;
+          }
+      }
+
+      public function findAllAmostras($id) {
+          $sql = "SELECT * FROM $this -> table where IdAtividadeFK = :IdAtividadeFK";
+          $stmt = DB::prepare($sql);
+          $stmt -> bindParam(':IdAtividadeFK', $id, PDO::PARAM_INT);
+          $stmt -> execute();
+          return $stmt -> fetchAll();
+      }
+
+      public function findAmostrasRel($departamento, $atividade) {
+          $sql = "SELECT * FROM $this -> table where IdAtividadeFK = :IdAtividadeFK and IdDeptoFK = :IdDeptoFK";
+          $stmt = DB::prepare($sql);
+          $stmt -> bindParam(':IdAtividadeFK', $atividade, PDO::PARAM_INT);
+          $stmt -> bindParam(':IdDeptoFK', $departamento, PDO::PARAM_INT);
+          $stmt -> execute();
+          return $stmt -> fetchAll();
+      }
+
+  }

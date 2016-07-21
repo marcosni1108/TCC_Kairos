@@ -1,130 +1,131 @@
 <?php
 
-require_once 'Crud.php';
+  require_once 'Crud.php';
 
-class meta {
+  class meta {
 
-    protected $table = 'meta';
-    private $MediaIndice;
-    private $quantidade;
-    private $Meta;
-    private $resultado;
-    private $AcrescimoMeta;
-    private $IdDeptoFK;
-    private $IdAtividadeFK;
+      protected $table = 'meta';
+      private $MediaIndice;
+      private $quantidade;
+      private $Meta;
+      private $resultado;
+      private $AcrescimoMeta;
+      private $IdDeptoFK;
+      private $IdAtividadeFK;
 
-    public function findMeta($idDept,$idAtiv) {
-        $sql = "SELECT * FROM $this->table WHERE IdDeptoFK = :IdDeptoFK and"
-                . " IdAtividadeFK =:IdAtividadeFK";
-        $stmt = DB::prepare($sql);
-        $stmt->bindParam(':IdDeptoFK', $idDept);
-        $stmt->bindParam(':IdAtividadeFK', $idAtiv);
-        $stmt->execute();
-        return $stmt->fetchAll();
-    }
-    public function update() {
+      public function findMeta($idDept, $idAtiv) {
+          $sql = "SELECT * FROM $this -> table WHERE IdDeptoFK = :IdDeptoFK and"
+                  ." IdAtividadeFK =:IdAtividadeFK";
+          $stmt = DB::prepare($sql);
+          $stmt -> bindParam(':IdDeptoFK', $idDept);
+          $stmt -> bindParam(':IdAtividadeFK', $idAtiv);
+          $stmt -> execute();
+          return $stmt -> fetchAll();
+      }
 
-            $sql = "UPDATE $this->table SET Meta =:meta, resultado =:resultado,"
-                . " AcrescimoMeta =:AcrescimoMeta"
-                . " WHERE idDeptoFK =:IdDeptoFK AND IdAtividadeFK =:IdAtividadeFK";
+      public function update() {
 
-        $stmt = DB::prepare($sql);
-        $stmt->bindParam(':meta', $this->Meta);
-        $stmt->bindParam(':resultado', $this->resultado);
-        $stmt->bindParam(':AcrescimoMeta', $this->AcrescimoMeta);
-        $stmt->bindParam(':IdDeptoFK', $this->IdDeptoFK);
-        $stmt->bindParam(':IdAtividadeFK', $this->IdAtividadeFK);
-        try {
-            return $stmt->execute();
-        } catch (PDOException $e) {
-            if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1062') {
-                return false;
-            }
-        }
+          $sql = "UPDATE $this -> table SET Meta =:meta, resultado =:resultado,"
+                  ." AcrescimoMeta =:AcrescimoMeta"
+                  ." WHERE idDeptoFK =:IdDeptoFK AND IdAtividadeFK =:IdAtividadeFK";
 
-        //Toda vez que criar (alterar) a meta, insere o mesmo registro na History
-        //TODO - Descomentar quando criar a table de History
-        // $this-> insertHistory();
-    }
+          $stmt = DB::prepare($sql);
+          $stmt -> bindParam(':meta', $this -> Meta);
+          $stmt -> bindParam(':resultado', $this -> resultado);
+          $stmt -> bindParam(':AcrescimoMeta', $this -> AcrescimoMeta);
+          $stmt -> bindParam(':IdDeptoFK', $this -> IdDeptoFK);
+          $stmt -> bindParam(':IdAtividadeFK', $this -> IdAtividadeFK);
+          try {
+              return $stmt -> execute();
+          } catch(PDOException $e) {
+              if(isset($e -> errorInfo[1])&&$e -> errorInfo[1]=='1062') {
+                  return false;
+              }
+          }
 
-    public function insertMeta() {
-        $sql = "INSERT INTO $this->table ( MediaIndice, quantidade , Meta, resultado, AcrescimoMeta, IdDeptoFK, IdAtividadeFK)"
-                . " VALUES (:MediaIndice, :quantidade , :Meta, :resultado, :AcrescimoMeta, :IdDeptoFK, :IdAtividadeFK)";
-        $stmt = DB::prepare($sql);
-        $stmt->bindParam(':MediaIndice', $this->MediaIndice);
-        $stmt->bindParam(':quantidade', $this->quantidade);
-        $stmt->bindParam(':Meta', $this->Meta);
-        $stmt->bindParam(':resultado', $this->resultado);
-        $stmt->bindParam(':AcrescimoMeta', $this->AcrescimoMeta);
-        $stmt->bindParam(':IdDeptoFK', $this->IdDeptoFK);
-        $stmt->bindParam(':IdAtividadeFK', $this->IdAtividadeFK);
-        try {
-            return $stmt->execute();
-        } catch (PDOException $e) {
-            if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1062') {
-                return false;
-            }
-        }
-    }
+          //Toda vez que criar (alterar) a meta, insere o mesmo registro na History
+          //TODO - Descomentar quando criar a table de History
+          // $this-> insertHistory();
+      }
 
-    function getTable() {
-        return $this->table;
-    }
+      public function insertMeta() {
+          $sql = "INSERT INTO $this -> table ( MediaIndice, quantidade , Meta, resultado, AcrescimoMeta, IdDeptoFK, IdAtividadeFK)"
+                  ." VALUES (:MediaIndice, :quantidade , :Meta, :resultado, :AcrescimoMeta, :IdDeptoFK, :IdAtividadeFK)";
+          $stmt = DB::prepare($sql);
+          $stmt -> bindParam(':MediaIndice', $this -> MediaIndice);
+          $stmt -> bindParam(':quantidade', $this -> quantidade);
+          $stmt -> bindParam(':Meta', $this -> Meta);
+          $stmt -> bindParam(':resultado', $this -> resultado);
+          $stmt -> bindParam(':AcrescimoMeta', $this -> AcrescimoMeta);
+          $stmt -> bindParam(':IdDeptoFK', $this -> IdDeptoFK);
+          $stmt -> bindParam(':IdAtividadeFK', $this -> IdAtividadeFK);
+          try {
+              return $stmt -> execute();
+          } catch(PDOException $e) {
+              if(isset($e -> errorInfo[1])&&$e -> errorInfo[1]=='1062') {
+                  return false;
+              }
+          }
+      }
 
-    function getQuantidade() {
-        return $this->quantidade;
-    }
+      function getTable() {
+          return $this -> table;
+      }
 
-    function getMeta() {
-        return $this->Meta;
-    }
+      function getQuantidade() {
+          return $this -> quantidade;
+      }
 
-    function getResultado() {
-        return $this->resultado;
-    }
+      function getMeta() {
+          return $this -> Meta;
+      }
 
-    function getAcrescimoMeta() {
-        return $this->AcrescimoMeta;
-    }
+      function getResultado() {
+          return $this -> resultado;
+      }
 
-    function getIdDeptoFK() {
-        return $this->IdDeptoFK;
-    }
+      function getAcrescimoMeta() {
+          return $this -> AcrescimoMeta;
+      }
 
-    function getIdAtividadeFK() {
-        return $this->IdAtividadeFK;
-    }
+      function getIdDeptoFK() {
+          return $this -> IdDeptoFK;
+      }
 
-    function setQuantidade($quantidade) {
-        $this->quantidade = $quantidade;
-    }
+      function getIdAtividadeFK() {
+          return $this -> IdAtividadeFK;
+      }
 
-    function setMeta($Meta) {
-        $this->Meta = $Meta;
-    }
+      function setQuantidade($quantidade) {
+          $this -> quantidade = $quantidade;
+      }
 
-    function setResultado($resultado) {
-        $this->resultado = $resultado;
-    }
+      function setMeta($Meta) {
+          $this -> Meta = $Meta;
+      }
 
-    function setAcrescimoMeta($AcrescimoMeta) {
-        $this->AcrescimoMeta = $AcrescimoMeta;
-    }
+      function setResultado($resultado) {
+          $this -> resultado = $resultado;
+      }
 
-    function setIdDeptoFK($IdDeptoFK) {
-        $this->IdDeptoFK = $IdDeptoFK;
-    }
+      function setAcrescimoMeta($AcrescimoMeta) {
+          $this -> AcrescimoMeta = $AcrescimoMeta;
+      }
 
-    function setIdAtividadeFK($IdAtividadeFK) {
-        $this->IdAtividadeFK = $IdAtividadeFK;
-    }
+      function setIdDeptoFK($IdDeptoFK) {
+          $this -> IdDeptoFK = $IdDeptoFK;
+      }
 
-    function getMediaIndice() {
-        return $this->MediaIndice;
-    }
+      function setIdAtividadeFK($IdAtividadeFK) {
+          $this -> IdAtividadeFK = $IdAtividadeFK;
+      }
 
-    function setMediaIndice($MediaIndice) {
-        $this->MediaIndice = $MediaIndice;
-    }
+      function getMediaIndice() {
+          return $this -> MediaIndice;
+      }
 
-}
+      function setMediaIndice($MediaIndice) {
+          $this -> MediaIndice = $MediaIndice;
+      }
+
+  }

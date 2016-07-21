@@ -1,163 +1,162 @@
 <?php
 
-require_once 'Crud.php';
+  require_once 'Crud.php';
 
-class parada extends Crud {
+  class parada extends Crud {
 
-    protected $table = 'parada';
-    private $id;
-    private $tempoInicial;
-    private $tempoFinal;
-    private $turno;
-    private $entradaTempo;
-    private $tempConvertSegun;
-    private $percentParada;
-    private $data;
-    private $idFuncionarioFK;
-    private $idDepartamentoFK;
-    private $idParadaFK;
-    private $status;
-    function __construct($tempoInicial, $tempoFinal, $turno, $entradaTempo, $tempConvertSegun, $percentParada, $data, $idFuncionarioFK, $idDepartamentoFK, $idParadaFK, $status) {
-        $this->tempoInicial = $tempoInicial;
-        $this->tempoFinal = $tempoFinal;
-        $this->turno = $turno;
-        $this->entradaTempo = $entradaTempo;
-        $this->tempConvertSegun = $tempConvertSegun;
-        $this->percentParada = $percentParada;
-        $this->data = $data;
-        $this->idFuncionarioFK = $idFuncionarioFK;
-        $this->idDepartamentoFK = $idDepartamentoFK;
-        $this->idParadaFK = $idParadaFK;
-        $this->status = $status;
-    }
+      protected $table = 'parada';
+      private $id;
+      private $tempoInicial;
+      private $tempoFinal;
+      private $turno;
+      private $entradaTempo;
+      private $tempConvertSegun;
+      private $percentParada;
+      private $data;
+      private $idFuncionarioFK;
+      private $idDepartamentoFK;
+      private $idParadaFK;
+      private $status;
 
-    function getId() {
-        return $this->id;
-    }
+      function __construct($tempoInicial, $tempoFinal, $turno, $entradaTempo, $tempConvertSegun, $percentParada, $data, $idFuncionarioFK, $idDepartamentoFK, $idParadaFK, $status) {
+          $this -> tempoInicial = $tempoInicial;
+          $this -> tempoFinal = $tempoFinal;
+          $this -> turno = $turno;
+          $this -> entradaTempo = $entradaTempo;
+          $this -> tempConvertSegun = $tempConvertSegun;
+          $this -> percentParada = $percentParada;
+          $this -> data = $data;
+          $this -> idFuncionarioFK = $idFuncionarioFK;
+          $this -> idDepartamentoFK = $idDepartamentoFK;
+          $this -> idParadaFK = $idParadaFK;
+          $this -> status = $status;
+      }
 
-    function getTempoInicial() {
-        return $this->tempoInicial;
-    }
+      function getId() {
+          return $this -> id;
+      }
 
-    function getTempoFinal() {
-        return $this->tempoFinal;
-    }
+      function getTempoInicial() {
+          return $this -> tempoInicial;
+      }
 
-    function getTurno() {
-        return $this->turno;
-    }
+      function getTempoFinal() {
+          return $this -> tempoFinal;
+      }
 
-    function getEntradaTempo() {
-        return $this->entradaTempo;
-    }
+      function getTurno() {
+          return $this -> turno;
+      }
 
-    function getTempConvertSegun() {
-        return $this->tempConvertSegun;
-    }
+      function getEntradaTempo() {
+          return $this -> entradaTempo;
+      }
 
-    function getPercentParada() {
-        return $this->percentParada;
-    }
+      function getTempConvertSegun() {
+          return $this -> tempConvertSegun;
+      }
 
-    function getData() {
-        return $this->data;
-    }
+      function getPercentParada() {
+          return $this -> percentParada;
+      }
 
-    function getIdFuncionarioFK() {
-        return $this->idFuncionarioFK;
-    }
+      function getData() {
+          return $this -> data;
+      }
 
-    function getIdDepartamentoFK() {
-        return $this->idDepartamentoFK;
-    }
+      function getIdFuncionarioFK() {
+          return $this -> idFuncionarioFK;
+      }
 
-    function getIdParadaFK() {
-        return $this->idParadaFK;
-    }
+      function getIdDepartamentoFK() {
+          return $this -> idDepartamentoFK;
+      }
 
-    function getStatus() {
-        return $this->status;
-    }
+      function getIdParadaFK() {
+          return $this -> idParadaFK;
+      }
 
-    function setId($id) {
-        $this->id = $id;
-    }
+      function getStatus() {
+          return $this -> status;
+      }
 
-    function setTempoInicial($tempoInicial) {
-        $this->tempoInicial = $tempoInicial;
-    }
+      function setId($id) {
+          $this -> id = $id;
+      }
 
-    function setTempoFinal($tempoFinal) {
-        $this->tempoFinal = $tempoFinal;
-    }
+      function setTempoInicial($tempoInicial) {
+          $this -> tempoInicial = $tempoInicial;
+      }
 
-    function setTurno($turno) {
-        $this->turno = $turno;
-    }
+      function setTempoFinal($tempoFinal) {
+          $this -> tempoFinal = $tempoFinal;
+      }
 
-    function setEntradaTempo($entradaTempo) {
-        $this->entradaTempo = $entradaTempo;
-    }
+      function setTurno($turno) {
+          $this -> turno = $turno;
+      }
 
-    function setTempConvertSegun($tempConvertSegun) {
-        $this->tempConvertSegun = $tempConvertSegun;
-    }
+      function setEntradaTempo($entradaTempo) {
+          $this -> entradaTempo = $entradaTempo;
+      }
 
-    function setPercentParada($percentParada) {
-        $this->percentParada = $percentParada;
-    }
+      function setTempConvertSegun($tempConvertSegun) {
+          $this -> tempConvertSegun = $tempConvertSegun;
+      }
 
-    function setData($data) {
-        $this->data = $data;
-    }
+      function setPercentParada($percentParada) {
+          $this -> percentParada = $percentParada;
+      }
 
-    function setIdFuncionarioFK($idFuncionarioFK) {
-        $this->idFuncionarioFK = $idFuncionarioFK;
-    }
+      function setData($data) {
+          $this -> data = $data;
+      }
 
-    function setIdDepartamentoFK($idDepartamentoFK) {
-        $this->idDepartamentoFK = $idDepartamentoFK;
-    }
+      function setIdFuncionarioFK($idFuncionarioFK) {
+          $this -> idFuncionarioFK = $idFuncionarioFK;
+      }
 
-    function setIdParadaFK($idParadaFK) {
-        $this->idParadaFK = $idParadaFK;
-    }
+      function setIdDepartamentoFK($idDepartamentoFK) {
+          $this -> idDepartamentoFK = $idDepartamentoFK;
+      }
 
-    function setStatus($status) {
-        $this->status = $status;
-    }
+      function setIdParadaFK($idParadaFK) {
+          $this -> idParadaFK = $idParadaFK;
+      }
 
-        
-        public function insert() {
+      function setStatus($status) {
+          $this -> status = $status;
+      }
 
+      public function insert() {
 
-        $sql = "INSERT INTO $this->table (tempoInicial, tempoFinal, turno,entradaTempo,tempConvertSegun,"
-                . "percentParada,data,idFuncionarioFK,idDepartamentoFK,	idParadaFK,status)"
-                . " VALUES (:tempoInicial, :tempoFinal, :turno, :entradaTempo, :tempConvertSegun, :percentParada,"
-                . ":data,:idFuncionarioFK,:idDepartamentoFK,:idParadaFK,:status)";
-        $stmt = DB::prepare($sql);
-        $stmt->bindParam(':tempoInicial', $this->tempoInicial);
-        $stmt->bindParam(':tempoFinal', $this->tempoFinal);
-        $stmt->bindParam(':turno', $this->turno);
-        $stmt->bindParam(':entradaTempo', $this->entradaTempo);
-        $stmt->bindParam(':tempConvertSegun', $this->tempConvertSegun);
-        $stmt->bindParam(':percentParada', $this->percentParada);
-        $stmt->bindParam(':data', $this->data);
-        $stmt->bindParam(':idFuncionarioFK', $this->idFuncionarioFK);
-        $stmt->bindParam(':idDepartamentoFK', $this->idDepartamentoFK);
-        $stmt->bindParam(':idParadaFK', $this->idParadaFK);
-        $stmt->bindParam(':status', $this->status);
-        try {
-            return $stmt->execute();
-        } catch (PDOException $e) {
-            if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1062') {
-                return false;
-            }
-        }
-    }
+          $sql = "INSERT INTO $this -> table (tempoInicial, tempoFinal, turno,entradaTempo,tempConvertSegun,"
+                  ."percentParada,data,idFuncionarioFK,idDepartamentoFK,	idParadaFK,status)"
+                  ." VALUES (:tempoInicial, :tempoFinal, :turno, :entradaTempo, :tempConvertSegun, :percentParada,"
+                  .":data,:idFuncionarioFK,:idDepartamentoFK,:idParadaFK,:status)";
+          $stmt = DB::prepare($sql);
+          $stmt -> bindParam(':tempoInicial', $this -> tempoInicial);
+          $stmt -> bindParam(':tempoFinal', $this -> tempoFinal);
+          $stmt -> bindParam(':turno', $this -> turno);
+          $stmt -> bindParam(':entradaTempo', $this -> entradaTempo);
+          $stmt -> bindParam(':tempConvertSegun', $this -> tempConvertSegun);
+          $stmt -> bindParam(':percentParada', $this -> percentParada);
+          $stmt -> bindParam(':data', $this -> data);
+          $stmt -> bindParam(':idFuncionarioFK', $this -> idFuncionarioFK);
+          $stmt -> bindParam(':idDepartamentoFK', $this -> idDepartamentoFK);
+          $stmt -> bindParam(':idParadaFK', $this -> idParadaFK);
+          $stmt -> bindParam(':status', $this -> status);
+          try {
+              return $stmt -> execute();
+          } catch(PDOException $e) {
+              if(isset($e -> errorInfo[1])&&$e -> errorInfo[1]=='1062') {
+                  return false;
+              }
+          }
+      }
 
-    public function update($idParada) {
+      public function update($idParada) {
 
-    }
+      }
 
-}
+  }

@@ -1,23 +1,21 @@
-<?php 
- 
-$produtividade = new produtividade();
-$row = $produtividade->findAll();
-        
+<?php
 
-echo "<script>";
-echo "var chartData = [";
- foreach ($produtividade->findAll() as $key => $value){
+  $produtividade = new produtividade();
+  $row = $produtividade -> findAll();
 
-    $data = $value->data;
-    
-    $quantidade = $value->quantidade;
+  echo "<script>";
+  echo "var chartData = [";
+  foreach($produtividade -> findAll() as $key => $value) {
 
+      $data = $value -> data;
 
-    echo "{ y: '" . date('d/m', strtotime($data)) . "', a: " . $quantidade . " },";
-}
-echo "]";
-echo "\n</script>";
-echo" \n<script>
+      $quantidade = $value -> quantidade;
+
+      echo "{ y: '".date('d/m', strtotime($data))."', a: ".$quantidade." },";
+  }
+  echo "]";
+  echo "\n</script>";
+  echo" \n<script>
 
   Morris.Bar({
   element: 'chart',

@@ -8,24 +8,20 @@ $('#cnpj').ready(function () {
             var option = '<option value="">Selecione o CNPJ</option>';
             $.each(dados, function (i, obj) {
                 option += '<option value="' + obj.id + '">' + obj.cnpj + '</option>';
-            })
-
+            });
         } else {
             Reset();
-
         }
         $('#cnpj').html(option).show();
-
-
-    })
-})
+    });
+});
 
 $('#add').click(function (e) {
 
     var idCNPJ = $('#cnpj').val();
-    var CNPJ  = $("#cnpj option:selected").html();
+    var CNPJ = $("#cnpj option:selected").html();
     var acao = "add";
-    if(!idCNPJ){
+    if (!idCNPJ) {
         alert("Escolha um CNPJ");
         return;
     }
@@ -33,10 +29,9 @@ $('#add').click(function (e) {
     $.ajax({
         type: "POST",
         url: "../../classes/session/session.php",
-        data: {'acao':acao,'idCNPJ': idCNPJ, 'CNPJ':CNPJ}
-    }).done(function() {
-    alert( "Unidade Salva" );
-  })
-    
+        data: {'acao': acao, 'idCNPJ': idCNPJ, 'CNPJ': CNPJ}
+    }).done(function () {
+        alert("Unidade Salva");
+    });
     return false;
-})
+});

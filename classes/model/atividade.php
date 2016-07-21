@@ -1,125 +1,104 @@
 <?php
 
-require_once 'Crud.php';
+  require_once 'Crud.php';
 
-class atividade extends Crud {
+  class atividade extends Crud {
 
-    protected $table = 'atividade';
-    private $id;
-    private $nome;
-    private $descricao;
-    private $idDepartamentoFK;
-    private $cnpj;
-    private $meta;
-    private $unid_med;
-    function getUnid_med() {
-        return $this->unid_med;
-    }
+      protected $table = 'atividade';
+      private $id;
+      private $nome;
+      private $descricao;
+      private $idDepartamentoFK;
+      private $meta;
+      private $unid_med;
 
-    function setUnid_med($unid_med) {
-        $this->unid_med = $unid_med;
-    }
+      function getUnid_med() {
+          return $this -> unid_med;
+      }
 
-        function getMeta() {
-        return $this->meta;
-    }
+      function setUnid_med($unid_med) {
+          $this -> unid_med = $unid_med;
+      }
 
-    function setMeta($meta) {
-        $this->meta = $meta;
-    }
+      function getMeta() {
+          return $this -> meta;
+      }
 
-        function getDescricao() {
-        return $this->descricao;
-    }
+      function setMeta($meta) {
+          $this -> meta = $meta;
+      }
 
-    function getIdDepartamentoFK() {
-        return $this->idDepartamentoFK;
-    }
+      function getDescricao() {
+          return $this -> descricao;
+      }
 
-//    function getCnpj() {
-//        return $this->cnpj;
-//    }
+      function getIdDepartamentoFK() {
+          return $this -> idDepartamentoFK;
+      }
 
-    function setTable($table) {
-        $this->table = $table;
-    }
+      function setTable($table) {
+          $this -> table = $table;
+      }
 
-    function setDescricao($descricao) {
-        $this->descricao = $descricao;
-    }
+      function setDescricao($descricao) {
+          $this -> descricao = $descricao;
+      }
 
-    function setIdDepartamentoFK($idDepartamentoFK) {
-        $this->idDepartamentoFK = $idDepartamentoFK;
-    }
+      function setIdDepartamentoFK($idDepartamentoFK) {
+          $this -> idDepartamentoFK = $idDepartamentoFK;
+      }
 
-//    function setCnpj($cnpj) {
-//        $this->cnpj = $cnpj;
-//    }
+      function getId() {
+          return $this -> id;
+      }
 
-        function getId() {
-        return $this->id;
-    }
+      function getNome() {
+          return $this -> nome;
+      }
 
-    function getNome() {
-        return $this->nome;
-    }
+      function setIdAtividade($id) {
+          $this -> id = $id;
+      }
 
-   
+      function setNome($nome) {
+          $this -> nome = $nome;
+      }
 
-    function setIdAtividade($id) {
-        $this->id = $id;
-    }
+      public function insert() {
 
-    function setNome($nome) {
-        $this->nome = $nome;
-    }
+          $sql = "INSERT INTO $this -> table (nome,descricao,idDepartamentoFK,unid_med)"
+                  ." VALUES (:nome,:descricao,:idDepartamentoFK,:unid_med)";
+          $stmt = DB::prepare($sql);
+          $stmt -> bindParam(':nome', $this -> nome);
+          $stmt -> bindParam(':descricao', $this -> descricao);
+          $stmt -> bindParam(':idDepartamentoFK', $this -> idDepartamentoFK);
+          $stmt -> bindParam(':unid_med', $this -> unid_med);
 
-   
+          return $stmt -> execute();
+      }
 
-     
+      public function update($idAtividade) {
 
-    
+          $sql = "UPDATE $this -> table SET nome= :nome, "
+                  ."descricao=:descricao,idDepartamentoFK=:idDepartamentoFK,"
+                  ."unid_med =:unid_med where id = :id";
+          $stmt = DB::prepare($sql);
 
-        public function insert() {
+          $stmt -> bindParam(':nome', $this -> nome);
+          $stmt -> bindParam(':descricao', $this -> descricao);
+          $stmt -> bindParam(':idDepartamentoFK', $this -> idDepartamentoFK);
+          $stmt -> bindParam(':unid_med', $this -> unid_med);
+          $stmt -> bindParam(':id', $idAtividade);
 
+          return $stmt -> execute();
+      }
 
-        $sql = "INSERT INTO $this->table (nome,descricao,idDepartamentoFK,unid_med)"
-                . " VALUES (:nome,:descricao,:idDepartamentoFK,:unid_med)";
-        $stmt = DB::prepare($sql);
-        $stmt->bindParam(':nome', $this->nome);
-        $stmt->bindParam(':descricao', $this->descricao);
-        $stmt->bindParam(':idDepartamentoFK', $this->idDepartamentoFK);
-       // $stmt->bindParam(':cnpj', $this->cnpj);
-        $stmt->bindParam(':unid_med', $this->unid_med);
+      public function findDept($id) {
+          $sql = "SELECT * FROM $this -> table WHERE idDepartamentoFK = :id";
+          $stmt = DB::prepare($sql);
+          $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
+          $stmt -> execute();
+          return $stmt -> fetchAll();
+      }
 
-       
-        return $stmt->execute();
-    }
-
-    public function update($idAtividade) {
-
-        $sql = "UPDATE $this->table SET nome= :nome, "
-                . "descricao=:descricao,idDepartamentoFK=:idDepartamentoFK,"
-                . "unid_med =:unid_med where id = :id";
-        $stmt = DB::prepare($sql);
-
-        $stmt->bindParam(':nome', $this->nome);
-        $stmt->bindParam(':descricao', $this->descricao);
-        //$stmt->bindParam(':cnpj', $this->cnpj);
-        $stmt->bindParam(':idDepartamentoFK', $this->idDepartamentoFK);
-        $stmt->bindParam(':unid_med', $this->unid_med);
-        $stmt->bindParam(':id', $idAtividade);
-        
-        
-        return $stmt->execute();
-    }
-    
-       public function findDept($id) {
-        $sql = "SELECT * FROM $this->table WHERE idDepartamentoFK = :id";
-        $stmt = DB::prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetchAll();
-    }
-
-}
+  }

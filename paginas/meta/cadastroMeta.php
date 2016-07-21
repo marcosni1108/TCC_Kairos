@@ -3,54 +3,41 @@
     <head>
         <title>Kairos</title>
         <?php
-       include "../include/include_css.php";
-        include "../header/header.php";
-//        include "../menu_principal/menu_lateral.php";
-//        include '../include/include_classes.php';
-        include "../../classes/model/validaOperario.php";
-
-        // include '../include/include_classes.php';
-        ?> 
+          include "../include/include_css.php";
+          include "../header/header.php";
+          include "../../classes/model/validaOperario.php";
+        ?>
         <link href="../../css/sb-admin.css" rel="stylesheet">
         <meta charset="UTF-8">
-
     </head>
     <body >
         <?php
-        $cMeta = new meta();
-        if (isset($_POST['cadastrar'])):
-
-            $departamento = $_POST['departamento']; 
-            $cnpj = $_POST['cnpj'];
-            $atividade = $_POST['atividade'];
-            $meta_porcent = $_POST['meta'];
-            
-                      
-            $resultado = $cMeta->findMeta($departamento, $atividade);
-            $meta_antiga = $resultado[0]->Meta;
-            
-            if($meta_porcent>$meta_antiga){
-            
-            $MediaIndice = $resultado[0]->MediaIndice;
-            $meta = $meta_porcent/100;
-            $resultado_indice = $MediaIndice * $meta;
-            $AcrescimoMeta = $MediaIndice + $resultado_indice;                    
-                        
-            $cMeta->setMeta($meta_porcent);
-            $cMeta->setResultado($resultado_indice);
-            $cMeta->setAcrescimoMeta($AcrescimoMeta);
-            $cMeta->setIdDeptoFK($departamento);
-            $cMeta->setIdAtividadeFK($atividade);
-            
-                if ($cMeta->update()) {
-                    echo "<script> alert('Meta Cadastrada com sucesso')</script>";
-                }
-            }else{
-                    echo "<script> alert('A nova meta deve ser maior que a atual')</script>";
-            }
-        endif;
+          $cMeta = new meta();
+          if(isset($_POST['cadastrar'])):
+              $departamento = $_POST['departamento'];
+              $cnpj = $_POST['cnpj'];
+              $atividade = $_POST['atividade'];
+              $meta_porcent = $_POST['meta'];
+              $resultado = $cMeta -> findMeta($departamento, $atividade);
+              $meta_antiga = $resultado[0] -> Meta;
+              if($meta_porcent>$meta_antiga) {
+                  $MediaIndice = $resultado[0] -> MediaIndice;
+                  $meta = $meta_porcent/100;
+                  $resultado_indice = $MediaIndice*$meta;
+                  $AcrescimoMeta = $MediaIndice+$resultado_indice;
+                  $cMeta -> setMeta($meta_porcent);
+                  $cMeta -> setResultado($resultado_indice);
+                  $cMeta -> setAcrescimoMeta($AcrescimoMeta);
+                  $cMeta -> setIdDeptoFK($departamento);
+                  $cMeta -> setIdAtividadeFK($atividade);
+                  if($cMeta -> update()) {
+                      echo "<script> alert('Meta Cadastrada com sucesso')</script>";
+                  }
+              } else {
+                  echo "<script> alert('A nova meta deve ser maior que a atual')</script>";
+              }
+          endif;
         ?>
-
         <!-- Wrapper da pagina -->
         <div id="page-wrapper" style="overflow-x: hidden; padding-left: 250px; height:100%; padding-top: 30px;">
             <!-- Primeira linha do wrapper -->
@@ -59,17 +46,13 @@
                     <h1 class="page-header">Cadastro de Meta</h1>
                 </div>
             </div>
-
             <div class="row">
-
                 <div class="col-lg-8">
                     <div class="panel panel-default">
                         <!-- Conteudo dentro de wrapper -->
                         <div class="panel-body">
-
                             <form method="post" action="">
                                 <div class="input-prepend">
-
                                     <div class="row">
                                         <div class="form-group col-lg-4">
                                             <label for="cnpj">CNPJ</label>
@@ -79,33 +62,28 @@
                                         </div>
                                         <div class="form-group col-lg-4">
                                             <label for="departamento">Departamento</label>
-                                            <select  class="form-control" name="departamento" id="cmbDepartamento" required>                                                  
+                                            <select  class="form-control" name="departamento" id="cmbDepartamento" required>
                                                 <option value="">Selecione o Departamento</option>
                                             </select>
-                                        </div> 
+                                        </div>
                                         <div class="form-group col-lg-4">
                                             <label for="atividade">Atividade</label>
-                                            <select  class="form-control" name="atividade" id="cmbAtividade" required>                                                  
+                                            <select  class="form-control" name="atividade" id="cmbAtividade" required>
                                                 <option value="">Selecione a Atividade</option>
                                             </select>
-                                        </div>             
+                                        </div>
                                         <div class="form-group col-lg-4">
                                             <label for="meta">Porcentagem de Meta</label>
-                                            
                                             <input type="number" class="form-control" onkeypress="javascript: mascara(this, soNumeros);" name="meta" id="meta" placeholder="%" required>
-                                        </div>  
-
+                                        </div>
                                     </div>
-
                                     <div class="row">
                                         <div class="form-group col-lg-4">
                                         </div>
                                         <div class="form-group col-lg-4">
                                             <input id="btnCadastrar" type="submit" name="cadastrar" class="btn btn-success" value="Cadastrar dados">
-                                        </div>    
+                                        </div>
                                     </div>
-
-
                                     <!-- Modal -->
                                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                         <div class="modal-dialog" role="document">
@@ -123,22 +101,15 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>                                        
-
+                                    </div>
                                 </div>
-
-                            </form>                                
-
+                            </form>
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
-    </div>        
-
+    </div> 
 </body>
 <?php include_once '../include/include_js.php'; ?>
 <script src="../../js/populaComboMeta.js"></script>
