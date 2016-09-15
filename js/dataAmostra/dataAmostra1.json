@@ -1,10 +1,1 @@
-{
-    "amostra": [{
-            "departamento": "15",
-            "atividade": "8",
-            "hora_inicial": "17:00",
-            "hora_final": "18:00",
-            "quantidade": "1300",
-            "indice": 10
-        }]
-}
+{"amostra":[{"departamento":"15","atividade":"8","hora_inicial":"17:00","hora_final":"18:00","quantidade":"1300","indice":10}]}

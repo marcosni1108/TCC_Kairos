@@ -1,21 +1,20 @@
-<?php
+<?php require 'db_pld.php';
+ 
+$result = mysqli_query($conn, 'SELECT `Nome`, `Total` FROM vendas');
 
-  require 'db_pld.php';
+echo "<script>";
+echo "var chartData = [";
+while (($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) != NULL) {
 
-  $result = mysqli_query($conn, 'SELECT `Nome`, `Total` FROM vendas');
+    $nome = $row["Nome"];
+    $valor = $row["Total"];
 
-  echo "<script>";
-  echo "var chartData = [";
-  while(($row = mysqli_fetch_array($result, MYSQLI_ASSOC))!=NULL) {
 
-      $nome = $row["Nome"];
-      $valor = $row["Total"];
-
-      echo "{ y: '".$nome."', a: ".$valor." },";
-  }
-  echo "]";
-  echo "</script>";
-  echo"<script>
+    echo "{ y: '" . $nome . "', a: " . $valor . " },";
+}
+echo "]";
+echo "</script>";
+echo"<script>
 
   Morris.Bar({
   element: 'chart',

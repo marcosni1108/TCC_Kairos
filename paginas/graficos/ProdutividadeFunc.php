@@ -2,69 +2,86 @@
     <head>
         <title>Kairos</title>
         <?php
-          include "../include/include_css.php";
-          include "../header/header.php";
-          include "../../classes/model/validaOperario.php";
-          include "../../classes/model/validaLider.php";
-        ?>
+        include "../include/include_css.php";
+        include "../header/header.php";
+        include "../../classes/model/validaOperario.php";
+        include "../../classes/model/validaLider.php";
+        ?>   
         <?php
-          if(isset($_POST['GerarGrafico'])):
-              require '../../classes/graficos/GerarGraficos.php';
-              $id = $_POST['funcionario'];
-              $dataSFormat = $_POST['data'];
-              $dataSFormat = str_replace('/', '-', $dataSFormat);
+        if (isset($_POST['GerarGrafico'])):
+            require '../../classes/graficos/GerarGraficos.php';
+            $id = $_POST['funcionario'];
+            $dataSFormat = $_POST['data'];
+            $dataSFormat = str_replace('/', '-', $dataSFormat);
 
-              $data = date('Y-m-d', strtotime($dataSFormat));
+            $data = date('Y-m-d', strtotime($dataSFormat));
 
-              $GerarGraficos = new GerarGraficos();
-              if($GerarGraficos -> prodFunc($id, $data)) {
-                  echo "<script>"
-                  ."window.location='./GraficoFunc.php'</script>";
-              } else {
-                  echo "<script> alert('Colaborador sem produtividade.');</script>";
-              }
-          endif;
+            $GerarGraficos = new GerarGraficos();
+            if ($GerarGraficos->prodFunc($id, $data)) {
+                echo "<script>"
+                . "window.location='./GraficoFunc.php'</script>";
+            } else {
+
+                echo "<script> alert('Colaborador sem produtividade.');</script>";
+            }
+
+
+        endif;
         ?>
-        <link href="../../css/sb-admin.css" rel="stylesheet">
-        <link href="../../css/jquery-ui.css" rel="stylesheet">
         <script src="../../js/datapicker/jquery-1.10.2.js"></script>
         <script src="../../js/datapicker/jquery-ui.js"></script>
         <script src="../../js/datapicker/configDate.js"></script>
         <script src="../../js/bootstrap.min.js"></script>
+        <link href="../../css/jquery-ui.css" rel="stylesheet">
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+
         <meta charset="UTF-8">
     </head>
     <body >
-        <div id="wrapper" >
-            <div class="container-fluid" style="width:100%; top:10%; position:absolute;">
+
+        <main class="mdl-layout__content">
+            <div class="col-lg-12">
                 <form method="post" >
                     <div class="input-prepend">
                         <h1 class="page-header">
                             Produtividade de Funcionários
-                        </h1>
+                        </h1>          
+
                         <div class="row">
-                            <div class="form-group col-lg-3">
+                    <div class="col-lg-12">
+                            <div class="col-lg-3">
                                 <label for="funcionario">Funcionário</label>
-                                <select class="form-control" name="funcionario" id="cmbfuncionario" required>
+                                <select hidden="true" class="form-control" name="funcionario" id="cmbfuncionario" required>                                                  
                                     <option value="">Selecione o Funcionário</option>
                                 </select>
                             </div>
-                            <div class="form-group col-lg-2">
+                            <div class="col-lg-2">
                                 <label for="data">Data</label>
-                                <input type="text" class="form-control" id="datepicker" name="data" placeholder="Data" required>
+                                <input type="text" class="form-control" id="datepicker" name="data" placeholder="Data" required>                                
                             </div>
-                        </div>
-                        <div class="row"><hr width=95%></div>
-                        <div class="row">
+
+                        </div>  
+                    </div> 
+                        <div class="row"><hr width=95%></div>   
+                        <div class="row">    
                             <div class="form-group col-lg-4"></div>
                             <div class="form-group col-lg-4">
                                 <input id="btnGerar"  type="submit" name="GerarGrafico" class="btn btn-success" value="Gerar Grafico">
-                            </div>
-                        </div>
-                </form>
+
+                            </div>    
+                        </div>   
+
+                </form>  
             </div>
+
         </div>
+       </main>
+
     </body>
+
     <script src="../../js/populaComboGraficoFunc.js"></script>
+
     <script>
         (function ($) {
             $.widget("custom.combobox", {
@@ -80,7 +97,7 @@
                 _createAutocomplete: function () {
                     var selected = this.element.children(":selected"),
                             value = selected.val() ? selected.text() : "";
-                    this.br = $("<br>")
+                     this.br = $("<br>")
                             .appendTo(this.wrapper)
                             .val(value)
                             .addClass("form-control")
@@ -207,4 +224,6 @@
 
         });
     </script>
+
 </html>
+	

@@ -1,6 +1,7 @@
-$(document).ready(function() {
-    
-     $('#func').DataTable( {
+$(document).ready(function () {
+
+    $('#func').DataTable({
+        responsive: true,
         "language": {
             "sEmptyTable": "Nenhum registro encontrado",
             "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
@@ -24,10 +25,10 @@ $(document).ready(function() {
                 "sSortDescending": ": Ordenar colunas de forma descendente"
             }
         },
-        
-        "ajax": '../../js/dataTable/dataFunc.txt'        
-    } );
-     $('#tbl_Dept').DataTable( {
+        "ajax": '../../js/dataTable/dataFunc.txt'
+    });
+    $('#tbl_Dept').DataTable({
+         responsive: true,
         "language": {
             "sEmptyTable": "Nenhum registro encontrado",
             "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
@@ -51,10 +52,10 @@ $(document).ready(function() {
                 "sSortDescending": ": Ordenar colunas de forma descendente"
             }
         },
-        
-        "ajax": '../../js/dataTable/dataDept.txt'        
-    } );
-     $('#tbl_Atividade').DataTable( {
+        "ajax": '../../js/dataTable/dataDept.txt'
+    });
+    $('#tbl_Atividade').DataTable({
+        responsive: true,
         "language": {
             "sEmptyTable": "Nenhum registro encontrado",
             "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
@@ -78,10 +79,10 @@ $(document).ready(function() {
                 "sSortDescending": ": Ordenar colunas de forma descendente"
             }
         },
-        
-        "ajax": '../../js/dataTable/dataAtiv.txt'        
-    } );
-     $('#tbl_Endereco').DataTable( {
+        "ajax": '../../js/dataTable/dataAtiv.txt'
+    });
+    $('#tbl_Endereco').DataTable({
+        responsive: true,
         "language": {
             "sEmptyTable": "Nenhum registro encontrado",
             "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
@@ -105,10 +106,10 @@ $(document).ready(function() {
                 "sSortDescending": ": Ordenar colunas de forma descendente"
             }
         },
-        
-        "ajax": '../../js/dataTable/dataEnd.txt'        
-    } );
-     $('#tblParada').DataTable( {
+        "ajax": '../../js/dataTable/dataEnd.txt'
+    });
+    $('#tblParada').DataTable({
+        responsive: true,
         "language": {
             "sEmptyTable": "Nenhum registro encontrado",
             "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
@@ -132,9 +133,9 @@ $(document).ready(function() {
                 "sSortDescending": ": Ordenar colunas de forma descendente"
             }
         },
-        
-        "ajax": '../../js/dataTable/dataTipoParada.txt'        
-    } );    
-    
-    
-} );
+        "ajax": '../../js/dataTable/dataTipoParada.txt'
+    });
+
+
+});
+		

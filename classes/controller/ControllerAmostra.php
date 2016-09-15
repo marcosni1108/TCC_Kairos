@@ -29,7 +29,7 @@ class ControllerAmostra {
         $tempoTotal = ($hora_final - $hora_inicial);
         $tempoTotalMinutos = $tempoTotal / 60;
 
-        $indice =   $tempoTotalMinutos/$quantidade;
+        $indice =   60/ ($tempoTotalMinutos/$quantidade);
         $filds1["departamento"] = $departamento;
         $filds1["atividade"] = $atividade;
         $filds1["hora_inicial"] = $hora_inicial;
@@ -124,7 +124,7 @@ class ControllerAmostra {
              $format_numberMedia = number_format($format_numberMedia1, 2, ',', '');
              
                  echo "<script> 
-                    alert('Amostra cadastrada com sucesso, o indice é:  " . $format_numberMedia. " minutos por uma unidade');
+                    alert('Amostra cadastrada com sucesso, o indice é:  " . $format_numberMedia. "  unidade(s) por hora');
                     location.href='cadastroAmostra.php';</script>";
         
     }

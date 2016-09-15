@@ -2,19 +2,18 @@
     <head>
         <title>Kairos</title>
         <?php
-          include "../include/include_css.php";
-          include "../header/header.php";
-          include "../../classes/model/validaOperario.php";
-          include "../../classes/model/validaLider.php";
-        ?>
-        <link href="../../css/sb-admin.css" rel="stylesheet">
+        include "../include/include_css.php";
+        include "../header/header.php";
+        include "../../classes/model/validaOperario.php";
+        include "../../classes/model/validaLider.php";
+        ?>  
         <meta charset="UTF-8">
     </head>
-    <body >
-        <div id="page-wrapper" style="overflow-x: hidden; padding-left: 250px; height:100%; padding-top: 30px;">
-            <div style="top: 100px; left: 100px;width:1000px" id="chart">
+    <body>
+       <main class="mdl-layout__content">
+            <div id="chart">   
             </div>
-        </div>
+        </main>
     </body>
     <script src="../../js/highcharts.js"></script>
     <script src="../../js/exporting.js"></script>
@@ -71,6 +70,11 @@
                         }
                     }]
             }
+//     $.getJSON('../../classes/model/jsonTeste.php?opcao=findProd', function(data) {
+//        options.series[0].data = data;
+//         chart = new Highcharts.Chart(options);
+//         chart;
+//    });
             $.getJSON("http://localhost/Kairos/js/dataGrafico/dataDeptHigh.json", function (json) {
                 options.xAxis.categories = json[0]['data']; //xAxis: {categories: []}
                 options.series[0] = json[1];

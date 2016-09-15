@@ -1,94 +1,178 @@
-
 <?php
-  error_reporting(0);
+error_reporting(0);
 ?>
-<div class="collapse navbar-collapse navbar-ex1-collapse">
-    <ul class="nav navbar-nav side-nav">
-        <li class="active">
-            <a href="../menu_principal/menu_principal.php"><i class="fa fa-tachometer"></i> Home</a>
-        </li>
-        <li>
-            <a href="javascript:;" data-toggle="collapse" data-target="#funcionario"><i class="glyphicon glyphicon-user"></i> Funcionario <i class="fa fa-fw fa-caret-down"></i></a>
-            <ul id="funcionario" class="collapse">
-                <li>
-                    <a href="../funcionario/cadastroFuncionario.php">Cadastrar Funcionario</a>
-                </li>
-                <li>
-                    <a href="../funcionario/consultaFuncionario.php">Alterar Funcionario</a>
-                </li>
+
+<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+    <header class="demo-header mdl-layout__header mdl-color--blue-700">
+        <div class="mdl-layout__header-row">
+            <span class="mdl-layout-title">Home</span>
+            <div class="mdl-layout-spacer"></div>
+
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+                <i class="material-icons">person</i>
+            </button>
+            <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+
+                <a href="../../classes/model/logout.php">
+                   <li class="mdl-menu__item">Sair
+                    </li>
+                </a>
+                <a href="../login/mudarSenha.php">
+                    <li class="mdl-menu__item">Mudar de Senha</li>
+                </a>
+
             </ul>
-        </li>
-        <li>
-            <a href="javascript:;" data-toggle="collapse" data-target="#departamento"><i class="glyphicon glyphicon-lock"></i> Departamentos <i class="fa fa-fw fa-caret-down"></i></a>
-            <ul id="departamento" class="collapse">
-                <li>
-                    <a href="../departamento/cadastroDepartamento.php">Cadastrar Departamento</a>
+        </div>
+    </header>
+
+    <div class="demo-drawer mdl-layout__drawer mdl-color--blue-700 mdl-color-text--white">
+        <header class="demo-drawer-header">
+            <img src="../../images/logo.png" class="demo-avatar">
+
+            <div class="demo-avatar-dropdown">
+                <span>Kairos System</span>
+                <div class="mdl-layout-spacer"></div>
+
+        </header>
+        <nav class="demo-navigation mdl-navigation mdl-color--white">
+            <a id="home" class="mdl-navigation__link mdl-color-text--black" href="http://localhost/KairosM/"><i  class="mdl-color-text--black material-icons" role="presentation"><span >home</span></i>Inicio</a>
+            <a id="funcionario" class="mdl-navigation__link mdl-color-text--black" href="#"><i  class="mdl-color-text--black material-icons" role="presentation"><span >group</span></i>Funcionário</a>
+            <a id="departamento" class="mdl-navigation__link mdl-color-text--black" href="#"><i class="mdl-color-text--black material-icons" role="presentation">business</i>Departamento</a>
+            <a id="atividades" class="mdl-navigation__link mdl-color-text--black" href="#"><i class="mdl-color-text--black material-icons" role="presentation">gavel</i>Atividades</a>
+            <a id="planejamento" class="mdl-navigation__link mdl-color-text--black" href="#"><i class="mdl-color-text--black material-icons" role="presentation">format_list_numbered</i>Planajamento</a>
+            <a id="operacao" class="mdl-navigation__link mdl-color-text--black" href="#"><i class="mdl-color-text--black material-icons" role="presentation">build</i>Operação</a>
+            <a id="grafico" class="mdl-navigation__link mdl-color-text--black" href="#"><i class="mdl-color-text--black material-icons" role="presentation">equalizer</i>Gráfico</a>
+            <a id="administrativo" class="mdl-navigation__link mdl-color-text--black" href="#"><i class="mdl-color-text--black material-icons" role="presentation">account_circle</i>Administrativo</a>
+        </nav>
+        <!-- <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header"> -->
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-color--blue"
+            for="funcionario">
+            <a href="../funcionario/cadastroFuncionario.php">
+                <li class="mdl-menu__item">Cadastrar<i class="mdl-color-text--black material-icons" role="presentation">add</i>
                 </li>
-                <li>
-                    <a href="../departamento/consultaDepartamento.php">Alterar Departamento</a>
+            </a>
+            <a href="../funcionario/consultaFuncionario.php"> 
+                <li class="mdl-menu__item">Alterar
+                    <i class="mdl-color-text--black material-icons" role="presentation">create
+                    </i> 
                 </li>
-            </ul>
-        </li>
-        <li>
-            <a href="javascript:;" data-toggle="collapse" data-target="#atividades"><i class="glyphicon glyphicon-check"></i> Atividades <i class="fa fa-fw fa-caret-down"></i></a>
-            <ul id="atividades" class="collapse">
-                <li>
-                    <a href="../atividade/cadastroAtividade.php">Cadastrar Atividades</a>
+            </a>
+        </ul>
+
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-color--blue"
+            for="departamento">
+
+            <a  href="../departamento/cadastroDepartamento.php">
+                <li class="mdl-menu__item">Cadastrar<i class="mdl-color-text--black material-icons" role="presentation">add</i>
                 </li>
-                <li>
-                    <a href="../atividade/consultaAtividade.php">Alterar Atividades</a>
+            </a>
+            <a href="../departamento/consultaDepartamento.php"> 
+                <li class="mdl-menu__item">Alterar
+                    <i class="mdl-color-text--black material-icons" role="presentation">create
+                    </i> 
                 </li>
-                <li>
-                    <a href="../produtividade/cadastraProdutividade.php">Registrar Produtividade</a>
+            </a>
+        </ul>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-color--blue"
+            for="atividades">
+
+            <a  href="../atividade/cadastroAtividade.php">
+                <li class="mdl-menu__item">Cadastrar<i class="mdl-color-text--black material-icons" role="presentation">add</i>
                 </li>
-                <li>
-                    <a href="../amostra/cadastroAmostra.php">Registrar Amostra</a>
+            </a>
+            <a  href="../atividade/consultaAtividade.php"> 
+                <li class="mdl-menu__item">Alterar
+                    <i class="mdl-color-text--black material-icons" role="presentation">create
+                    </i> 
                 </li>
-                <li>
-                    <a href="../parada/cadastroParada.php">Registrar Parada</a>
+            </a>
+            <a  href="../amostra/cadastroAmostra.php"> 
+                <li class="mdl-menu__item">Registrar Amostra
+                    <i class="mdl-color-text--black material-icons" role="presentation">create
+                    </i> 
                 </li>
-                <li>
-                    <a href="../meta/cadastroMeta.php">Cadastrar Meta</a>
+            </a>
+            <a  href="../meta/cadastroMeta.php"> 
+                <li class="mdl-menu__item">Cadastrar Meta
+                    <i class="mdl-color-text--black material-icons" role="presentation">create
+                    </i> 
                 </li>
-            </ul>
-        </li>
-        <li>
-            <a href="javascript:;" data-toggle="collapse" data-target="#atividades"><i class="glyphicon glyphicon-check"></i> Operação <i class="fa fa-fw fa-caret-down"></i></a>
-            <ul id="atividades" class="collapse"></ul>
-        </li>
-        <li>
-            <a href="javascript:;" data-toggle="collapse" data-target="#relatorio"><i class="glyphicon glyphicon-list-alt"></i> Relatorios <i class="fa fa-fw fa-caret-down"></i></a>
-            <ul id="relatorio" class="collapse">
-                <li>
-                    <a href="../relatorios/relatorioAmostra.php">Relatorio de Amostras</a>
+            </a>
+            <a  href="../parada/cadastrarParada.php"> 
+                <li class="mdl-menu__item">Cadastrar Parada
+                    <i class="mdl-color-text--black material-icons" role="presentation">create
+                    </i> 
                 </li>
-                <li>
-                    <a href="#">Relatorios</a>
+            </a>
+            <a  href="../parada/consultarParada.php"> 
+                <li class="mdl-menu__item">Alterar Parada
+                    <i class="mdl-color-text--black material-icons" role="presentation">create
+                    </i> 
                 </li>
-                <li>
-                    <a href="#">Relatorios</a>
+            </a>
+        </ul>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-color--blue"
+            for="operacao">
+
+            <a href="../produtividade/cadastraProdutividade.php">
+                <li class="mdl-menu__item">Registrar Produtividade<i class="mdl-color-text--black material-icons" role="presentation">add</i>
                 </li>
-            </ul>
-        </li>
-        <li>
-            <a href="javascript:;" data-toggle="collapse" data-target="#grafico"><i class="fa fa-bar-chart"></i> Graficos <i class="fa fa-fw fa-caret-down"></i></a>
-            <ul id="grafico" class="collapse">
-                <li>
-                    <a href="../graficos/dashbord.php">Produtividade</a>
+            </a>
+            <a href="../parada/resgistrarParada.php"> 
+                <li class="mdl-menu__item">Registrar Parada
+                    <i class="mdl-color-text--black material-icons" role="presentation">create
+                    </i> 
                 </li>
-                <li>
-                    <a href="../graficos/ProdutividadeFunc.php">Produtividade de Funcionários</a>
+            </a>
+        </ul>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-color--blue"
+            for="planejamento">
+
+            <a href="../planejamento/PlanEquipe.php">
+                <li class="mdl-menu__item">Planejamento de Equipe<i class="mdl-color-text--black material-icons" role="presentation">add</i>
                 </li>
-                <li>
-                    <a href="../graficos/ProdutividadeDept.php">Produtividade de Departamento</a>
+            </a>
+            <a href="../planejamento/emprestimo.php"> 
+                <li class="mdl-menu__item">Emprestimo
+                    <i class="mdl-color-text--black material-icons" role="presentation">create
+                    </i> 
                 </li>
-                <li>
-                    <a href="../graficos/GraficoParada.php">Tempo Perdido</a>
+            </a>
+        </ul>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-color--blue"
+            for="grafico">
+
+            <a href="../graficos/HighProd.php">
+                <li class="mdl-menu__item">Prod. de Departamento<i class="mdl-color-text--black material-icons" role="presentation">add</i>
                 </li>
-                <li>
-                    <a href="#">Graficos</a>
+            </a>
+            <a href="../graficos/ProdutividadeFunc.php"> 
+                <li class="mdl-menu__item">Prod. Funcion&aacute;rio
+                    <i class="mdl-color-text--black material-icons" role="presentation">create
+                    </i> 
                 </li>
-            </ul>
-        </li>
-    </ul>
-</div>
+            </a>
+            <a href="../graficosAtividade/ProdutividadeAtiv.php"> 
+                <li class="mdl-menu__item">Prod. por Per&iacute;odo
+                    <i class="mdl-color-text--black material-icons" role="presentation">create
+                    </i> 
+                </li>
+            </a>
+            <a href="../graficos/GraficoParada.php"> 
+                <li class="mdl-menu__item">Tempo Perdido
+                    <i class="mdl-color-text--black material-icons" role="presentation">create
+                    </i> s
+                </li>
+            </a>
+        </ul>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-color--blue"
+            for="administrativo">
+            <a href="../administrativo/adm.php"> 
+                <li class="mdl-menu__item">Produtividade Perdida
+                    <i class="mdl-color-text--black material-icons" role="presentation">create
+                    </i> 
+                </li>
+            </a>
+        </ul>
+    </div>
+

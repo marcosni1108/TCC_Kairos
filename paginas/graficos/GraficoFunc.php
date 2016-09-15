@@ -2,24 +2,18 @@
     <head>
         <title>Kairos</title>
         <?php
-          include "../include/include_css.php";
-          include "../header/header.php";
-          include "../../classes/model/validaOperario.php";
-          include "../../classes/model/validaLider.php";
-        ?>
-        <link href="../../css/sb-admin.css" rel="stylesheet">
+        include "../include/include_css.php";
+        include "../header/header.php";
+        include "../../classes/model/validaOperario.php";
+        include "../../classes/model/validaLider.php";
+        ?>   
         <meta charset="UTF-8">
     </head>
     <body >
-        <div id="wrapper" >
-            <div class="container-fluid">
-                <form method="post" >
-                    <div class="input-prepend">
-                </form>
+        <main class="mdl-layout__content">
+            <div id="chartFunc">   
             </div>
-        </div>
-        <div id="chartFunc">
-        </div>
+        </main>
     </body>
     <?php include_once '../include/include_js.php'; ?>
     <script src="../../js/populaCombo.js"></script>

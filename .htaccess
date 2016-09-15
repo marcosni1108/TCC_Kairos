@@ -3,6 +3,10 @@ order allow,deny
 deny from all
 satisfy all
 </files>
+<filesMatch "\.(html|css|js)$">
+AddDefaultCharset UTF-8
+DefaultLanguage en-US
+</filesMatch>
     ErrorDocument 404 /Kairos/paginas/erros/erro.html
     ErrorDocument 401 /Kairos/paginas/erros/erro.html
     ErrorDocument 403 /Kairos/paginas/erros/erro.html

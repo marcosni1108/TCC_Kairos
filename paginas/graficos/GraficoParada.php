@@ -2,25 +2,25 @@
     <head>
         <title>Kairos</title>
         <?php
-          include "../include/include_css.php";
-          include "../header/header.php";
-          include "../../classes/model/validaOperario.php";
-          include "../../classes/model/validaLider.php";
-        ?>
-        <link href="../../css/sb-admin.css" rel="stylesheet">
+        include "../include/include_css.php";
+        include "../header/header.php";
+        include "../../classes/model/validaOperario.php";
+        include "../../classes/model/validaLider.php";
+        ?>   
         <meta charset="UTF-8">
     </head>
     <body >
-        <div id="wrapper" >
+        <main class="mdl-layout__content">
             <div class="container-fluid">
                 <div class="input-prepend">
                     <h3 class="text-primary text-center">Tempo Perdido</h3>
                 </div>
             </div>
-            <div style="top: 150px; left: 290px;width:500px;position: absolute" id="barDept">
+            <div id="barDept">   
             </div>
-            <div style="top: 150px; left: 790px;width:500px;position: absolute" id="barDept1">
+            <div id="barDept1">   
             </div>
+        </main>
     </body>
     <script src="../../js/plugins/morris/raphael.min.js"></script>
     <script src="../../js/jquery-1.12.0.min.js"></script>
@@ -60,4 +60,5 @@
         });
     </script>
     <?php include_once '../include/include_js.php'; ?>
+
 </html>
