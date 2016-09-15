@@ -42,7 +42,7 @@
                     <div class="login-panel panel panel-default" > 
 
                         <div class="panel-heading">
-                            <h3 class="panel-title">Acessar o SistemaMarcos</h3>
+                            <h3 class="panel-title">Acessar o Sistema</h3>
                         </div>
                         <div class="panel-body">
                             <form role="form" method="post" action="../../classes/model/validaLogin.php">
