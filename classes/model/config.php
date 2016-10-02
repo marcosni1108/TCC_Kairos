@@ -1,6 +1,6 @@
 <?php
 $servidor = $_SERVER['SERVER_NAME'];
-if($servidor=='localhost'){
+if($servidor=='localhost' || $servidor=='127.0.0.1'){
     define('DB_HOST', 'localhost');
     define('DB_NAME', 'kairos');
     define('DB_USER', 'root');
