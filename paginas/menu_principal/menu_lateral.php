@@ -40,7 +40,7 @@ error_reporting(0);
             <a id="funcionario" class="mdl-navigation__link mdl-color-text--black" href="#"><i  class="mdl-color-text--black material-icons" role="presentation"><span >group</span></i>Funcionário</a>
             <a id="departamento" class="mdl-navigation__link mdl-color-text--black" href="#"><i class="mdl-color-text--black material-icons" role="presentation">business</i>Departamento</a>
             <a id="atividades" class="mdl-navigation__link mdl-color-text--black" href="#"><i class="mdl-color-text--black material-icons" role="presentation">gavel</i>Atividades</a>
-            <a id="planejamento" class="mdl-navigation__link mdl-color-text--black" href="#"><i class="mdl-color-text--black material-icons" role="presentation">format_list_numbered</i>Planajamento</a>
+<!--            <a id="planejamento" class="mdl-navigation__link mdl-color-text--black" href="#"><i class="mdl-color-text--black material-icons" role="presentation">format_list_numbered</i>Planajamento</a>-->
             <a id="operacao" class="mdl-navigation__link mdl-color-text--black" href="#"><i class="mdl-color-text--black material-icons" role="presentation">build</i>Operação</a>
             <a id="grafico" class="mdl-navigation__link mdl-color-text--black" href="#"><i class="mdl-color-text--black material-icons" role="presentation">equalizer</i>Gráfico</a>
             <a id="administrativo" class="mdl-navigation__link mdl-color-text--black" href="#"><i class="mdl-color-text--black material-icons" role="presentation">account_circle</i>Administrativo</a>
