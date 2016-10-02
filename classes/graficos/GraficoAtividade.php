@@ -1,4 +1,5 @@
 <?php
+session_start();
 set_include_path(dirname(__FILE__)."/../model");
 require_once 'atividade.php';
 $atividade = new atividade();
@@ -11,7 +12,7 @@ if ($arrayFunc) {
     foreach ($arrayFunc as $key => $value) {
 
 
-        $bln['data'][] = $value->nome;
+        $bln['data'][] = $value->nome_atividade;
         $rows['data'][] = $value->prod;
     }
     
