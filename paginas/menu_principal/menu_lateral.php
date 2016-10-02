@@ -143,6 +143,11 @@ error_reporting(0);
         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-color--blue"
             for="grafico">
 
+            <a href="../graficos/GraficoAtividadeDept.php">
+                <li class="mdl-menu__item">Prod. de Atividades<i class="mdl-color-text--black material-icons" role="presentation">add</i>
+                </li>
+            </a>
+            
             <a href="../graficos/HighProd.php">
                 <li class="mdl-menu__item">Prod. de Departamento<i class="mdl-color-text--black material-icons" role="presentation">add</i>
                 </li>

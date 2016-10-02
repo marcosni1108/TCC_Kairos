@@ -128,5 +128,20 @@ class atividade extends Crud {
         $stmt->execute();
         return $stmt->fetchAll();
     }
+    
+    public function findProdTotalAtividade($id) {
+
+        $sql = "SELECT SUM(produtividade.quantidade) as prod,atividade.nome as nome_atividade,departamento.nome as nome_departamento
+                FROM produtividade 
+                INNER JOIN atividade ON (produtividade.`IdAtividade` = atividade.id)
+                INNER JOIN departamento ON (:id = departamento.id)
+                GROUP BY produtividade.IdAtividade";
+        
+        
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }    
 
 }
