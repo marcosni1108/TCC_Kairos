@@ -50,11 +50,6 @@ $(function () {
             }
         }]
     }
-//     $.getJSON('../../classes/model/jsonTeste.php?opcao=findProd', function(data) {
-//        options.series[0].data = data;
-//         chart = new Highcharts.Chart(options);
-//         chart;
-//    });
                  $.getJSON("../../classes/graficos/highGraficos.php", function(json) {
                     options.xAxis.categories = json[0]['data']; //xAxis: {categories: []}
                     options.series[0] = json[1];

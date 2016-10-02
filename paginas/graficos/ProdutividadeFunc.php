@@ -24,8 +24,6 @@
 
                 echo "<script> alert('Colaborador sem produtividade.');</script>";
             }
-
-
         endif;
         ?>
         <link href="../../css/jquery-ui.css" rel="stylesheet">
@@ -33,12 +31,9 @@
         <script src="../../js/datapicker/jquery-ui.js"></script>
         <script src="../../js/datapicker/configDate.js"></script>
         <script src="../../js/bootstrap.min.js"></script>
-
-
         <meta charset="UTF-8">
     </head>
     <body >
-
         <main class="mdl-layout__content">
             <div class="col-lg-12">
                 <form method="post" >
@@ -70,17 +65,12 @@
 
                             </div>    
                         </div>   
-
                 </form>  
             </div>
-
         </div>
        </main>
-
     </body>
-
     <script src="../../js/populaComboGraficoFunc.js"></script>
-
     <script>
         (function ($) {
             $.widget("custom.combobox", {

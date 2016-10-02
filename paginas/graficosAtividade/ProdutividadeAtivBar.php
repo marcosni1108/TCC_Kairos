@@ -6,8 +6,6 @@
         include "../header/header.php";
         include "../../classes/model/validaOperario.php";
         include "../../classes/model/validaLider.php";
-      //  include "../menu_principal/menu_lateral.php";
-//        include '../include/include_classes.php';
         ?>
         <?php
         if (isset($_POST['GerarGrafico'])):
@@ -26,15 +24,10 @@
 
                 echo "<script> alert('Departamento sem produtividade no periodo selecionado');</script>";
             }
-
-
         endif;
         ?>
-
-
         <link href="../../css/sb-admin.css" rel="stylesheet">
         <link href="../../css/jquery-ui.css" rel="stylesheet">
-
         <meta charset="UTF-8">
     </head>
     <body >
