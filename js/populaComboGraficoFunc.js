@@ -1,0 +1,1 @@
+$(document).ready(function(){$("#cmbfuncionario").ready(function(){$.getJSON("../../classes/model/consulta.php?opcao=FindFunc",function(a){if(a.length>0){var b='<option value="">Selecione o Funcionário</option>';$.each(a,function(a,c){b+='<option value="'+c.id+'">'+c.nome+"</option>"})}else Reset();$("#cmbfuncionario").html(b).show()})})});
