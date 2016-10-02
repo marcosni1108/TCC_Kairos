@@ -20,7 +20,7 @@
     <script src="../../js/jquery-1.12.0.min.js"></script>
     <script src="../../js/highcharts.js"></script>
     <script src="../../js/exporting.js"></script>
-    <script src="../../js/highData.js"></script>
+    <script src="../../js/highdataAtiv.js"></script>
     
 
 </html>
