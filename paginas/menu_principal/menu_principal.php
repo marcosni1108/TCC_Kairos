@@ -68,7 +68,7 @@
                 </div>
         </main>
         <?php
-      //  include "../include/include_js.php";
+       include "../include/include_js.php";
         ?>        
    
         <script src="../../js/jquery-1.12.0.min.js"></script>
