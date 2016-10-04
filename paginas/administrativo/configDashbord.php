@@ -32,11 +32,11 @@
                                         <div class="row">
                                             <div class="form-group col-lg-4">
                                                 <label for="data">De</label>
-                                                <input type="text" class="form-control" id="from" name="dataDe" placeholder="Data" required>                                
+                                                <input type="text" class="form-control" id="from" name="dataDe" placeholder="Data" autocomplete="off" required>                                
                                             </div>
                                             <div class="form-group col-lg-4">
                                                 <label for="data">Ate</label>
-                                                <input type="text" class="form-control" id="to" name="dataAte" placeholder="Data" required>                                
+                                                <input type="text" class="form-control" id="to" name="dataAte" placeholder="Data" autocomplete="off" required>                                
                                             </div>
                                         </div> 
                                     </div>
