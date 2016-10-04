@@ -30,7 +30,7 @@
                                                 <td width="1%">CNPJ</td>
                                                 <td>Lider</td>
                                                 <td>Gerente</td>
-                                                <td>A&ccedil;&otilde;es</td>
+                                                <td style="width: 190px;">A&ccedil;&otilde;es</td>
                                             </tr>
                                         </thead>
                                     </table>
