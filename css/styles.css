@@ -17,6 +17,9 @@
 html, body {
   font-family: 'Roboto', 'Helvetica', sans-serif;
 }
+.login-kairos{
+    margin-top:20px;
+}
 .ajuda_home {
 cursor:pointer;
 }
