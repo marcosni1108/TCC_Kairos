@@ -43,7 +43,7 @@
                                     <div class="row">
                                         <div class="form-group col-lg-4"></div>
                                         <div class="form-group col-lg-4 text-center">
-                                            <input id="btnIniciar"type="submit" name="GerarGrafico" class="btn btn-success" value="Gerar Grafico">
+                                            <input id="btnIniciar"type="submit" name="GerarGrafico" class="btn btn-success" value="Salvar">
                                         </div>
                                     </div>
                                 </form>
