@@ -67,17 +67,12 @@
             . "window.location='./" . $teste . "';</script>";
         }
         ?>        
-
-        <div id="wrapper">
+        <main class="mdl-layout__content">
             <div class="col-lg-12">
-                <div class="container-fluid">
                     <form method="post" action="">
-                        <div class="input-prepend">
                             <h1 class="page-header text-center">
                                 Produtividade
-
                             </h1>   
-
                             <div class="row">
                                 <div class="form-group col-lg-4">
                                     <label for="cnpj">CNPJ</label>
@@ -98,38 +93,17 @@
                                     </select>
                                 </div>                                          
                             </div>  
-
-                            <div class="row"><hr width=95%></div>
                             <div class="row">
                                 <div class="form-group col-lg-4"></div>
-                                <div class="form-group col-lg-4">
+                                <div class="form-group col-lg-4 text-center">
                                     <input id="btnIniciar"type="submit" name="iniciar" class="btn btn-success" value="Iniciar">
                                 </div>
-
-
                             </div>
                     </form>
-                    <!--                        <div class="row">
-                                                <div class="form-group col-lg-4"></div>
-                                                <div class="form-group col-lg-4">
-                                                        <div id="cronometro">
-                                                          <div id="reloj">
-                                                                  0 00 00 00
-                                                          </div>
-                                                          <form name="cron" action="#">
-                                                            <input type="button" value="Empezar" name="boton1"   />
-                                                            <input type="button" value="Parar" name="boton2"  /><br/>
-                                                          </form>
-                                                        </div>   
-                                                </div>    
-                                      
-                                            </div> -->
-                </div>
-            </div>
-        </div>     
-    </body>
-
-    <?php include_once '../include/include_js.php'; ?>
-    <script src="cronometro.js"></script>
-    <script src="../../js/populaComboProdutiviade.js"></script>
+        </div> 
+    </main>
+</body>
+<?php include_once '../include/include_js.php'; ?>
+<script src="cronometro.js"></script>
+<script src="../../js/populaComboProdutiviade.js"></script>
 </html>

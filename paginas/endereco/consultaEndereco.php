@@ -15,7 +15,7 @@
             <div class="col-lg-12">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Endere&ccedil;o</h1>
+                        <h1 class="page-header text-center">Endere&ccedil;o</h1>
                     </div>
                 </div>
                 <div class="row">

@@ -27,7 +27,15 @@ if(count($result) == 1 ){
         $idDepartamento = $result[0]->IdDepartamentoFk;
         $_SESSION['nome'] = $nome;
         $_SESSION['departamento'] = $idDepartamento;
-        header('location:../../paginas/menu_principal/menu_principal.php');  
+        $result = $funcionario->acessoNivel($login);
+        $nivel = $result[0]->nivel;
+          //verifica o nivel do usuario
+            if($nivel === "Operador"){
+                header('location:../../paginas/produtividade/cadastraProdutividade.php');
+            } else{
+                header('location:../../paginas/menu_principal/menu_principal.php'); 
+            }  
+         
     }
     
 }

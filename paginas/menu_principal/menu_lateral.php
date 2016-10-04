@@ -36,7 +36,7 @@ error_reporting(0);
 
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--white">
-            <a id="home" class="mdl-navigation__link mdl-color-text--black" href="http://localhost/KairosM/"><i  class="mdl-color-text--black material-icons" role="presentation"><span >home</span></i>Inicio</a>
+            <a id="home" class="mdl-navigation__link mdl-color-text--black" onclick="goToHome();" href="#"><i  class="mdl-color-text--black material-icons" role="presentation"><span >home</span></i>Inicio</a>
             <a id="funcionario" class="mdl-navigation__link mdl-color-text--black" href="#"><i  class="mdl-color-text--black material-icons" role="presentation"><span >group</span></i>Funcionário</a>
             <a id="departamento" class="mdl-navigation__link mdl-color-text--black" href="#"><i class="mdl-color-text--black material-icons" role="presentation">business</i>Departamento</a>
             <a id="atividades" class="mdl-navigation__link mdl-color-text--black" href="#"><i class="mdl-color-text--black material-icons" role="presentation">gavel</i>Atividades</a>
@@ -181,4 +181,12 @@ error_reporting(0);
             </a>
         </ul>
     </div>
-
+            <script>
+                function goToHome(){
+                    if(window.location.hostname==='tcckairos.esy.es'){
+                        window.location='http://tcckairos.esy.es/'
+                    }else{
+                       window.location='/TCC_Kairos/' 
+                    }
+                }
+            </script>

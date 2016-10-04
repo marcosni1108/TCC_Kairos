@@ -112,10 +112,10 @@
                                 <div class="row"><hr width=95%></div>
                                 <div class="row"> 
                                     <div class="form-group col-lg-4"></div>                       
-                                    <div class="form-group col-lg-2">
+                                    <div class="form-group col-lg-2 text-center">
                                         <input type="submit" id="btnParar" name="parar" class="btn btn-success" value="Registrar">
                                     </div> 
-                                    <div class="form-group col-lg-2">
+                                    <div class="form-group col-lg-2 text-center">
                                         <input type="button" id="btnCancelar" name="cancelar" class="btn btn-danger" value="Cancelar">
                                         <input style="display: none" type="text" id="cancelar" name="cancelarAtiv" class="btn btn-danger" value="false">
                                     </div>
