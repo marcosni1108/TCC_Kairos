@@ -6,12 +6,22 @@
         include "../header/header.php";
         include "../../classes/model/validaOperario.php";
         include "../../classes/model/validaLider.php";
+        session_start();
+        $departamento = new departamento(); 
+        $id = $_SESSION['departamento'];
+        $departamento->setId($id);
+        $resultado = $departamento->find($id);        
         ?>
         <meta charset="UTF-8">
     </head>
     <body> 
        <main class="mdl-layout__content">
             <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <h4><?php echo '<label for="expdicao">Departamento: '.$resultado->nome.'</label>'; ?></h4>
+                            </div>
+                        </div>                
             <div id="chart"></div>
             </div>
        </main>   

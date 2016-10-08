@@ -39,7 +39,7 @@ $(function () {
             dataLabels: {
                 enabled: true,
                 rotation: -90,
-                color: '#FFFFFF',
+                color: '#0033cc',
                 align: 'right',
                 format: '{point.y:.1f}', // one decimal
                 y: 10, // 10 pixels down from the top

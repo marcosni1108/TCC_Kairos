@@ -3,7 +3,7 @@ session_start();
 set_include_path(dirname(__FILE__)."/../model");
 require_once 'atividade.php';
 $atividade = new atividade();
-$arrayFunc = $atividade->findProdTotalAtividade($_SESSION['departamento']);
+$arrayFunc = $atividade->findProdTotalAtividade($_SESSION['departamento'],$_SESSION['mes'],$_SESSION['ano']);
 $bln = array();
 $bln['name'] = 'Atividade';
 $rows['name'] = 'Produção';
