@@ -156,6 +156,25 @@ class parada extends Crud {
         }
     }
 
+    public function findtotParadaDept($id,$mes,$ano) {
+
+        $sql = "SELECT SUM(tempConvertSegun)as totParada,tipo_parada.nome as nome_parada ,departamento.nome as nome_departamento,idDepartamentoFK 
+                FROM parada 
+                INNER JOIN departamento ON (idDepartamentoFK = :id) 
+                INNER JOIN tipo_parada ON (idParadaFK = tipo_parada.id) 
+                WHERE MONTH(data) = :mes AND YEAR(data) = :ano
+                GROUP BY idDepartamentoFK, idParadaFK";
+        
+        
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':mes', $mes, PDO::PARAM_INT);
+        $stmt->bindParam(':ano', $ano, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    } 
+    
+    
     public function update($idParada) {
 
     }

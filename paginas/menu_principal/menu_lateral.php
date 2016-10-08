@@ -158,8 +158,8 @@ error_reporting(0);
                     </i> 
                 </li>
             </a>
-            <a href="../graficosAtividade/ProdutividadeAtiv.php"> 
-                <li class="mdl-menu__item">Prod. por Per&iacute;odo
+            <a href="../graficos/GraficoTotParada.php"> 
+                <li class="mdl-menu__item">Total de Tempo de Parada
                     <i class="mdl-color-text--black material-icons" role="presentation">create
                     </i> 
                 </li>
@@ -167,7 +167,14 @@ error_reporting(0);
             <a href="../graficos/GraficoParada.php"> 
                 <li class="mdl-menu__item">Tempo Perdido
                     <i class="mdl-color-text--black material-icons" role="presentation">create
-                    </i> s
+                    </i> 
+                </li>
+            </a>           
+            
+            <a href="../graficos/GraficoParada.php"> 
+                <li class="mdl-menu__item">Tempo Perdido
+                    <i class="mdl-color-text--black material-icons" role="presentation">create
+                    </i> 
                 </li>
             </a>
         </ul>
