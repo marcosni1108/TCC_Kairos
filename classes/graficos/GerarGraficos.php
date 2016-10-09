@@ -305,6 +305,9 @@ class GerarGraficos {
             $fp = fopen("../../js/dataGrafico/paradaTipoParada.json", "w");
             $escreve = fwrite($fp, $parada);
             fclose($fp);
+            return true;
+        }else{
+            return false;
         }
     }
 }

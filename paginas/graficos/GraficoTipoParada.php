@@ -16,14 +16,14 @@
             require '../../classes/graficos/GerarGraficos.php';
             $mes = $_POST['mes'];
             $ano = $_POST['ano'];
+            $tipoParada = $_POST['tipoParada'];
             $_SESSION['mes'] = $mes;
             $_SESSION['ano'] = $ano;
             $GerarGraficos = new GerarGraficos();
-            if ($GerarGraficos->totParadaDept($_SESSION['departamento'], $mes, $ano)) {
-                echo "<script>"
-                . "window.location='./GraficoTotParadaDept.php'</script>";
+            if ($GerarGraficos->totParadaTipoParada($_SESSION['departamento'], $mes, $ano,$tipoParada)) {
+                echo "<script> window.location='./GraficoTipoParadaTot.php'</script>";
             } else {
-                echo "<script> window.location='./GraficoTotParadaDept.php'</script>";
+                echo "<script> window.location='./GraficoTipoParada.php'</script>";
             }
 
 
@@ -40,7 +40,7 @@
                 <form method="post" >
                     <div class="input-prepend">
                         <h1 class="page-header">
-                            Total de Parada de Departamento
+                            Total de Parada Indiretas do Departamento
                         </h1>          
                         <div class="row">
                             <div class="col-md-7">
@@ -81,7 +81,14 @@
                                         <option value="2025">2025</option>
                                         <option value="2026">2026</option>
                                     </select>                                
-                                </div>                       
+                                </div>   
+                                <div class="col-lg-2">
+                                    <label for="tipoParada">Tipo de Parada</label>
+                                    <select class="form-control" name="tipoParada" id="tipoParada">
+                                        <option value="Direta">Direta</option>
+                                        <option value="Indireta">Indireta</option>
+                                    </select>                                
+                                </div>
                             </div>  
                         </div> 
                         <div class="row"><hr width=95%></div>   
