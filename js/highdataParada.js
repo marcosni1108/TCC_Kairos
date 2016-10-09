@@ -6,7 +6,7 @@ $(function () {
             type: 'column'
         },
         title: {
-            text: 'Total de Parada do Departamento'
+            text: 'Produtividade dos departamentos'
         },
         
         xAxis: {
@@ -22,14 +22,14 @@ $(function () {
         yAxis: {
             min: 0,
             title: {
-                text: 'Tempo de Parada'
+                text: 'Parada por hora'
             }
         },
         legend: {
             enabled: false
         },
         tooltip: {
-            pointFormat: 'Produtividade: <b>{point.y:.1f} Documentos</b>'
+            pointFormat: 'Tempo de parada por hora: <b>{point.y:.1f} </b>'
         },
         credits: {
             enabled: false
@@ -39,7 +39,7 @@ $(function () {
             dataLabels: {
                 enabled: true,
                 rotation: -90,
-                color: '#0033cc',
+                color: '#FFFFFF',
                 align: 'right',
                 format: '{point.y:.1f}', // one decimal
                 y: 10, // 10 pixels down from the top
@@ -50,14 +50,9 @@ $(function () {
             }
         }]
     }
-//     $.getJSON('../../classes/model/jsonTeste.php?opcao=findProd', function(data) {
-//        options.series[0].data = data;
-//         chart = new Highcharts.Chart(options);
-//         chart;
-//    });
-                 $.getJSON("../../classes/graficos/GraficoTotParadaDept.php", function(json) {
-                    options.xAxis.categories = json[0]['data']; //xAxis: {categories: []}
-                    options.series[0] = json[1];
+     $.getJSON("../../js/dataGrafico/paradaDepartamento1.json", function(json) {
+                    options.xAxis.categories =  json[1]['data'];//xAxis: {categories: []}
+                    options.series[0] =json[0]; 
                     chart = new Highcharts.Chart(options);
                 });
     
