@@ -279,6 +279,32 @@ class GerarGraficos {
             $escreve = fwrite($fp, $parada);
             fclose($fp);
         }
+        
+        
     }
+    public function totParadaTipoParada($id, $mes, $ano,$tipoParada) {
 
+        set_include_path(dirname(__FILE__) . "/../model");
+        require_once 'parada.php';
+        $parada = new parada();
+        $arrayFunc = $parada->findtotTipoParada($id, $mes, $ano,$tipoParada);
+        $bln = array();
+        $bln['name'] = 'Atividade';
+        $rows['name'] = 'Parada';
+        if ($arrayFunc) {
+
+            foreach ($arrayFunc as $key => $value) {
+                $bln['data'][] = ($value->totParada/60)/60;
+                $rows['data'][] = $value->nome_parada;
+            }
+
+            $rslt = array();
+            array_push($rslt, $bln);
+            array_push($rslt, $rows);
+            $parada = json_encode($rslt, JSON_NUMERIC_CHECK);
+            $fp = fopen("../../js/dataGrafico/paradaTipoParada.json", "w");
+            $escreve = fwrite($fp, $parada);
+            fclose($fp);
+        }
+    }
 }

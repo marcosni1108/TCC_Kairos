@@ -8,7 +8,21 @@ $(function () {
         title: {
             text: 'Produtividade dos departamentos'
         },
-        
+             colors: [
+            '#AA4643',
+            '#89A54E',
+            '#80699B',
+            '#3D96AE',
+            '#DB843D',
+            '#92A8CD',
+            '#A47D7C',
+            '#B5CA92'
+        ],
+        plotOptions: {
+            column: {
+                colorByPoint: true
+            }
+        },
         xAxis: {
             type: 'category',
             labels: {
