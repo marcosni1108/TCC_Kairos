@@ -274,7 +274,7 @@ class GerarGraficos {
             $rslt = array();
             array_push($rslt, $bln);
             array_push($rslt, $rows);
-            $parada = json_encode($rslt, JSON_NUMERIC_CHECK);
+            $parada = json_encode($rslt);
             $fp = fopen("../../js/dataGrafico/paradaDepartamento1.json", "w");
             $escreve = fwrite($fp, $parada);
             fclose($fp);
@@ -301,7 +301,7 @@ class GerarGraficos {
             $rslt = array();
             array_push($rslt, $bln);
             array_push($rslt, $rows);
-            $parada = json_encode($rslt, JSON_NUMERIC_CHECK);
+            $parada = json_encode($rslt);
             $fp = fopen("../../js/dataGrafico/paradaTipoParada.json", "w");
             $escreve = fwrite($fp, $parada);
             fclose($fp);
