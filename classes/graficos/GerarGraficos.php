@@ -283,7 +283,6 @@ class GerarGraficos {
         
     }
     public function totParadaTipoParada($id, $mes, $ano,$tipoParada) {
-
         set_include_path(dirname(__FILE__) . "/../model");
         require_once 'parada.php';
         $parada = new parada();
@@ -292,18 +291,17 @@ class GerarGraficos {
         $bln['name'] = 'Atividade';
         $rows['name'] = 'Parada';
         if ($arrayFunc) {
-
             foreach ($arrayFunc as $key => $value) {
                 $bln['data'][] = ($value->totParada/60)/60;
                 $rows['data'][] = $value->nome_parada;
             }
-
             $rslt = array();
             array_push($rslt, $bln);
             array_push($rslt, $rows);
             $parada = json_encode($rslt);
             $fp = fopen("../../js/dataGrafico/paradaTipoParada.json", "w");
             $escreve = fwrite($fp, $parada);
+            var_dump($parada);
             fclose($fp);
             return true;
         }else{
