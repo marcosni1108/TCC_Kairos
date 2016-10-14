@@ -13,36 +13,20 @@
         $resultado = $departamento->find($id);
 
         if (isset($_POST['GerarGrafico'])):
-//            require '../../classes/graficos/GerarGraficos.php';
-//            $mes = $_POST['mes'];
-//            $ano = $_POST['ano'];
-//            $tipoParada = $_POST['tipoParada'];
-//            $_SESSION['mes'] = $mes;
-//            $_SESSION['ano'] = $ano;
-//            $GerarGraficos = new GerarGraficos();
-//            if ($GerarGraficos->totParadaTipoParada($_SESSION['departamento'], $mes, $ano,$tipoParada)) {
-//                echo "<script> window.location='./GraficoTipoParadaTot.php'</script>";
-//            } else {
-//                echo "<script> window.location='./GraficoTipoParada.php'</script>";
-//            }
-        $parada = new parada();
-        $arrayFunc = $parada->findtotTipoParada($id, $mes, $ano, $tipoParada);
-        $bln = array();
-        $bln['name'] = 'Atividade';
-        $rows['name'] = 'Parada';
-        if ($arrayFunc) {
-        foreach ($arrayFunc as $key => $value) {
-        $bln['data'][] = ($value->totParada/60)/60;
-        $rows['data'][] = $value->nome_parada;
-        }
-        $rslt = array();
-        array_push($rslt, $bln);
-        array_push($rslt, $rows);
-        $parada = json_encode($rslt);
-        $fp = fopen("../../js/dataGrafico/paradaTipoParada.json", "w");
-        $escreve = fwrite($fp, $parada);
-        fclose($fp);
-        }
+            require '../../classes/graficos/GerarGraficos.php';
+            $mes = $_POST['mes'];
+            $ano = $_POST['ano'];
+            $tipoParada = $_POST['tipoParada'];
+            $_SESSION['mes'] = $mes;
+            $_SESSION['ano'] = $ano;
+            $GerarGraficos = new GerarGraficos();
+            if ($GerarGraficos->totParadaTipoParada($_SESSION['departamento'], $mes, $ano,$tipoParada)) {
+                echo "<script> window.location='./GraficoTipoParadaTot.php'</script>";
+            } else {
+                echo "<script> window.location='./GraficoTipoParada.php'</script>";
+            }
+
+
         endif;
         ?>
         <link href="../../css/jquery-ui.css" rel="stylesheet">
