@@ -23,7 +23,7 @@
             if ($GerarGraficos->totParadaTipoParada($_SESSION['departamento'], $mes, $ano,$tipoParada)) {
                 echo "<script> window.location='./GraficoTipoParadaTot.php'</script>";
             } else {
-                echo "<script> alert('Não foi possível cadastrar a departamento.');"
+                echo "<script> alert('Não existe parada para a data selecionada.');"
                 . "window.location='./GraficoTipoParada.php'</script>";
             }
 
