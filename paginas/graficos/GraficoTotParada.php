@@ -22,7 +22,8 @@
                 echo "<script>"
                 . "window.location='./GraficoTotParadaDept.php'</script>";
             } else {
-                echo "<script> window.location='./GraficoTotParadaDept.php'</script>";
+                echo "<script>alert('Não existe parada para a data selecionada.');"
+                . " window.location='./GraficoTotParada.php'</script>";
             }
         endif;
         ?>
