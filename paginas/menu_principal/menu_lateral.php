@@ -171,18 +171,11 @@ error_reporting(0);
                 </li>
             </a>
             <a href="../graficos/GraficoParada.php"> 
-                <li class="mdl-menu__item">Tempo Perdido
+                <li class="mdl-menu__item">Produtividade por Hora da atividade
                     <i class="mdl-color-text--black material-icons" role="presentation">create
                     </i> 
                 </li>
             </a>           
-            
-            <a href="../graficos/GraficoParada.php"> 
-                <li class="mdl-menu__item">Tempo Perdido
-                    <i class="mdl-color-text--black material-icons" role="presentation">create
-                    </i> 
-                </li>
-            </a>
         </ul>
         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-color--blue"
             for="administrativo">
