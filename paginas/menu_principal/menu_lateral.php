@@ -165,7 +165,7 @@ error_reporting(0);
                 </li>
             </a>
             <a href="../graficos/GraficoTipoParada.php"> 
-                <li class="mdl-menu__item">Total por Tipo de Parada
+                <li class="mdl-menu__item">Total de Parada
                     <i class="mdl-color-text--black material-icons" role="presentation">create
                     </i> 
                 </li>
