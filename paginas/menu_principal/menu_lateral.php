@@ -164,6 +164,12 @@ error_reporting(0);
                     </i> 
                 </li>
             </a>
+            <a href="../graficos/GraficoTipoParada.php"> 
+                <li class="mdl-menu__item">Total por Tipo de Parada
+                    <i class="mdl-color-text--black material-icons" role="presentation">create
+                    </i> 
+                </li>
+            </a>
             <a href="../graficos/GraficoParada.php"> 
                 <li class="mdl-menu__item">Tempo Perdido
                     <i class="mdl-color-text--black material-icons" role="presentation">create
