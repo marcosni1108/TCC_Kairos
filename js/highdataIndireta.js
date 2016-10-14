@@ -62,7 +62,7 @@ $(function () {
                 }
             }]
     }
-    $.getJSON("../../js/dataGrafico/paradaTipoParada.json", function (json) {
+    $.getJSON("../../js/dataGrafico/paradaTipoParada.txt", function (json) {
         options.xAxis.categories = json[1]['data'];//xAxis: {categories: []}
         options.series[0] = json[0];
         chart = new Highcharts.Chart(options);
