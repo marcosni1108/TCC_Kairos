@@ -29,7 +29,7 @@ function graficoParada(de, ate) {
             type: 'column'
         },
         title: {
-            text: 'Produtividade dos departamentos'
+            text: 'Parada dos departamentos'
         },
         colors: [
             '#AA4643',
@@ -72,7 +72,7 @@ function graficoParada(de, ate) {
             enabled: false
         },
         series: [{
-                name: 'Produtividade',
+                name: 'Parada',
                 dataLabels: {
                     enabled: true,
                     rotation: -90,

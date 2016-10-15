@@ -3,6 +3,20 @@
 require_once 'Crud.php';
 
 class parada extends Crud {
+    
+    function construtor($tempoInicial, $tempoFinal, $turno, $entradaTempo, $tempConvertSegun, $percentParada, $data, $idFuncionarioFK, $idDepartamentoFK, $idParadaFK, $status) {
+        $this->tempoInicial = $tempoInicial;
+        $this->tempoFinal = $tempoFinal;
+        $this->turno = $turno;
+        $this->entradaTempo = $entradaTempo;
+        $this->tempConvertSegun = $tempConvertSegun;
+        $this->percentParada = $percentParada;
+        $this->data = $data;
+        $this->idFuncionarioFK = $idFuncionarioFK;
+        $this->idDepartamentoFK = $idDepartamentoFK;
+        $this->idParadaFK = $idParadaFK;
+        $this->status = $status;
+    }
 
     protected $table = 'parada';
     private $id;
