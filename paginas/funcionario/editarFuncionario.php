@@ -19,10 +19,7 @@
             $email = $_POST['email'];
             $login = $_POST['login'];
             $nivel = $_POST['nivel'];
-            $funcionario->setNome($nome);
-            $funcionario->setEmail($email);
-            $funcionario->setLogin($login);
-            $funcionario->setNivel($nivel);
+            $funcionario->construtor($nome, $email, $login, $nivel);
             $update = $funcionario->update($id);
             if ($update === "OK") {
                 echo "<script>alert('Funcionário alterado com sucesso.')</script>";
