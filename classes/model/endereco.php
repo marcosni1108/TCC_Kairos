@@ -10,15 +10,9 @@ class endereco extends Crud {
     private $rua;
     private $cnpj;
     private $numero;
-    
+
     function getId() {
         return $this->id;
-    }
-    function construtor($cep, $rua, $cnpj, $numero) {
-        $this->cep = $cep;
-        $this->rua = $rua;
-        $this->cnpj = $cnpj;
-        $this->numero = $numero;
     }
 
     function getCep() {

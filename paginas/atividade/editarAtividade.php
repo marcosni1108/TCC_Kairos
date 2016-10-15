@@ -1,3 +1,4 @@
+
 <html>
     <head>
         <title>Kairos</title>
@@ -21,13 +22,16 @@
             $unid_med = $_POST['unid_med'];
             $idDepartamentoOld = $_POST['departamento'];
             $atividade = new atividade();
-            $atividade->construtor($nome, $descricao, $idDepartamentoFK, $cnpj, $unid_med);
+            $atividade->setNome($nome);
+            $atividade->setDescricao($descricao);
+            // $atividade->setCnpj($cnpj);
+            $atividade->setIdDepartamentoFK($idDepartamentoFK);
+            $atividade->setUnid_med($unid_med);
             # Insert
             if ($atividade->update($id)) {
                 echo "<script> alert('Atividade alterada com sucesso.')</script>";
-            }else{
-               echo "<script> alert('Não possível alterar a atividade.')</script>"; 
             }
+
         endif;
         ?>        
         <!-- Wrapper da pagina -->
@@ -64,12 +68,15 @@
                                                 </div> 
 
                                             </div>    
+
                                             <div class="row">
+
                                                 <div class="form-group col-lg-8">
                                                     <label for="descricao">Descri&ccedil;&atilde;o</label><br>
                                                     <textarea id="descricao"  name="descricao" rows="4" cols="50"><?php echo $resultado->descricao; ?></textarea>
                                                 </div>                                          
                                             </div>
+
                                             <div class="row">
                                                 <div class="form-group col-lg-4">
                                                     <label for="cnpj">CNPJ</label>
@@ -79,7 +86,7 @@
                                                         $deptCnpj = $departamento1->findEndDept($resultado->idDepartamentoFK);
                                                         ?>
                                                         <option value="<?php echo $deptCnpj->id ?>">
-                                                           <?php echo $deptCnpj->cnpj ?>
+<?php echo $deptCnpj->cnpj ?>
                                                         </option>
                                                     </select>
                                                 </div>
@@ -100,13 +107,42 @@
                                                         <input id="btnCadastrar" type="submit" name="atualizar" class="btn btn-success" value="Atualizar Dados">
                                                     </div>    
                                                 </div>
+
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                ...
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>                                        
+
+
+
+
                                             </div>
+
                                     </form>                                 
+
                                 </div>
                             </div>
                         </div>
+
                     </div>
+
                 </div>
+
             </div>         
         </div>
     </main>
