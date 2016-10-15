@@ -6,7 +6,7 @@ $(function () {
             type: 'column'
         },
         title: {
-            text: 'Produtividade dos departamentos'
+            text: 'Produtividade de Atividade por Hora'
         },
              colors: [
             '#AA4643',
@@ -36,7 +36,7 @@ $(function () {
         yAxis: {
             min: 0,
             title: {
-                text: 'Parada por hora'
+                text: 'Prudtividade por hora'
             }
         },
         legend: {
