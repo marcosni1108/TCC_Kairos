@@ -328,5 +328,23 @@ class produtividade extends Crud {
             }
         }
     }
+    
+    public function findtotProdPorHora($id,$mes,$ano) {
+
+        $sql = "SELECT (SUM(produtividade.`quantidade`))/(COUNT(produtividade.`turno`)) as prod_hora,atividade.nome as nome_atividade,departamento.nome as nome_departamento
+                FROM produtividade 
+                INNER JOIN atividade ON (produtividade.`IdAtividade` = atividade.id)
+                INNER JOIN departamento ON (:id = departamento.id)
+                WHERE MONTH(data) = :mes AND YEAR(data) = :ano
+                GROUP BY produtividade.IdAtividade";
+        
+        
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':mes', $mes);
+        $stmt->bindParam(':ano', $ano);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }    
 
 }

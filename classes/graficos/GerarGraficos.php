@@ -308,4 +308,31 @@ class GerarGraficos {
             return false;
         }
     }
+    
+    public function totProdPorHoraAtiv($id, $mes, $ano) {
+        set_include_path(dirname(__FILE__) . "/../model");
+        require_once 'parada.php';
+        $produtividade = new produtividade();
+        $arrayFunc = $produtividade->findtotProdPorHora($id, $mes, $ano);
+        $bln = array();
+        $bln['name'] = 'Atividade';
+        $rows['name'] = 'Produtividade Hora';
+        if ($arrayFunc) {
+            foreach ($arrayFunc as $key => $value) {
+                $bln['data'][] =  (int)$value->prod_hora;
+                $rows['data'][] = $value->nome_atividade;
+            }
+            $rslt = array();
+            array_push($rslt, $bln);
+            array_push($rslt, $rows);
+            $produtividade = json_encode($rslt);
+            $fp = fopen("../../js/dataGrafico/ProdutividadeHora.json", "w");
+            $escreve = fwrite($fp, $produtividade);
+            var_dump($produtividade);
+            fclose($fp);
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

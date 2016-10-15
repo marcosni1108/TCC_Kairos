@@ -170,8 +170,8 @@ error_reporting(0);
                     </i> 
                 </li>
             </a>
-            <a href="../graficos/GraficoParada.php"> 
-                <li class="mdl-menu__item">Produtividade por Hora da atividade
+            <a href="../graficos/GraficoProdPorHoraAtiv.php"> 
+                <li class="mdl-menu__item">Produtividade por Hora da Atividade
                     <i class="mdl-color-text--black material-icons" role="presentation">create
                     </i> 
                 </li>
