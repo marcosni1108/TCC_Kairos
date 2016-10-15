@@ -1,87 +1,96 @@
-    $(function () {
-                $('#container').highcharts({
-                    chart: {
-                        type: 'column'
-                    },
-                    title: {
-                        text: 'Produtividade por Semana',
-                        fontSize: '10px'
-                    },
-                    credits: {
-                        enabled: false
-                    },
-                    xAxis: {
-                        categories: ['Ricardo Santana', 'Eduardo Bortolossi', 'Marcos Batista', 'Wesley Souza', 'Anderson Paes']
-                    },
-                    yAxis: {
-                        min: 0,
-                        title: {
-                            text: 'Total'
-                        }
-                    },
-                    tooltip: {
-                        pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
-                        shared: true
-                    },
-                    plotOptions: {
-                        column: {
-                            stacking: 'percent'
-                        }
-                    },
-                    series: [{
-                            name: 'Para Indireta',
-                            data: [5, 3, 4, 7, 2],
-                            color: 'red'
-                        }, {
-                            name: 'Parada Direta',
-                            data: [2, 2, 3, 2, 1],
-                            color: '#95D1FF'
-                        }, {
-                            name: 'Produtividade',
-                            data: [3, 4, 4, 2, 5],
-                            color: '#1E90FF'
-                        }]
-                });
-            });
+$(function () {
+    $('#from').val(dataAtualFormatada());
+    $('#to').val(dataAtualFormatada());
+    var de = $('#from').val();
+    var ate = $('#to').val();
+    chamaGrafico(de, ate);
+});
+function dataAtualFormatada() {
+    var data = new Date();
+    var dia = data.getDate();
+    if (dia.toString().length === 1)
+        dia = "0" + dia;
+    var mes = data.getMonth() + 1;
+    if (mes.toString().length === 1)
+        mes = "0" + mes;
+    var ano = data.getFullYear();
+    return dia + "/" + mes + "/" + ano;
+}
+function chamaGrafico() {
+    var de = $('#from').val();
+    var ate = $('#to').val();
+    graficoParada(de, ate);
+}
+function graficoParada(de, ate) {
+    var chart;
+    var options = {
+        chart: {
+            renderTo: 'chart',
+            type: 'column'
+        },
+        title: {
+            text: 'Produtividade dos departamentos'
+        },
+        colors: [
+            '#AA4643',
+            '#89A54E',
+            '#80699B',
+            '#3D96AE',
+            '#DB843D',
+            '#92A8CD',
+            '#A47D7C',
+            '#B5CA92'
+        ],
+        plotOptions: {
+            column: {
+                colorByPoint: true
+            }
+        },
+        xAxis: {
+            type: 'category',
+            labels: {
+                rotation: -45,
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Parada por hora'
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            pointFormat: 'Tempo de parada por hora: <b>{point.y:.1f} </b>'
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{
+                name: 'Produtividade',
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    format: '{point.y:.1f}', // one decimal
+                    y: 10, // 10 pixels down from the top
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            }]
+    };
+    $.getJSON("../../classes/graficos/dashGrafico.php?opcao=parada&de=" +de+ "&ate="+ate, function (json) {
+        options.xAxis.categories = json[1]['data'];//xAxis: {categories: []}
+        options.series[0] = json[0];
+        chart = new Highcharts.Chart(options);
+    });
+}
 
-     // Create the chart
-            $(function () {
-                $('#char1').highcharts({
-                    title: {
-                        text: 'Planejamento Estimado /  Limpeza de Documentos',
-                        x: -20 //center,
-                        ,
-                        fontSize: '10px'
-                    },
-                    xAxis: {
-                        categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mar', 'Jun',
-                            'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
-                    },
-                    yAxis: {
-                        title: {
-                            text: 'Documentos por Minuto'
-                        },
-                        plotLines: [{
-                                value: 0,
-                                width: 1,
-                                color: '#808080'
-                            }]
-                    },
-                    tooltip: {
-                        valueSuffix: 'Doc'
-                    },
-                    legend: {
-                        layout: 'vertical',
-                        align: 'right',
-                        verticalAlign: 'middle',
-                        borderWidth: 0
-                    },
-                    series: [{
-                            name: 'Planejado',
-                            data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
-                        }, {
-                            name: 'Executado',
-                            data: [2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
-                        }]
-                });
-            });
