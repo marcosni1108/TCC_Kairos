@@ -17,20 +17,7 @@ class parada extends Crud {
     private $idDepartamentoFK;
     private $idParadaFK;
     private $status;
-    function __construct($tempoInicial, $tempoFinal, $turno, $entradaTempo, $tempConvertSegun, $percentParada, $data, $idFuncionarioFK, $idDepartamentoFK, $idParadaFK, $status) {
-        $this->tempoInicial = $tempoInicial;
-        $this->tempoFinal = $tempoFinal;
-        $this->turno = $turno;
-        $this->entradaTempo = $entradaTempo;
-        $this->tempConvertSegun = $tempConvertSegun;
-        $this->percentParada = $percentParada;
-        $this->data = $data;
-        $this->idFuncionarioFK = $idFuncionarioFK;
-        $this->idDepartamentoFK = $idDepartamentoFK;
-        $this->idParadaFK = $idParadaFK;
-        $this->status = $status;
-    }
-
+    
     function getId() {
         return $this->id;
     }
@@ -172,7 +159,30 @@ class parada extends Crud {
         $stmt->bindParam(':ano', $ano, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll();
-    } 
+    }
+    public function ParadaDept($de,$ate) {
+
+        $sql = "SELECT SUM(tempConvertSegun)as totParada, "
+                . "tipo_parada.nome as nome_parada "
+                . "FROM parada INNER JOIN tipo_parada "
+                . "ON (idParadaFK = tipo_parada.id) "
+                . "WHERE DATA BETWEEN :de and :ate GROUP BY idParadaFK";
+        
+        
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':de', $de);
+        $stmt->bindParam(':ate', $ate);
+        $stmt->execute();
+        try {
+            return  $stmt->fetchAll();
+        } catch (PDOException $e) {
+            if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1062') {
+                $erro = $this->trataErro($e->errorInfo[2]);
+                return $erro;
+            }
+        }
+    }
+    
     public function findtotTipoParada($id,$mes,$ano,$tipoParada) {
 
         $sql = "SELECT SUM(tempConvertSegun)as totParada,tipo_parada.nome as nome_parada ,departamento.nome as nome_departamento,idDepartamentoFK 
