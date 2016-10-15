@@ -28,7 +28,8 @@
             $idDepartamentoFK = $_POST['departamento'];
             $idParadaFK = $_POST['parada'];
             $status = 'finalizado';
-            $parada = new parada($tempoInicial, $tempoFinal, $turno, $entradaTempo, $tempConvertSegun, $percentParada, $data, $idFuncionarioFK, $idDepartamentoFK, $idParadaFK, $status);
+            $parada = new parada();
+            $parada->construtor($tempoInicial, $tempoFinal, $turno, $entradaTempo, $tempConvertSegun, $percentParada, $data, $idFuncionarioFK, $idDepartamentoFK, $idParadaFK, $status);
             # Insert
             if ($parada->insert()) {
                 echo "<script> alert('Parada cadastrada com sucesso.')</script>";
