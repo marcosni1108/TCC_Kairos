@@ -19,17 +19,13 @@
         $gerente = $_POST['gerente'];
         $endereco = $_POST['endereco'];
         $departamento = new departamento();
-        $departamento->setNome($nome_dept);
-        $departamento->setCnpj($cnpj);
-        $departamento->setLider($lider);
-        $departamento->setGerente($gerente);
-        $departamento->setIdEnderecoFK($endereco);
-
+        $departamento->construtor($id, $nome, $cnpj, $lider, $gerente, $idEnderecoFK);
         # Insert
         if ($departamento->insert()) {
             echo "<script> alert('Departamento cadastrado com sucesso.')</script>";
+        }else{
+             echo "<script> alert('Não foi possível cadastrar a departamento.')</script>";
         }
-
     endif;
     ?> 
     <body >
