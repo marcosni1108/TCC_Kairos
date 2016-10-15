@@ -4,7 +4,9 @@
         <title>Kairos</title>
         <?php
         include "../include/include_css.php";
+        //include "../menu_principal/menu_lateral.php";
         include "../header/header.php";
+        //include '../include/include_classes.php';
         include "../../classes/model/validaOperario.php";
         ?>   
         <meta charset="UTF-8">
@@ -17,12 +19,13 @@
         $idDepartamentoFK = $_POST['departamento'];
         $unid_med = $_POST['unid_med'];
         $atividade = new atividade();
-        $atividade->construtor($nome, $descricao, $idDepartamentoFK,$unid_med);
+        $atividade->setNome($nome);
+        $atividade->setDescricao($descricao);
+        $atividade->setIdDepartamentoFK($idDepartamentoFK);
+        $atividade->setUnid_med($unid_med);
         # Insert
         if ($atividade->insert()) {
             echo "<script> alert('Atividade cadastrada com sucesso.')</script>";
-        }else{
-            echo "<script> alert('Não foi possível cadastradar a atividade.')</script>";
         }
 
     endif;

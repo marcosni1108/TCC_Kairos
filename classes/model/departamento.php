@@ -11,14 +11,6 @@ class departamento extends Crud {
     private $lider;
     private $gerente;
     private $idEnderecoFK;
-    
-    function construtor($nome, $cnpj, $lider, $gerente, $idEnderecoFK) {
-        $this->nome = $nome;
-        $this->cnpj = $cnpj;
-        $this->lider = $lider;
-        $this->gerente = $gerente;
-        $this->idEnderecoFK = $idEnderecoFK;
-    }
 
     function getId() {
         return $this->id;

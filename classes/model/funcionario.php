@@ -14,18 +14,6 @@ class funcionario extends Crud {
     private $nivel;
     private $status;
     private $IdDepartamentoFk;
-    
-    function construtor($matricula, $nome, $cpf, $email, $login, $senha, $nivel, $status, $IdDepartamentoFk) {
-        $this->matricula = $matricula;
-        $this->nome = $nome;
-        $this->cpf = $cpf;
-        $this->email = $email;
-        $this->login = $login;
-        $this->senha = $senha;
-        $this->nivel = $nivel;
-        $this->status = $status;
-        $this->IdDepartamentoFk = $IdDepartamentoFk;
-    }
 
     function getStatus() {
         return $this->status;

@@ -18,7 +18,10 @@
             $cnpj = $_POST['cnpj'];
             $numero = $_POST['numero'];
             $endereco = new endereco();
-            $endereco->construtor($cep, $rua, $cnpj, $numero);
+            $endereco->setCep($cep);
+            $endereco->setRua($rua);
+            $endereco->setNumero($numero);
+            $endereco->setCnpj($cnpj);
             # Insert
             if ($endereco->insert()) {
                 echo "<script> alert('Cadastrado com sucesso')</script>";

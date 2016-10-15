@@ -50,5 +50,4 @@
         </main>
     </body>
     <?php include_once '../include/include_js.php'; ?>
-    <script src="../../js/data.js"></script>
 </html>
