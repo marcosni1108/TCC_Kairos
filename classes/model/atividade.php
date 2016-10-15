@@ -12,6 +12,16 @@ class atividade extends Crud {
     private $cnpj;
     private $meta;
     private $unid_med;
+    
+    function construtor($nome, $descricao, $idDepartamentoFK, $cnpj, $meta, $unid_med) {
+        $this->nome = $nome;
+        $this->descricao = $descricao;
+        $this->idDepartamentoFK = $idDepartamentoFK;
+        $this->cnpj = $cnpj;
+        $this->meta = $meta;
+        $this->unid_med = $unid_med;
+    }
+
     function getUnid_med() {
         return $this->unid_med;
     }

@@ -20,14 +20,12 @@
             $lider = $_POST['lider'];
             $gerente = $_POST['gerente'];
             $endereco = $_POST['endereco'];
-            $departamento->setNome($nome_dept);
-            $departamento->setCnpj($cnpj);
-            $departamento->setLider($lider);
-            $departamento->setGerente($gerente);
-            $departamento->setIdEnderecoFK($endereco);
+            $departamento->construtor($nome_dept, $cnpj, $lider, $gerente, $endereco);
             $departamento->setId($id);
             if ($departamento->update($id)) {
                 echo "<script>alert('Departamento alterado com sucesso.')</script>";
+            }else{
+                 echo "<script>alert('Não foi possível alterar o departamento')</script>";
             }
         endif;
         ?>  

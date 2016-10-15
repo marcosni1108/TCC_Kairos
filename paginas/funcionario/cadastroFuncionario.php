@@ -12,7 +12,6 @@
         <meta charset="UTF-8">
           <?php
         if (isset($_POST['cadastrar'])){
-            
             $matricula = $_POST['matricula'];
             $nome = $_POST['nome'];
             $cpf = $_POST['cpf'];
@@ -21,30 +20,18 @@
             $senha = 'kairos';
             $nivel = $_POST['nivel'];
             $idDepartamentoFK = $_POST['departamento'];
+            $status="A";
             $funcionario = new funcionario();
-            $funcionario->setMatricula($matricula);
-            $funcionario->setNome($nome);
-            $funcionario->setCpf($cpf);
-            $funcionario->setEmail($email);
-            $funcionario->setLogin($login);
-            $funcionario->setSenha(md5($senha));
-            $funcionario->setNivel($nivel);
-            $funcionario->setStatus("A");
-            $funcionario->setIdDepartamentoFk($idDepartamentoFK);
+            $funcionario->construtor($matricula, $nome, $cpf, $email, $login, $senha, $nivel, $status, $idDepartamentoFK);
             $insert = $funcionario->insert();
             # Insert
             if ($insert==="OK") {
                 echo  "<script> alert('Funcionário cadastrado com sucesso.')</script>";
-                
             }else{
                 
                 echo  "<script> alert('{$insert}')</script>";
-                
             }
-            
         }
-
-        
         ?> 
         <main class="mdl-layout__content">
             <div class="col-lg-12">
@@ -110,7 +97,6 @@
             </div> 
             <div class="col-lg-2"></div> 
         </main>
-
     </body>
     <?php include_once '../include/include_js.php'; ?>
     <script src="../../js/populaComboAtividade.js"></script>
