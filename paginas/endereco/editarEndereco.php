@@ -18,9 +18,7 @@
             $cep = $_POST['cep'];
             $rua = $_POST['endereco'];
             $numero = $_POST['numero'];
-            $endereco->setCep($cep);
-            $endereco->setRua($rua);
-            $endereco->setNumero($numero);
+            $endereco->construtor($cep, $rua, $numero);
             if ($endereco->update($id)) {
                 echo "Endereço alterado com sucesso.!";
             }
