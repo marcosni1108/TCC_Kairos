@@ -15,8 +15,8 @@
                     <div class="col-lg-12">
                         <h1 class="page-header text-center">Informa&ccedil;&otilde;es Gerencias 
                         </h1>
+                        <div class="col-md-5 col-md-offset-4">Filtro:</div>
                         <div class="col-md-5 col-md-offset-4">
-                            <div class="form-group col-lg-4"> Filtros:</div>
                             <div class="form-group col-lg-4">
                                 <input type="text" class="form-control" onchange="chamaGrafico()" id="from" name="dataDe" placeholder="Data de" autocomplete="off" required>                                
                             </div>
