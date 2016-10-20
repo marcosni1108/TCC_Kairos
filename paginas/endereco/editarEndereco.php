@@ -18,9 +18,11 @@
             $cep = $_POST['cep'];
             $rua = $_POST['endereco'];
             $numero = $_POST['numero'];
+            $nomeFilial = $_POST['nomeFilial'];
             $endereco->setCep($cep);
             $endereco->setRua($rua);
             $endereco->setNumero($numero);
+            $endereco->setNomeFilial($nomeFilial);
             if ($endereco->update($id)) {
                 echo "Endereço alterado com sucesso.!";
             }
@@ -41,10 +43,14 @@
                             <!-- Conteudo dentro de wrapper -->
                             <div class="panel-body">
                                 <div id="chart">
-                                     <?php $resultado = $endereco->find($id); ?>           
+                                    <?php $resultado = $endereco->find($id); ?>           
                                     <form method="post" action="">
                                         <div class="input-prepend">
                                             <div class="row">
+                                                <div class="form-group col-lg-4">
+                                                    <label for="cep">Nome Filial</label>
+                                                    <input type="text" class="form-control" id="nome_filial"  maxlength="100" name="nomeFilial" placeholder="Nome Filial" required>
+                                                </div>
                                                 <div class="form-group col-lg-4">
                                                     <label for="cep">CEP</label>
                                                     <input type="text" class="form-control" value="<?php echo $resultado->cep; ?>" id="cep" name="cep" onkeypress="javascript: mascara(this, cep_mask);" placeholder="CEP" required>
@@ -97,5 +103,5 @@
             </div>         
         </main>
     </body>
-<?php include_once '../include/include_js.php'; ?>
+    <?php include_once '../include/include_js.php'; ?>
 </html>

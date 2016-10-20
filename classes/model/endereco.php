@@ -10,6 +10,15 @@ class endereco extends Crud {
     private $rua;
     private $cnpj;
     private $numero;
+    private $nomeFilial;
+
+    function getNomeFilial() {
+        return $this->nomeFilial;
+    }
+
+    function setNomeFilial($nomeFilial) {
+        $this->nomeFilial = $nomeFilial;
+    }
 
     function getId() {
         return $this->id;
@@ -55,12 +64,13 @@ class endereco extends Crud {
 
 
         $sql = "INSERT INTO $this->table (cep,endereco,	cnpj,numero)"
-                . " VALUES (:cep,:endereco,:cnpj,:numero)";
+                . " VALUES (:cep,:endereco,:cnpj,:numero,:nomeFilial)";
         $stmt = DB::prepare($sql);
         $stmt->bindParam(':cep', $this->cep);
         $stmt->bindParam(':endereco', $this->rua);
         $stmt->bindParam(':cnpj', $this->cnpj);
         $stmt->bindParam(':numero', $this->numero);
+        $stmt->bindParam(':nomeFilial', $this->nomeFilial);
         try {
             return $stmt->execute();
         } catch (PDOException $e) {
@@ -74,6 +84,7 @@ class endereco extends Crud {
 
         $sql = "UPDATE $this->table SET cep= :cep, "
                 . "endereco=:endereco,"
+                . "nomeFilial=:nomeFilial,"
                 . "numero=:numero where id = :id";
         $stmt = DB::prepare($sql);
 
@@ -82,6 +93,7 @@ class endereco extends Crud {
         //$stmt->bindParam(':cnpj', $this->cnpj);
         $stmt->bindParam(':numero', $this->numero);
         $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':nomeFilial', $nomeFilial);
 
 
         return $stmt->execute();

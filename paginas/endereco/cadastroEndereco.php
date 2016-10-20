@@ -17,11 +17,13 @@
             $rua = $_POST['rua'];
             $cnpj = $_POST['cnpj'];
             $numero = $_POST['numero'];
+            $nomeFilial = $_POST['nomeFilial'];
             $endereco = new endereco();
             $endereco->setCep($cep);
             $endereco->setRua($rua);
             $endereco->setNumero($numero);
             $endereco->setCnpj($cnpj);
+            $endereco->setNomeFilial($nomeFilial);
             # Insert
             if ($endereco->insert()) {
                 echo "<script> alert('Cadastrado com sucesso')</script>";
@@ -49,6 +51,10 @@
                                         <div class="input-prepend">
                                             <div class="row">
                                                 <div class="form-group col-lg-4">
+                                                    <label for="cep">Nome Filial</label>
+                                                    <input type="text" class="form-control" id="nome_filial"  maxlength="100" name="nomeFilial" placeholder="Nome Filial" required>
+                                                </div>
+                                                <div class="form-group col-lg-4">
                                                     <label for="cep">CEP</label>
                                                     <input type="text" class="form-control" id="nome_dept" onkeypress="javascript: mascara(this, cep_mask);" maxlength="9" name="cep" placeholder="CEP" required>
                                                 </div>
@@ -57,7 +63,7 @@
                                                     <input type="text" class="form-control" name="rua" id="endereco" placeholder="Endereco" required>
                                                 </div> 
                                                 <div class="form-group col-lg-4">
-                                                    <label for="numero">Numero</label>
+                                                    <label for="numero">Número</label>
                                                     <input type="text" class="form-control" name="numero" id="numero"onkeypress="javascript: mascara(this, soNumeros);" placeholder="Numero" required>
                                                 </div>              
                                                 <div class="form-group col-lg-4">
@@ -98,7 +104,7 @@
                     </div>
                 </div>
             </div>        
-         </main>
+        </main>
     </body>
     <?php include_once '../include/include_js.php'; ?>
 </html>
