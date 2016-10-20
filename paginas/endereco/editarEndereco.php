@@ -47,11 +47,11 @@
                                     <form method="post" action="">
                                         <div class="input-prepend">
                                             <div class="row">
-                                                <div class="form-group col-lg-6">
+                                                <div class="form-group col-lg-8">
                                                     <label for="cep">Nome Filial</label>
                                                     <input type="text" class="form-control" id="nome_filial"  maxlength="100" name="nomeFilial" placeholder="Nome Filial" required>
                                                 </div>
-                                                <div class="form-group col-lg-6">
+                                                <div class="form-group col-lg-4">
                                                     <label for="cnpj">CNPJ</label>
                                                     <input type="text" class="form-control" value="<?php echo $resultado->cnpj; ?>" name="cnpj" id="cnpj" onblur="javascript: validarCNPJ(this.value);" onkeypress="javascript: mascara(this, cnpj_mask);" maxlength="18"placeholder="CNPJ" readonly="true">
                                                 </div>  
