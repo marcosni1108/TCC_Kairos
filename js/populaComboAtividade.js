@@ -1,7 +1,7 @@
 function Reset(a) {
     $("#endereco").empty().append("<option>Carregar Endereço</option>>"), $("#cnpj").val(""), $("#cmbDepartamento").empty().append("<option>Carregar Departamento</option>>"), "Dept" === a && (alert("Filial sem departamento"), $("#cnpj").val(""), $("#cmbDepartamento").empty().append("<option>Carregar Departamento</option>>"))
 }
-$("#nomeFilial").ready(function() {
+$("#cnpj").ready(function() {
     $("#btnCadastrar").prop("disabled", !0), $.getJSON("../../classes/model/consulta.php?opcao=allCNPJ", function(a) {
         if (a.length > 0) {
             var b = '<option value="">Selecione a filial</option>';
@@ -9,11 +9,11 @@ $("#nomeFilial").ready(function() {
                 b += '<option value="' + c.id + '">' + c.nomeFilial + "</option>"
             })
         } else Reset();
-        $("#nomeFilial").html(b).show(), $("#btnCadastrar").prop("disabled", !1)
+        $("#cnpj").html(b).show(), $("#btnCadastrar").prop("disabled", !1)
     })
-}), $("#nomeFilial").change(function(a) {
+}), $("#cnpj").change(function(a) {
     $("#btnCadastrar").prop("disabled", !0);
-    var b = $("#nomeFilial").val();
+    var b = $("#cnpj").val();
     $.getJSON("../../classes/model/consulta.php?opcao=FindDeptCnpj&valor=" + b, function(a) {
         if (a.length > 0) {
             var b = '<option value="">Selecione o Departamento</option>';

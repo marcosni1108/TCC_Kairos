@@ -86,8 +86,8 @@
                                 <input type="text" class="form-control" name="login" id="login" placeholder="Login" required>
                             </div>    
                             <div class="form-group col-lg-4">
-                                <label for="nomeFilial">Filial</label>
-                                <select  class="form-control" name="nomeFilial" id="nomeFilial" required>                                                  
+                                <label for="cnpj">Filial</label>
+                                <select  class="form-control" name="cnpj" id="cnpj" required>                                                  
                                    <option value="">Selecione a Filial</option>
                                 </select>
                             </div>
