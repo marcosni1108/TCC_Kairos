@@ -47,14 +47,14 @@
                                     <form method="post" action="">
                                         <div class="input-prepend">
                                             <div class="row">
-                                                <div class="form-group col-lg-4">
+                                                <div class="form-group col-lg-6">
                                                     <label for="cep">Nome Filial</label>
                                                     <input type="text" class="form-control" id="nome_filial"  maxlength="100" name="nomeFilial" placeholder="Nome Filial" required>
                                                 </div>
-                                                <div class="form-group col-lg-4">
-                                                    <label for="cep">CEP</label>
-                                                    <input type="text" class="form-control" value="<?php echo $resultado->cep; ?>" id="cep" name="cep" onkeypress="javascript: mascara(this, cep_mask);" placeholder="CEP" required>
-                                                </div>
+                                                <div class="form-group col-lg-6">
+                                                    <label for="cnpj">CNPJ</label>
+                                                    <input type="text" class="form-control" value="<?php echo $resultado->cnpj; ?>" name="cnpj" id="cnpj" onblur="javascript: validarCNPJ(this.value);" onkeypress="javascript: mascara(this, cnpj_mask);" maxlength="18"placeholder="CNPJ" readonly="true">
+                                                </div>  
                                                 <div class="form-group col-lg-8">
                                                     <label for="endereco">Endere&ccedil;o</label>
                                                     <input type="text" class="form-control" value="<?php echo $resultado->endereco; ?>" name="endereco" id="endereco" placeholder="Endereco" required>
@@ -64,9 +64,9 @@
                                                     <input type="text" class="form-control" value="<?php echo $resultado->numero; ?>" name="numero" id="numero" onkeypress="javascript: mascara(this, soNumeros);" placeholder="Numero" required>
                                                 </div>              
                                                 <div class="form-group col-lg-4">
-                                                    <label for="cnpj">CNPJ</label>
-                                                    <input type="text" class="form-control" value="<?php echo $resultado->cnpj; ?>" name="cnpj" id="cnpj" onblur="javascript: validarCNPJ(this.value);" onkeypress="javascript: mascara(this, cnpj_mask);" maxlength="18"placeholder="CNPJ" readonly="true">
-                                                </div>  
+                                                    <label for="cep">CEP</label>
+                                                    <input type="text" class="form-control" value="<?php echo $resultado->cep; ?>" id="cep" name="cep" onkeypress="javascript: mascara(this, cep_mask);" placeholder="CEP" required>
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-lg-4">
