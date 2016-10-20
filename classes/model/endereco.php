@@ -63,7 +63,7 @@ class endereco extends Crud {
     public function insert() {
 
 
-        $sql = "INSERT INTO $this->table (cep,endereco,	cnpj,numero)"
+        $sql = "INSERT INTO $this->table (cep,endereco,	cnpj,numero,nomeFilial)"
                 . " VALUES (:cep,:endereco,:cnpj,:numero,:nomeFilial)";
         $stmt = DB::prepare($sql);
         $stmt->bindParam(':cep', $this->cep);
