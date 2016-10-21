@@ -3,31 +3,31 @@
     <head>
         <title>Kairos</title>
         <?php
-        include "../include/include_css.php";
-        include "../header/header.php";
-        include "../../classes/model/validaOperario.php";
-        include "../../classes/model/validaLider.php";
-        ?>   
+          include "../include/include_css.php";
+          include "../header/header.php";
+          include "../../classes/model/validaOperario.php";
+          include "../../classes/model/validaLider.php";
+        ?>
         <meta charset="UTF-8">
         <script type="text/javascript" src="../../js/validadores.js"></script>
     </head>
     <?php
-    if (isset($_POST['cadastrar'])):
-        $nome_dept = $_POST['nome_dept'];
-        $cnpj = $_POST['cnpj'];
-        $lider = $_POST['lider'];
-        $gerente = $_POST['gerente'];
-        $endereco = $_POST['endereco'];
-        $departamento = new departamento();
-        $departamento->construtor($id, $nome, $cnpj, $lider, $gerente, $idEnderecoFK);
-        # Insert
-        if ($departamento->insert()) {
-            echo "<script> alert('Departamento cadastrado com sucesso.')</script>";
-        }else{
-             echo "<script> alert('Não foi possível cadastrar a departamento.')</script>";
-        }
-    endif;
-    ?> 
+      if(isset($_POST['cadastrar'])):
+          $nome_dept = $_POST['nome_dept'];
+          $cnpj = $_POST['cnpj'];
+          $lider = $_POST['lider'];
+          $gerente = $_POST['gerente'];
+          $endereco = $_POST['endereco'];
+          $departamento = new departamento();
+          $departamento -> construtor($id, $nome, $cnpj, $lider, $gerente, $idEnderecoFK);
+          # Insert
+          if($departamento -> insert()) {
+              echo "<script> alert('Departamento cadastrado com sucesso.')</script>";
+          } else {
+              echo "<script> alert('Não foi possível cadastrar a departamento.')</script>";
+          }
+      endif;
+    ?>
     <body >
         <!-- Wrapper da pagina -->
         <main class="mdl-layout__content">
@@ -56,35 +56,35 @@
                                                     <select  class="form-control" name="endereco" id="endereco" required="true">
                                                         <option value="">Selecione o Endereço</option>
                                                     </select>
-                                                </div> 
+                                                </div>
                                                 <div class="form-group col-lg-4">
-                                                    <label for="cnpj">CNPJ</label>
+                                                    <label for="cnpj">Filial</label>
                                                     <input type="text" class="form-control" name="cnpj" id="cnpj" value="" onkeypress="javascript: mascara(this, cnpj_mask);"  maxlength="18" placeholder="CNPJ" readonly="true">
-                                                </div>              
+                                                </div>
                                                 <div class="form-group col-lg-6">
                                                     <a href="../endereco/consultaEndereco.php">Clique aqui caso endereço não esteja cadastrado.</a>
                                                 </div>
-                                            </div>    
+                                            </div>
                                             <div class="row">
                                                 <div class="form-group col-lg-4">
                                                     <label for="lider">Lider</label>
                                                     <select  class="form-control" name="lider" id="lider" required>
                                                         <option value="">Selecione o Lider</option>
                                                     </select>
-                                                </div>     
+                                                </div>
                                                 <div class="form-group col-lg-4">
                                                     <label for="gerente">Gerente</label>
                                                     <select  class="form-control" name="gerente" id="gerente" required>
                                                         <option value="">Selecione o Gerente</option>
                                                     </select>
-                                                </div>                                             
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-lg-4">
                                                 </div>
                                                 <div class="form-group col-lg-4 text-center">
                                                     <input id="btnCadastrar" type="submit" name="cadastrar" class="btn btn-success" value="Cadastrar dados">
-                                                </div>    
+                                                </div>
                                             </div>
                                             <!-- Modal -->
                                             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -103,15 +103,15 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>                                        
+                                            </div>
                                         </div>
-                                    </form>                                
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>        
+            </div>
         </main>
     </body>
     <?php include_once '../include/include_js.php'; ?>
