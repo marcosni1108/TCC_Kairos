@@ -59,7 +59,7 @@
                                                 </div>
                                                 <div class="form-group col-lg-4">
                                                     <label for="cnpj">Filial</label>
-                                                    <input type="text" class="form-control" name="cnpj" id="cnpj" value="" onkeypress="javascript: mascara(this, cnpj_mask);"  maxlength="18" placeholder="CNPJ" readonly="true">
+                                                    <input type="text" class="form-control" name="cnpj" id="cnpj" value="" onkeypress="javascript: mascara(this, cnpj_mask);"  maxlength="18" placeholder="Filial" readonly="true">
                                                 </div>
                                                 <div class="form-group col-lg-6">
                                                     <a href="../endereco/consultaEndereco.php">Clique aqui caso endereço não esteja cadastrado.</a>

@@ -73,7 +73,7 @@
                                       $endereco = new endereco;
                                       $cnpj = $endereco -> find($dept -> idEnderecoFK);
                                       echo $cnpj -> cnpj;
-                                    ?>" id="cnpjEditAtividade" placeholder="CNPJ" readonly>
+                                    ?>" id="cnpjEditAtividade" placeholder="Filial" readonly>
                                 </div>
                             </div>
                             <div class="row">

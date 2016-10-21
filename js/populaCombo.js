@@ -79,7 +79,7 @@ $(document).ready(function () {
     }), $("#cmbCNPJ").ready(function () {
         $.getJSON("../../classes/model/consulta.php?opcao=endereco", function (b) {
             if (b.length > 0) {
-                var c = '<option value="">Selecione o CNPJ</option>';
+                var c = '<option value="">Selecione a Filial</option>';
                 $.each(b, function (a, b) {
                     c += '<option value="' + b.id + '">' + b.nomeFilial + "</option>"
                 })
