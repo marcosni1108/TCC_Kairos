@@ -39,7 +39,7 @@ $("#cnpj").ready(function() {
         if (b.length > 0) {
             var c = "";
             $.each(b, function(b, d) {
-                a !== d.id && (c += '<option value="' + d.id + '">' + d.cnpj + "</option>")
+                a !== d.id && (c += '<option value="' + d.id + '">' + d.nomeFilial + "</option>")
             })
         } else Reset();
         $("#cnpjEdit").append(c)
