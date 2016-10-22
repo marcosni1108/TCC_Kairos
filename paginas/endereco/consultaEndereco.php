@@ -33,10 +33,11 @@
                                     <table id="tbl_Endereco" class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>CEP</th>
-                                                <th>Endere&ccedil;o</th>
                                                 <th>CNPJ</th>
+                                                <th>Nome Filial</th>
+                                                <th>Endere&ccedil;o</th>
                                                 <th>Numero</th>
+                                                 <th>CEP</th>
                                                 <th>A&ccedil;&otilde;es</th>
                                             </tr>
                                         </thead>
@@ -50,4 +51,5 @@
         </main>
     </body>
     <?php include_once '../include/include_js.php'; ?>
+    <script src="../../js/data.js"></script>
 </html>

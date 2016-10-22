@@ -7,30 +7,31 @@
         include "../../classes/model/validaOperario.php";
         include "../../classes/model/validaLider.php";
         session_start();
-        $departamento = new departamento(); 
+        $departamento = new departamento();
         $id = $_SESSION['departamento'];
         $departamento->setId($id);
-        $resultado = $departamento->find($id);        
+        $resultado = $departamento->find($id);
         ?>
         <meta charset="UTF-8">
     </head>
     <body> 
-       <main class="mdl-layout__content">
+        <main class="mdl-layout__content">
             <div class="col-lg-12">
-                        <div class="row">
-                            <div class="col-md-7">
-                                <h4><?php echo '<label for="expdicao">Departamento: '.$resultado->nome.'</label>'; ?></h4>
-                            </div>
-                        </div>                
-            <div id="chart"></div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <h4><?php echo '<label for="expdicao">Departamento: ' . $resultado->nome . '</label>'; ?></h4>
+                    </div>
+                </div>                
+                <div id="chart"></div>
             </div>
-       </main>   
+        </main>   
     </body>
     <?php include_once '../include/include_js.php'; ?>
     <script src="../../js/jquery-1.12.0.min.js"></script>
     <script src="../../js/highcharts.js"></script>
+    <script src="../../js/material.min.js"></script>    
     <script src="../../js/exporting.js"></script>
     <script src="../../js/highdataIndireta.js"></script>
-    
+
 
 </html>

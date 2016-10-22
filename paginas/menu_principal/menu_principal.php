@@ -19,10 +19,10 @@
                             </div>
                         <div class="col-md-5 col-md-offset-4">
                             <div class="form-group col-lg-4">
-                                <input type="text" class="form-control" onchange="chamaGrafico()" id="from" name="dataDe" placeholder="Data de" autocomplete="off" required>                                
+                                <input type="date" class="form-control" onchange="chamaGrafico()" id="from" name="dataDe" placeholder="Data de" autocomplete="off" required>                                
                             </div>
                             <div class="form-group col-lg-4">
-                                <input type="text" class="form-control" onchange="chamaGrafico()" id="to" name="dataAte" placeholder="Data até" autocomplete="off" required>                                
+                                <input type="date" class="form-control" onchange="chamaGrafico()" id="to" name="dataAte" placeholder="Data até" autocomplete="off" required>                                
                             </div>
                         </div>
 

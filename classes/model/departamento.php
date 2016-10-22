@@ -104,7 +104,7 @@ class departamento extends Crud {
     }
 
     public function findEndDept($id) {
-        $sql = "SELECT endereco.cnpj,endereco.id FROM `departamento` left join
+        $sql = "SELECT endereco.cnpj,endereco.id , endereco.nomeFilial FROM `departamento` left join
         endereco on departamento.idEnderecoFK=endereco.id
         where departamento.id=:id
         group by endereco.endereco";
@@ -135,10 +135,10 @@ class departamento extends Crud {
 
     public function BuscaTable() {
         $sql = "SELECT dep.id,
-	  dep.cnpj,
 	  dep.nome as Departamento,
 	  funcLider.nome as Lider,
 	  funcGerente.nome as Gerente,
+          ende.nomeFilial as nomeFilial,
           concat(ende.endereco, ', ' , ende.numero) as Endereco
                 FROM departamento as dep
                 inner join funcionario funcLider

@@ -31,6 +31,6 @@
     <script src="../../js/highcharts.js"></script>
     <script src="../../js/exporting.js"></script>
     <script src="../../js/highdataParada.js"></script>
-    
+    <script src="../../js/material.min.js"></script>
 
 </html>

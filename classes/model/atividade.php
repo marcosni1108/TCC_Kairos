@@ -12,6 +12,7 @@ class atividade extends Crud {
     private $cnpj;
     private $meta;
     private $unid_med;
+
     function getUnid_med() {
         return $this->unid_med;
     }
@@ -20,7 +21,7 @@ class atividade extends Crud {
         $this->unid_med = $unid_med;
     }
 
-        function getMeta() {
+    function getMeta() {
         return $this->meta;
     }
 
@@ -28,7 +29,7 @@ class atividade extends Crud {
         $this->meta = $meta;
     }
 
-        function getDescricao() {
+    function getDescricao() {
         return $this->descricao;
     }
 
@@ -56,15 +57,13 @@ class atividade extends Crud {
 //        $this->cnpj = $cnpj;
 //    }
 
-        function getId() {
+    function getId() {
         return $this->id;
     }
 
     function getNome() {
         return $this->nome;
     }
-
-   
 
     function setIdAtividade($id) {
         $this->id = $id;
@@ -74,13 +73,7 @@ class atividade extends Crud {
         $this->nome = $nome;
     }
 
-   
-
-     
-
-    
-
-        public function insert() {
+    public function insert() {
 
 
         $sql = "INSERT INTO $this->table (nome,descricao,idDepartamentoFK,unid_med)"
@@ -89,10 +82,10 @@ class atividade extends Crud {
         $stmt->bindParam(':nome', $this->nome);
         $stmt->bindParam(':descricao', $this->descricao);
         $stmt->bindParam(':idDepartamentoFK', $this->idDepartamentoFK);
-       // $stmt->bindParam(':cnpj', $this->cnpj);
+        // $stmt->bindParam(':cnpj', $this->cnpj);
         $stmt->bindParam(':unid_med', $this->unid_med);
 
-       
+
         return $stmt->execute();
     }
 
@@ -109,18 +102,19 @@ class atividade extends Crud {
         $stmt->bindParam(':idDepartamentoFK', $this->idDepartamentoFK);
         $stmt->bindParam(':unid_med', $this->unid_med);
         $stmt->bindParam(':id', $idAtividade);
-        
-        
+
+
         return $stmt->execute();
     }
-    
-       public function findDept($id) {
+
+    public function findDept($id) {
         $sql = "SELECT * FROM $this->table WHERE idDepartamentoFK = :id";
         $stmt = DB::prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
     public function findQtdAtiv($id) {
         $sql = "SELECT COUNT(id) FROM $this->table WHERE idDepartamentoFK = :id";
         $stmt = DB::prepare($sql);
@@ -128,8 +122,8 @@ class atividade extends Crud {
         $stmt->execute();
         return $stmt->fetchAll();
     }
-    
-    public function findProdTotalAtividade($id,$mes,$ano) {
+
+    public function findProdTotalAtividade($id, $mes, $ano) {
 
         $sql = "SELECT SUM(produtividade.quantidade) as prod,atividade.nome as nome_atividade,departamento.nome as nome_departamento
                 FROM produtividade 
@@ -137,14 +131,31 @@ class atividade extends Crud {
                 INNER JOIN departamento ON (:id = departamento.id)
                 WHERE MONTH(data) = :mes AND YEAR(data) = :ano
                 GROUP BY produtividade.IdAtividade";
-        
-        
+
+
         $stmt = DB::prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->bindParam(':mes', $mes, PDO::PARAM_INT);
         $stmt->bindParam(':ano', $ano, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll();
-    }    
+    }
+
+    public function dashProdTotalAtividade($de, $ate) {
+
+        $sql = "SELECT SUM(produtividade.quantidade) as prod,atividade.nome as nome_atividade,departamento.nome as nome_departamento
+                FROM produtividade 
+                INNER JOIN atividade ON (produtividade.`IdAtividade` = atividade.id)
+                INNER JOIN departamento ON (produtividade.`IdDepartamento` = departamento.id) 
+                WHERE DATA BETWEEN :de and :ate
+                GROUP BY produtividade.IdDepartamento";
+
+
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':de', $de);
+        $stmt->bindParam(':ate', $ate);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 
 }

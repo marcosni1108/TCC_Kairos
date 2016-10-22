@@ -100,5 +100,6 @@
 </body>
 <script src="../../js/jquery-1.12.0.min.js"></script>
 <script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/material.min.js"></script>
 <script src="../../js/populaComboGraficoFunc.js"></script>
 </html>

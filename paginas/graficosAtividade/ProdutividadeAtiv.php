@@ -56,4 +56,4 @@
                 <script src="../../js/datapicker/jquery-ui.js"></script>
                 <script src="../../js/datapicker/configDate.js"></script>
                 <script src="../../js/bootstrap.min.js"></script>
-                </html>
+</html>

@@ -13,6 +13,10 @@ if (!empty($opcao)) {
                 echo parada($de, $ate);
                 break;
             }
+        case 'atividade': {
+                echo atividade($de, $ate);
+                break;
+            }
     }
 }
 
@@ -32,6 +36,27 @@ function parada($de, $ate) {
         $rslt = array();
         array_push($rslt, $bln);
         array_push($rslt, $rows);
+        return json_encode($rslt);
+    }
+}
+
+function atividade($de, $ate) {
+    set_include_path(dirname(__FILE__) . "/../model");
+    require_once 'atividade.php';
+    $atividade = new atividade();
+    $arrayFunc = $atividade->dashProdTotalAtividade($de, $ate);
+    $bln['name'] = 'Atividade';
+    $rows['name'] = 'Departamento';
+    $rows2['name'] = 'Produtividade';
+    if ($arrayFunc) {
+        foreach ($arrayFunc as $key => $value) {
+            $bln['data'][] = $value->nome_departamento;
+            $rows2['data'][] = intval ($value->prod);
+        }
+        $rslt = array();
+        array_push($rslt, $rows2);
+        array_push($rslt,$bln );
+        array_push($rslt,$rows );
         return json_encode($rslt);
     }
 }

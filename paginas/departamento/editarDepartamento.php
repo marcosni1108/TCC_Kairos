@@ -71,7 +71,7 @@
                                                 </div>
                                                 <div class="form-group col-lg-4">
                                                     <label for="cnpj">Filial</label>
-                                                    <input type="text" class="form-control" name="cnpj"  value="<?php echo $resultado -> cnpj; ?>" id="cnpjEdit" placeholder="CNPJ" readonly>
+                                                    <input type="text" class="form-control" name="cnpj"  value="<?php echo $ender -> nomeFilial; ?>" id="cnpjEdit" placeholder="CNPJ" readonly>
                                                 </div>
                                                 <div class="form-group col-lg-6">
                                                     <a href="../endereco/consultaEndereco.php">Clique aqui caso endereço não esteja cadastrado.</a>

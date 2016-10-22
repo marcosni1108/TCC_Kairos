@@ -49,7 +49,7 @@
                                             <div class="row">
                                                 <div class="form-group col-lg-8">
                                                     <label for="cep">Nome Filial</label>
-                                                    <input type="text" class="form-control" id="nome_filial"  maxlength="100" name="nomeFilial" placeholder="Nome Filial" required>
+                                                    <input type="text" class="form-control" id="nome_filial" value="<?php echo $resultado->nomeFilial; ?>"  maxlength="100" name="nomeFilial" placeholder="Nome Filial" required>
                                                 </div>
                                                 <div class="form-group col-lg-4">
                                                     <label for="cnpj">CNPJ</label>

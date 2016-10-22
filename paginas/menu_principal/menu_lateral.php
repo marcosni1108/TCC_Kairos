@@ -144,35 +144,38 @@ error_reporting(0);
             for="grafico">
 
             <a href="../graficos/GraficoAtividade.php">
-                <li class="mdl-menu__item">Prod. de Atividades<i class="mdl-color-text--black material-icons" role="presentation">add</i>
+                <li class="mdl-menu__item">Prod. de Atividades<i class="mdl-color-text--black material-icons" role="presentation"></i>
                 </li>
             </a>
-            
+            <a href="../graficosAtividade/ProdutividadeAtiv.php">
+                <li class="mdl-menu__item">Prod. dos Func. por Período <i class="mdl-color-text--black material-icons" role="presentation"></i>
+                </li>
+            </a>
             <a href="../graficos/HighProd.php">
-                <li class="mdl-menu__item">Prod. de Departamento<i class="mdl-color-text--black material-icons" role="presentation">add</i>
+                <li class="mdl-menu__item">Prod. de Departamento<i class="mdl-color-text--black material-icons" role="presentation"></i>
                 </li>
             </a>
             <a href="../graficos/ProdutividadeFunc.php"> 
                 <li class="mdl-menu__item">Prod. Funcion&aacute;rio
-                    <i class="mdl-color-text--black material-icons" role="presentation">create
+                    <i class="mdl-color-text--black material-icons" role="presentation">
                     </i> 
                 </li>
             </a>
             <a href="../graficos/GraficoTotParada.php"> 
                 <li class="mdl-menu__item">Total de Tempo de Parada
-                    <i class="mdl-color-text--black material-icons" role="presentation">create
+                    <i class="mdl-color-text--black material-icons" role="presentation">
                     </i> 
                 </li>
             </a>
             <a href="../graficos/GraficoTipoParada.php"> 
                 <li class="mdl-menu__item">Total de Parada
-                    <i class="mdl-color-text--black material-icons" role="presentation">create
+                    <i class="mdl-color-text--black material-icons" role="presentation">
                     </i> 
                 </li>
             </a>
             <a href="../graficos/GraficoProdPorHoraAtiv.php"> 
-                <li class="mdl-menu__item">Produtividade por Hora da Atividade
-                    <i class="mdl-color-text--black material-icons" role="presentation">create
+                <li class="mdl-menu__item">Prod. por Hora da Atividade
+                    <i class="mdl-color-text--black material-icons" role="presentation">
                     </i> 
                 </li>
             </a>           

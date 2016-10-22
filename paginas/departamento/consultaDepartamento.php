@@ -27,7 +27,7 @@
                                             <tr>
                                                 <td width="2%">Nome</td>
                                                 <td width="15%">Endere&ccedil;o</td>
-                                                <td width="1%">CNPJ</td>
+                                                <td width="15%">Nome Filial</td>
                                                 <td>Lider</td>
                                                 <td>Gerente</td>
                                                 <td style="width: 190px;">A&ccedil;&otilde;es</td>

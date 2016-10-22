@@ -22,8 +22,7 @@
 
     <link rel="shortcut icon" href="../../images/favicon.png">
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../../fonts/icon.css" rel="stylesheet">
     <link rel="stylesheet" href="../../css/material.min.css">
 	<link rel="stylesheet" href="../../css/bootstrap.css">
     <link rel="stylesheet" href="../../css/styles.css">
