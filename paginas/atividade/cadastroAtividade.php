@@ -76,16 +76,15 @@
                                                         <option value="">Selecione o Departamento</option>
                                                     </select>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="form-group col-lg-8">
-                                                        <label for="descricao">Descri&ccedil;&atilde;o</label><br>
-                                                        <textarea id="descricao" name="descricao" rows="4" cols="50"></textarea>
-                                                    </div>
-                                                </div>
                                                 <div class="form-group col-lg-4">
                                                 </div>
                                             </div>
-
+                                            <div class="row">
+                                                <div class="form-group col-lg-8">
+                                                    <label for="descricao">Descri&ccedil;&atilde;o</label><br>
+                                                    <textarea id="descricao" name="descricao" rows="4" cols="50"></textarea>
+                                                </div>
+                                            </div>
                                             <div class="row">
                                                 <div class="form-group col-lg-4">
                                                 </div>
