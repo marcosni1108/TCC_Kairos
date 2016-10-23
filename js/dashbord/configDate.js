@@ -18,7 +18,7 @@ $(function() {
     $( "#datepicker" ).datepicker();
   });
  
-  $(function() {
+  $(document).ready(function() {
      var currentDate = new Date(); 
     $( "#from" ).datepicker({
       defaultDate: "+0w",
