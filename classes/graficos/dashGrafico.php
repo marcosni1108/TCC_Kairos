@@ -68,7 +68,6 @@ function atividade($de, $ate) {
 function produtividadeAtividade($de, $ate) {
     require_once 'produtividade.php';
     $GerarGraficos = new produtividade();
-
     $array = $GerarGraficos->findAtivTurno($de, $ate, 1);
     if ($array) {
         foreach ($array as $key => $value) {
@@ -77,7 +76,6 @@ function produtividadeAtividade($de, $ate) {
             $diretaFinal = $value->PercentParadaDireta / $turnos;
             $indiretaFinal = $value->PercentParadaIndireta / $turnos;
             $categoria[] = $value->NOME;
-
             $produtividadeFomart = number_format($produtividadeFinal, 2, '.', '');
             $diretaFomart = number_format($diretaFinal, 2, '.', '');
             $indiretaFomart = number_format($indiretaFinal, 2, '.', '');

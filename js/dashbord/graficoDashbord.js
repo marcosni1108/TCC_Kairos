@@ -3,9 +3,11 @@
 $(function () {
     $('#from').val(dataAtualFormatada());
     $('#to').val(dataAtualFormatada());
-    var de = $('#from').val();
-    var ate = $('#to').val();
-    chamaGrafico(de, ate);
+
+    chamaGrafico('01-06-2016', '30-12-2016');
+    graficoParada('01-06-2016', '30-12-2016');
+    graficoAtividade('01-06-2016', '30-12-2016');
+    graficoProdutividade('01-06-2016', '30-12-2016');
 });
 function dataAtualFormatada() {
     var data = new Date();

@@ -8,7 +8,7 @@ foreach ($departamento->BuscaTable() as $key => $value) {
         $value->Gerente, "<a href='editarDepartamento.php?".md5('idDept')."=" . $value->id . "'>"
         . "<input type='submit' name='editar' class='btn btn-primary' value='Editar' style='margin-right:20px;margin-left:20px;'></a>"
         . "<a href='inativarDepartamento.php?".md5('idDept')."=" . $value->id . "' onclick='return confirm(\"Deseja realmente deletar?\")'>"
-        . "<input type='submit' name='deletar' class='btn btn-danger' value='Inativar' style='margin-right:-20px;'></a>");
+        . "<input type='submit' name='deletar' class='btn btn-danger' value='Deletar' style='margin-right:-20px;'></a>");
          $json_result["data"] [] = $fields;
 }
 $JSON = json_encode($json_result);
