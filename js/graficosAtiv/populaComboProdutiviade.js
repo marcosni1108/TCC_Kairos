@@ -5,9 +5,9 @@
 		$.getJSON('../../classes/model/consulta.php?opcao=allCNPJ', function (dados){ 
 		//verifica o json e cria um options.
 		   if (dados.length > 0){	
-			  var option = '<option value="">Selecione o CNPJ</option>';
+			  var option = '<option value="">Selecione a Filial</option>';
 			  $.each(dados, function(i, obj){
-				  option += '<option value="'+obj.id+'">'+obj.cnpj+'</option>';
+				  option += '<option value="'+obj.id+'">'+obj.nomeFilial+'</option>';
 			  })
 			 
 		   }else{

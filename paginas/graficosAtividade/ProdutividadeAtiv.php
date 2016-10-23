@@ -20,7 +20,7 @@
                         </h1>   
                         <div class="row">
                             <div class="form-group col-lg-4">
-                                <label for="cnpj">CNPJ</label>
+                                <label for="cnpj">Nome Filial</label>
                                 <select  class="form-control" name="cnpj" id="cnpj" required>                                                  
                                 </select>
                             </div>
