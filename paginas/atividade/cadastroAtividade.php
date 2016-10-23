@@ -3,33 +3,33 @@
     <head>
         <title>Kairos</title>
         <?php
-        include "../include/include_css.php";
-        //include "../menu_principal/menu_lateral.php";
-        include "../header/header.php";
-        //include '../include/include_classes.php';
-        include "../../classes/model/validaOperario.php";
-        ?>   
+          include "../include/include_css.php";
+          //include "../menu_principal/menu_lateral.php";
+          include "../header/header.php";
+          //include '../include/include_classes.php';
+          include "../../classes/model/validaOperario.php";
+        ?>
         <meta charset="UTF-8">
         <script type="text/javascript" src="../../js/validadores.js"></script>
     </head>
     <?php
-    if (isset($_POST['cadastrar'])):
-        $nome = $_POST['nome_ativ'];
-        $descricao = $_POST['descricao'];
-        $idDepartamentoFK = $_POST['departamento'];
-        $unid_med = $_POST['unid_med'];
-        $atividade = new atividade();
-        $atividade->setNome($nome);
-        $atividade->setDescricao($descricao);
-        $atividade->setIdDepartamentoFK($idDepartamentoFK);
-        $atividade->setUnid_med($unid_med);
-        # Insert
-        if ($atividade->insert()) {
-            echo "<script> alert('Atividade cadastrada com sucesso.')</script>";
-        }
+      if(isset($_POST['cadastrar'])):
+          $nome = $_POST['nome_ativ'];
+          $descricao = $_POST['descricao'];
+          $idDepartamentoFK = $_POST['departamento'];
+          $unid_med = $_POST['unid_med'];
+          $atividade = new atividade();
+          $atividade -> setNome($nome);
+          $atividade -> setDescricao($descricao);
+          $atividade -> setIdDepartamentoFK($idDepartamentoFK);
+          $atividade -> setUnid_med($unid_med);
+          # Insert
+          if($atividade -> insert()) {
+              echo "<script> alert('Atividade cadastrada com sucesso.')</script>";
+          }
 
-    endif;
-    ?> 
+      endif;
+    ?>
     <body >
         <!-- Wrapper da pagina -->
         <main class="mdl-layout__content">
@@ -53,56 +53,56 @@
                                                     <label for="nome_ativ">Nome da Atividade</label>
                                                     <input type="text" class="form-control" onkeypress="javascript: mascara(this, soLetras);" id="nome_ativ" name="nome_ativ" placeholder="Nome Atividade" required>
                                                 </div>
-                                                <div class="form-group col-lg-5">
+                                                <div class="form-group col-lg-4">
                                                     <label for="unid_med">Tipo da Unidade de Medida</label>
                                                     <select  class="form-control" name="unid_med" id="unid_med" required>
                                                         <option value="">Selecione o Unidade de Medida</option>
                                                         <option value="Caixa">Caixa</option>
                                                         <option value="Documento">Documento</option>
-                                                        <option value="Regua">Regua</option>                                                      
+                                                        <option value="Regua">Regua</option>
                                                     </select>
-                                                </div> 
-                                            </div>    
-                                            <div class="row">
-                                                <div class="form-group col-lg-8">
-                                                    <label for="descricao">Descri&ccedil;&atilde;o</label><br>
-                                                    <textarea id="descricao" name="descricao" rows="4" cols="50"></textarea>
-                                                </div>                                          
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-lg-4">
                                                     <label for="cnpj">Filial</label>
-                                                    <select  class="form-control" name="cnpj" id="cnpj" required>                                                  
+                                                    <select  class="form-control" name="cnpj" id="cnpj" required>
                                                         <option value="">Selecione a Filial</option>
                                                     </select>
                                                 </div>
-                                                    <div class="form-group col-lg-4">
-                                                        <label for="departamento">Departamento</label>
-                                                        <select  class="form-control" name="departamento" id="cmbDepartamento" required>                                                  
-                                                            <option value="">Selecione o Departamento</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-lg-4">
-                                                    </div>                                              
+                                                <div class="form-group col-lg-4">
+                                                    <label for="departamento">Departamento</label>
+                                                    <select  class="form-control" name="departamento" id="cmbDepartamento" required>
+                                                        <option value="">Selecione o Departamento</option>
+                                                    </select>
                                                 </div>
-
                                                 <div class="row">
-                                                    <div class="form-group col-lg-4">
+                                                    <div class="form-group col-lg-8">
+                                                        <label for="descricao">Descri&ccedil;&atilde;o</label><br>
+                                                        <textarea id="descricao" name="descricao" rows="4" cols="50"></textarea>
                                                     </div>
-                                                    <div class="form-group col-lg-4 text-center">
-                                                        <input id="btnCadastrar" type="submit" name="cadastrar" class="btn btn-success" value="Cadastrar dados">
-                                                    </div>    
+                                                </div>
+                                                <div class="form-group col-lg-4">
                                                 </div>
                                             </div>
-                                    </form>                                
+
+                                            <div class="row">
+                                                <div class="form-group col-lg-4">
+                                                </div>
+                                                <div class="form-group col-lg-4 text-center">
+                                                    <input id="btnCadastrar" type="submit" name="cadastrar" class="btn btn-success" value="Cadastrar dados">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>        
+            </div>
         </div>
-    </main>  
+    </main>
 
 </body>
 <?php include_once '../include/include_js.php'; ?>
