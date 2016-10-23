@@ -89,11 +89,11 @@
                                                             ?></option>
                                                     </select>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="form-group col-lg-8">
-                                                        <label for="descricao">Descri&ccedil;&atilde;o</label><br>
-                                                        <textarea id="descricao"  name="descricao" rows="4" cols="50"><?php echo $resultado -> descricao; ?></textarea>
-                                                    </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-lg-8">
+                                                    <label for="descricao">Descri&ccedil;&atilde;o</label><br>
+                                                    <textarea id="descricao"  name="descricao" rows="4" cols="50"><?php echo $resultado -> descricao; ?></textarea>
                                                 </div>
                                             </div>
                                             <div class="row">
