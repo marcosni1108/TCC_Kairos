@@ -23,6 +23,7 @@ function chamaGrafico() {
     var ate = $('#to').val();
     graficoParada(de, ate);
     graficoAtividade(de, ate);
+    graficoProdutividade(de, ate);
 }
 function graficoParada(de, ate) {
     var chart;
@@ -90,7 +91,7 @@ function graficoParada(de, ate) {
                 }
             }]
     };
-    $.getJSON("../../classes/graficos/dashGrafico.php?opcao=parada&de=" +de+ "&ate="+ate, function (json) {
+    $.getJSON("../../classes/graficos/dashGrafico.php?opcao=parada&de=" + de + "&ate=" + ate, function (json) {
         options.xAxis.categories = json[1]['data'];//xAxis: {categories: []}
         options.series[0] = json[0];
         chart = new Highcharts.Chart(options);
@@ -154,9 +155,85 @@ function graficoAtividade(de, ate) {
                 }
             }]
     };
-    $.getJSON("../../classes/graficos/dashGrafico.php?opcao=atividade&de=" +de+ "&ate="+ate, function (json) {
+    $.getJSON("../../classes/graficos/dashGrafico.php?opcao=atividade&de=" + de + "&ate=" + ate, function (json) {
         options.xAxis.categories = json[1]['data'];//xAxis: {categories: []}
         options.series[0] = json[0];
+        chart = new Highcharts.Chart(options);
+    });
+}
+
+function graficoProdutividade(de, ate) {
+    var chart;
+    var options = {
+        chart: {
+            renderTo: 'container',
+            type: 'column'
+        },
+        title: {
+            text: 'Dia:' + de + ' Até:' + ate
+        },
+        xAxis: {
+            type: 'category',
+            labels: {
+                rotation: -45,
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: "Percentual"
+            }
+        },
+        tooltip: {
+            headerFormat: '<b>{point.x}</b><br/>',
+            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: true,
+                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                    style: {
+                        textShadow: '0 0 3px black'
+
+                    }
+                }
+            }
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{
+                name: 'Produtividade',
+                data: []
+            },
+            {
+                name: 'Parada Direta',
+                data: []
+            },
+            {
+                name: 'Parada Indireta',
+                data: []
+            }
+        ]
+    };
+    $.getJSON("../../classes/graficos/dashGrafico.php?opcao=produtividade&de=" + de + "&ate=" + ate, function (json) {
+        var key;
+        for (key in json[3]) {
+
+            options.series[0]['data'].push(json[0].produtividade[key]);
+            options.series[1]['data'].push(json[1].paradaDireta[key]);
+            options.series[2]['data'].push(json[2].paradaIndireta[key]);
+            
+            
+            
+        }
+        options.xAxis.categories = json[3];
         chart = new Highcharts.Chart(options);
     });
 }
