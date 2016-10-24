@@ -72,7 +72,7 @@ function produtividadeAtividade($de, $ate) {
     $produtividade = array();
     $paradaDireta = array();
     $paradaIndireta = array();
-    if ($array) {
+    if ($array && count($$array)==0) {
         foreach ($array as $key => $value) {
             $turnos = $value->Turnos;
             $produtividadeFinal = $value->PercentProd / $turnos;
