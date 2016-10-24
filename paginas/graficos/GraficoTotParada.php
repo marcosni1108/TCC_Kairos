@@ -37,7 +37,7 @@
             <div class="col-lg-12">
                 <form method="post" >
                     <div class="input-prepend">
-                        <h1 class="page-header">
+                        <h1 class="page-header text-center">
                             Total de Parada de Departamento
                         </h1>          
                         <div class="row">

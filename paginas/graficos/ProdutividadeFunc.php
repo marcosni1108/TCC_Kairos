@@ -38,13 +38,13 @@
             <div class="col-lg-12">
                 <form method="post" >
                     <div class="input-prepend">
-                        <h1 class="page-header">
+                        <h1 class="page-header text-center">
                             Produtividade de Funcionários
                         </h1>          
 
                         <div class="row">
                     <div class="col-lg-12">
-                            <div class="col-lg-3">
+                            <div class="col-lg-6">
                                 <label for="funcionario">Funcionário</label>
                                 <select hidden="true" class="form-control" name="funcionario" id="cmbfuncionario" required>                                                  
                                     <option value="">Selecione o Funcionário</option>

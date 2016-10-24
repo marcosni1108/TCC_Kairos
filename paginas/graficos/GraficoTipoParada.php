@@ -40,8 +40,8 @@
             <div class="col-lg-12">
                 <form method="post" >
                     <div class="input-prepend">
-                        <h1 class="page-header">
-                            Total de Parada Indiretas do Departamento
+                        <h1 class="page-header text-center">
+                            Total de Parada por Tipo do Departamento
                         </h1>          
                         <div class="row">
                             <div class="col-md-7">
@@ -111,4 +111,5 @@
 <script src="../../js/jquery-1.12.0.min.js"></script>
 <script src="../../js/bootstrap.min.js"></script>
 <script src="../../js/populaComboGraficoFunc.js"></script>
+<script src="../../js/material.min.js"></script>
 </html>

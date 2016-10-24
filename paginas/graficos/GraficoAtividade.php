@@ -44,7 +44,7 @@
             <div class="col-lg-12">
                 <form method="post" >
                     <div class="input-prepend">
-                        <h1 class="page-header">
+                        <h1 class="page-header text-center">
                             Produtividade de Atividades
                         </h1>          
                         <div class="row">
