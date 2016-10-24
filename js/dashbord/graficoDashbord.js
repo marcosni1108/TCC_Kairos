@@ -1,13 +1,10 @@
 /* global Highcharts */
 
 $(function () {
+    
     $('#from').val(dataAtualFormatada());
     $('#to').val(dataAtualFormatada());
-
-    chamaGrafico('01-06-2016', '30-12-2016');
-    graficoParada('01-06-2016', '30-12-2016');
-    graficoAtividade('01-06-2016', '30-12-2016');
-    graficoProdutividade('01-06-2016', '30-12-2016');
+    chamaGrafico();
 });
 function dataAtualFormatada() {
     var data = new Date();
