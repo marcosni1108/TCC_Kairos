@@ -232,7 +232,7 @@ class produtividade extends Crud {
     public function findAtivTurno($dataDe, $dataAte, $id) {
 
         $sql = "SELECT P.IDFUNCIONARIO,count(P.TEMPOINICIAL) as Turnos,(SELECT NOME 
-			FROM FUNCIONARIO
+			FROM funcionario
 			WHERE ID=P.IDFUNCIONARIO) AS NOME,
 		(select 
 			sum(parada.percentParada) as parada from parada 
@@ -251,7 +251,7 @@ class produtividade extends Crud {
                                             and :dataAte
                                             and tipo_parada.tipoParada='Indireta') AS PercentParadaIndireta,
 			SUM(P.PERCENTPROD) as PercentProd		
-			FROM PRODUTIVIDADE P
+			FROM produtividade P
 			WHERE P.IDDEPARTAMENTO=:id
 			AND DATA BETWEEN :dataDe 
 						and :dataAte
