@@ -239,22 +239,22 @@ class produtividade extends Crud {
 			left join tipo_parada on 
 			tipo_parada.id = parada.idParadaFk 
 				where IDFUNCIONARIOFK=P.IDFUNCIONARIO 
-				and DATA BETWEEN '2016-06-01'
-                                            and '2016-06-30' 
+				and DATA BETWEEN :dataDe 
+ -				and :dataAte 
 				and tipo_parada.tipoParada='Direta') AS PercentParadaDireta,
                                     (select 
                                             sum(parada.percentParada) as parada from parada 
                                             left join tipo_parada on 
                                             tipo_parada.id = parada.idParadaFk 
                                             where IDFUNCIONARIOFK=P.IDFUNCIONARIO 
-                                            and DATA BETWEEN '2016-06-01'
-                                            and '2016-06-30'
+                                            and DATA BETWEEN :dataDe 
+ -					    and :dataAte'
                                             and tipo_parada.tipoParada='Indireta') AS PercentParadaIndireta,
 			SUM(P.PERCENTPROD) as PercentProd		
 			FROM produtividade P
 			WHERE P.IDDEPARTAMENTO=1
-			AND DATA BETWEEN '2016-06-01'
-                                            and '2016-06-30'
+			and DATA BETWEEN :dataDe 
+ -				and :dataAte
 			GROUP BY IDFUNCIONARIO";
         $stmt = DB::prepare($sql);
         $stmt->bindParam(':dataDe', $dataDe);
