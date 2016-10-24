@@ -11,7 +11,7 @@ foreach ($parada->findAll() as $key => $value){
     
     
          $fields = array($value->Nome,$value->TipoParada,$value->Descricao,$dep->nome,  
-              "<a href='editarParada.php?".md5('id')."=" . $value->Id . "'><input type='submit' name='editar' class='btn btn-primary' value='Editar' style='margin-right:8px;margin-left:10px;'></a><a href='inativarParada.php?".md5('id')."=" . $value->Id . "' onclick='return confirm(\"Deseja realmente deletar?\")'><input type='submit' name='deletar' class='btn btn-danger' value='Deletar'></a>");
+              "<a href='editarParada.php?".md5('id')."=" . $value->Id . "'><input type='submit' name='editar' class='btn btn-primary' value='Editar' style='margin-right:8px;margin-left:10px;'></a><a href='inativarParada.php?".md5('id')."=" . $value->Id . "' onclick='return confirm(\"Deseja realmente deletar?\")'><input type='submit' name='deletar' class='btn btn-danger' value='Excluir'></a>");
 $json_result["data"] [ ] =  $fields;
 
 
