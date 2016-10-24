@@ -20,7 +20,7 @@ if (!empty($opcao)) {
                 break;
             }
         case 'produtividade': {
-                echo produtividadeAtividade($de, $ate);
+                produtividadeAtividade($de, $ate);
                 break;
             }
     }
