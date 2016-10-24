@@ -69,7 +69,7 @@ function produtividadeAtividade($de, $ate) {
     require_once 'produtividade.php';
     $GerarGraficos = new produtividade();
     $array = $GerarGraficos->findAtivTurno($de, $ate, 1);
-    if ($array && count($array)==0) {
+    if ($array) {
         foreach ($array as $key => $value) {
             $turnos = $value->Turnos;
             $produtividadeFinal = $value->PercentProd / $turnos;
@@ -89,7 +89,7 @@ function produtividadeAtividade($de, $ate) {
     array_push($rslt, $paradaDireta);
     array_push($rslt, $paradaIndireta);
     array_push($rslt, $categoria);
-    return json_encode($array);
+    return json_encode($rslt);
 }
 
 function fomartaData($data) {
