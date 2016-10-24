@@ -69,9 +69,7 @@ function produtividadeAtividade($de, $ate) {
     require_once 'produtividade.php';
     $GerarGraficos = new produtividade();
     $array = $GerarGraficos->findAtivTurno($de, $ate, 1);
-    $produtividade = array();
-    $paradaDireta = array();
-    $paradaIndireta = array();
+    var_dump($array);
     if ($array) {
         foreach ($array as $key => $value) {
             $turnos = $value->Turnos;
