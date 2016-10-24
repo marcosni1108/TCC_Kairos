@@ -49,7 +49,7 @@
                                     <form method="post" action="">
                                         <div class="input-prepend">
                                             <div class="row">
-                                                <div class="form-group col-lg-4">
+                                                <div class="form-group col-lg-8">
                                                     <label for="nome_ativ">Nome da Atividade</label>
                                                     <input type="text" class="form-control" onkeypress="javascript: mascara(this, soLetras);" id="nome_ativ" name="nome_ativ" placeholder="Nome Atividade" required>
                                                 </div>
