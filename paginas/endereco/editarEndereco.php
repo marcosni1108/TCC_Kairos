@@ -34,11 +34,11 @@
                 <!-- Primeira linha do wrapper -->
                 <div class="row" >
                     <div class="col-lg-12">
-                        <h1 class="page-header">Editar Endere&ccedil;o</h1>
+                        <h1 class="page-header text-center">Editar Endere&ccedil;o</h1>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-12">
                         <div class="panel panel-default">
                             <!-- Conteudo dentro de wrapper -->
                             <div class="panel-body">
