@@ -72,7 +72,7 @@
                                     <input type="text" class="form-control" name="cnpj"  value="<?php
                                       $endereco = new endereco;
                                       $cnpj = $endereco -> find($dept -> idEnderecoFK);
-                                      echo $cnpj -> cnpj;
+                                      echo $cnpj -> nomeFilial;
                                     ?>" id="cnpjEditAtividade" placeholder="Filial" readonly>
                                 </div>
                             </div>
