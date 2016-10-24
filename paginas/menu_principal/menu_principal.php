@@ -30,7 +30,7 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                             </div>
@@ -39,21 +39,12 @@
                             </div>
                         </div>
                     </div>   
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                             </div>
                             <div class="panel-body">
                                 <div id="container" width="200" ></div>
-                            </div>
-                        </div>
-                    </div>  
-                    <div class="col-lg-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                            </div>
-                            <div class="panel-body">
-                                <div id="char1"></div>
                             </div>
                         </div>
                     </div>  
