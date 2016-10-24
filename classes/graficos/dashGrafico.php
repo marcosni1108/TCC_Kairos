@@ -89,7 +89,7 @@ function produtividadeAtividade($de, $ate) {
     array_push($rslt, $paradaDireta);
     array_push($rslt, $paradaIndireta);
     array_push($rslt, $categoria);
-    return json_encode($rslt);
+    return json_encode($array);
 }
 
 function fomartaData($data) {
