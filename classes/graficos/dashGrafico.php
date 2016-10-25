@@ -6,6 +6,7 @@ set_include_path(dirname(__FILE__) . "/../model");
 $opcao = isset($_GET['opcao']) ? $_GET['opcao'] : '';
 $de = isset($_GET['de']) ? $_GET['de'] : '';
 $ate = isset($_GET['ate']) ? $_GET['ate'] : '';
+$id = isset($_GET['id']) ? $_GET['id'] : '';
 $de = fomartaData($de);
 $ate = fomartaData($ate);
 
@@ -20,7 +21,7 @@ if (!empty($opcao)) {
                 break;
             }
         case 'produtividade': {
-                echo produtividadeAtividade($de, $ate);
+                echo produtividadeAtividade($de, $ate, $id);
                 break;
             }
     }
@@ -65,10 +66,10 @@ function atividade($de, $ate) {
     }
 }
 
-function produtividadeAtividade($de, $ate) {
+function produtividadeAtividade($de, $ate,$id) {
     require_once 'produtividade.php';
     $GerarGraficos = new produtividade();
-    $array = $GerarGraficos->findAtivTurno($de, $ate, 1);
+    $array = $GerarGraficos->findAtivTurno($de, $ate, $id);
     if ($array) {
         foreach ($array as $key => $value) {
             $turnos = $value->Turnos;

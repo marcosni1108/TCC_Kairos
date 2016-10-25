@@ -55,7 +55,10 @@
         </main>
         <?php
         include "../include/include_js.php";
-        ?>        
+        ?>  
+        <script type="text/javascript">
+            window.idDepartamento = "<?php echo $_SESSION['departamento']?>";
+        </script>
         <script src="../../js/jquery-1.12.0.min.js"></script>
         <script src="../../js/bootstrap.min.js"></script>
         <script src="../../js/highcharts.js"></script>

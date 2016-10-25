@@ -1,7 +1,7 @@
 /* global Highcharts */
 
 $(function () {
-    
+
     $('#from').val(dataAtualFormatada());
     $('#to').val(dataAtualFormatada());
     chamaGrafico();
@@ -21,8 +21,8 @@ function chamaGrafico() {
     var de = $('#from').val();
     var ate = $('#to').val();
     graficoParada(de, ate);
-  //  graficoAtividade(de, ate);
-    graficoProdutividade(de, ate);
+    //  graficoAtividade(de, ate);
+    graficoProdutividade(de, ate, window.idDepartamento );
 }
 function graficoParada(de, ate) {
     var chart;
@@ -94,7 +94,11 @@ function graficoParada(de, ate) {
         options.xAxis.categories = json[1]['data'];//xAxis: {categories: []}
         options.series[0] = json[0];
         chart = new Highcharts.Chart(options);
-    });
+    })
+    .fail(function () {
+        console.log("error");
+        $("#chart").html("<span class='texte-center'>O filtro não trouxe resultados.</span>")
+    });;
 }
 
 function graficoAtividade(de, ate) {
@@ -161,7 +165,7 @@ function graficoAtividade(de, ate) {
     });
 }
 
-function graficoProdutividade(de, ate) {
+function graficoProdutividade(de, ate, idDepartamento ) {
     var chart;
     var options = {
         chart: {
@@ -221,18 +225,21 @@ function graficoProdutividade(de, ate) {
             }
         ]
     };
-    $.getJSON("../../classes/graficos/dashGrafico.php?opcao=produtividade&de=" + de + "&ate=" + ate, function (json) {
+    $.getJSON("../../classes/graficos/dashGrafico.php?opcao=produtividade&de=" + de + "&ate=" + ate+"&id="+idDepartamento, function (json) {
         var key;
         for (key in json[3]) {
 
             options.series[0]['data'].push(json[0].produtividade[key]);
             options.series[1]['data'].push(json[1].paradaDireta[key]);
             options.series[2]['data'].push(json[2].paradaIndireta[key]);
-            
-            
-            
+
+
+
         }
         options.xAxis.categories = json[3];
         chart = new Highcharts.Chart(options);
+    }).fail(function () {
+        console.log("error");
+        $("#container").html("<span class='texte-center'>O filtro não trouxe resultados.</span>")
     });
 }
