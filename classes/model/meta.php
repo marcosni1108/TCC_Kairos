@@ -2,7 +2,7 @@
 
 require_once 'Crud.php';
 
-class Meta extends Crud{
+class Meta{
 
     protected $table = 'meta';
     private $MediaIndice;
