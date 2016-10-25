@@ -5,7 +5,7 @@ require 'atividade.php';
 require 'funcionario.php';
 require 'amostra.php';
 require 'meta.php';
-require 'tipo_parada.php';
+require 'tipoparada.php';
 require 'produtividade.php';
 require 'turno.php';
 

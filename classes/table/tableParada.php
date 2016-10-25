@@ -1,6 +1,6 @@
 <?php
 set_include_path(dirname(__FILE__)."/../model");
-require_once 'tipo_parada.php';
+require_once 'tipoparada.php';
 $parada = new TipoParada();
 
 $i = 0;
