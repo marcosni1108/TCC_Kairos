@@ -23,14 +23,14 @@ if (! empty($opcao)){
 }
 
 function getAllEnd($id){
-        $endereco = new endereco();
+        $endereco = new Endereco();
         $teste = $endereco->find($id);
         $JSON = json_encode($teste);
         echo $JSON;
 	
 }
 function findProd(){
-        $prod = new produtividade();
+        $prod = new Produtividade();
         $result = $prod->findProdTotal();
         $JSON = json_encode($result);
         echo $JSON;

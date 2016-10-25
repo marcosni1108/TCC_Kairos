@@ -13,7 +13,7 @@
     <body >
         <?php
           $id = (int) $_GET[md5('idDept')];
-          $departamento = new departamento();
+          $departamento = new Departamento();
           if(isset($_POST['atualizar'])):
               $nome_dept = $_POST['nome_dept'];
               $cnpj = $_POST['cnpj'];
@@ -58,7 +58,7 @@
                                                     <label for="endereco">Endere&ccedil;o</label>
                                                     <select  class="form-control" name="endereco" id="enderecoEdit">
                                                         <option value="<?php
-                                                          $endereco = new endereco;
+                                                          $endereco = new Endereco;
                                                           $end = $resultado -> idEnderecoFK;
                                                           $ender = $endereco -> find($end);
                                                           echo $resultado -> idEnderecoFK;
@@ -82,7 +82,7 @@
                                                     <label for="lider">Lider</label>
                                                     <select  class="form-control" name="lider" id="liderEdit">
                                                         <option value="<?php
-                                                          $usuario = new funcionario();
+                                                          $usuario = new Funcionario();
                                                           $lider = $usuario -> find($resultado -> lider);
                                                           echo $lider -> id;
                                                         ?>" selected><?php echo $lider -> nome; ?></option>
@@ -97,7 +97,7 @@
                                                     <label for="gerente">Gerente</label>
                                                     <select  class="form-control" name="gerente" id="gerenteEdit">
                                                         <option value="<?php
-                                                          $usuario = new funcionario();
+                                                          $usuario = new Funcionario();
                                                           $gerente = $usuario -> find($resultado -> gerente);
                                                           echo $gerente -> id;
                                                         ?>" selected><?php echo $gerente -> nome; ?></option>

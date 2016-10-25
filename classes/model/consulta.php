@@ -82,34 +82,34 @@ if (! empty($opcao)){
 			}
                  case 'turno':
 			{
-				echo turno();
+				echo Turno();
 				break;
 			}       
 	}
 }
 function turno(){
    
-        $turno = new turno();
+        $turno = new Turno();
         $result = $turno->findAll();
 	echo json_encode($result);
 	
 }
 function buscaTipoPara($id){
    
-        $parada = new tipo_parada();
+        $parada = new TipoParada();
         $result = $parada->findDepParada($id);
 	echo json_encode($result);
 	
 }
 function buscaAtividadeMeta($idDepartamento){
    
-        $produtividade = new produtividade();
+        $produtividade = new Produtividade();
         $result = $produtividade->buscaAtividadeMeta($idDepartamento);
 	echo json_encode($result);
 	
 }
 function getAllEnd(){
-        $endereco = new endereco();
+        $endereco = new Endereco();
         $end = $endereco->findAll();
 	
 	echo json_encode($end);
@@ -119,12 +119,12 @@ function getAllEnd(){
 function getCnpj($id,$tipo){
     if($tipo=='endereco'){
         
-        $endereco = new endereco();
+        $endereco = new Endereco();
         $end = $endereco->find($id);
 	
 	echo json_encode($end);
     }else{
-        $departamento = new departamento();
+        $departamento = new Departamento();
         $dept = $departamento->find($id);
 	echo json_encode($dept);
         
@@ -134,34 +134,34 @@ function getCnpj($id,$tipo){
 }
 
 function getDepartamento(){
-	$departamento = new departamento();
+	$departamento = new Departamento();
         $dept = $departamento->findAll();
 	echo json_encode($dept);
 		
 }
 
 function getAtividade($id){
-	$atividade = new atividade();
+	$atividade = new Atividade();
         $ativ = $atividade->findDept($id);
 	echo json_encode($ativ);
 		
 }
 
 function getUser($nivel){
-	$user = new funcionario();
+	$user = new Funcionario();
         $usuario = $user->whereNivel($nivel);
 	echo json_encode($usuario);
 		
 }
 function findUser(){
-	$user = new funcionario();
+	$user = new Funcionario();
         $usuario = $user->findAll();
 	echo json_encode($usuario);
 		
 }
 
 function getEditFunc($nivel,$id){
-	$user = new funcionario();
+	$user = new Funcionario();
         $usuario = $user->whereSelected($nivel,$id);
 	echo json_encode($usuario);
 		
@@ -169,7 +169,7 @@ function getEditFunc($nivel,$id){
 
 function findAllCnpj(){
     
-	$endereco = new endereco();
+	$endereco = new Endereco();
         $end = $endereco->findAll();
 	echo json_encode($end);
 		
@@ -177,7 +177,7 @@ function findAllCnpj(){
 
 function findDeptCnpj($idEnd){
     
-	$departamento = new departamento();
+	$departamento = new Departamento();
         $dept = $departamento->findDeptCnpj($idEnd);
 	echo json_encode($dept);
         
@@ -186,7 +186,7 @@ function findDeptCnpj($idEnd){
 
 function findAmostrasRel($departamento, $atividade){
     
-	$amostras = new amostra();
+	$amostras = new Amostra();
         $amostrasAll = $amostras->findAmostrasRel($departamento, $atividade);
 	echo json_encode($amostrasAll);
         
@@ -195,7 +195,7 @@ function findAmostrasRel($departamento, $atividade){
 
 function findMeta($departamento, $atividade){
     
-	$meta = new meta();
+	$meta = new Meta();
         $metaResult = $meta->findMeta($departamento, $atividade);
 	echo json_encode($metaResult);
         

@@ -30,7 +30,7 @@
   </head>
   <?php 
           include '../include/include_classes.php';
-          $acesso = new funcionario();
+          $acesso = new Funcionario();
           $login = $_SESSION['login'];
           $result = $acesso->acessoNivel($login);
           $nivel = $result[0]->nivel;

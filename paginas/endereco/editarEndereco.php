@@ -13,7 +13,7 @@
     <body >
         <?php
         $id = (int) $_GET[md5('id')];
-        $endereco = new endereco();
+        $endereco = new Endereco();
         if (isset($_POST['atualizar'])):
             $cep = $_POST['cep'];
             $rua = $_POST['endereco'];

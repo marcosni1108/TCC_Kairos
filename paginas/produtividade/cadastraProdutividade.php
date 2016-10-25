@@ -11,8 +11,8 @@
         <?php
           date_default_timezone_set('America/Sao_Paulo');
           $data_produtividade = date('Y-m-d');
-          $funcionario = new funcionario();
-          $produtividade = new produtividade;
+          $funcionario = new Funcionario();
+          $produtividade = new Produtividade;
           $func = $funcionario -> whereNome($_SESSION['nome']);
           $IdFuncionario = $func[0] -> id;
           $verificaAtividade = $produtividade -> findAtividadeIniciadas($IdFuncionario);

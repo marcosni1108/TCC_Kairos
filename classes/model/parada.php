@@ -2,7 +2,7 @@
 
 require_once 'Crud.php';
 
-class parada extends Crud {
+class Parada extends Crud {
     
     function construtor($tempoInicial, $tempoFinal, $turno, $entradaTempo, $tempConvertSegun, $percentParada, $data, $idFuncionarioFK, $idDepartamentoFK, $idParadaFK, $status) {
         $this->tempoInicial = $tempoInicial;

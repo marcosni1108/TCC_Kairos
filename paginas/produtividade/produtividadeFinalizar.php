@@ -11,7 +11,7 @@
         <?php
           date_default_timezone_set('America/Sao_Paulo');
           $data_produtividade = date('Y-m-d');
-          $produtividade = new produtividade;
+          $produtividade = new Produtividade;
           $idfunc = (int) $_GET[md5(idFunc)];
           $idAtividade = (int) $_GET[md5(idAtividade)];
           $idDep = (int) $_GET[md5(idDepartamento)];
@@ -30,9 +30,9 @@
           } else if(isset($_POST['parar'])) {
               date_default_timezone_set('America/Sao_Paulo');
               $quantidade = $_POST['quantidade'];
-              $funcionario = new funcionario();
+              $funcionario = new Funcionario();
               $func = $funcionario -> whereNome($_SESSION['nome']);
-              $meta = new meta();
+              $meta = new Meta();
               $result_meta = $meta -> findMeta($idDep, $idAtividade);
               $acrescimo_meta = $result_meta[0] -> AcrescimoMeta;
               $capacidade_turno = 3600/$acrescimo_meta;
@@ -45,7 +45,7 @@
               $hora_final = date('H:i');
               $status = 'finalizado';
               //verifica turno
-              $turnoObj = new turno();
+              $turnoObj = new Turno();
               $turno = $turnoObj -> verificaTurno($hora_final);
               $IdFuncionario = $func[0] -> id;
               $produtividade -> setTurno($turno);
@@ -71,9 +71,9 @@
                                 Finalizar Produtividade
                             </h1>
                             <?php
-                              $departamentoclass = new departamento();
-                              $atividadeclass = new atividade();
-                              $endereco = new endereco();
+                              $departamentoclass = new Departamento();
+                              $atividadeclass = new Atividade();
+                              $endereco = new Endereco();
                               $idEnd = $departamentoclass -> find($idDep);
                               $idEnd1 = $idEnd -> idEnderecoFK;
                               $enderecoConsulta = $endereco -> find($idEnd1);

@@ -18,7 +18,7 @@
           $descricao = $_POST['descricao'];
           $idDepartamentoFK = $_POST['departamento'];
           $unid_med = $_POST['unid_med'];
-          $atividade = new atividade();
+          $atividade = new Atividade();
           $atividade -> setNome($nome);
           $atividade -> setDescricao($descricao);
           $atividade -> setIdDepartamentoFK($idDepartamentoFK);

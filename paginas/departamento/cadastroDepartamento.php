@@ -18,7 +18,7 @@
           $lider = $_POST['lider'];
           $gerente = $_POST['gerente'];
           $endereco = $_POST['endereco'];
-          $departamento = new departamento();
+          $departamento = new Departamento();
           $departamento -> construtor($id, $nome, $cnpj, $lider, $gerente, $idEnderecoFK);
           # Insert
           if($departamento -> insert()) {

@@ -7,7 +7,7 @@
         include "../../classes/model/validaOperario.php";
         include "../../classes/model/validaLider.php";
         session_start();
-        $departamento = new departamento(); 
+        $departamento = new Departamento(); 
         $id = $_SESSION['departamento'];
         $departamento->setId($id);
         $resultado = $departamento->find($id);

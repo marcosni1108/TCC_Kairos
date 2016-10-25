@@ -18,7 +18,7 @@
             $cnpj = $_POST['cnpj'];
             $numero = $_POST['numero'];
             $nomeFilial = $_POST['nomeFilial'];
-            $endereco = new endereco();
+            $endereco = new Endereco();
             $endereco->setCep($cep);
             $endereco->setRua($rua);
             $endereco->setNumero($numero);

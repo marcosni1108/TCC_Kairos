@@ -1,7 +1,7 @@
 <?php
 set_include_path(dirname(__FILE__)."/../model");
 require_once 'departamento.php';
-$departamento = new departamento();
+$departamento = new Departamento();
 foreach ($departamento->BuscaTable() as $key => $value) {
     //monta JSON para fazer a table
     $fields = array($value->Departamento, $value->Endereco, $value->nomeFilial, $value->Lider,

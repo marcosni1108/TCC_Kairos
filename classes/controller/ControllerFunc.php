@@ -16,7 +16,7 @@ class ControllerFunc {
     
     public function insertFunc($matricula,$nome,$cpf,$email,$login,$nivel,$senha){
         
-            $funcionario = new funcionario();
+            $funcionario = new Funcionario();
             $funcionario->setMatricula($matricula);
             $funcionario->setNome($nome);
             $funcionario->setCpf($cpf);

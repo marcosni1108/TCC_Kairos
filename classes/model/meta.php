@@ -2,7 +2,7 @@
 
 require_once 'Crud.php';
 
-class meta {
+class Meta extends Crud{
 
     protected $table = 'meta';
     private $MediaIndice;
@@ -125,6 +125,10 @@ class meta {
 
     function setMediaIndice($MediaIndice) {
         $this->MediaIndice = $MediaIndice;
+    }
+
+    public function insert() {
+        
     }
 
 }

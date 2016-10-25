@@ -13,7 +13,7 @@
     <body>
         <?php
         $id = (int) $_GET[md5('id')];
-        $funcionario = new funcionario();
+        $funcionario = new Funcionario();
         if (isset($_POST['atualizar'])):
             $nome = $_POST['nome'];
             $email = $_POST['email'];

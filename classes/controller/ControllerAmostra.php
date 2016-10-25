@@ -78,7 +78,7 @@ class ControllerAmostra {
             $arquivo = "../../js/dataAmostra/dataAmostra" . $e . ".json";
             $info = file_get_contents($arquivo);
             $lendo = json_decode($info);
-            $amostra = new amostra();
+            $amostra = new Amostra();
 
             foreach ($lendo->amostra as $campo) {
 
@@ -135,7 +135,7 @@ class ControllerAmostra {
                     $arquivo = "../../js/dataAmostra/dataAmostra" . $e . ".json";
                     $info = file_get_contents($arquivo);
                     $lendo = json_decode($info);
-                    $amostra = new amostra();
+                    $amostra = new Amostra();
                     // le o json e popula a os campos
                     foreach ($lendo->amostra as $campo) {
 
@@ -169,7 +169,7 @@ class ControllerAmostra {
     
     public function verificarIndiceAtiv($param) {
         
-        $amostra = new amostra;
+        $amostra = new Amostra;
             $count = $amostra->findAllAmostras($atividade);
             if ($count) {
                 echo "<script>alert('Já existe um indece para essa atividade por favor selecione outra atividade');"

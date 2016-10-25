@@ -28,7 +28,7 @@
         //Muda o formato da data
         $dataDe = date("Y-m-d", strtotime(str_replace("/", "-", $dataDeTemp)));
         $dataAte = date("Y-m-d", strtotime(str_replace("/", "-", $dataAteTemp)));
-        $GerarGraficos = new produtividade();
+        $GerarGraficos = new Produtividade();
 
         //$array =  $GerarGraficos->findAtivProd($dataDe,$dataAte,$id);
         $array = $GerarGraficos->findAtivTurno($dataDe, $dataAte, $id);

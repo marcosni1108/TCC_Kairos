@@ -4,7 +4,7 @@
     </head> 
     <?php
     include '../include/include_classes.php';
-    $endereco = new endereco();
+    $endereco = new Endereco();
     $id = $_GET[md5('id')];
     $deletar = $endereco->delete($id);
     if ($deletar === true) {

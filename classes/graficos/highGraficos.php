@@ -1,7 +1,7 @@
 <?php
 set_include_path(dirname(__FILE__)."/../model");
 require_once 'produtividade.php';
-$produtividade = new produtividade();
+$produtividade = new Produtividade();
 $arrayFunc = $produtividade->findProdTotal();
 $bln = array();
 $bln['name'] = 'Departamento';

@@ -2,7 +2,7 @@
 session_start();
 set_include_path(dirname(__FILE__) . "/../model");
 require_once 'parada.php';
-$parada = new parada();
+$parada = new Parada();
 $arrayFunc = $parada->findtotParadaDept($_SESSION['departamento'], $_SESSION['mes'], $_SESSION['ano']);
 $bln = array();
 $bln['name'] = 'Atividade';

@@ -13,7 +13,7 @@
     <body>
         <?php
         $id = (int) $_GET[md5('id')];
-        $atividade = new atividade();
+        $atividade = new Atividade();
         if (isset($_POST['atualizar'])):
             $nome = $_POST['nome_ativ'];
             $descricao = $_POST['descricao'];
@@ -21,7 +21,7 @@
             $cnpj = $_POST['cnpj'];
             $unid_med = $_POST['unid_med'];
             $idDepartamentoOld = $_POST['departamento'];
-            $atividade = new atividade();
+            $atividade = new Atividade();
             $atividade->setNome($nome);
             $atividade->setDescricao($descricao);
             $atividade->setIdDepartamentoFK($idDepartamentoFK);
@@ -68,7 +68,7 @@
                                                     <label for="cnpj">Filial</label>
                                                     <select  class="form-control" name="cnpj" id="cnpjEdit" required>
                                                         <?php
-                                                        $departamento1 = new departamento();
+                                                        $departamento1 = new Departamento();
                                                         $deptCnpj = $departamento1->findEndDept($resultado->idDepartamentoFK);
                                                         ?>
                                                         <option value="<?php echo $deptCnpj->id ?>">
@@ -80,7 +80,7 @@
                                                     <label for="departamento">Departamento</label>
                                                     <select  class="form-control" name="departamento" id="cmbDepartamentoEdit" required>
                                                         <option value="<?php echo $resultado->idDepartamentoFK; ?>"><?php
-                                                            $departamento = new departamento();
+                                                            $departamento = new Departamento();
                                                             $detp = $departamento->find($resultado->idDepartamentoFK);
                                                             echo $detp->nome
                                                             ?></option>

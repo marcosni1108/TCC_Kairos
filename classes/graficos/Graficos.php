@@ -1,6 +1,6 @@
 <?php 
  
-$produtividade = new produtividade();
+$produtividade = new Produtividade();
 $row = $produtividade->findAll();
         
 

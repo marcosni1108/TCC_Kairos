@@ -2,7 +2,7 @@
 
 require_once 'Crud.php';
 
-class endereco extends Crud {
+class Endereco extends Crud {
 
     protected $table = 'endereco';
     private $id;

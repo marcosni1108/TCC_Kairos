@@ -24,14 +24,14 @@ if (! empty($opcao)){
 }
 function departamentoFunc($id){
    
-        $funcionario = new funcionario();
+        $funcionario = new Funcionario();
         $result = $funcionario->departamentoFunc($id);
 	return json_encode($result);
 	
 }
 function departamentoUpdate($funcs,$dept){
         $array = explode(',', $funcs);
-        $funcionario = new funcionario();
+        $funcionario = new Funcionario();
         for($i=0;$i<sizeof($array);$i++){
             $result = $funcionario->updateDepartamento($array[$i],$dept);
         }

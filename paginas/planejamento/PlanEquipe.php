@@ -13,9 +13,9 @@
         <?php
         
             session_start();
-            $departamento = new departamento(); 
-            $funcionario = new funcionario();
-            $atividade = new atividade();
+            $departamento = new Departamento(); 
+            $funcionario = new Funcionario();
+            $atividade = new Atividade();
             $id = (int)$_SESSION['departamento'];         
             $departamento->setId($id);
             $resultado = $departamento->find($id);
@@ -35,7 +35,7 @@
                         $qtd_ativididades = $_POST['qtdAtiv_'.$value->id];
                         $qtd_MO = $_POST['qtdMO_'.$value->id];
                         $id_atividade_fk = $value->id;
-                        $planejamento = new planejamento();
+                        $planejamento = new Planejamento();
                         $planejamento->setQtd_hora_planejada($qtd_hora_planejada);
                         $planejamento->setQtd_atividades($qtd_ativididades);
                         $planejamento->setMao_de_obra($qtd_MO);

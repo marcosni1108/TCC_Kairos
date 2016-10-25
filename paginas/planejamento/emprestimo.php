@@ -19,7 +19,7 @@
         <meta charset="UTF-8">
         <?php
         session_start();
-        $departamento = new departamento(); 
+        $departamento = new Departamento(); 
         $id = $_SESSION['departamento'];
         $departamento->setId($id);
         $resultado = $departamento->find($id);

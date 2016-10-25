@@ -11,7 +11,7 @@
     <body >
         <?php
           $id = (int) $_GET['matricula'];
-          $funcionario = new funcionario();
+          $funcionario = new Funcionario();
           if(isset($_POST['atualizar'])):
               $matricula = $_POST['matricula'];
               $nome = $_POST['nome'];

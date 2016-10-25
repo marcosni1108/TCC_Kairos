@@ -4,7 +4,7 @@
     </head>  
     <?php
     include '../include/include_classes.php';
-    $atividade = new atividade();
+    $atividade = new Atividade();
     $id = $_GET[md5('id')];
     $deletar = $atividade->delete($id);
     if ($deletar === '1451') {

@@ -5,7 +5,7 @@
     </head> 
     <?php
     include '../include/include_classes.php';
-    $departamento = new departamento();
+    $departamento = new Departamento();
     $idDepartament = $_GET[md5('idDept')];
     $deletar = $departamento->delete($idDepartament);
     if ($deletar === '1451') {

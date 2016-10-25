@@ -10,7 +10,7 @@
     </head>
     <body >
         <?php
-          $cMeta = new meta();
+          $cMeta = new Meta();
           if(isset($_POST['cadastrar'])):
               $departamento = $_POST['departamento'];
               $cnpj = $_POST['cnpj'];

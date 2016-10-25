@@ -1,6 +1,6 @@
 <?php
 
-class turno extends Crud {
+class Turno extends Crud {
     protected $table = 'turno';
     public function verificaTurno($horaInicial) {
         $horaFormat = str_replace(":", "", $horaInicial);

@@ -1,7 +1,7 @@
 <?php
 
 
-class tipo_parada extends Crud{
+class TipoParada extends Crud{
    protected $table = 'tipo_parada';
     private $idParada;
     private $tipoParada;

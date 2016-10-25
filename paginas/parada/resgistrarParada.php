@@ -13,7 +13,7 @@
               date_default_timezone_set('America/Sao_Paulo');
               $tempoInicial = $_SESSION['tempoInicial'];
               $tempoFinal = date('H:i');
-              $turnoObj = new turno();
+              $turnoObj = new Turno();
               $turno = $turnoObj -> verificaTurno($tempoFinal);
               $entradaTempo = $_POST['tempo_parada'];
               //cal
@@ -22,13 +22,13 @@
               $percentParada = ($tempConvertSegun/3600)*100;
 
               $data = date('Y-m-d');
-              $funcionario = new funcionario();
+              $funcionario = new Funcionario();
               $func = $funcionario -> whereNome($_SESSION['nome']);
               $idFuncionarioFK = $func[0] -> id;
               $idDepartamentoFK = $_POST['departamento'];
               $idParadaFK = $_POST['parada'];
               $status = 'finalizado';
-              $parada = new parada();
+              $parada = new Parada();
               $parada -> construtor($tempoInicial, $tempoFinal, $turno, $entradaTempo, $tempConvertSegun, $percentParada, $data, $idFuncionarioFK, $idDepartamentoFK, $idParadaFK, $status);
               # Insert
               if($parada -> insert()) {

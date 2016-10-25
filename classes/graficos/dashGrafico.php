@@ -13,11 +13,11 @@ $ate = fomartaData($ate);
 if (!empty($opcao)) {
     switch ($opcao) {
         case 'parada': {
-                echo parada($de, $ate);
+                echo Parada($de, $ate);
                 break;
             }
         case 'atividade': {
-                echo atividade($de, $ate);
+                echo Atividade($de, $ate);
                 break;
             }
         case 'produtividade': {
@@ -29,7 +29,7 @@ if (!empty($opcao)) {
 
 function parada($de, $ate) {
     require_once 'parada.php';
-    $parada = new parada();
+    $parada = new Parada();
     $arrayFunc = $parada->ParadaDept($de, $ate);
     $bln = array();
     $bln['name'] = 'Atividade';
@@ -48,7 +48,7 @@ function parada($de, $ate) {
 
 function atividade($de, $ate) {
     require_once 'atividade.php';
-    $atividade = new atividade();
+    $atividade = new Atividade();
     $arrayFunc = $atividade->dashProdTotalAtividade($de, $ate);
     $bln['name'] = 'Atividade';
     $rows['name'] = 'Departamento';
@@ -68,7 +68,7 @@ function atividade($de, $ate) {
 
 function produtividadeAtividade($de, $ate,$id) {
     require_once 'produtividade.php';
-    $GerarGraficos = new produtividade();
+    $GerarGraficos = new Produtividade();
     $array = $GerarGraficos->findAtivTurno($de, $ate, $id);
     if ($array) {
         foreach ($array as $key => $value) {

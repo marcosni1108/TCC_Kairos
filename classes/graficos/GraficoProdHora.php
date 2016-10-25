@@ -2,7 +2,7 @@
 session_start();
 set_include_path(dirname(__FILE__) . "/../model");
 require_once 'parada.php';
-$produtividade = new produtividade();
+$produtividade = new Produtividade();
 $arrayFunc = $produtividade->findtotProdPorHora($id, $mes, $ano);
 $bln = array();
 $bln['name'] = 'Atividade';

@@ -2,7 +2,7 @@
 set_include_path(dirname(__FILE__)."/../model");
 require_once 'funcionario.php';
 
-          $acesso = new funcionario();
+          $acesso = new Funcionario();
           $login = $_SESSION['login'];
           $result = $acesso->acessoNivel($login);
           $nivel = $result[0]->nivel;

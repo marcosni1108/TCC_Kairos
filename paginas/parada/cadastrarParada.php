@@ -15,7 +15,7 @@
               $tipo_parada = $_POST['tipo_parada'];
               $descricao = $_POST['descricao'];
               $IdDeptoFK = $_POST['departamento'];
-              $parada = new tipo_parada();
+              $parada = new TipoParada();
               $parada -> setNome($nome);
               $parada -> setTipoParada($tipo_parada);
               $parada -> setDescricao($descricao);

@@ -2,7 +2,7 @@
 include_once './funcionario.php';
 session_start();
 // as variáveis login e senha recebem os dados digitados na página anterior
-$funcionario = new funcionario();
+$funcionario = new Funcionario();
 $login = $_POST['login'];
 $senha= $_POST['senha'];
 

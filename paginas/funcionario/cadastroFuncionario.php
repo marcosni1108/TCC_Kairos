@@ -21,7 +21,7 @@
             $senha = 'kairos';
             $nivel = $_POST['nivel'];
             $idDepartamentoFK = $_POST['departamento'];
-            $funcionario = new funcionario();
+            $funcionario = new Funcionario();
             $funcionario->setMatricula($matricula);
             $funcionario->setNome($nome);
             $funcionario->setCpf($cpf);

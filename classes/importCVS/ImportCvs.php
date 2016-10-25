@@ -6,7 +6,7 @@ set_include_path(dirname(__FILE__) . "/../model");
 require_once 'produtividade.php';
 if (isset($_POST["Import"])) {
     //First we need to make a connection with the database
-    $produtividade = new produtividade();
+    $produtividade = new Produtividade();
     $filename = $_FILES["file"]["tmp_name"];
     if ($_FILES["file"]["size"] > 0) {
         $file = fopen($filename, "r");

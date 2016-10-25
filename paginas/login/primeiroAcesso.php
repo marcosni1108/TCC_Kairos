@@ -14,7 +14,7 @@
             //verifica se as senhas estão iguais
             if($senha1===$senha){
                 
-                 $funcionario = new funcionario();
+                 $funcionario = new Funcionario();
                  $funcionario->setSenha(md5($senha));
                  if($funcionario->updateSenha($login)){
                     echo "<script type='text/javascript' charset='utf-8'>alert('Senha alterada com sucesso!');"

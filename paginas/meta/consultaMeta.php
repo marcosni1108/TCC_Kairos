@@ -6,7 +6,7 @@
         include "../include/include_css.php";
         include "../header/header.php";
         include "../../classes/model/validaOperario.php";
-        $funcionario = new funcionario();
+        $funcionario = new Funcionario();
         ?> 
     </head>
     <body>

@@ -2,7 +2,7 @@
 
 require_once 'Crud.php';
 
-class funcionario extends Crud {
+class Funcionario extends Crud {
 
     protected $table = 'funcionario';
     private $matricula;

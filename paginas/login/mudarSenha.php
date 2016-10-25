@@ -16,7 +16,7 @@
             $senha  =  $_POST['senha'];
             $senhaAntiga =  $_POST['senhaAntiga'];
             
-            $funcionario = new funcionario();
+            $funcionario = new Funcionario();
             $result = $funcionario->verificaLogin($login,md5($senhaAntiga));
             //verifica se as senhas estão iguais
             

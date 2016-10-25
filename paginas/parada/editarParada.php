@@ -11,7 +11,7 @@
     <body >
         <?php
           $id = (int) $_GET[md5('id')];
-          $parada = new tipo_parada();
+          $parada = new TipoParada();
           if(isset($_POST['atualizar'])):
               $nome = $_POST['nome_parada'];
               $tipo_parada = $_POST['tipo_parada'];
@@ -57,7 +57,7 @@
                                     <label for="departamento">Departamento</label>
                                     <select  class="form-control" name="departamento" id="departamentoEditAtividade">
                                         <option value="<?php
-                                          $departamento = new departamento;
+                                          $departamento = new Departamento;
                                           $dept = $departamento -> find($resultado -> IdDeptoFK);
                                           echo $dept -> id;
                                         ?>" selected>
@@ -70,7 +70,7 @@
                                 <div class="form-group col-lg-4">
                                     <label for="cnpj">Filial</label>
                                     <input type="text" class="form-control" name="cnpj"  value="<?php
-                                      $endereco = new endereco;
+                                      $endereco = new Endereco;
                                       $cnpj = $endereco -> find($dept -> idEnderecoFK);
                                       echo $cnpj -> nomeFilial;
                                     ?>" id="cnpjEditAtividade" placeholder="Filial" readonly>

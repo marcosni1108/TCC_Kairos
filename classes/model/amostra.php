@@ -2,7 +2,7 @@
 
 require_once 'Crud.php';
 
-class amostra extends Crud {
+class Amostra extends Crud {
 
     protected $table = 'amostra';
     private $idAmostra;

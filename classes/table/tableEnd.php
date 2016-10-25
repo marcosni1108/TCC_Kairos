@@ -2,7 +2,7 @@
 set_include_path(dirname(__FILE__)."/../model");
 require_once 'endereco.php';
 
-$endereco = new endereco();
+$endereco = new Endereco();
 $endereco->findAll();
 
 

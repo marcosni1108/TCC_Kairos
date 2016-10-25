@@ -5,7 +5,7 @@
     </head>
     <?php
       include '../include/include_classes.php';
-      $funcionario = new funcionario();
+      $funcionario = new Funcionario();
       $id = $_GET[md5('id')];
       $inativar = $funcionario -> status($id, 'I');
       if($inativar===true) {

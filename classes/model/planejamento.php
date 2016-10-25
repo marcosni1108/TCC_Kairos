@@ -3,7 +3,7 @@
 
 require_once 'Crud.php';
 
-class planejamento extends Crud {
+class Planejamento extends Crud {
     protected $table = 'planejamento';    
     private $qtd_hora_planejada;
     private $qtd_atividades;

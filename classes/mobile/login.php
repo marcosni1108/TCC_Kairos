@@ -18,7 +18,7 @@ if (! empty($opcao)){
 
 function Login($user,$senha){
    
-       $funcionario = new funcionario();
+       $funcionario = new Funcionario();
        $result = $funcionario->verificaLogin($user,md5($senha));
        if(count($result) == 1 ){
            return 'true';

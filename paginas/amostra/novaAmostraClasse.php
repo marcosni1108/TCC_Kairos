@@ -14,7 +14,7 @@
         <?php
         $ControllerAmostra = new ControllerAmostra;
         if (isset($_POST['cadastrar'])) {
-            $endereco = new endereco();
+            $endereco = new Endereco();
             $cnpjNome = $endereco->find($_POST['cnpj']);
             $cnpj = $cnpjNome->cnpj;
             $departamento = $_POST['departamento'];
@@ -23,7 +23,7 @@
             $_SESSION['atividade'] = $atividade;
             $_SESSION["i"] = 0;
             $_SESSION["jcount"] = 0;
-            $amostra = new amostra;
+            $amostra = new Amostra;
             //guardando dados na sessoion
             $_SESSION['$cnpj'] = $_POST['cnpj'];
             $_SESSION['$departamento'] = $_POST['departamento'];
@@ -71,7 +71,7 @@
                 $resultado = $indice_final_media * 0.1;
                 //fim amostra
                 //cadastra uma meta inicial com o valor de 10%
-                $meta = new meta();
+                $meta = new Meta();
                 $meta->setMediaIndice($indice_final_media);
                 $meta->setQuantidade($_SESSION["jcount"]);
                 $meta->setMeta(10);
@@ -114,7 +114,7 @@
                                         <div class="form-group col-lg-4">
                                             <label for="departamento">Departamento</label>
                                             <input type="text" class="form-control" id="departamentoNone" name="departamentoNone" value="<?php
-                                            $departamentoclass = new departamento();
+                                            $departamentoclass = new Departamento();
                                             $nameDept = $departamentoclass->find($departamento);
                                             echo $nameDept->nome;
                                             ?>" placeholder="Departamento" readonly="readonly">
@@ -124,7 +124,7 @@
                                         <div class="form-group col-lg-4">
                                             <label for="atividade">Atividade</label>
                                             <input type="text" class="form-control" id="AtividadeNone" name="AtividadeNone" value="<?php
-                                            $atividadeclass = new atividade();
+                                            $atividadeclass = new Atividade();
                                             $name = $atividadeclass->find($atividade);
                                             echo $name->nome;
                                             ?>" placeholder="Atividade" readonly="readonly">

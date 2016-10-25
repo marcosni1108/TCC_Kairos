@@ -16,12 +16,12 @@ class GerarGraficosM{
 
     //put your code here
     public function prodFuncJson($id, $data) {
-        $produtividade = new produtividade();
+        $produtividade = new Produtividade();
         return $produtividade->findIdFunc($id, $data);
     }
     public function prodFunc($id, $data) {
-        $produtividade = new produtividade();
-        $fun = new funcionario();
+        $produtividade = new Produtividade();
+        $fun = new Funcionario();
         $arrayFunc = $produtividade->findIdFunc($id, $data);
         if ($arrayFunc) {
                 $tempoFinal = $this->categorias($arrayFunc, "HoraFinal");
@@ -96,8 +96,8 @@ class GerarGraficosM{
 
     public function prodDept($dataDe, $dataAte, $idCnpj) {
 
-        $produtividade = new produtividade();
-        $fun = new funcionario();
+        $produtividade = new Produtividade();
+        $fun = new Funcionario();
 
 
         $dataGrafico .= "[";
@@ -139,7 +139,7 @@ class GerarGraficosM{
 
     public function prodDeptHigh($dataDe, $dataAte, $idCnpj) {
 
-        $produtividade = new produtividade();
+        $produtividade = new Produtividade();
         $bln = array();
         $bln['name'] = 'Departamentos';
         $rows['name'] = 'Produção';
@@ -169,7 +169,7 @@ class GerarGraficosM{
 
     public function ativiGrafico($dataDe, $dataAte, $id) {
 
-        $produtividade = new produtividade();
+        $produtividade = new Produtividade();
         $bln = array();
         $bln['name'] = 'Funcionario';
         $rows['name'] = 'Produção';

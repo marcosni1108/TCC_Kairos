@@ -4,9 +4,9 @@ require_once 'atividade.php';
 require_once 'departamento.php';
 require_once 'endereco.php';
 
-$atividade = new atividade();
-$departamento = new departamento();
-$endereco = new endereco();
+$atividade = new Atividade();
+$departamento = new Departamento();
+$endereco = new Endereco();
 $atividade->findAll();
 
 

@@ -1,12 +1,12 @@
 <?php
 set_include_path(dirname(__FILE__)."/../model");
 require_once 'tipo_parada.php';
-$parada = new tipo_parada();
+$parada = new TipoParada();
 
 $i = 0;
 foreach ($parada->findAll() as $key => $value){
         
-    $departamento = new departamento();
+    $departamento = new Departamento();
     $dep = $departamento->find($value->IdDeptoFK);
     
     
