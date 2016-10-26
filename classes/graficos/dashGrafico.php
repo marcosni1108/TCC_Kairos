@@ -70,7 +70,8 @@ function produtividadeAtividade($de, $ate,$id) {
     require_once 'produtividade.php';
     $GerarGraficos = new Produtividade();
     $array = $GerarGraficos->findAtivTurno($de, $ate, $id);
-    if ($array) {
+    $cont = count($array);
+    if ($array && $cont>0) {
         foreach ($array as $key => $value) {
             $turnos = $value->Turnos;
             $produtividadeFinal = $value->PercentProd / $turnos;
