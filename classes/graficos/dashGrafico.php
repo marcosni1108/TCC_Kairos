@@ -85,13 +85,14 @@ function produtividadeAtividade($de, $ate,$id) {
             $paradaDireta['paradaDireta'][] = floatval($diretaFomart);
             $paradaIndireta['paradaIndireta'][] = floatval($indiretaFomart);
         }
-    }
-    $rslt = array();
-    array_push($rslt, $produtividade);
-    array_push($rslt, $paradaDireta);
-    array_push($rslt, $paradaIndireta);
-    array_push($rslt, $categoria);
-    return json_encode($rslt);
+   
+            $rslt = array();
+            array_push($rslt, $produtividade);
+            array_push($rslt, $paradaDireta);
+            array_push($rslt, $paradaIndireta);
+            array_push($rslt, $categoria);
+            return json_encode($rslt);
+         }
 }
 
 function fomartaData($data) {
