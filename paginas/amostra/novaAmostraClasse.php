@@ -17,6 +17,7 @@
             $endereco = new Endereco();
             $cnpjNome = $endereco->find($_POST['cnpj']);
             $cnpj = $cnpjNome->cnpj;
+            $nomeFilial = $cnpjNome->nomeFilial;
             $departamento = $_POST['departamento'];
             $atividade = $_POST['atividade'];
             $_SESSION['departamento'] = $departamento;
@@ -39,6 +40,7 @@
                 echo "<script>alert('Hora inicial não pode ser maior que hora final!');"
                 . "</script>";
                 $cnpj = $_POST['cnpj'];
+                $nomeFilial = $_POST['nomeFilial'];
                 $departamento = $_POST['departamento'];
                 $atividade = $_POST['atividade'];
                 $hora_inicial = $_POST['hora_inicial'];
@@ -48,6 +50,7 @@
             } else {
 
                 $cnpj = $_POST['cnpj'];
+                $nomeFilial = $_POST['nomeFilial'];
                 $departamento = $_POST['departamento'];
                 $atividade = $_POST['atividade'];
                 $hora_inicial = $_POST['hora_inicial'];
@@ -88,6 +91,8 @@
             } else {
 
                 $cnpj = $_SESSION['$cnpj'];
+                $cnpjNome = $endereco->find($cnpj);
+                $nomeFilial = $cnpjNome->nomeFilial;
                 $departamento = $_SESSION['$departamento'];
                 $atividade = $_SESSION['atividade'];
                 echo "<script> alert('Para finalizar mais de 2 amostras devem ser cadastradas')</script>";
@@ -109,7 +114,8 @@
                                     <div class="row">
                                         <div class="form-group col-lg-4">
                                             <label for="cnpj">Filial</label>
-                                            <input type="text" class="form-control" id="cnpj" name="cnpj" value="<?php echo $cnpj; ?>" placeholder="CNPJ" readonly="readonly">
+                                            <input type="text" class="form-control" style="display: none" id="cnpj" name="cnpj" value="<?php echo $cnpj; ?>" placeholder="CNPJ" readonly="readonly">
+                                            <input type="text" class="form-control" id="nomeFilial" name="nomeFilial" value="<?php echo $nomeFilial; ?>" placeholder="nomeFilial" readonly="readonly">
                                         </div>
                                         <div class="form-group col-lg-4">
                                             <label for="departamento">Departamento</label>
@@ -134,12 +140,12 @@
                                     <div class="row"><hr width=95%></div>
                                     <div class="row" id="amostra_lista">
                                         <div class="form-group col-lg-4">
-                                            <label for="cnpj">Hora Inicial</label>
-                                            <input type="time" class="form-control" id="hora_inicial" onkeypress="javascript: mascara(this, hora);" maxlength="5" name="hora_inicial" placeholder="Hora Inicial" required>
+                                            <label for="hora_inicial">Hora Inicial</label>
+                                            <input type="time" pattern="(?:[01]|2(?![4-9])){1}\d{1}:[0-5]{1}\d{1}"  class="form-control" id="hora_inicial" onkeypress="javascript: mascara(this, hora);" maxlength="5" name="hora_inicial" placeholder="Hora Inicial" required>
                                         </div>
                                         <div class="form-group col-lg-4">
-                                            <label for="cnpj">Hora Final</label>
-                                            <input type="time" class="form-control" id="hora_final"  onkeypress="javascript: mascara(this, hora);" maxlength="5" name="hora_final" placeholder="Hora Final" required>
+                                            <label for="hora_final">Hora Final</label>
+                                            <input type="time"  pattern="(?:[01]|2(?![4-9])){1}\d{1}:[0-5]{1}\d{1}"  class="form-control" id="hora_final"  onkeypress="javascript: mascara(this, hora);" maxlength="5" name="hora_final" placeholder="Hora Final" required>
                                         </div>
                                         <div class="form-group col-lg-4">
                                             <label for="cnpj">Quantidade</label>
@@ -185,8 +191,6 @@
     <script type="text/javascript" src="../../js/validadores.js"></script>
     <script type="text/javascript" src="../../js/jquery-1.12.0.min.js"></script>
     <script type="text/javascript" src="../../js/validarHora.js"></script>
-    <link href="../../css/jquery-ui.css" rel="stylesheet">
-    <script src="../../js/datapicker/jquery-ui.js"></script>
     <script src="../../js/table.js"></script>
     <script>
         $("#accordion").accordion({
