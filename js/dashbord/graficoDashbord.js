@@ -264,6 +264,7 @@ function graficoProdutividade(de, ate, idDepartamento ) {
 function graficoFiliais(mes) {
     
     var arrayMes = new Array(13);
+    arrayMes[0] = "";
     arrayMes[1] = "Janeiro";
     arrayMes[2] = "Fevereiro";
     arrayMes[3] = "Março";
