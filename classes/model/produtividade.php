@@ -268,7 +268,26 @@ class Produtividade extends Crud {
             echo $exc->getTraceAsString();
         }
     }
-
+  public function produtividadeFiliais($dataDe) {
+         $ano =date("Y");
+         $sql = "SELECT SUM(PERCENTPROD) as PercentProd,count(produtividade.TEMPOINICIAL) as Turnos,
+                    departamento.idEnderecoFK as id_filial, endereco.nomeFilial
+                        FROM produtividade
+                        INNER JOIN departamento ON (produtividade.IdDepartamento = departamento.id)
+                        INNER JOIN endereco ON (departamento.idEnderecoFK = endereco.id)
+                        WHERE MONTH(data) = :dataDe AND YEAR(data) = :ano
+                        GROUP BY departamento.idEnderecoFK";
+         
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':dataDe', $dataDe);
+        $stmt->bindParam(':ano', $ano);
+        try {
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
     public function findAtivProd($dataDe, $dataAte, $id) {
 
         $sql = "select func.nome as nomFunc, AT.nome,prod.capacidade,prod.percentProd"
