@@ -7,6 +7,7 @@ $opcao = isset($_GET['opcao']) ? $_GET['opcao'] : '';
 $de = isset($_GET['de']) ? $_GET['de'] : '';
 $ate = isset($_GET['ate']) ? $_GET['ate'] : '';
 $id = isset($_GET['id']) ? $_GET['id'] : '';
+$mes = isset($_GET['mes']) ? $_GET['mes'] : '';
 $de = fomartaData($de);
 $ate = fomartaData($ate);
 
@@ -24,6 +25,10 @@ if (!empty($opcao)) {
                 echo produtividadeAtividade($de, $ate, $id);
                 break;
             }
+        case 'filiais': {
+                echo produtividadeFiliais($mes);
+                break;
+            }    
     }
 }
 
@@ -92,6 +97,28 @@ function produtividadeAtividade($de, $ate,$id) {
             array_push($rslt, $paradaIndireta);
             array_push($rslt, $categoria);
             return json_encode($rslt);
+         }
+}
+function produtividadeFiliais($de) {
+    require_once 'produtividade.php';
+    $GerarGraficos = new Produtividade();
+    $array = $GerarGraficos->produtividadeFiliais($de);
+    $cont = count($array);
+    $i =0;
+    if ($array && $cont>0) {
+        foreach ($array as $key => $value) {
+            
+            $turnos = $value->Turnos;
+            $produtividadeFinal = $value->PercentProd / $turnos;
+            $produtividade[$i]['name'] = $value->nomeFilial;
+            $produtividadeFomart = number_format($produtividadeFinal, 2, '.', '');
+            $produtividade[$i]['data'][] = floatval($produtividadeFomart);
+            $i++;
+        }
+   
+            $rslt = array();
+            array_push($rslt, $produtividade);
+            return json_encode($produtividade);
          }
 }
 
