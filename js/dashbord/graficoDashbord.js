@@ -263,19 +263,19 @@ function graficoProdutividade(de, ate, idDepartamento ) {
 
 function graficoFiliais(mes) {
     
-    var arrayMes = new Array(12);
-    arrayMes[0] = "Janeiro";
-    arrayMes[1] = "Fevereiro";
-    arrayMes[2] = "Março";
-    arrayMes[3] = "Abril";
-    arrayMes[4] = "Maio";
-    arrayMes[5] = "Junho";
-    arrayMes[6] = "Julho";
-    arrayMes[7] = "Agosto";
-    arrayMes[8] = "Setembro";
-    arrayMes[9] = "Outubro";
-    arrayMes[10] = "Novembro";
-    arrayMes[11] = "Dezembro";
+    var arrayMes = new Array(13);
+    arrayMes[1] = "Janeiro";
+    arrayMes[2] = "Fevereiro";
+    arrayMes[3] = "Março";
+    arrayMes[4] = "Abril";
+    arrayMes[5] = "Maio";
+    arrayMes[6] = "Junho";
+    arrayMes[7] = "Julho";
+    arrayMes[8] = "Agosto";
+    arrayMes[9] = "Setembro";
+    arrayMes[10] = "Outubro";
+    arrayMes[11] = "Novembro";
+    arrayMes[12] = "Dezembro";
     
     var chart;
     var options = {
