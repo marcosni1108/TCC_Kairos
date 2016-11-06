@@ -1,21 +1,33 @@
-/* global Highcharts */
+/* Dashbord*/
 
 $(function () {
 
-    $('#from').val(dataAtualFormatada());
-    $('#to').val(dataAtualFormatada());
+    $('#from').val(dataAtualFormatada(true));
+    $('#to').val(dataAtualFormatada(true));
     chamaGrafico();
+    graficoFiliais(dataAtualFormatada(false));
+    
 });
-function dataAtualFormatada() {
-    var data = new Date();
-    var dia = data.getDate();
-    if (dia.toString().length === 1)
-        dia = "0" + dia;
-    var mes = data.getMonth() + 1;
-    if (mes.toString().length === 1)
-        mes = "0" + mes;
-    var ano = data.getFullYear();
-    return dia + "/" + mes + "/" + ano;
+function dataAtualFormatada(dataCompleta) {
+    if(dataCompleta){
+        var data = new Date();
+        var dia = data.getDate();
+        if (dia.toString().length === 1)
+            dia = "0" + dia;
+        var mes = data.getMonth() + 1;
+        if (mes.toString().length === 1)
+            mes = "0" + mes;
+        var ano = data.getFullYear();
+        return dia + "/" + mes + "/" + ano;
+        
+    }else{
+        var data = new Date();
+        var mes = data.getMonth() + 1;
+        if (mes.toString().length === 1)
+            mes = "0" + mes;
+        return mes; 
+    }
+    
 }
 function chamaGrafico() {
     var de = $('#from').val();
@@ -23,6 +35,11 @@ function chamaGrafico() {
     graficoParada(de, ate);
     //  graficoAtividade(de, ate);
     graficoProdutividade(de, ate, window.idDepartamento );
+}
+
+function chamaFilial(){
+     var mes = $('#mes').val();
+     graficoFiliais(mes);
 }
 function graficoParada(de, ate) {
     var chart;
@@ -96,8 +113,8 @@ function graficoParada(de, ate) {
         chart = new Highcharts.Chart(options);
     })
     .fail(function () {
-        console.log("error");
-        $("#chart").html("<span class='texte-center'>O filtro não trouxe resultados.</span>")
+       console.log("sem dados");
+        $("#chart").html("<img class='responsivo' id='theImg' src='../../imagens/filtro.jpg' />");
     });;
 }
 
@@ -239,7 +256,62 @@ function graficoProdutividade(de, ate, idDepartamento ) {
         options.xAxis.categories = json[3];
         chart = new Highcharts.Chart(options);
     }).fail(function () {
-        console.log("error");
-        $("#container").html("<span class='texte-center'>O filtro não trouxe resultados.</span>")
+        console.log("sem dados");
+        $("#container").html('<img class="responsivo" id="theImg" src="../../imagens/filtro.jpg" />');
+    });
+}
+
+function graficoFiliais(mes) {
+    
+    var arrayMes = new Array(12);
+    arrayMes[0] = "Janeiro";
+    arrayMes[1] = "Fevereiro";
+    arrayMes[2] = "Março";
+    arrayMes[3] = "Abril";
+    arrayMes[4] = "Maio";
+    arrayMes[5] = "Junho";
+    arrayMes[6] = "Julho";
+    arrayMes[7] = "Agosto";
+    arrayMes[8] = "Setembro";
+    arrayMes[9] = "Outubro";
+    arrayMes[10] = "Novembro";
+    arrayMes[11] = "Dezembro";
+    
+    var chart;
+    var options = {
+        chart: {
+            renderTo: 'produtividade',
+            type: 'column'
+        },
+        title: {
+            text: 'Comparativo mensal entre as filiais'
+        },
+        xAxis: {
+            categories: [
+                arrayMes[parseInt(mes)]
+            ]
+        },
+        
+        yAxis: {
+            min: 0,
+            title: {
+                text: "Percentual de produtividade"
+            }
+        },
+        tooltip: {
+            headerFormat: '<b>{point.x}</b><br/>',
+            pointFormat: '{series.name}: {point.y} %'
+        },
+        credits: {
+            enabled: false
+        },
+        series: []
+    };
+    $.getJSON("../../classes/graficos/dashGrafico.php?opcao=filiais&mes="+mes, function (json) {
+        options.series = json;
+        chart = new Highcharts.Chart(options);
+    }).fail(function () {
+        console.log("sem dados");
+        $("#produtividade").html('<img class="responsivo" id="theImg" src="../../imagens/filtro.jpg" />');
     });
 }
