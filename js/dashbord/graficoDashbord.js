@@ -257,7 +257,7 @@ function graficoProdutividade(de, ate, idDepartamento ) {
         chart = new Highcharts.Chart(options);
     }).fail(function () {
         console.log("sem dados");
-        $("#container").html('<img class="responsivo" id="theImg" src="../../imagens/filtro.jpg" />');
+        $("#container").html('<img style="display: block; margin-left: auto; margin-right: auto;"class="responsivo" id="theImg" src="../../imagens/filtro.jpg" />');
     });
 }
 
@@ -313,6 +313,6 @@ function graficoFiliais(mes) {
         chart = new Highcharts.Chart(options);
     }).fail(function () {
         console.log("sem dados");
-        $("#produtividade").html('<img class="responsivo" id="theImg" src="../../imagens/filtro.jpg" />');
+        $("#produtividade").html('<img style="display: block; margin-left: auto; margin-right: auto;" class="responsivo" id="theImg" src="../../imagens/filtro.jpg" />');
     });
 }
