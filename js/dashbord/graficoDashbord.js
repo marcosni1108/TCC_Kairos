@@ -4,6 +4,7 @@ $(function () {
 
     $('#from').val(dataAtualFormatada(true));
     $('#to').val(dataAtualFormatada(true));
+    $('#mes').val(dataAtualFormatada(false));
     chamaGrafico();
     graficoFiliais(dataAtualFormatada(false));
     
