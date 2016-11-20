@@ -9,7 +9,7 @@
     <!-- addbox to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="icon" sizes="192x192" href="../../images/android-desktop.png">
-
+    <meta name="theme-color" content="#1976d2">
     <!-- addbox to homescreen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
