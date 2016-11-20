@@ -100,6 +100,7 @@
         }
         ?>
         <main class="mdl-layout__content">
+            <br>
             <div class="col-lg-12">
                 <div class="container-fluid">
                     <div id="accordion">
