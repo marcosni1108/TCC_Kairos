@@ -33,6 +33,7 @@ $('#quantidade').focus(function (e) {
     hora_final = window.document.getElementById("hora_final").value;
 
     if (hora_inicial >= hora_final) {
+        $("#hora_inicial").focus();
         alert("Horário final não pode ser menor ou igual que o horário inicial");
         // window.document.getElementById("hora_inicial").value="";
         window.document.getElementById("hora_final").value = "";
@@ -62,6 +63,7 @@ function validaHora() {
     hora_final = window.document.getElementById("hora_final").value;
 
     if (hora_inicial >= hora_final) {
+        $("#hora_final").focus();
         alert("Horário final não pode ser menor ou igual que o horário inicial");
         // window.document.getElementById("hora_inicial").value="";
         window.document.getElementById("hora_final").value = "";

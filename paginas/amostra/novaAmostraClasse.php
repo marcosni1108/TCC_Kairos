@@ -7,7 +7,7 @@
         include "../../classes/model/validaOperario.php";
         require_once '../../classes/controller/ControllerAmostra.php';
         ?>
-        <link rel="stylesheet" href="../../css/wickedpicker.css">
+        <link href="../../css/jquery-ui.css" rel="stylesheet">
         <meta charset="UTF-8">
     </head>
     <body>
@@ -170,18 +170,18 @@
                                 </div>
                             </form>
                         </div>
-                        <h3>Amostras Cadastradas</h3>
-                        <div>
-                            <table id="tbl_Amostra" class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Hora Inicial</th>
-                                        <th>Hora Final</th>
-                                        <th>Quantidade</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
+                            <h3>Amostras Cadastradas</h3>
+                            <div>
+                                <table id="tbl_Amostra" class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Hora Inicial</th>
+                                            <th>Hora Final</th>
+                                            <th>Quantidade</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -191,7 +191,7 @@
     <script type="text/javascript" src="../../js/validadores.js"></script>
     <script type="text/javascript" src="../../js/jquery-1.12.0.min.js"></script>
     <script type="text/javascript" src="../../js/validarHora.js"></script>
-    <script src="../../js/table.js"></script>
+    <script type="text/javascript" src="../../js/datapicker/jquery-ui.js"></script>
     <script>
         $("#accordion").accordion({
             collapsible: true
