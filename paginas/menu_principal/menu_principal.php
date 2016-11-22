@@ -22,6 +22,7 @@
                     </div>
                     <div class="col-lg-2">
                         <input pattern="dd/MM/yyyy" class="form-control readdata" onchange="chamaGrafico()" id="from" name="dataDe" placeholder="Data de" autocomplete="off" readonly>                                
+                    <br>
                     </div>
 
                     <div class="col-lg-2">
