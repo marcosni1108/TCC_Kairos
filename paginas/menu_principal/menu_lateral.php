@@ -151,10 +151,10 @@ error_reporting(0);
                 <li class="mdl-menu__item">Prod. dos Func. por Período <i class="mdl-color-text--black material-icons" role="presentation"></i>
                 </li>
             </a>
-            <a href="../graficos/HighProd.php">
+           <!--- <a href="../graficos/HighProd.php">
                 <li class="mdl-menu__item">Prod. de Departamento<i class="mdl-color-text--black material-icons" role="presentation"></i>
                 </li>
-            </a>
+            </a>-->
             <a href="../graficos/ProdutividadeFunc.php"> 
                 <li class="mdl-menu__item">Prod. Funcion&aacute;rio
                     <i class="mdl-color-text--black material-icons" role="presentation">
@@ -173,12 +173,12 @@ error_reporting(0);
                     </i> 
                 </li>
             </a>
-            <a href="../graficos/GraficoProdPorHoraAtiv.php"> 
+           <!-- <a href="../graficos/GraficoProdPorHoraAtiv.php"> 
                 <li class="mdl-menu__item">Prod. por Hora da Atividade
                     <i class="mdl-color-text--black material-icons" role="presentation">
                     </i> 
                 </li>
-            </a>           
+            </a>    -->       
         </ul>
         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-color--blue"
             for="administrativo">
