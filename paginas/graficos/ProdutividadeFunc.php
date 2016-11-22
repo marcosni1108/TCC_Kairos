@@ -52,7 +52,7 @@
                             </div>
                             <div class="col-lg-2">
                                 <label for="data">Data</label>
-                                <input type="text" class="form-control" id="datepicker" name="data" placeholder="Data" required>                                
+                                <input type="text" class="form-control readdata" id="datepicker" name="data" placeholder="Data" readonly="true" required>                                
                             </div>
 
                         </div>  
