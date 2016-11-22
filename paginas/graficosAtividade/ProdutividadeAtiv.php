@@ -31,11 +31,11 @@
                             </div>      
                             <div class="form-group col-lg-2">
                                 <label for="data">De</label>
-                                <input type="text" class="form-control" id="from" name="dataDe" placeholder="Data" required>                                
+                                <input type="text" class="form-control readdata" id="from" name="dataDe" readonly="true" placeholder="Data" required>                                
                             </div>
                             <div class="form-group col-lg-2">
                                 <label for="data">Ate</label>
-                                <input type="text" class="form-control" id="to" name="dataAte" placeholder="Data" required>                                
+                                <input type="text" class="form-control readdata" id="to" name="dataAte" readonly="true" placeholder="Data" required>                                
                             </div> 
                         </div>  
                         <div class="row">
