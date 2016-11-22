@@ -21,11 +21,11 @@
                     <div class="col-lg-4 dash-bord text-center">Filtro:                                      
                     </div>
                     <div class="col-lg-2">
-                        <input pattern="dd/MM/yyyy" class="form-control read-data" onchange="chamaGrafico()" id="from" name="dataDe" placeholder="Data de" autocomplete="off" readonly>                                
+                        <input pattern="dd/MM/yyyy" class="form-control readdata" onchange="chamaGrafico()" id="from" name="dataDe" placeholder="Data de" autocomplete="off" readonly>                                
                     </div>
 
                     <div class="col-lg-2">
-                        <input pattern="dd/MM/yyyy" class="form-control read-data" onchange="chamaGrafico()" id="to" name="dataAte" placeholder="Data até" autocomplete="off" readonly>                                
+                        <input pattern="dd/MM/yyyy" class="form-control readdata" onchange="chamaGrafico()" id="to" name="dataAte" placeholder="Data até" autocomplete="off" readonly>                                
                     </div>
                 </div>
                 <br>
