@@ -1,5 +1,3 @@
-
-
 <html>
    <head>
       <title>Kairos</title>
@@ -62,17 +60,19 @@
 						 <div class="panel panel-default">
 							<!-- Conteudo dentro de wrapper -->
 							<div class="panel-body">
-							   <div class="form-group col-lg-4">
-								  <label for="matricula">Matricula</label>
-								  <input type="text" class="form-control" id="matricula" onkeypress="javascript: mascara(this, soNumeros);" maxlength="11" name="matricula" placeholder="Matricula" required>
-							   </div>
-							   <div class="form-group col-lg-4">
-								  <label for="nome">Nome</label>
-								  <input type="text" class="form-control" name="nome" id="nome" onkeypress="javascript: mascara(this, soLetras);" placeholder="Nome" required>
-							   </div>
-							   <div class="form-group col-lg-4">
-								  <label for="cpf">CPF</label>
-								  <input type="text" class="form-control" name="cpf" id="cpf" onblur="javascript: validarCPF(this.value);" onkeypress="javascript: mascara(this, cpf_mask);"  maxlength="14" placeholder="CPF" required>
+								<div class="row">
+								   <div class="form-group col-lg-4">
+									  <label for="matricula">Matricula</label>
+									  <input type="text" class="form-control" id="matricula" onkeypress="javascript: mascara(this, soNumeros);" maxlength="11" name="matricula" placeholder="Matricula" required>
+								   </div>
+								   <div class="form-group col-lg-4">
+									  <label for="nome">Nome</label>
+									  <input type="text" class="form-control" name="nome" id="nome" onkeypress="javascript: mascara(this, soLetras);" placeholder="Nome" required>
+								   </div>
+								   <div class="form-group col-lg-4">
+									  <label for="cpf">CPF</label>
+									  <input type="text" class="form-control" name="cpf" id="cpf" onblur="javascript: validarCPF(this.value);" onkeypress="javascript: mascara(this, cpf_mask);"  maxlength="14" placeholder="CPF" required>
+								   </div>
 							   </div>
 							   <div class="row">
 								  <div class="form-group col-lg-4">
@@ -124,4 +124,3 @@
    <?php include_once '../include/include_js.php'; ?>
    <script src="../../js/populaComboAtividade.js"></script>
 </html>
-
