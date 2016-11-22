@@ -49,11 +49,13 @@
                                     <form method="post" action="">
                                         <div class="input-prepend">
                                             <div class="row">
-                                                <div class="form-group col-lg-8">
+                                                <div class="form-group col-lg-12">
                                                     <label for="nome_ativ">Nome da Atividade</label>
                                                     <input type="text" class="form-control" onkeypress="javascript: mascara(this, soLetras);" id="nome_ativ" name="nome_ativ" placeholder="Nome Atividade" required>
                                                 </div>
-                                                <div class="form-group col-lg-4">
+                                            </div>
+                                            <div class="row">
+                                                 <div class="form-group col-lg-4">
                                                     <label for="unid_med">Tipo da Unidade de Medida</label>
                                                     <select  class="form-control" name="unid_med" id="unid_med" required>
                                                         <option value="">Selecione o Unidade de Medida</option>
@@ -62,8 +64,6 @@
                                                         <option value="Regua">Regua</option>
                                                     </select>
                                                 </div>
-                                            </div>
-                                            <div class="row">
                                                 <div class="form-group col-lg-4">
                                                     <label for="cnpj">Filial</label>
                                                     <select  class="form-control" name="cnpj" id="cnpj" required>
@@ -80,9 +80,9 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="form-group col-lg-8">
+                                                <div class="form-group col-lg-12">
                                                     <label for="descricao">Descri&ccedil;&atilde;o</label><br>
-                                                    <textarea id="descricao" name="descricao" rows="4" cols="50"></textarea>
+                                                    <textarea id="descricao" class="form-control" name="descricao" rows="4" cols="50"></textarea>
                                                 </div>
                                             </div>
                                             <div class="row">
