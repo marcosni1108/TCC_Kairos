@@ -2596,7 +2596,7 @@ fieldset[disabled] .form-control {
   background-color: #eee;
   opacity: 1;
 }
-readdata {
+.readdata {
     background-color: #fff !important;
 }
 .form-control[disabled],
