@@ -198,6 +198,11 @@
     <!-- polyfiller file to detect and load polyfills -->
     <script src="../../js/polyfiller.js"></script>
     <script>
+      webshims.setOptions('waitReady', false);
+      webshims.setOptions('forms-ext', {types: 'date'});
+      webshims.polyfill('forms forms-ext');
+    </script>
+    <script>
         $("#accordion").accordion({
             collapsible: true
         });
