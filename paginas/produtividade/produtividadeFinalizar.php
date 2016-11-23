@@ -106,7 +106,7 @@
                                 </div>
                                 <div class="form-group col-lg-4">
                                     <label for="cnpj">Quantidade</label>
-                                    <input type="text" class="form-control" id="quantidade" name="quantidade" maxlength="5" onkeypress="javascript: mascara(this, soNumeros);" placeholder="Quantidade" required="true">
+                                    <input type="number" class="form-control" id="quantidade" name="quantidade" maxlength="5" onkeypress="javascript: mascara(this, soNumeros);" placeholder="Quantidade" required="true">
                                 </div>
                             </div>
                             <div class="row"><hr width=95%></div>
