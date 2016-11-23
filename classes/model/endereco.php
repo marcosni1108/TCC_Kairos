@@ -98,5 +98,12 @@ class Endereco extends Crud {
 
         return $stmt->execute();
     }
+    
+     public function findEndereco() {
+        $sql = "SELECT `endereco`.* FROM `endereco` INNER JOIN `departamento` ON `endereco`.`id` = `departamento`.`idEnderecoFK` GROUP BY `endereco`.`NomeFilial";
+        $stmt = DB::prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 
 }
