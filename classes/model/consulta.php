@@ -110,7 +110,7 @@ function buscaAtividadeMeta($idDepartamento){
 }
 function getAllEnd(){
         $endereco = new Endereco();
-        $end = $endereco->findAll();
+        $end = $endereco->findEndereco();
 	
 	echo json_encode($end);
 	
