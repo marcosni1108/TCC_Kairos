@@ -10,6 +10,15 @@
         <link href="../../css/jquery-ui.css" rel="stylesheet">
         <meta charset="UTF-8">
     </head>
+    <!-- cdn for modernizr, if you haven't included it already -->
+    <script src="../../js/modernizr-custom.js"></script>
+    <!-- polyfiller file to detect and load polyfills -->
+    <script src="../../js/polyfiller.js"></script>
+    <script>
+      webshims.setOptions('waitReady', false);
+      webshims.setOptions('forms-ext', {types: 'date'});
+      webshims.polyfill('forms forms-ext');
+    </script>
     <body>
         <?php
         $ControllerAmostra = new ControllerAmostra;
@@ -193,15 +202,6 @@
     <script type="text/javascript" src="../../js/jquery-1.12.0.min.js"></script>
     <script type="text/javascript" src="../../js/validarHora.js"></script>
     <script type="text/javascript" src="../../js/datapicker/jquery-ui.js"></script>
-    <!-- cdn for modernizr, if you haven't included it already -->
-    <script src="../../js/modernizr-custom.js"></script>
-    <!-- polyfiller file to detect and load polyfills -->
-    <script src="../../js/polyfiller.js"></script>
-    <script>
-      webshims.setOptions('waitReady', false);
-      webshims.setOptions('forms-ext', {types: 'date'});
-      webshims.polyfill('forms forms-ext');
-    </script>
     <script>
         $("#accordion").accordion({
             collapsible: true
