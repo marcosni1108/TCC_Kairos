@@ -193,6 +193,7 @@
     <script type="text/javascript" src="../../js/jquery-1.12.0.min.js"></script>
     <script type="text/javascript" src="../../js/validarHora.js"></script>
     <script type="text/javascript" src="../../js/datapicker/jquery-ui.js"></script>
+    <script type="text/javascript" src="../../js/jquery.mask.js"></script>
     <script>
         $("#accordion").accordion({
             collapsible: true
