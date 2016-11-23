@@ -10,15 +10,6 @@
         <link href="../../css/jquery-ui.css" rel="stylesheet">
         <meta charset="UTF-8">
     </head>
-    <!-- cdn for modernizr, if you haven't included it already -->
-    <script src="../../js/modernizr-custom.js"></script>
-    <!-- polyfiller file to detect and load polyfills -->
-    <script src="../../js/polyfiller.js"></script>
-    <script>
-      webshims.setOptions('waitReady', false);
-      webshims.setOptions('forms-ext', {types: 'date'});
-      webshims.polyfill('forms forms-ext');
-    </script>
     <body>
         <?php
         $ControllerAmostra = new ControllerAmostra;
@@ -209,8 +200,20 @@
 
     </script>
     <script>
+    var mask = "HH:MM",
+    pattern = {
+        'translation': {
+            'H': {
+                pattern: /[0-23]/
+            },
+            'M': {
+                pattern: /[0-59]/
+            }
+        }
+    };
 
-
+    $("#hora_inicial").mask(mask, pattern);
+    $("#hora_final").mask(mask, pattern);
     </script>
 </html>
 
