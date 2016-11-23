@@ -73,7 +73,7 @@
                             <div class="row">
                                 <div class="form-group col-lg-4">
                                     <label for="tempo_parada">Tempo de Parada (Minutos)</label>
-                                    <input type="text" class="form-control" maxlength="2" name="tempo_parada" onkeypress="javascript: mascara(this, soNumeros);" id="tempo_parada" placeholder="Tempo Parada" required>
+                                    <input type="number" class="form-control" maxlength="2" name="tempo_parada" onkeypress="javascript: mascara(this, soNumeros);" id="tempo_parada" placeholder="Tempo Parada" required>
                                 </div>
                             </div>
                             <div class="row">
