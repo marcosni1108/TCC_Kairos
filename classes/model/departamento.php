@@ -63,18 +63,21 @@ class Departamento extends Crud {
     public function insert() {
 
 
-        $sql = "INSERT INTO $this->table (nome,cnpj,lider,gerente,idEnderecoFK	)"
-                . " VALUES (:nome,:cnpj,:lider,:gerente,:idEnderecoFK)";
+        $sql = "INSERT INTO $this->table (nome,lider,gerente,idEnderecoFK)"
+                . " VALUES (:nome,:lider,:gerente,:idEnderecoFK)";
         $stmt = DB::prepare($sql);
         $stmt->bindParam(':nome', $this->nome);
-        $stmt->bindParam(':cnpj', $this->cnpj);
-        $stmt->bindParam(':lider', $this->lider);
-        $stmt->bindParam(':gerente', $this->gerente);
-        $stmt->bindParam(':idEnderecoFK', $this->idEnderecoFK);
-
-
-
-        return $stmt->execute();
+        $stmt->bindParam(':lider', $this->lider, PDO::PARAM_INT);
+        $stmt->bindParam(':gerente', $this->gerente, PDO::PARAM_INT);
+        $stmt->bindParam(':idEnderecoFK', $this->idEnderecoFK, PDO::PARAM_INT);
+        try {
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1062') {
+                $erro = $this->trataErro($e->errorInfo[2]);
+                return $erro;
+            }
+        }
     }
 
     public function update($id) {
@@ -113,7 +116,8 @@ class Departamento extends Crud {
         $stmt->execute();
         return $stmt->fetch();
     }
-      public function buscaDept($idDept,$idEnd) {
+
+    public function buscaDept($idDept, $idEnd) {
         $sql = "select * from departamento where id <> :id and idEnderecoFK=:idEnd";
         $stmt = DB::prepare($sql);
         $stmt->bindParam(':id', $idDept, PDO::PARAM_INT);
@@ -121,17 +125,14 @@ class Departamento extends Crud {
         $stmt->execute();
         try {
             $stmt->execute();
-           return $stmt->fetchAll();
+            return $stmt->fetchAll();
         } catch (PDOException $e) {
             if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1062') {
-                 $erro = $this->trataErro($e->errorInfo[2]);
+                $erro = $this->trataErro($e->errorInfo[2]);
                 return $erro;
             }
         }
-        
     }
-    
-    
 
     public function BuscaTable() {
         $sql = "SELECT dep.id,

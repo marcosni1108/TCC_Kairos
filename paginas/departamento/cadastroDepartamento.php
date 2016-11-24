@@ -14,12 +14,14 @@
     <?php
       if(isset($_POST['cadastrar'])):
           $nome_dept = $_POST['nome_dept'];
-          $cnpj = $_POST['cnpj'];
           $lider = $_POST['lider'];
           $gerente = $_POST['gerente'];
           $endereco = $_POST['endereco'];
           $departamento = new Departamento();
-          $departamento -> construtor($id, $nome, $cnpj, $lider, $gerente, $idEnderecoFK);
+          $departamento->setNome($nome_dept);
+          $departamento->setLider($lider);
+          $departamento->setGerente($gerente);
+          $departamento->setIdEnderecoFK($endereco);
           # Insert
           if($departamento -> insert()) {
               echo "<script> alert('Departamento cadastrado com sucesso.')</script>";
