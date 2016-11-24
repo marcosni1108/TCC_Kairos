@@ -105,5 +105,5 @@
 
 </body>
 <?php include_once '../include/include_js.php'; ?>
-<script src="../../js/populaComboAtividade.js"></script>
+<script src="../../js/populaComboAtiv.js"></script>
 </html>
