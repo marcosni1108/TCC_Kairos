@@ -41,33 +41,6 @@ $('#cnpj').change(function (e) {
     });
 });
 
-//quando é alterado o departamento
-$('#cmbDepartamento').change(function (e) {
-    var end = $('#cmbDepartamento').val();
-
-    //desabilita o botão cadastrar até que o combos serem populados.
-    $('#btnCadastrar').prop("disabled", true);
-    //chama o serviço que traz o cpnj do departamento.
-
-    //chama o serviço que lista as atividades relacionadas ao departamento.
-    $.getJSON('../../classes/model/consulta.php?opcao=AtividadeMeta&valor=' + end, function (dados1) {
-
-        if (dados1.length > 0) {
-            var option = '<option value="">Selecione o Atividade</option>';
-            $.each(dados1, function (i, obj) {
-                option += '<option value="' + obj.id + '">' + obj.nome + '</option>';
-            });
-        } else {
-            return;
-        }
-        //popula o combo de atividades.
-        $('#cmbAtividade').html(option).show();
-
-        //habilita o botão cadastrar.
-        $('#btnCadastrar').prop("disabled", false);
-    });
-});
-
 $('#cnpjEdit').ready(function () {
     //chama o serviço que consulta os departamentos.
     var idCNPJ = $('#cnpjEdit').val();
