@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
     </head>  
     <?php
-    include_once '../include/include_classes.php';
+    include '../include/include_classes.php';
     $parada = new TipoParada();
     $id = $_GET[md5('id')];
     $deletar = $parada->delete($id);
