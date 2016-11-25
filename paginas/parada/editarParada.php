@@ -39,11 +39,11 @@
                                 Editar Parada
                             </h1>
                             <div class="row">
-                                <div class="form-group col-lg-4">
+                                <div class="form-group col-lg-6">
                                     <label for="nome_parada">Nome da Parada</label>
                                     <input type="text" class="form-control" id="nome_parada" name="nome_parada" value="<?php echo $resultado -> Nome; ?>"placeholder="Nome da Parada" required>
                                 </div>
-                                <div class="form-group col-lg-4">
+                                <div class="form-group col-lg-6">
                                     <label for="tipo_parada">Tipo da Parada</label>
                                     <select class="form-control" name="tipo_parada" id="tipo_parada">
                                         <option value="<?php echo $resultado -> TipoParada; ?>"><?php echo $resultado -> TipoParada; ?></option>
@@ -53,7 +53,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group col-lg-4">
+                                <div class="form-group col-lg-6">
                                     <label for="departamento">Departamento</label>
                                     <select  class="form-control" name="departamento" id="departamentoEditAtividade">
                                         <option value="<?php
@@ -67,7 +67,7 @@
                                           <?php endforeach; ?>
                                     </select>
                                 </div>
-                                <div class="form-group col-lg-4">
+                                <div class="form-group col-lg-6">
                                     <label for="cnpj">Filial</label>
                                     <input type="text" class="form-control" name="cnpj"  value="<?php
                                       $endereco = new Endereco;
@@ -77,13 +77,12 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group col-lg-8">
+                                <div class="form-group col-lg-12">
                                     <label for="descricao">Descrição</label>
                                     <textarea type="text" class="form-control" id="descricao" rows="4"  cols="550" name="descricao" placeholder="Descrição" required><?php echo $resultado -> Descricao; ?></textarea>
                                 </div>
                             </div>
-                            <div class="form-group col-lg-3"></div>
-                            <div class="form-group col-lg-4 text-center">
+                            <div class="col-lg-4-offset-1 text-center">
                                 <input id="cadastrar"type="submit" name="atualizar" class="btn btn-success" value="Atualizar Dados">
                             </div>
                         </div>

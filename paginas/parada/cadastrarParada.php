@@ -68,7 +68,7 @@
                                     <textarea type="text" class="form-control" id="descricao" rows="4" cols="550" name="descricao" placeholder="Descrição" required></textarea>
                                 </div>
                             </div>
-                            <div class="col-lg-offset-5 text-center">
+                            <div class="col-lg-4-offset-1 text-center">
                                 <input id="cadastrar"type="submit" name="cadastrar" class="btn btn-success" value="Cadastrar">
                             </div>
 
