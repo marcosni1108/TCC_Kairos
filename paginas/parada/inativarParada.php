@@ -1,7 +1,6 @@
 <html>
     <head>
-
-        <meta charset="UTF-8">
+     <meta charset="UTF-8">
     </head>  
     <?php
     include '../include/include_classes.php';

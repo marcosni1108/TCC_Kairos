@@ -1,5 +1,6 @@
 <?php
 
+require_once 'Crud.php';
 
 class TipoParada extends Crud{
    protected $table = 'tipo_parada';
