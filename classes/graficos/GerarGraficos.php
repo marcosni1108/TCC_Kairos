@@ -278,6 +278,7 @@ class GerarGraficos {
             $fp = fopen("../../js/dataGrafico/paradaDepartamento1.json", "w");
             $escreve = fwrite($fp, $parada);
             fclose($fp);
+            return true;
         }
         
         
@@ -301,7 +302,6 @@ class GerarGraficos {
             $parada = json_encode($rslt);
             $fp = fopen("../../js/dataGrafico/paradaTipoParada.json", "w");
             $escreve = fwrite($fp, $parada);
-            var_dump($parada);
             fclose($fp);
             return true;
         }else{
