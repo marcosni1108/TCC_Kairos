@@ -161,12 +161,12 @@ error_reporting(0);
                     </i> 
                 </li>
             </a>
-            <a href="../graficos/GraficoTotParada.php"> 
+<!--            <a href="../graficos/GraficoTotParada.php"> 
                 <li class="mdl-menu__item">Total de Tempo de Parada
                     <i class="mdl-color-text--black material-icons" role="presentation">
                     </i> 
                 </li>
-            </a>
+            </a>-->
             <a href="../graficos/GraficoTipoParada.php"> 
                 <li class="mdl-menu__item">Total de Parada
                     <i class="mdl-color-text--black material-icons" role="presentation">
