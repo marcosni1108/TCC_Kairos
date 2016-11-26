@@ -125,7 +125,7 @@ class Atividade extends Crud {
 
     public function findProdTotalAtividade($id, $mes, $ano) {
 
-        $sql = "SELECT SUM(produtividade.quantidade) as prod,atividade.nome as nome_atividade,departamento.nome as nome_departamento
+        $sql = "SELECT (SUM(produtividade.percentProd)/COUNT(produtividade.percentProd)) as prod,atividade.nome as nome_atividade,departamento.nome as nome_departamento
                 FROM produtividade 
                 INNER JOIN atividade ON (produtividade.`IdAtividade` = atividade.id)
                 INNER JOIN departamento ON (:id = departamento.id)

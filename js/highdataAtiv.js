@@ -22,14 +22,14 @@ $(function () {
         yAxis: {
             min: 0,
             title: {
-                text: 'Produtividade (documentos)'
+                text: 'Produtividade (Porcentagem)'
             }
         },
         legend: {
             enabled: false
         },
         tooltip: {
-            pointFormat: 'Produtividade: <b>{point.y:.1f} Documentos</b>'
+            pointFormat: 'Produtividade: <b>{point.y:.1f} %</b>'
         },
         credits: {
             enabled: false
