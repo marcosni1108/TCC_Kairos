@@ -240,10 +240,8 @@ class GerarGraficos {
         $bln['name'] = 'Atividade';
         $rows['name'] = 'Produção';
         if ($arrayFunc) {
-
+            
             foreach ($arrayFunc as $key => $value) {
-
-
                 $bln['data'][] = $value->nome_atividade;
                 $rows['data'][] = $value->prod;
             }
@@ -251,8 +249,10 @@ class GerarGraficos {
             $rslt = array();
             array_push($rslt, $bln);
             array_push($rslt, $rows);
-            echo json_encode($rslt, JSON_NUMERIC_CHECK);
+            return json_encode($rslt, JSON_NUMERIC_CHECK);
+            //return true;
         }
+        return false;
     }
 
     public function totParadaDept($id, $mes, $ano) {

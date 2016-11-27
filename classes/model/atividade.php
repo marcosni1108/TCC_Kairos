@@ -130,7 +130,7 @@ class Atividade extends Crud {
                 INNER JOIN atividade ON (produtividade.`IdAtividade` = atividade.id)
                 INNER JOIN departamento ON (:id = departamento.id)
                 WHERE MONTH(data) = :mes AND YEAR(data) = :ano
-                GROUP BY produtividade.IdAtividade";
+                GROUP BY produtividade.IdAtividade ORDER BY prod DESC";
 
 
         $stmt = DB::prepare($sql);

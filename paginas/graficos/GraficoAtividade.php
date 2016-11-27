@@ -23,7 +23,8 @@
                 echo "<script>"
                 . "window.location='./GraficoAtividadeDept.php'</script>";
             } else {
-                echo "<script> window.location='./GraficoAtividadeDept.php'</script>";
+                echo "<script>alert('Não possui dados para apresentar neste periodo.');"
+                . " window.location='./GraficoAtividade.php'</script>";
             }
 
 
