@@ -20,11 +20,12 @@ if (isset($_POST["Import"])) {
         fclose($file);
         if ($result) {
             echo "<script>alert('Dados incluidos com sucesso!');"
-            . "window.location='/KairosM/paginas/administrativo/adm.php'</script>";
+            . "window.location='../../paginas/administrativo/adm.php'</script>";
         } else {
             echo "<script>alert('Não foi possivel incluir os dados!');"
-            . "window.location='/KairosM/paginas/administrativo/adm.php'</script>";
+            . "window.location='../../paginas/administrativo/adm.php'</script>";
         }
-    } else
-        echo 'Invalid File:Please Upload CSV File';
+    } else{
+        echo 'Arquivo Inválido';
+    }
 }

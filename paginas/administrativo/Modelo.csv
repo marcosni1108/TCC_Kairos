@@ -1,1 +1,2 @@
-"1,""12:42"",""12:42"",""4"",""50"",""104.83"",""3774"",""47.69"",""2016-06-13"",""1"",""1"",""1"",""finalizado"""
+id, tempoInicial,tempoFinal,turno,quantidade,percentProd,tempoProdEfetivo,capacidade,data,IdFuncionario,IdDepartamento,IdAtividade,status
+"1","12:42","12:42","4","50","104.83","3774","47.69","2016-11-27","1","2","1","finalizado"
