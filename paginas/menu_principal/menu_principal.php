@@ -4,6 +4,11 @@
         <?php
         include "../include/include_css.php";
         include "../header/header.php";
+        session_start();
+        $departamento = new Departamento(); 
+        $id = $_SESSION['departamento'];
+        $departamento->setId($id);
+        $resultado = $departamento->find($id);
         ?>        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="../../css/jquery-ui.css" rel="stylesheet">
@@ -16,6 +21,11 @@
                         <h1 class="page-header text-center">Informa&ccedil;&otilde;es Gerencias 
                         </h1>
                     </div>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <h4><?php echo '<label for="expdicao">&nbsp;&nbsp;Departamento: '.$resultado->nome.'</label>'; ?></h4>
+                            </div>
+                        </div>                    
                 </div>
                 <div class="row">
                     <div class="col-lg-4 dash-bord text-center">Filtro:                                      
@@ -50,6 +60,36 @@
                         </div>
                     </div>  
                 </div>
+                <div class="row">
+                    <div class="col-lg-4 dash-bord text-center">Filtro:</div>                    
+                        <div class="col-lg-2 text-center">
+                            <select class="form-control"  onchange="chamaAtividadeDept()" name="ano" id="mes">
+                                <option value="01">Janeiro</option>
+                                <option value="02">Fevereiro</option>
+                                <option value="03">Março</option>
+                                <option value="04">Abril</option>
+                                <option value="05">Maio</option>                                    
+                                <option value="06">Junho</option>
+                                <option value="07">Julho</option>
+                                <option value="08">Agosto</option>
+                                <option value="09">Setembro</option>
+                                <option value="10">Outubro</option>
+                                <option value="11">Novembro</option>
+                                <option value="12">Dezembro</option>
+                            </select>
+                        </div>    
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                            </div>
+                            <div class="panel-body">
+                                <div id="atividadeDept"></div>
+                            </div>
+                        </div>
+                    </div>    
+                </div>                
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header text-center">Filiais

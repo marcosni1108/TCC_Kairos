@@ -34,6 +34,7 @@ function chamaGrafico() {
     var de = $('#from').val();
     var ate = $('#to').val();
     graficoParada(de, ate);
+    graficoAtividadeDept();
     //  graficoAtividade(de, ate);
     graficoProdutividade(de, ate, window.idDepartamento );
 }
@@ -42,6 +43,15 @@ function chamaFilial(){
      var mes = $('#mes').val();
      graficoFiliais(mes);
 }
+function chamaAtividadeDept(){
+     var mydate = new Date();
+     var year = mydate.getFullYear();    
+     var ano = year;
+     var mes = $('#mes').val();
+     graficoAtividadeDept(window.idDepartamento,mes,ano);
+}
+
+
 function graficoParada(de, ate) {
     var chart;
     var options = {
@@ -316,4 +326,95 @@ function graficoFiliais(mes) {
         console.log("sem dados");
         $("#produtividade").html('<img style="display: block; margin-left: auto; margin-right: auto;" class="responsivo" id="theImg" src="../../imagens/filtro.jpg" />');
     });
+}
+function graficoAtividadeDept(idDepartamento,mes,ano) {
+    var arrayMes = new Array(13);
+    arrayMes[0] = "";
+    arrayMes[1] = "Janeiro";
+    arrayMes[2] = "Fevereiro";
+    arrayMes[3] = "Março";
+    arrayMes[4] = "Abril";
+    arrayMes[5] = "Maio";
+    arrayMes[6] = "Junho";
+    arrayMes[7] = "Julho";
+    arrayMes[8] = "Agosto";
+    arrayMes[9] = "Setembro";
+    arrayMes[10] = "Outubro";
+    arrayMes[11] = "Novembro";
+    arrayMes[12] = "Dezembro";
+    
+    var chart;
+    var options = {
+        chart: {
+            renderTo: 'atividadeDept',
+            type: 'column'
+        },
+        title: {
+            text: 'Produtividade das Atvidades'
+        },
+        colors: [
+            '#AA4643',
+            '#89A54E',
+            '#80699B',
+            '#3D96AE',
+            '#DB843D',
+            '#92A8CD',
+            '#A47D7C',
+            '#B5CA92'
+        ],
+        plotOptions: {
+            column: {
+                colorByPoint: true
+            }
+        },
+        xAxis: {
+            type: 'category',
+            labels: {
+                rotation: -45,
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Produtividade (Porcentagem)'
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            pointFormat: 'Produtividade:{point.y:.1f} %</b>'
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{
+                name: 'Atividades',
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    format: '{point.y:.1f}', // one decimal
+                    y: 10, // 10 pixels down from the top
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            }]
+    };
+    $.getJSON("../../classes/graficos/dashGrafico.php?opcao=atvidadeDept&id=" + idDepartamento + "&mes=" + mes + "&ano=" + ano, function (json) {
+                    options.xAxis.categories = json[0]['data']; //xAxis: {categories: []}
+                    options.series[0] = json[1];
+                    chart = new Highcharts.Chart(options);
+    })
+    .fail(function () {
+       console.log("sem dados");
+        $("#atividadeDept").html("<img style='display: block; margin-left: auto; margin-right: auto;' class='responsivo' id='theImg' src='../../imagens/filtro.jpg' />");
+    });;
 }

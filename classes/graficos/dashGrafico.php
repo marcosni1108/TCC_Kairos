@@ -8,6 +8,7 @@ $de = isset($_GET['de']) ? $_GET['de'] : '';
 $ate = isset($_GET['ate']) ? $_GET['ate'] : '';
 $id = isset($_GET['id']) ? $_GET['id'] : '';
 $mes = isset($_GET['mes']) ? $_GET['mes'] : '';
+$ano = isset($_GET['ano']) ? $_GET['ano'] : '';
 $de = fomartaData($de);
 $ate = fomartaData($ate);
 
@@ -29,6 +30,10 @@ if (!empty($opcao)) {
                 echo produtividadeFiliais($mes);
                 break;
             }    
+        case 'atvidadeDept': {
+                echo ativiGraficoDept($id,$mes,$ano);
+                break;
+            }              
     }
 }
 
@@ -126,3 +131,27 @@ function fomartaData($data) {
     $date = str_replace('/', '-', $data);
     return date('Y-m-d', strtotime($date));
 }
+function ativiGraficoDept($id, $mes, $ano) {
+
+        set_include_path(dirname(__FILE__) . "/../model");
+        require_once 'atividade.php';
+        $atividade = new atividade();
+        $arrayFunc = $atividade->findProdTotalAtividade($id, $mes, $ano);
+        $bln = array();
+        $bln['name'] = 'Atividade';
+        $rows['name'] = 'Produção';
+        if ($arrayFunc) {
+            
+            foreach ($arrayFunc as $key => $value) {
+                $bln['data'][] = $value->nome_atividade;
+                $rows['data'][] = $value->prod;
+            }
+
+            $rslt = array();
+            array_push($rslt, $bln);
+            array_push($rslt, $rows);
+            return json_encode($rslt, JSON_NUMERIC_CHECK);
+            //return true;
+        }
+        return false;
+    }
