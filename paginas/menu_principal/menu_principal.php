@@ -63,7 +63,7 @@
                 <div class="row">
                     <div class="col-lg-4 dash-bord text-center">Filtro:</div>                    
                         <div class="col-lg-2 text-center">
-                            <select class="form-control"  onchange="chamaAtividadeDept()" name="ano" id="mes">
+                            <select class="form-control"  onchange="chamaAtividadeDept()" name="ano" id="mesAtiv">
                                 <option value="01">Janeiro</option>
                                 <option value="02">Fevereiro</option>
                                 <option value="03">Março</option>

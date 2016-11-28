@@ -5,6 +5,7 @@ $(function () {
     $('#from').val(dataAtualFormatada(true));
     $('#to').val(dataAtualFormatada(true));
     $('#mes').val(dataAtualFormatada(false));
+	$('#mesAtiv').val(dataAtualFormatada(false));
     chamaGrafico();
     graficoFiliais(dataAtualFormatada(false));
     chamaAtividadeDept();
@@ -48,7 +49,7 @@ function chamaAtividadeDept(){
      var mydate = new Date();
      var year = mydate.getFullYear();    
      var ano = year;
-     var mes = $('#mes').val();
+     var mes = $('#mesAtiv').val();
      graficoAtividadeDept(window.idDepartamento,mes,ano);
 }
 
