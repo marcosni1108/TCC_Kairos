@@ -186,7 +186,7 @@ class Parada extends Crud {
         $stmt = DB::prepare($sql);
         $stmt->bindParam(':de', $de);
         $stmt->bindParam(':ate', $ate);
-		 $stmt->bindParam('::id', $idDept);
+		 $stmt->bindParam(':id', $idDept);
         $stmt->execute();
         try {
             return  $stmt->fetchAll();
