@@ -7,6 +7,7 @@ $(function () {
     $('#mes').val(dataAtualFormatada(false));
     chamaGrafico();
     graficoFiliais(dataAtualFormatada(false));
+    chamaAtividadeDept();
     
 });
 function dataAtualFormatada(dataCompleta) {
