@@ -36,8 +36,6 @@ function chamaGrafico() {
     var de = $('#from').val();
     var ate = $('#to').val();
     graficoParada(de, ate, window.idDepartamento);
-    graficoAtividadeDept();
-    //  graficoAtividade(de, ate);
     graficoProdutividade(de, ate, window.idDepartamento );
 }
 
