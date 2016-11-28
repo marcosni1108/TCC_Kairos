@@ -61,7 +61,7 @@ function graficoParada(de, ate, departamento) {
             type: 'column'
         },
         title: {
-            text: 'Parada dos departamentos'
+            text: 'Parada do departamento'
         },
         colors: [
             '#AA4643',
