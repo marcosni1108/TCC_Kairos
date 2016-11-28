@@ -350,7 +350,7 @@ function graficoAtividadeDept(idDepartamento,mes,ano) {
             type: 'column'
         },
         title: {
-            text: 'Produtividade das Atvidades'
+            text: 'Produtividade das Atividades'
         },
         colors: [
             '#AA4643',
