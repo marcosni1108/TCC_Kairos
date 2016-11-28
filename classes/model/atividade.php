@@ -134,7 +134,7 @@ class Atividade extends Crud {
 
 
         $stmt = DB::prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id);
         $stmt->bindParam(':mes', $mes, PDO::PARAM_INT);
         $stmt->bindParam(':ano', $ano, PDO::PARAM_INT);
         $stmt->execute();
