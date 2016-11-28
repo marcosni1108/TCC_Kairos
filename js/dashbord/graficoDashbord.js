@@ -34,7 +34,7 @@ function dataAtualFormatada(dataCompleta) {
 function chamaGrafico() {
     var de = $('#from').val();
     var ate = $('#to').val();
-    graficoParada(de, ate);
+    graficoParada(de, ate, window.idDepartamento);
     graficoAtividadeDept();
     //  graficoAtividade(de, ate);
     graficoProdutividade(de, ate, window.idDepartamento );
@@ -53,7 +53,7 @@ function chamaAtividadeDept(){
 }
 
 
-function graficoParada(de, ate) {
+function graficoParada(de, ate, departamento) {
     var chart;
     var options = {
         chart: {
@@ -119,7 +119,7 @@ function graficoParada(de, ate) {
                 }
             }]
     };
-    $.getJSON("../../classes/graficos/dashGrafico.php?opcao=parada&de=" + de + "&ate=" + ate, function (json) {
+    $.getJSON("../../classes/graficos/dashGrafico.php?opcao=parada&de=" + de + "&ate=" + ate +"&id="+departamento, function (json) {
         options.xAxis.categories = json[1]['data'];//xAxis: {categories: []}
         options.series[0] = json[0];
         chart = new Highcharts.Chart(options);

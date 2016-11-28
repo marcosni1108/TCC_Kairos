@@ -15,7 +15,7 @@ $ate = fomartaData($ate);
 if (!empty($opcao)) {
     switch ($opcao) {
         case 'parada': {
-                echo Parada($de, $ate);
+                echo Parada($de, $ate, $id);
                 break;
             }
         case 'atividade': {
@@ -37,10 +37,10 @@ if (!empty($opcao)) {
     }
 }
 
-function parada($de, $ate) {
+function parada($de, $ate, $id) {
     require_once 'parada.php';
     $parada = new Parada();
-    $arrayFunc = $parada->ParadaDept($de, $ate);
+    $arrayFunc = $parada->ParadaDept($de, $ate, $id);
     $bln = array();
     $bln['name'] = 'Atividade';
     $rows['name'] = 'Parada';

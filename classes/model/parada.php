@@ -174,18 +174,19 @@ class Parada extends Crud {
         $stmt->execute();
         return $stmt->fetchAll();
     }
-    public function ParadaDept($de,$ate) {
+    public function ParadaDept($de,$ate,$idDept) {
 
         $sql = "SELECT SUM(tempConvertSegun)as totParada, "
                 . "tipo_parada.nome as nome_parada "
                 . "FROM parada INNER JOIN tipo_parada "
                 . "ON (idParadaFK = tipo_parada.id) "
-                . "WHERE DATA BETWEEN :de and :ate GROUP BY idParadaFK";
+                . "WHERE DATA BETWEEN :de and :ate and `idDepartamentoFK`=:id GROUP BY idParadaFK";
         
         
         $stmt = DB::prepare($sql);
         $stmt->bindParam(':de', $de);
         $stmt->bindParam(':ate', $ate);
+		 $stmt->bindParam('::id', $idDept);
         $stmt->execute();
         try {
             return  $stmt->fetchAll();
