@@ -127,9 +127,9 @@ class Atividade extends Crud {
 
         $sql = "SELECT (SUM(produtividade.percentProd)/COUNT(produtividade.percentProd)) as prod,atividade.nome as nome_atividade,departamento.nome as nome_departamento
                 FROM produtividade 
-                INNER JOIN atividade ON (produtividade.`IdAtividade` = atividade.id)
-                INNER JOIN departamento ON (produtividade.`IdDepartamento` = departamento.id)
-                WHERE MONTH(data) = :mes AND YEAR(data) = :ano and produtividade.`IdDepartamento = :id
+                INNER JOIN atividade ON (produtividade.IdAtividade = atividade.id)
+                INNER JOIN departamento ON (produtividade.IdDepartamento = departamento.id)
+                WHERE MONTH(data) = :mes AND YEAR(data) = :ano and produtividade.IdDepartamento = :id
                 GROUP BY produtividade.IdAtividade ORDER BY prod DESC";
 
 
