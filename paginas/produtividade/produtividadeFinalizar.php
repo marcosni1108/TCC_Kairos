@@ -35,7 +35,7 @@
               $meta = new Meta();
               $result_meta = $meta -> findMeta($idDep, $idAtividade);
               $acrescimo_meta = $result_meta[0] -> AcrescimoMeta;
-              $capacidade_turno = 3600/$acrescimo_meta;
+              $capacidade_turno = $acrescimo_meta;
               $percent_prod = $quantidade/$capacidade_turno;
               $tempo_prod_efetivo = ($percent_prod*3600)/100;
               $tempo_prod_efetivo = $tempo_prod_efetivo*100;
