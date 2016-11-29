@@ -75,12 +75,12 @@
                 //fim amostra
                 //cadastra uma meta inicial com o valor de 10%
                 $meta = new Meta();
-                $meta->setMediaIndice($indice_final_media);
+                $meta->setMediaIndice($indice_final_media/60);
                 $meta->setQuantidade($_SESSION["jcount"]);
                 $meta->setMeta(10);
-                $meta->setResultado($resultado);
+                $meta->setResultado($resultado/60);
                 $acrescimo_meta = $resultado + $indice_final_media;
-                $meta->setAcrescimoMeta($acrescimo_meta);
+                $meta->setAcrescimoMeta($acrescimo_meta/60);
                 $departamento = $_SESSION['departamento'];
                 $atividade = $_SESSION['atividade'];
                 $meta->setIdDeptoFK($departamento);
