@@ -142,11 +142,11 @@
                                     <div class="row" id="amostra_lista">
                                         <div class="form-group col-lg-4">
                                             <label for="hora_inicial">Hora Inicial</label>
-                                            <input type="time" pattern="(?:[01]|2(?![4-9])){1}\d{1}:[0-5]{1}\d{1}"  class="form-control" id="hora_inicial" onkeypress="javascript: mascara(this, hora);" maxlength="5" name="hora_inicial" placeholder="hh:mm" required>
+                                            <input type="time" pattern="(?:[01]|2(?![4-9])){1}\d{1}:[0-5]{1}\d{1}"  class="form-control" id="hora_inicial" maxlength="5" name="hora_inicial" placeholder="hh:mm" required>
                                         </div>
                                         <div class="form-group col-lg-4">
                                             <label for="hora_final">Hora Final</label>
-                                            <input type="time"  pattern="(?:[01]|2(?![4-9])){1}\d{1}:[0-5]{1}\d{1}"  class="form-control" id="hora_final"  onkeypress="javascript: mascara(this, hora);" maxlength="5" name="hora_final" placeholder="hh:mm" required>
+                                            <input type="time"  pattern="(?:[01]|2(?![4-9])){1}\d{1}:[0-5]{1}\d{1}"  class="form-control" id="hora_final" maxlength="5" name="hora_final" placeholder="hh:mm" required>
                                         </div>
                                         <div class="form-group col-lg-4">
                                             <label for="cnpj">Quantidade</label>
