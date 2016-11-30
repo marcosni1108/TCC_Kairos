@@ -174,5 +174,13 @@ error_reporting(0);
                 </li>
             </a>
         </ul>
+         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-color--blue"
+            for="relatorio">
+            <a href="../relatorios/relatorioAmostra.php"> 
+                <li class="mdl-menu__item">Relatório de amostra
+                    <i class="mdl-color-text--black material-icons" role="presentation">create</i> 
+                </li>
+            </a>
+        </ul>
     </div>
 

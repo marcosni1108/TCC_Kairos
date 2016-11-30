@@ -188,6 +188,11 @@ error_reporting(0);
                     </i> 
                 </li>
             </a>
+            <a href="../relatorios/relatorioAmostra.php"> 
+                <li class="mdl-menu__item">Relatório de amostra
+                    <i class="mdl-color-text--black material-icons" role="presentation">create</i> 
+                </li>
+            </a>
         </ul>
     </div>
             <script>
