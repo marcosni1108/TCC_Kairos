@@ -21,7 +21,6 @@
               $gerente = $_POST['gerente'];
               $endereco = $_POST['endereco'];
               $departamento -> setNome($nome_dept);
-              $departamento -> setCnpj($cnpj);
               $departamento -> setLider($lider);
               $departamento -> setGerente($gerente);
               $departamento -> setIdEnderecoFK($endereco);

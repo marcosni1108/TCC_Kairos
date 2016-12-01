@@ -83,12 +83,11 @@ class Departamento extends Crud {
     public function update($id) {
 
         $sql = "UPDATE $this->table SET nome= :nome, "
-                . "cnpj=:cnpj,lider=:lider,"
+                . "lider=:lider,"
                 . "gerente=:gerente,idEnderecoFK =:idEnderecoFK where id = :id";
         $stmt = DB::prepare($sql);
 
         $stmt->bindParam(':nome', $this->nome);
-        $stmt->bindParam(':cnpj', $this->cnpj);
         $stmt->bindParam(':lider', $this->lider);
         $stmt->bindParam(':gerente', $this->gerente);
         $stmt->bindParam(':idEnderecoFK', $this->idEnderecoFK);
