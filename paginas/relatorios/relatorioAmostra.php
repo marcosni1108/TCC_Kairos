@@ -76,5 +76,6 @@
     <?php include_once '../include/include_js.php'; ?>
     <script src="../../js/relatorioJs/populaComboRelAmostra.js"></script>
     <script src="../../js/relatorioJs/populaTable.js"></script>
+    <!--teste -->
 </html>
 
